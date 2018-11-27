@@ -1,6 +1,6 @@
 const Home = props => (
   <div>
-    <h1>Under Construction</h1>
+    <h1>CLM.me - Under Construction</h1>
   </div>
 );
 
