@@ -1,7 +1,13 @@
-const Home = props => (
-  <div>
-    <h1>CLM.me - Under Construction</h1>
-  </div>
-);
+import React from "react";
 
-export default Home;
+class Index extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>Index page</h2>z
+      </div>
+    );
+  }
+}
+
+export default Index;

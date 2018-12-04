@@ -1,25 +1,28 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sentry/browser": "^4.4.1",
     "apollo-boost": "^0.1.16",
     "apollo-client": "^2.4.2",
     "babel-core": "^7.0.0-bridge.0",
     "babel-plugin-styled-components": "^1.7.1",
     "date-fns": "^2.0.0-alpha.7",
+    "dotenv": "^6.1.0",
     "downshift": "^2.2.3",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
+    "fs": "0.0.1-security",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.9.2",
     "lodash.debounce": "^4.0.8",
@@ -40,6 +43,7 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "casual": "^1.5.19",
+    "coveralls": "^3.0.2",
     "enzyme-to-json": "^3.3.4",
     "graphql-tools": "^4.0.0",
     "jest": "^23.6.0",

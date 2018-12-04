@@ -1,10 +1,32 @@
 import App, { Container } from "next/app";
+import * as Sentry from "@sentry/browser";
+import { name, version } from "../package.json";
 import Page from "../components/Page";
 import { ApolloProvider } from "react-apollo";
 import withData from "../lib/withData";
-import { dsn } from "../config";
+import { SENTRY_PUBLIC_DSN } from "../config";
 
 class MyApp extends App {
+  constructor(...args) {
+    super(...args);
+    Sentry.init({
+      dsn: SENTRY_PUBLIC_DSN,
+      release: `${name}@${version}`
+    });
+  }
+
+  componentDidCatch(error, errorInfo) {
+    Sentry.configureScope(scope => {
+      Object.keys(errorInfo).forEach(key => {
+        scope.setExtra(key, errorInfo[key]);
+      });
+    });
+    Sentry.captureException(error);
+
+    // This is needed to render errors correctly in development/production
+    super.componentDidCatch(error, errorInfo);
+  }
+
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {};
     if (Component.getInitialProps) {
@@ -14,6 +36,7 @@ class MyApp extends App {
     pageProps.query = ctx.query;
     return { pageProps };
   }
+
   render() {
     const { Component, apollo, pageProps } = this.props;
 
