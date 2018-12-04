@@ -2,7 +2,8 @@
 
 <p align="center">
 
-[![Build Status](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me.svg?branch=master)](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me)[![Coverage Status](https://coveralls.io/repos/github/ChristopherLMiller/app.christopherleemiller.me/badge.svg?branch=master)](https://coveralls.io/github/ChristopherLMiller/app.christopherleemiller.me?branch=master)
+[![Build Status](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me.svg?branch=master)](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me)
+[![Coverage Status](https://coveralls.io/repos/github/ChristopherLMiller/app.christopherleemiller.me/badge.svg?branch=master)](https://coveralls.io/github/ChristopherLMiller/app.christopherleemiller.me?branch=master)
 </a>
 
 </p>
