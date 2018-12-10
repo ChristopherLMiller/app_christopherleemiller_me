@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled, { ThemeProvider, injectGlobal } from 'styled-components';
-import Header from './Header';
-import Sidebar from './Sidebar';
 import Meta from './Meta';
+import Sidebar from './Sidebar';
 
 const theme = {
   black: '#E9E9E9',
@@ -46,6 +46,13 @@ injectGlobal`
 `;
 
 export default class Page extends Component {
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]).isRequired,
+  };
+
   render() {
     return (
       <ThemeProvider theme={theme}>
