@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import styled, { ThemeProvider, injectGlobal } from "styled-components";
-import Header from "../components/Header";
-import Meta from "../components/Meta";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import Meta from "./Meta";
 
 const theme = {
-  black: "#FFFFF"
+  black: "#E9E9E9",
+  white: "#FFFFFF",
+  red: "#982929"
 };
 
 const StyledPage = styled.div`
-  background: white;
-  color: ${props => props.theme.black};
+  color: ${props => props.theme.white};
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 `;
 
 const Inner = styled.div`
-  max-width: 1200px;
+  grid-column: 2 / 5;
 `;
 
 injectGlobal`
@@ -25,15 +29,19 @@ injectGlobal`
     box-sizing: inherit;
   }
   body {
+    font-family: 'Oswald', sans-serif;
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
-    line-height: 2;
-    font-family: 'radnika_next';
+    line-height: 1.15;
+    background: url("https://res.cloudinary.com/christopherleemiller/image/upload/v1544460951/clm_me/assets/background.jpg")
+    no-repeat center;
+    background-attachment: fixed;
+    background-size: cover;
   }
   a {
     text-decoration: none;
-    color: ${theme.black};
+    color: ${theme.white};
   }
 `;
 
@@ -43,7 +51,7 @@ export default class Page extends Component {
       <ThemeProvider theme={theme}>
         <StyledPage>
           <Meta />
-          <Header />
+          <Sidebar />
           <Inner>{this.props.children}</Inner>
         </StyledPage>
       </ThemeProvider>
