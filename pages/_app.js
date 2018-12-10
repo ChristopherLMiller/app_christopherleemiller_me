@@ -1,17 +1,17 @@
-import App, { Container } from "next/app";
-import * as Sentry from "@sentry/browser";
-import { name, version } from "../package.json";
-import Page from "../components/Page";
-import { ApolloProvider } from "react-apollo";
-import withData from "../lib/withData";
-import { SENTRY_PUBLIC_DSN } from "../config";
+import App, { Container } from 'next/app';
+import * as Sentry from '@sentry/browser';
+import { ApolloProvider } from 'react-apollo';
+import { name, version } from '../package.json';
+import Page from '../components/layout/Page';
+import withData from '../lib/withData';
+import { SENTRY_PUBLIC_DSN } from '../config';
 
 class MyApp extends App {
   constructor(...args) {
     super(...args);
     Sentry.init({
       dsn: SENTRY_PUBLIC_DSN,
-      release: `${name}@${version}`
+      release: `${name}@${version}`,
     });
   }
 
