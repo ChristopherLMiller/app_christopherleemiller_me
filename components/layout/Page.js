@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import styled, { ThemeProvider, injectGlobal } from "styled-components";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
-import Meta from "./Meta";
+import React, { Component } from 'react';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Meta from './Meta';
 
 const theme = {
-  black: "#E9E9E9",
-  white: "#FFFFFF",
-  red: "#982929"
+  black: '#E9E9E9',
+  white: '#FFFFFF',
+  red: '#982929',
 };
 
 const StyledPage = styled.div`

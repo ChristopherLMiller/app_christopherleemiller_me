@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledTitle = styled.h2`
   font-size: 3em;
@@ -6,7 +6,7 @@ const StyledTitle = styled.h2`
   position: relative;
 
   &:after {
-    content: "\\A";
+    content: '\\A';
     position: absolute;
     display: block;
     bottom: -5px;

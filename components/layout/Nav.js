@@ -1,5 +1,5 @@
-import Link from "next/link";
-import styled from "styled-components";
+import Link from 'next/link';
+import styled from 'styled-components';
 
 const NavStyles = styled.ul`
   padding-left: 0;
@@ -18,7 +18,7 @@ const NavItem = styled.li`
     right: 500px;
     width: 500px;
     height: 100%;
-    content: "\\A";
+    content: '\\A';
     background: ${props => props.theme.red};
     opacity: 0.7;
     z-index: -1;

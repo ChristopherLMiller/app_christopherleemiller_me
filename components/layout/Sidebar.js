@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import Logo from "./Logo";
-import Title from "./Title";
-import Nav from "./Nav";
+import styled from 'styled-components';
+import Logo from './Logo';
+import Title from './Title';
+import Nav from './Nav';
 
 const StyledSidebar = styled.aside`
   min-height: 100vh;
@@ -15,7 +15,7 @@ const StyledSidebar = styled.aside`
     left: 0;
     width: 100%;
     height: 100%;
-    content: "\\A";
+    content: '\\A';
     z-index: -1;
   }
 `;
