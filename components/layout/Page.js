@@ -8,16 +8,18 @@ const theme = {
   black: '#E9E9E9',
   white: '#FFFFFF',
   red: '#982929',
+  red_transparent: 'rgba(152, 41, 41, 0.7)',
 };
 
 const StyledPage = styled.div`
   color: ${props => props.theme.white};
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 450px 1fr;
 `;
 
 const Inner = styled.div`
-  grid-column: 2 / 5;
+  display: grid;
+  grid-template-rows: 1fr auto;
 `;
 
 injectGlobal`

@@ -1,23 +1,13 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 
 const StyledTitle = styled.h2`
   font-size: 3em;
   margin: 0 0 10px 0;
   position: relative;
 
-  &:after {
-    content: '\\A';
-    position: absolute;
-    display: block;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 4px;
-    transition: all 0.25s ease;
-  }
-  &:hover:after {
-    width: 375px;
-    color: ${props => props.theme.white};
+  &:hover {
+    text-decoration: underline;
   }
 `;
 
@@ -33,10 +23,14 @@ const Block = styled.span`
 
 const Title = () => (
   <>
-    <StyledTitle>
-      <Block>C</Block>hristopher <Block>L</Block>
-      ee <Block>M</Block>iller
-    </StyledTitle>
+    <Link href="/">
+      <a>
+        <StyledTitle>
+          <Block>C</Block>hristopher <Block>L</Block>
+          ee <Block>M</Block>iller
+        </StyledTitle>
+      </a>
+    </Link>
     <StyledDescription>All About Me!</StyledDescription>
   </>
 );
