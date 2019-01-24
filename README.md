@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me.svg?branch=master)](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me)
 [![Coverage Status](https://coveralls.io/repos/github/ChristopherLMiller/app.christopherleemiller.me/badge.svg?branch=master)](https://coveralls.io/github/ChristopherLMiller/app.christopherleemiller.me?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/88b8b264ffe647cba0adbc9b88063775)](https://www.codacy.com/app/ChristopherLMiller/app.christopherleemiller.me?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ChristopherLMiller/app.christopherleemiller.me&amp;utm_campaign=Badge_Grade)
 </a>
 
 </p>
