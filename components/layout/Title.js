@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const StyledTitle = styled.h2`
-  margin: 0 0 10px 0;
+  text-align: right;
+  font-size: 2em;
+  margin: 0;
+
   position: relative;
 
   &:hover {
@@ -10,25 +13,39 @@ const StyledTitle = styled.h2`
   }
 
   @media (min-width: ${props => props.theme.small}) {
-    font-size: 30px;
+    text-align: left;
+    margin: 10px 0;
+    font-size: 1.75em;
   }
   @media (min-width: ${props => props.theme.med_small}) {
-    font-size: 32px;
-  }
-  @media (min-width: ${props => props.theme.med}) {
-    font-size: 34px;
+    font-size: 2.2em;
   }
   @media (min-width: ${props => props.theme.med_large}) {
-    font-size: 38px;
+    font-size: 2.6em;
   }
   @media (min-width: ${props => props.theme.large}) {
-    font-size: 46px;
+    font-size: 3em;
   }
 `;
 
 const StyledDescription = styled.h3`
-  font-size: 1.75em;
-  margin: 0;
+  margin: 0 0 30px 0;
+  text-align: right;
+
+  @media (min-width: ${props => props.theme.small}) {
+    text-align: left;
+    display: initial;
+    font-size: 1em;
+  }
+  @media (min-width: ${props => props.theme.med_small}) {
+    font-size: 1.25em;
+  }
+  @media (min-width: ${props => props.theme.med_large}) {
+    font-size: 1.5em;
+  }
+  @media (min-width: ${props => props.theme.large}) {
+    font-size: 1.75em;
+  }
 `;
 
 const Block = styled.span`

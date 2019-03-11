@@ -10,7 +10,7 @@ const theme = {
   red: '#982929',
   red_transparent: 'rgba(152, 41, 41, 0.7)',
 
-  small: '800px',
+  small: '700px',
   med_small: '900px',
   med: '1000px',
   med_large: '1100px',

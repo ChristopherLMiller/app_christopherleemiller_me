@@ -5,12 +5,12 @@ import Nav from './Nav';
 import SocialLinks from '../SocialLinks';
 
 const StyledSidebar = styled.aside`
-  min-height: 100vh;
-  padding: 40px;
   position: relative;
+  padding: 20px;
+  min-height: 100vh;
 
   &:before {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0);
     position: absolute;
     top: 0;
     left: 0;
@@ -19,10 +19,25 @@ const StyledSidebar = styled.aside`
     content: '\\A';
     z-index: -1;
   }
+
+  @media (min-width: ${props => props.theme.small}) {
+    &:before {
+      background: rgba(0, 0, 0, 0.7);
+    }
+  }
+  @media (min-width: ${props => props.theme.med_small}) {
+    padding: 40px;
+  }
 `;
 
 const StyledSidebarInner = styled.div`
-  position: fixed;
+  @media (min-width: ${props => props.theme.small}) {
+    position: sticky;
+    top: 40px;
+  }
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
 const Sidebar = () => (
