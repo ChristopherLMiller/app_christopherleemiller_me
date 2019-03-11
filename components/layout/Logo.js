@@ -4,7 +4,12 @@ const StyledLogo = styled.img`
   border: 10px solid ${props => props.theme.white};
   filter: grayscale(100%);
   transition: all 0.5s;
+  display: none;
 
+  @media (min-width: ${props => props.theme.small}) {
+    width: 75%;
+    display: block;
+  }
   &:hover {
     filter: grayscale(0%);
   }

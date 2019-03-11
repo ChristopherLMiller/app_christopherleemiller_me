@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Logo from './Logo';
 import Title from './Title';
 import Nav from './Nav';
+import SocialLinks from '../SocialLinks';
 
 const StyledSidebar = styled.aside`
   min-height: 100vh;
@@ -20,11 +21,18 @@ const StyledSidebar = styled.aside`
   }
 `;
 
+const StyledSidebarInner = styled.div`
+  position: fixed;
+`;
+
 const Sidebar = () => (
   <StyledSidebar>
-    <Logo />
-    <Title />
-    <Nav />
+    <StyledSidebarInner>
+      <Logo />
+      <Title />
+      <Nav />
+      <SocialLinks />
+    </StyledSidebarInner>
   </StyledSidebar>
 );
 export default Sidebar;

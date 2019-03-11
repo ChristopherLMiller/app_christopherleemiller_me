@@ -1,5 +1,4 @@
 import React from 'react';
-import Head from 'next/head';
 import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -8,12 +7,9 @@ class About extends React.Component {
   render() {
     return (
       <>
-        <Head>
-          <title>ChristopherLeeMiller.me - About</title>
-        </Head>
         <NextSEO
           config={{
-            title: 'About Me',
+            title: 'ChristopherLeeMiller - About Me',
             description: 'Where I came from and what I do now',
             openGraph: {
               title: 'About Me',
@@ -22,6 +18,8 @@ class About extends React.Component {
           }}
         />
         <Header title="About Me" />
+
+        <h2>Insert content here about me, my past, where i'm going etc</h2>
         <Footer />
       </>
     );

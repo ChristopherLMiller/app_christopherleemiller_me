@@ -2,19 +2,33 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 const StyledTitle = styled.h2`
-  font-size: 3em;
   margin: 0 0 10px 0;
   position: relative;
 
   &:hover {
     text-decoration: underline;
   }
+
+  @media (min-width: ${props => props.theme.small}) {
+    font-size: 30px;
+  }
+  @media (min-width: ${props => props.theme.med_small}) {
+    font-size: 32px;
+  }
+  @media (min-width: ${props => props.theme.med}) {
+    font-size: 34px;
+  }
+  @media (min-width: ${props => props.theme.med_large}) {
+    font-size: 38px;
+  }
+  @media (min-width: ${props => props.theme.large}) {
+    font-size: 46px;
+  }
 `;
 
 const StyledDescription = styled.h3`
   font-size: 1.75em;
   margin: 0;
-  text-align: right;
 `;
 
 const Block = styled.span`

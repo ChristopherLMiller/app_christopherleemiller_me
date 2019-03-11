@@ -9,12 +9,34 @@ const theme = {
   white: '#FFFFFF',
   red: '#982929',
   red_transparent: 'rgba(152, 41, 41, 0.7)',
+
+  small: '800px',
+  med_small: '900px',
+  med: '1000px',
+  med_large: '1100px',
+  large: '1200px',
 };
 
 const StyledPage = styled.div`
   color: ${props => props.theme.white};
-  display: grid;
-  grid-template-columns: 450px 1fr;
+  transition: all 0.5s;
+
+  @media (min-width: ${props => props.theme.small}) {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+  }
+  @media (min-width: ${props => props.theme.med_small}) {
+    grid-template-columns: 350px 1fr;
+  }
+  @media (min-width: ${props => props.theme.med}) {
+    grid-template-columns: 350px 1fr;
+  }
+  @media (min-width: ${props => props.theme.med_large}) {
+    grid-template-columns: 400px 1fr;
+  }
+  @media (min-width: ${props => props.theme.large}) {
+    grid-template-columns: 450px 1fr;
+  }
 `;
 
 const Inner = styled.div`

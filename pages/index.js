@@ -1,5 +1,5 @@
 import React from 'react';
-import Head from 'next/head';
+import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 
@@ -7,9 +7,16 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <Head>
-          <title>ChristopherLeeMiller.me - Home</title>
-        </Head>
+        <NextSEO
+          config={{
+            title: 'ChristopherLeeMiller - Home',
+            description: 'Where I came from and what I do now',
+            openGraph: {
+              title: 'About Me',
+              description: 'Where I came from and what I do now',
+            },
+          }}
+        />
         <Header title="Christopher Lee Miller" />
         <Footer />
       </>

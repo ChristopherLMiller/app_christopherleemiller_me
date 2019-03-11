@@ -16,7 +16,7 @@ const NavItem = styled.li`
     position: absolute;
     top: 0;
     right: 500px;
-    width: 500px;
+    //width: 500px;
     height: 100%;
     content: '\\A';
     background: ${props => props.theme.red};
@@ -37,6 +37,12 @@ const Nav = () => (
     </NavItem>
 
     <NavItem>
+      <Link href="/archives">
+        <a>Archives</a>
+      </Link>
+    </NavItem>
+
+    <NavItem>
       <Link href="/about">
         <a>About</a>
       </Link>
@@ -51,12 +57,6 @@ const Nav = () => (
     <NavItem>
       <Link href="/gallery">
         <a>Gallery</a>
-      </Link>
-    </NavItem>
-
-    <NavItem>
-      <Link href="/archives">
-        <a>Archives</a>
       </Link>
     </NavItem>
 

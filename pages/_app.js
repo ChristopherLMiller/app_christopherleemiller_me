@@ -2,10 +2,15 @@ import App, { Container } from 'next/app';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
+import LogRocket from 'logrocket';
+import setupLogRocketReact from 'logrocket-react';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withData from '../lib/withData';
 import { SENTRY_PUBLIC_DSN, DEFAULT_SEO } from '../config';
+
+LogRocket.init('xrcvkv/christopherleemillerme');
+// setupLogRocketReact(LogRocket);
 
 class MyApp extends App {
   constructor(...args) {
@@ -20,6 +25,13 @@ class MyApp extends App {
     Sentry.configureScope(scope => {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key]);
+      });
+    });
+
+    Sentry.configureScope(scope => {
+      scope.addEventProcessor(async event => {
+        event.extra.sessionURL = LogRocket.sessionURL;
+        return event;
       });
     });
     Sentry.captureException(error);
