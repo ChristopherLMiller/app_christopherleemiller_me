@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
 import LogRocket from 'logrocket';
-import setupLogRocketReact from 'logrocket-react';
+// import setupLogRocketReact from 'logrocket-react';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withData from '../lib/withData';

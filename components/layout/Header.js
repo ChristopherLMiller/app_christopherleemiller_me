@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import React from 'react';
+import PropTypes from 'prop-types';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -22,6 +23,10 @@ const StyledHeader = styled.header`
 `;
 
 class Header extends React.Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+  };
+
   render() {
     return (
       <StyledHeader>
