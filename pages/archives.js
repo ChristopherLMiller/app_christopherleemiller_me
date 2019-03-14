@@ -7,6 +7,8 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage } from '../config';
 
+import Card from '../components/card';
+
 const ALL_ARTICLES_QUERY = gql`
   query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
     articles(limit: $limit, start: $start, sort: "DESC") {
@@ -56,27 +58,31 @@ class Archives extends React.Component {
         />
         <Header title="Archives" />
 
-        <main>
-          <Query
-            query={ALL_ARTICLES_QUERY}
-            variables={{
-              skip: this.props.page * perPage - perPage,
-              perPage,
-            }}
-          >
-            {({ data, error, loading }) => {
-              if (loading) return <p>Loading...</p>;
-              if (error) return <p>Error: {error.message}</p>;
-              return (
-                <div>
-                  {data.articles.map(article => (
-                    <p key={article.slug}>{article.title}</p>
-                  ))}
-                </div>
-              );
-            }}
-          </Query>
-        </main>
+        <Query
+          query={ALL_ARTICLES_QUERY}
+          variables={{
+            skip: this.props.page * perPage - perPage,
+            perPage,
+          }}
+        >
+          {({ data, error, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) return <p>Error: {error.message}</p>;
+            return (
+              <main>
+                {data.articles.map(article => (
+                  <Card
+                    key={article.slug}
+                    title={article.title}
+                    content={article.content}
+                  >
+                    {console.log(article)}
+                  </Card>
+                ))}
+              </main>
+            );
+          }}
+        </Query>
         <Footer />
       </>
     );
