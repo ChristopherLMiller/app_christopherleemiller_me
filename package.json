@@ -7,7 +7,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start -p 5000",
-    "test": "NODE_ENV=test jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "NODE_ENV=test jest",
     "lint": "eslint . --fix",
     "pretest": "npm run lint"
   },
@@ -60,7 +60,7 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "casual": "^1.5.19",
-    "coveralls": "^3.0.2",
+
     "enzyme-to-json": "^3.3.4",
     "eslint": "^5.10.0",
     "eslint-config-airbnb": "^17.1.0",
