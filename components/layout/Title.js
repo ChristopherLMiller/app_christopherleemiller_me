@@ -1,5 +1,25 @@
 import styled from 'styled-components';
 import Link from 'next/link';
+import Hamburger from './Hamburger';
+
+const TitleWrapper = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  background: ${props => props.theme.black};
+  border-bottom: 2px solid ${props => props.theme.grey};
+
+  @media screen and (min-width: ${props => props.theme.small}) {
+    position: initial;
+    padding: inherit;
+    z-index: inherit;
+    background: inherit;
+    border-bottom: none;
+  }
+`;
 
 const StyledTitle = styled.h2`
   text-align: right;
@@ -29,7 +49,7 @@ const StyledTitle = styled.h2`
 `;
 
 const StyledDescription = styled.h3`
-  margin: 0 0 30px 0;
+  margin: 0;
   text-align: right;
 
   @media (min-width: ${props => props.theme.small}) {
@@ -53,7 +73,8 @@ const Block = styled.span`
 `;
 
 const Title = () => (
-  <>
+  <TitleWrapper>
+    <Hamburger />
     <Link href="/">
       <a>
         <StyledTitle>
@@ -63,7 +84,7 @@ const Title = () => (
       </a>
     </Link>
     <StyledDescription>All About Me!</StyledDescription>
-  </>
+  </TitleWrapper>
 );
 
 export default Title;

@@ -18,6 +18,9 @@ class Index extends React.Component {
           }}
         />
         <Header title="Christopher Lee Miller" />
+        <main>
+          <p>Home Page</p>
+        </main>
         <Footer />
       </>
     );

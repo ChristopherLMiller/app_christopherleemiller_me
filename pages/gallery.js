@@ -19,7 +19,9 @@ class Gallery extends React.Component {
         />
         <Header title="Galleries" />
 
-        <p>This will be a highly dynamic page containing all my galleries</p>
+        <main>
+          <p>This will be a highly dynamic page containing all my galleries</p>
+        </main>
         <Footer />
       </>
     );

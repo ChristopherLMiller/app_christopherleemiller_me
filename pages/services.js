@@ -19,7 +19,9 @@ class Services extends React.Component {
         />
         <Header title="Services" />
 
-        <p>Content will appear here of all the services that i offer</p>
+        <main>
+          <p>Content will appear here of all the services that i offer</p>
+        </main>
         <Footer />
       </>
     );

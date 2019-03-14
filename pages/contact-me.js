@@ -19,7 +19,9 @@ class Contact extends React.Component {
         />
         <Header title="Contact Me" />
 
-        <p>Insert contact form here for users to submit to me</p>
+        <main>
+          <p>Insert contact form here for users to submit to me</p>
+        </main>
         <Footer />
       </>
     );

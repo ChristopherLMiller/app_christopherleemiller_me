@@ -56,25 +56,27 @@ class Archives extends React.Component {
         />
         <Header title="Archives" />
 
-        <Query
-          query={ALL_ARTICLES_QUERY}
-          variables={{
-            skip: this.props.page * perPage - perPage,
-            perPage,
-          }}
-        >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error.message}</p>;
-            return (
-              <div>
-                {data.articles.map(article => (
-                  <p key={article.slug}>{article.title}</p>
-                ))}
-              </div>
-            );
-          }}
-        </Query>
+        <main>
+          <Query
+            query={ALL_ARTICLES_QUERY}
+            variables={{
+              skip: this.props.page * perPage - perPage,
+              perPage,
+            }}
+          >
+            {({ data, error, loading }) => {
+              if (loading) return <p>Loading...</p>;
+              if (error) return <p>Error: {error.message}</p>;
+              return (
+                <div>
+                  {data.articles.map(article => (
+                    <p key={article.slug}>{article.title}</p>
+                  ))}
+                </div>
+              );
+            }}
+          </Query>
+        </main>
         <Footer />
       </>
     );

@@ -5,7 +5,8 @@ import Meta from './Meta';
 import Sidebar from './Sidebar';
 
 const theme = {
-  black: '#E9E9E9',
+  black: '#000000',
+  grey: '#E9E9E9',
   white: '#FFFFFF',
   red: '#982929',
   red_transparent: 'rgba(152, 41, 41, 0.7)',
@@ -40,8 +41,8 @@ const StyledPage = styled.div`
 `;
 
 const Inner = styled.div`
-  display: grid;
-  grid-template-rows: 1fr auto;
+  display: flex;
+  flex-direction: column;
 `;
 
 injectGlobal`
@@ -66,6 +67,9 @@ injectGlobal`
   a {
     text-decoration: none;
     color: ${theme.white};
+  }
+  main {
+    flex-grow: 2;
   }
 `;
 

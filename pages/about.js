@@ -19,7 +19,9 @@ class About extends React.Component {
         />
         <Header title="About Me" />
 
-        <h2>Insert content here about me, my past, where i'm going etc</h2>
+        <main>
+          <p>Insert content here</p>
+        </main>
         <Footer />
       </>
     );
