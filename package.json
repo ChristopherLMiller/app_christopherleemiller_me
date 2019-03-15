@@ -7,7 +7,7 @@
     "dev": "next -p 7777",
     "build": "next build",
     "start": "next start -p 5000",
-    "test": "NODE_ENV=test jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test": "NODE_ENV=test jest",
     "lint": "eslint . --fix",
     "pretest": "npm run lint"
   },

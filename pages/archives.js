@@ -11,7 +11,7 @@ import Card from '../components/card';
 
 const ALL_ARTICLES_QUERY = gql`
   query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
-    articles(limit: $limit, start: $start, sort: "DESC") {
+    articles(limit: $limit, start: $start, sort: "createdAt:DESC") {
       slug
       title
       content
