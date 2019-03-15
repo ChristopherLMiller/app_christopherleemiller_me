@@ -75,9 +75,7 @@ class Archives extends React.Component {
                     key={article.slug}
                     title={article.title}
                     content={article.content}
-                  >
-                    {console.log(article)}
-                  </Card>
+                  />
                 ))}
               </main>
             );

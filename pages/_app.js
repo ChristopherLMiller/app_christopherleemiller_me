@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
 import LogRocket from 'logrocket';
+import { register, unregister } from 'next-offline/runtime';
 // import setupLogRocketReact from 'logrocket-react';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
@@ -19,6 +20,14 @@ class MyApp extends App {
       dsn: SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
+  }
+
+  componentDidMount() {
+    register();
+  }
+
+  componentWillMount() {
+    unregister();
   }
 
   componentDidCatch(error, errorInfo) {
