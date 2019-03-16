@@ -10,13 +10,17 @@ import SocialIcon from './SocialIcon';
 const SocialLinksBar = styled.ul`
   list-style-type: none;
   padding-left: 0;
-  display: flex;
+  display: none;
   justify-content: space-around;
+
+  @media screen and (min-width: ${props => props.theme.small}) {
+    display: flex;
+  }
 `;
 const SocialLinks = () => (
   <SocialLinksBar>
     <SocialIcon
-      url="https://www.facebook.com/chris.miller.54943"
+      url="https://www.facebook.com/christopher.lee.miller517"
       icon={faFacebookF}
       alt="Facebook"
     />

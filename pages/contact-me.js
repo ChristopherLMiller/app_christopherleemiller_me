@@ -2,25 +2,31 @@ import React from 'react';
 import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { Card } from '../components/cards';
 
+const title = 'Christopher Lee Miller - Contact Me';
+const description =
+  'How to reach me with any comments, questions, and concerns regarding anything you see here!';
 class Contact extends React.Component {
   render() {
     return (
       <>
         <NextSEO
           config={{
-            title: 'ChristopherLeeMiller - Contact Me',
-            description: 'Reach me with comments and questions',
+            title,
+            description,
             openGraph: {
-              title: 'Contact Me',
-              description: 'Reach me with comments and questions',
+              title,
+              description,
             },
           }}
         />
         <Header title="Contact Me" />
 
         <main>
-          <p>Insert contact form here for users to submit to me</p>
+          <Card title="Contact Me">
+            <p>Form will be inserted here</p>
+          </Card>
         </main>
         <Footer />
       </>

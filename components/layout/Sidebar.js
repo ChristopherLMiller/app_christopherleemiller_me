@@ -6,8 +6,6 @@ import SocialLinks from '../SocialLinks';
 
 const StyledSidebar = styled.aside`
   position: relative;
-  padding: 20px;
-  min-height: 100vh;
 
   &:before {
     background: rgba(0, 0, 0);
@@ -21,11 +19,13 @@ const StyledSidebar = styled.aside`
   }
 
   @media (min-width: ${props => props.theme.small}) {
+    padding: 20px;
+  }
+  @media (min-width: ${props => props.theme.med_small}) {
+    min-height: 100vh;
     &:before {
       background: rgba(0, 0, 0, 0.7);
     }
-  }
-  @media (min-width: ${props => props.theme.med_small}) {
     padding: 40px;
   }
 `;
@@ -50,4 +50,5 @@ const Sidebar = () => (
     </StyledSidebarInner>
   </StyledSidebar>
 );
+
 export default Sidebar;

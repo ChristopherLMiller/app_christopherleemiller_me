@@ -6,8 +6,10 @@ import PropTypes from 'prop-types';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage } from '../config';
+import { MarkdownCard } from '../components/cards';
 
-import Card from '../components/card';
+const title = 'Christopher Lee Miller - Archives';
+const description = 'Archives Home Page';
 
 const ALL_ARTICLES_QUERY = gql`
   query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
@@ -15,6 +17,7 @@ const ALL_ARTICLES_QUERY = gql`
       slug
       title
       content
+      image
       createdAt
       user {
         username
@@ -48,15 +51,15 @@ class Archives extends React.Component {
       <>
         <NextSEO
           config={{
-            title: 'ChristopherLeeMiller - Archives',
-            description: 'Archives Home Page',
+            title,
+            description,
             openGraph: {
-              title: 'Archives',
-              description: 'Archives Home Page',
+              title,
+              description,
             },
           }}
         />
-        <Header title="Archives" />
+        <Header title="From My Desk" />
 
         <Query
           query={ALL_ARTICLES_QUERY}
@@ -71,9 +74,10 @@ class Archives extends React.Component {
             return (
               <main>
                 {data.articles.map(article => (
-                  <Card
+                  <MarkdownCard
                     key={article.slug}
                     title={article.title}
+                    image={article.image}
                     content={article.content}
                   />
                 ))}

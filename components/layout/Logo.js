@@ -6,12 +6,13 @@ const StyledLogo = styled.img`
   transition: all 0.5s;
   display: none;
 
+  &:hover {
+    filter: grayscale(0%);
+  }
+
   @media (min-width: ${props => props.theme.small}) {
     width: 75%;
     display: block;
-  }
-  &:hover {
-    filter: grayscale(0%);
   }
 `;
 const Logo = () => (

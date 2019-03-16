@@ -3,6 +3,11 @@ import styled from 'styled-components';
 
 const NavStyles = styled.ul`
   padding-left: 0;
+  display: none;
+
+  @media (min-width: ${props => props.theme.small}) {
+    display: initial;
+  }
 `;
 
 const NavItem = styled.li`

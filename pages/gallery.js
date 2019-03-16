@@ -2,25 +2,32 @@ import React from 'react';
 import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import { Card } from '../components/cards';
 
+const title = 'Christopher Lee Miller - Galleries';
+const description = 'A visual of all the things me!';
 class Gallery extends React.Component {
   render() {
     return (
       <>
         <NextSEO
           config={{
-            title: 'ChristopherLeeMiller - Galleries',
-            description: 'A visual of all the things me!',
+            title,
+            description,
             openGraph: {
-              title: 'Galleries',
-              description: 'A visual of all the things me!',
+              title,
+              description,
             },
           }}
         />
         <Header title="Galleries" />
 
         <main>
-          <p>This will be a highly dynamic page containing all my galleries</p>
+          <Card title="Galleries">
+            <p>
+              This will be a highly dynamic page containing all my galleries
+            </p>
+          </Card>
         </main>
         <Footer />
       </>

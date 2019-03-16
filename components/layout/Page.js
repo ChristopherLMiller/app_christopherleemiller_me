@@ -70,7 +70,7 @@ injectGlobal`
   }
   main {
     flex-grow: 2;
-    padding: 30px;
+    padding: 30px 50px;
   }
 `;
 

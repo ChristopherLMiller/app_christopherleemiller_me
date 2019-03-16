@@ -39,6 +39,7 @@
     "logrocket-react": "^3.0.0",
     "markdown-to-jsx": "^6.9.2",
     "next": "^8.0.3",
+    "next-auth": "^1.12.1",
     "next-offline": "^3.3.6",
     "next-seo": "^1.9.0",
     "next-with-apollo": "^3.1.3",

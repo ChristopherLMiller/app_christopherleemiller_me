@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import Hamburger from './Hamburger';
 
 const TitleWrapper = styled.div`
-  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -13,7 +11,6 @@ const TitleWrapper = styled.div`
   border-bottom: 2px solid ${props => props.theme.grey};
 
   @media screen and (min-width: ${props => props.theme.small}) {
-    position: initial;
     padding: inherit;
     z-index: inherit;
     background: inherit;
@@ -74,7 +71,6 @@ const Block = styled.span`
 
 const Title = () => (
   <TitleWrapper>
-    <Hamburger />
     <Link href="/">
       <a>
         <StyledTitle>
