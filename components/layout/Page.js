@@ -70,8 +70,11 @@ injectGlobal`
   }
   main {
     flex-grow: 2;
-    padding: 30px 50px;
-  }
+    padding: 20px;
+
+    @media screen and (min-width: ${props => props.theme.small}) {
+      padding: 30px;
+    }
 `;
 
 export default class Page extends Component {

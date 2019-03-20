@@ -2,7 +2,7 @@ import React from 'react';
 import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { Card } from '../components/cards';
+import Card from '../components/Card';
 
 const title = 'Christopher Lee Miller - Privacy Policy';
 const description = 'My policies regarding your privacy and safety';
@@ -22,7 +22,8 @@ class PrivacyPolicy extends React.Component {
         />
         <Header title="Privacy Policy" />
         <main>
-          <Card title="Privacy Notice">
+          <Card>
+            <h2>Privacy Notice</h2>
             <p>
               This privacy notice discloses the privacy practices for
               https://www.christopherleemiller.me. This privacy notice applies

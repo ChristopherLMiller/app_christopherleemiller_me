@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage } from '../config';
-import { MarkdownCard } from '../components/cards';
+import Article from '../components/Article';
 
 const title = 'Christopher Lee Miller - Archives';
 const description = 'Archives Home Page';
@@ -17,7 +17,8 @@ const ALL_ARTICLES_QUERY = gql`
       slug
       title
       content
-      image
+      featured_image
+      status
       createdAt
       user {
         username
@@ -74,10 +75,10 @@ class Archives extends React.Component {
             return (
               <main>
                 {data.articles.map(article => (
-                  <MarkdownCard
+                  <Article
                     key={article.slug}
                     title={article.title}
-                    image={article.image}
+                    image={article.featured_image}
                     content={article.content}
                   />
                 ))}

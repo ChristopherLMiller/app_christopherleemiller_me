@@ -2,7 +2,7 @@ import React from 'react';
 import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { Card } from '../components/cards';
+import Card from '../components/Card';
 
 const title = 'Christopher Lee Miller - Contact Me';
 const description =
@@ -24,7 +24,7 @@ class Contact extends React.Component {
         <Header title="Contact Me" />
 
         <main>
-          <Card title="Contact Me">
+          <Card>
             <p>Form will be inserted here</p>
           </Card>
         </main>
