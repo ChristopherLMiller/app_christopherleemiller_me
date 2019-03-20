@@ -7,7 +7,7 @@
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest && codecov",
     "lint": "eslint . --fix",
     "pretest": "npm run lint"
   },
@@ -76,6 +76,8 @@
     "prettier": "^1.15.3"
   },
   "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
     "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
@@ -84,60 +86,6 @@
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
       ".*": "babel-jest"
-    }
-  },
-  "//": "This is our babel config, I prefer this over a .babelrc file",
-  "babel": {
-    "env": {
-      "development": {
-        "presets": [
-          "next/babel"
-        ],
-        "plugins": [
-          [
-            "styled-components",
-            {
-              "ssr": true,
-              "displayName": true
-            }
-          ]
-        ]
-      },
-      "production": {
-        "presets": [
-          "next/babel"
-        ],
-        "plugins": [
-          [
-            "styled-components",
-            {
-              "ssr": true,
-              "displayName": true
-            }
-          ]
-        ]
-      },
-      "test": {
-        "presets": [
-          [
-            "next/babel",
-            {
-              "preset-env": {
-                "modules": "commonjs"
-              }
-            }
-          ]
-        ],
-        "plugins": [
-          [
-            "styled-components",
-            {
-              "ssr": true,
-              "displayName": true
-            }
-          ]
-        ]
-      }
     }
   }
 }
