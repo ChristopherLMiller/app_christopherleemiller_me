@@ -3,6 +3,8 @@ const { join } = require('path');
 const { parse } = require('url');
 const next = require('next');
 
+const config = require('dotenv').config();
+
 const app = next({ dev: process.env.NODE_ENV !== 'production' });
 const handle = app.getRequestHandler();
 
@@ -19,7 +21,7 @@ app.prepare().then(() => {
     } else {
       handle(req, res, parsedUrl);
     }
-  }).listen(5000, () => {
-    console.log(`> Ready on http://localhost:${5000}`);
+  }).listen(config.port || 5000, () => {
+    console.log(`> Ready on http://localhost:${config.port || 5000}`);
   });
 });

@@ -7,7 +7,7 @@ import LogRocket from 'logrocket';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withData from '../lib/withData';
-import { SENTRY_PUBLIC_DSN, DEFAULT_SEO } from '../config';
+import { DEFAULT_SEO } from '../config';
 
 LogRocket.init('xrcvkv/christopherleemillerme');
 // setupLogRocketReact(LogRocket);
@@ -16,7 +16,7 @@ class MyApp extends App {
   constructor(...args) {
     super(...args);
     Sentry.init({
-      dsn: SENTRY_PUBLIC_DSN,
+      dsn: process.env.SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
   }
