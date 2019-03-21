@@ -13,7 +13,12 @@ const description = 'Archives Home Page';
 
 const ALL_ARTICLES_QUERY = gql`
   query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
-    articles(limit: $limit, start: $start, sort: "createdAt:DESC") {
+    articles(
+      limit: $limit
+      start: $start
+      sort: "createdAt:DESC"
+      where: { status: "published" }
+    ) {
       slug
       title
       content
@@ -80,6 +85,10 @@ class Archives extends React.Component {
                     title={article.title}
                     image={article.featured_image}
                     content={article.content}
+                    user={article.user.username}
+                    createdAt={article.createdAt}
+                    categories={article.categories}
+                    tags={article.tags}
                   />
                 ))}
               </main>

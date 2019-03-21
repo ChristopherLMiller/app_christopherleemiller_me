@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
-
-const theme = {
-  black: '#000000',
-  grey: '#E9E9E9',
-  white: '#FFFFFF',
-  red: '#982929',
-  red_transparent: 'rgba(152, 41, 41, 0.7)',
-
-  small: '700px',
-  med_small: '900px',
-  med: '1000px',
-  med_large: '1100px',
-  large: '1200px',
-};
+import { theme } from '../styles/Themes';
 
 const StyledPage = styled.div`
   color: ${props => props.theme.white};
@@ -45,7 +33,9 @@ const Inner = styled.div`
   flex-direction: column;
 `;
 
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
+  ${reset}
+
   html {
     box-sizing: border-box;
     font-size: 10px;
@@ -89,6 +79,7 @@ export default class Page extends Component {
     return (
       <ThemeProvider theme={theme}>
         <StyledPage>
+          <GlobalStyle />
           <Meta />
           <Sidebar />
           <Inner>{this.props.children}</Inner>

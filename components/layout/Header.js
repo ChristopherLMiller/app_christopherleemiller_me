@@ -19,6 +19,7 @@ const StyledHeader = styled.header`
     background: ${props => props.theme.red_transparent};
     margin: 0;
     padding: 50px 30px;
+    font-size: 2.5em;
   }
 `;
 
