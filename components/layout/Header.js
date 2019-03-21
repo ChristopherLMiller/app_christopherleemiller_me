@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -15,23 +15,32 @@ Router.onRouteChangeError = () => {
 };
 
 const StyledHeader = styled.header`
-  h1 {
-    background: ${props => props.theme.red_transparent};
-    margin: 0;
-    padding: 50px 30px;
-    font-size: 2.5em;
-  }
+  background: ${props => props.theme.red_transparent};
+  padding: 50px 30px;
+`;
+
+const StyledHeaderTitle = styled.h1`
+  margin: 0;
+  font-size: 2.5em;
+`;
+
+const StyledHeaderDescription = styled.p`
+  font-size: 1.25em;
 `;
 
 class Header extends React.Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
+    title: propTypes.string.isRequired,
+    description: propTypes.string.isRequired,
   };
 
   render() {
     return (
       <StyledHeader>
-        <h1>{this.props.title}</h1>
+        <StyledHeaderTitle>{this.props.title}</StyledHeaderTitle>
+        <StyledHeaderDescription>
+          {this.props.description}
+        </StyledHeaderDescription>
       </StyledHeader>
     );
   }

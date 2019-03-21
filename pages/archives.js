@@ -5,11 +5,12 @@ import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { perPage } from '../config';
-import Article from '../components/Article';
+import { perPage, siteTitle, separator } from '../config';
+import FullArticle from '../components/articles/Full';
 
-const title = 'Christopher Lee Miller - Archives';
-const description = 'Archives Home Page';
+const title = 'From My Desk';
+const description =
+  'Archives concerning all matters web development and beyond';
 
 const ALL_ARTICLES_QUERY = gql`
   query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
@@ -57,15 +58,15 @@ class Archives extends React.Component {
       <>
         <NextSEO
           config={{
-            title,
+            title: `${siteTitle}${separator}${title}`,
             description,
             openGraph: {
-              title,
+              title: `${siteTitle}${separator}${title}`,
               description,
             },
           }}
         />
-        <Header title="From My Desk" />
+        <Header title={title} description={description} />
 
         <Query
           query={ALL_ARTICLES_QUERY}
@@ -80,7 +81,7 @@ class Archives extends React.Component {
             return (
               <main>
                 {data.articles.map(article => (
-                  <Article
+                  <FullArticle
                     key={article.slug}
                     title={article.title}
                     image={article.featured_image}

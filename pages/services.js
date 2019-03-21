@@ -3,8 +3,9 @@ import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
+import { siteTitle, separator } from '../config';
 
-const title = 'Christopher Lee Miller - Services';
+const title = 'Services';
 const description = 'Services that I offer';
 
 class Services extends React.Component {
@@ -13,15 +14,15 @@ class Services extends React.Component {
       <>
         <NextSEO
           config={{
-            title,
+            title: `${siteTitle}${separator}${title}`,
             description,
             openGraph: {
-              title,
+              title: `${siteTitle}${separator}${title}`,
               description,
             },
           }}
         />
-        <Header title="Services" />
+        <Header title={title} description={description} />
 
         <main>
           <Card>

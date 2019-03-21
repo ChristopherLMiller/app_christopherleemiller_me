@@ -22,4 +22,6 @@ export const DEFAULT_SEO = {
   },
 };
 
+export const siteTitle = 'Christopher Lee Miller';
+export const separator = ' - ';
 export const perPage = 10;

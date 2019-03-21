@@ -31,10 +31,8 @@ const StyledSidebar = styled.aside`
 `;
 
 const StyledSidebarInner = styled.div`
-  @media (min-width: ${props => props.theme.small}) {
-    position: sticky;
-    top: 40px;
-  }
+  position: sticky;
+  top: 40px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;

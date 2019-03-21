@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const NavStyles = styled.ul`
   padding-left: 0;
   display: none;
+  padding: 10px 0;
 
   @media (min-width: ${props => props.theme.small}) {
     display: initial;

@@ -15,16 +15,16 @@ import {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
-} from './styles/Articles';
+} from '../styles/Articles';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('css', css);
 hljs.registerLanguage('scss', scss);
 hljs.registerLanguage('markdown', markdown);
 
-class Article extends React.Component {
+class FullArticle extends React.Component {
   static propTypes = {
-    title: propTypes.string.isRequired,
+    title: propTypes.string,
     content: propTypes.string.isRequired,
     user: propTypes.string.isRequired,
     createdAt: propTypes.string.isRequired,
@@ -42,7 +42,6 @@ class Article extends React.Component {
       parseISO(this.props.createdAt),
       new Date()
     );
-
     return (
       <StyledArticle>
         <StyledArticleHeader>
@@ -107,4 +106,4 @@ class Tags extends React.Component {
   }
 }
 
-export default Article;
+export default FullArticle;

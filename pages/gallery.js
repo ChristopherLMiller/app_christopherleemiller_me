@@ -3,8 +3,9 @@ import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
+import { siteTitle, separator } from '../config';
 
-const title = 'Christopher Lee Miller - Galleries';
+const title = 'Galleries';
 const description = 'A visual of all the things me!';
 class Gallery extends React.Component {
   render() {
@@ -12,15 +13,15 @@ class Gallery extends React.Component {
       <>
         <NextSEO
           config={{
-            title,
+            title: `${siteTitle}${separator}${title}`,
             description,
             openGraph: {
-              title,
+              title: `${siteTitle}${separator}${title}`,
               description,
             },
           }}
         />
-        <Header title="Galleries" />
+        <Header title={title} description={description} />
 
         <main>
           <Card>
