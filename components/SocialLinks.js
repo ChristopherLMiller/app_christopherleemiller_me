@@ -10,12 +10,8 @@ import SocialIcon from './SocialIcon';
 const SocialLinksBar = styled.ul`
   list-style-type: none;
   padding-left: 0;
-  display: none;
+  display: flex;
   justify-content: space-around;
-
-  @media screen and (min-width: ${props => props.theme.small}) {
-    display: flex;
-  }
 `;
 const SocialLinks = () => (
   <SocialLinksBar>

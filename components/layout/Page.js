@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider, injectGlobal } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
@@ -39,7 +39,7 @@ const Inner = styled.div`
   }
 `;
 
-injectGlobal`
+const GlobalStyles = createGlobalStyle`
   html {
     font-size: 10px;
     min-height: 100vh;
@@ -93,6 +93,7 @@ export default class Page extends Component {
             <Inner>{this.props.children}</Inner>
           </StyledPage>
           <MobileNav />
+          <GlobalStyles />
         </>
       </ThemeProvider>
     );

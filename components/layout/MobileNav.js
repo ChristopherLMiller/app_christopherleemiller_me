@@ -1,5 +1,10 @@
+import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Router from 'next/router';
+import posed from 'react-pose';
+import Nav from './Nav';
+import SocialLinks from '../SocialLinks';
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -37,8 +42,20 @@ const StyledDescription = styled.h3`
   color: ${props => props.theme.white};
 `;
 
-const Block = styled.span`
+const Initials = styled.span`
   color: ${props => props.theme.red};
+`;
+
+const NameRest = styled.span`
+  @media screen and (max-width: 387px) {
+    display: none;
+  }
+`;
+const Dots = styled.span`
+  color: ${props => props.theme.red};
+  @media screen and(min - width: 387px) {
+    display: none;
+  }
 `;
 
 const StyledHamburger = styled.button`
@@ -49,23 +66,85 @@ const StyledHamburger = styled.button`
   padding: 12px;
   position: absolute;
   font-size: 1.5em;
+
+  : focus,
+  : hover {
+    outline: 1px solid ${props => props.theme.white};
+    background: ${props => props.theme.red};
+  }
 `;
 
-const MobileNav = () => (
-  <StyledMobileNav>
-    <StyledMobileNavWrapper>
-      <StyledHamburger>Menu</StyledHamburger>
-      <Link href="/">
-        <a>
-          <StyledTitle>
-            <Block>C</Block>hristopher <Block>L</Block>
-            ee <Block>M</Block>iller
-          </StyledTitle>
-        </a>
-      </Link>
-      <StyledDescription>All About Me!</StyledDescription>
-    </StyledMobileNavWrapper>
-  </StyledMobileNav>
-);
+const Navigation = posed.div({
+  closed: {
+    transform: 'rotateX(-90deg)',
+    height: '0vh',
+    opacity: 0,
+  },
+  open: {
+    height: 'calc(100vh - 77px)',
+    transform: 'rotateX(0deg)',
+    opacity: 1,
+    marginTop: '1px',
+  },
+});
 
+const StyledNavigationWrapper = styled(Navigation)`
+  transition: all 0.5s;
+  transform-origin: top;
+  display: flex;
+  flex-direction: column;
+  justify-content: space - between;
+  background: ${props => props.theme.black};
+`;
+
+class MobileNav extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isOpen: false,
+    };
+    this.handleMenuToggle = this.handleMenuToggle.bind(this);
+
+    Router.events.on('routeChangeStart', () =>
+      this.setState({ isOpen: false })
+    );
+  }
+
+  handleMenuToggle() {
+    this.setState(state => ({
+      isOpen: !state.isOpen,
+    }));
+  }
+
+  render() {
+    return (
+      <StyledMobileNav>
+        <StyledMobileNavWrapper>
+          <StyledHamburger onClick={this.handleMenuToggle}>
+            Menu
+          </StyledHamburger>
+          <Link href="/">
+            <a>
+              <StyledTitle>
+                <Initials>C</Initials>
+                <NameRest>hristopher </NameRest>
+                <Initials>L</Initials>
+                <NameRest>ee </NameRest>
+                <Initials>M</Initials>
+                <NameRest>iller</NameRest>
+                <Dots>.Me</Dots>
+              </StyledTitle>
+            </a>
+          </Link>
+          <StyledDescription>All About Me!</StyledDescription>
+        </StyledMobileNavWrapper>
+        <StyledNavigationWrapper pose={this.state.isOpen ? 'open' : 'closed'}>
+          <Nav />
+          <SocialLinks />
+        </StyledNavigationWrapper>
+      </StyledMobileNav>
+    );
+  }
+}
 export default MobileNav;
