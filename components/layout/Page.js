@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import reset from 'styled-reset';
+import styled, { ThemeProvider, injectGlobal } from 'styled-components';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
+import MobileNav from './MobileNav';
 import { theme } from '../styles/Themes';
 
 const StyledPage = styled.div`
@@ -31,17 +31,21 @@ const StyledPage = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  padding-top: 76px;
+
+  @media screen and (min-width: ${props => props.theme.small}) {
+    padding-top: 0;
+  }
 `;
 
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-
+injectGlobal`
   html {
-    box-sizing: border-box;
     font-size: 10px;
+    min-height: 100vh;
   }
   *, *:before, *:after {
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
   body {
     font-family: 'Oswald', sans-serif;
@@ -53,11 +57,14 @@ const GlobalStyle = createGlobalStyle`
     no-repeat center;
     background-attachment: fixed;
     background-size: cover;
+    min-height: 100vh;
   }
+
   a {
     text-decoration: none;
     color: ${theme.white};
   }
+
   main {
     flex-grow: 2;
     padding: 20px;
@@ -65,6 +72,7 @@ const GlobalStyle = createGlobalStyle`
     @media screen and (min-width: ${props => props.theme.small}) {
       padding: 30px;
     }
+  }
 `;
 
 export default class Page extends Component {
@@ -78,12 +86,14 @@ export default class Page extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <StyledPage>
-          <GlobalStyle />
-          <Meta />
-          <Sidebar />
-          <Inner>{this.props.children}</Inner>
-        </StyledPage>
+        <>
+          <StyledPage>
+            <Meta />
+            <Sidebar />
+            <Inner>{this.props.children}</Inner>
+          </StyledPage>
+          <MobileNav />
+        </>
       </ThemeProvider>
     );
   }

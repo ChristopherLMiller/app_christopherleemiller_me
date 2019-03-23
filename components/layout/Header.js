@@ -16,7 +16,7 @@ Router.onRouteChangeError = () => {
 
 const StyledHeader = styled.header`
   background: ${props => props.theme.red_transparent};
-  padding: 50px 30px;
+  padding: 30px;
 `;
 
 const StyledHeaderTitle = styled.h1`

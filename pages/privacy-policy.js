@@ -25,7 +25,7 @@ class PrivacyPolicy extends React.Component {
         <main>
           <BasicArticle
             content={`## Privacy Notice
-This privacy notice discloses the privacy practices for https://www.christopherleemiller.me. This privacy notice applies solely to information collected by this website. It will notify you of the following:
+This privacy notice discloses the privacy practices for [christopherleemiller.me](https://www.christopherleemiller.me). This privacy notice applies solely to information collected by this website. It will notify you of the following:
 
 1. What personally identifiable information is collected from you through the website, how it is used and with whom it may be shared.
 1. What choices are available to you regarding the use of your data.
