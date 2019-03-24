@@ -67,8 +67,8 @@ const StyledHamburger = styled.button`
   position: absolute;
   font-size: 1.5em;
 
-  : focus,
-  : hover {
+  :focus,
+  :hover {
     outline: 1px solid ${props => props.theme.white};
     background: ${props => props.theme.red};
   }
