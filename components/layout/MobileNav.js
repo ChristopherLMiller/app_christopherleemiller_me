@@ -81,7 +81,7 @@ const Navigation = posed.div({
     opacity: 0,
   },
   open: {
-    height: 'calc(100vh - 77px)',
+    height: 'calc(100vh - 75px)',
     transform: 'rotateX(0deg)',
     opacity: 1,
     marginTop: '1px',
@@ -90,10 +90,13 @@ const Navigation = posed.div({
 
 const StyledNavigationWrapper = styled(Navigation)`
   transition: all 0.5s;
+  transform: rotateX(-90deg);
+  height: 0vh;
+  opacity: 0;
   transform-origin: top;
   display: flex;
   flex-direction: column;
-  justify-content: space - between;
+  justify-content: space-between;
   background: ${props => props.theme.black};
 `;
 
