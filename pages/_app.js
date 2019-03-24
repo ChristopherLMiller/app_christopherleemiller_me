@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app';
+import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
@@ -8,6 +9,7 @@ import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withData from '../lib/withData';
 import { DEFAULT_SEO } from '../config';
+import { initGA, logPageView } from '../utils/analytics';
 
 LogRocket.init('xrcvkv/christopherleemillerme');
 // setupLogRocketReact(LogRocket);
@@ -48,6 +50,12 @@ class MyApp extends App {
     // this exposes the query to the user
     pageProps.query = ctx.query;
     return { pageProps };
+  }
+
+  componentDidMount() {
+    initGA();
+    logPageView();
+    Router.router.events.on('routeChangeComplete', logPageView);
   }
 
   render() {

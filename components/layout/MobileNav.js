@@ -53,7 +53,7 @@ const NameRest = styled.span`
 `;
 const Dots = styled.span`
   color: ${props => props.theme.red};
-  @media screen and(min - width: 387px) {
+  @media screen and (min-width: 387px) {
     display: none;
   }
 `;
@@ -105,11 +105,19 @@ class MobileNav extends React.Component {
       isOpen: false,
     };
     this.handleMenuToggle = this.handleMenuToggle.bind(this);
-
-    Router.events.on('routeChangeStart', () =>
-      this.setState({ isOpen: false })
-    );
   }
+
+  componentDidMount() {
+    Router.events.on('routeChangeStart', this.handleRouteChange);
+  }
+
+  componentWillUnmount() {
+    Router.events.off('routeChangeStart', this.handleRouteChange);
+  }
+
+  handleRouteChange = () => {
+    this.setState({ isOpen: false });
+  };
 
   handleMenuToggle() {
     this.setState(state => ({

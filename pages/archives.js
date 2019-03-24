@@ -7,6 +7,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage, siteTitle, separator } from '../config';
 import FullArticle from '../components/articles/Full';
+import Card from '../components/Card';
 
 const title = 'From My Desk';
 const description =
@@ -68,34 +69,45 @@ class Archives extends React.Component {
         />
         <Header title={title} description={description} />
 
-        <Query
-          query={ALL_ARTICLES_QUERY}
-          variables={{
-            skip: this.props.page * perPage - perPage,
-            perPage,
-          }}
-        >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error: {error.message}</p>;
-            return (
-              <main>
-                {data.articles.map(article => (
-                  <FullArticle
-                    key={article.slug}
-                    title={article.title}
-                    image={article.featured_image}
-                    content={article.content}
-                    user={article.user.username}
-                    createdAt={article.createdAt}
-                    categories={article.categories}
-                    tags={article.tags}
-                  />
-                ))}
-              </main>
-            );
-          }}
-        </Query>
+        <main>
+          <Query
+            query={ALL_ARTICLES_QUERY}
+            variables={{
+              skip: this.props.page * perPage - perPage,
+              perPage,
+            }}
+          >
+            {({ data, error, loading }) => {
+              if (loading) return <p>Loading...</p>;
+              if (error)
+                return (
+                  <Card>
+                    <h3>Unable to fetch archives</h3>
+                    <p>
+                      Error: {error.message} {console.log(error)}
+                    </p>
+                  </Card>
+                );
+
+              return (
+                <>
+                  {data.articles.map(article => (
+                    <FullArticle
+                      key={article.slug}
+                      title={article.title}
+                      image={article.featured_image}
+                      content={article.content}
+                      user={article.user.username}
+                      createdAt={article.createdAt}
+                      categories={article.categories}
+                      tags={article.tags}
+                    />
+                  ))}
+                </>
+              );
+            }}
+          </Query>
+        </main>
         <Footer />
       </>
     );
