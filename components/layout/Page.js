@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import { withRouter } from 'next/router';
+import posed, { PoseGroup } from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
@@ -28,7 +30,12 @@ const StyledPage = styled.div`
   }
 `;
 
-const Inner = styled.div`
+const posedInner = posed.div({
+  enter: { opacity: 1, delay: 300, beforeChildren: true },
+  exit: { opacity: 0 },
+});
+
+const Inner = styled(posedInner)`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -53,8 +60,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height: 1.15;
-    background: url("https://res.cloudinary.com/christopherleemiller/image/upload/v1544460951/clm_me/assets/background.jpg")
-    no-repeat center;
+    background: url("https://res.cloudinary.com/christopherleemiller/image/upload/v1544460951/clm_me/assets/background.jpg") no-repeat center;
     background-attachment: fixed;
     background-size: cover;
     min-height: 100vh;
@@ -75,7 +81,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `;
 
-export default class Page extends Component {
+class Page extends Component {
   static propTypes = {
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -90,7 +96,9 @@ export default class Page extends Component {
           <StyledPage>
             <Meta />
             <Sidebar />
-            <Inner>{this.props.children}</Inner>
+            <PoseGroup>
+              <Inner key={this.props.router.route}>{this.props.children}</Inner>
+            </PoseGroup>
           </StyledPage>
           <MobileNav />
           <GlobalStyles />
@@ -99,3 +107,5 @@ export default class Page extends Component {
     );
   }
 }
+
+export default withRouter(Page);
