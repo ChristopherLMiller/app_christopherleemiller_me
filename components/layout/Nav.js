@@ -39,6 +39,11 @@ const Nav = () => (
     </NavItem>
 
     <NavItem>
+      <Link href="/projects" prefetch>
+        <a>Projects</a>
+      </Link>
+    </NavItem>
+    <NavItem>
       <Link href="/gallery" prefetch>
         <a>Gallery</a>
       </Link>
@@ -47,12 +52,6 @@ const Nav = () => (
     <NavItem>
       <Link href="/contact-me" prefetch>
         <a>Contact Me</a>
-      </Link>
-    </NavItem>
-
-    <NavItem>
-      <Link href="/signin" prefetch>
-        <a>Sign In</a>
       </Link>
     </NavItem>
   </NavStyles>

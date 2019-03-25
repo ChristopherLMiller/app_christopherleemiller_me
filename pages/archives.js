@@ -3,6 +3,7 @@ import NextSEO from 'next-seo';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
+import Markdown from 'markdown-to-jsx';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage, siteTitle, separator } from '../config';
@@ -78,15 +79,15 @@ class Archives extends React.Component {
           >
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
-              if (error)
+              if (error) {
+                console.log(error.message);
                 return (
                   <Card>
                     <h3>Unable to fetch archives</h3>
-                    <p>
-                      Error: {error.message} {console.log(error)}
-                    </p>
+                    <p>{error.message}</p>
                   </Card>
                 );
+              }
 
               return (
                 <>
@@ -95,18 +96,22 @@ class Archives extends React.Component {
                       key={article.slug}
                       title={article.title}
                       image={article.featured_image}
-                      content={article.content}
                       user={article.user.username}
                       createdAt={article.createdAt}
                       categories={article.categories}
                       tags={article.tags}
                       comments={article.comments}
-                    />
+                    >
+                      <Markdown>{article.content}</Markdown>
+                    </FullArticle>
                   ))}
                 </>
               );
             }}
           </Query>
+          <FullArticle title="Text">
+            <p>Get some beef</p>
+          </FullArticle>
         </main>
         <Footer />
       </>

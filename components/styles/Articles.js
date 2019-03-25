@@ -139,9 +139,6 @@ const StyledArticleFooter = styled.div`
   }
 `;
 
-const StyledCommentCount = styled.p`
-  text-align: right;
-`;
 export {
   StyledArticle,
   StyledArticleBody,
@@ -149,5 +146,4 @@ export {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
-  StyledCommentCount,
 };
