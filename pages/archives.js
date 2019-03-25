@@ -7,7 +7,7 @@ import Markdown from 'markdown-to-jsx';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage, siteTitle, separator } from '../config';
-import FullArticle from '../components/articles/Full';
+import BriefArticle from '../components/articles/Brief';
 import Card from '../components/Card';
 
 const title = 'From My Desk';
@@ -24,7 +24,7 @@ const ALL_ARTICLES_QUERY = gql`
     ) {
       slug
       title
-      content
+      content_brief
       featured_image
       createdAt
       user {
@@ -92,18 +92,19 @@ class Archives extends React.Component {
               return (
                 <>
                   {data.articles.map(article => (
-                    <FullArticle
-                      key={article.slug}
+                    <BriefArticle
+                      key={article.title}
                       title={article.title}
-                      image={article.featured_image}
-                      user={article.user.username}
-                      createdAt={article.createdAt}
+                      slug={article.slug}
+                      comments={article.comments}
                       categories={article.categories}
                       tags={article.tags}
-                      comments={article.comments}
+                      createdAt={article.createdAt}
+                      image={article.featured_image}
+                      user={article.user.username}
                     >
-                      <Markdown>{article.content}</Markdown>
-                    </FullArticle>
+                      <Markdown>{article.content_brief}</Markdown>
+                    </BriefArticle>
                   ))}
                 </>
               );

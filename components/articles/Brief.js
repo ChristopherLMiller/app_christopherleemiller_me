@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import Link from 'next/link';
 import formatRelative from 'date-fns/formatRelative';
 import parseISO from 'date-fns/parseISO';
 import hljs from 'highlight.js/lib/highlight';
@@ -26,7 +27,7 @@ hljs.registerLanguage('css', css);
 hljs.registerLanguage('scss', scss);
 hljs.registerLanguage('markdown', markdown);
 
-class FullArticle extends React.Component {
+class BriefArticle extends React.Component {
   static propTypes = {
     title: propTypes.string,
     children: propTypes.object,
@@ -36,11 +37,8 @@ class FullArticle extends React.Component {
     categories: propTypes.array,
     tags: propTypes.array,
     comments: propTypes.array,
+    slug: propTypes.string,
   };
-
-  componentDidMount() {
-    hljs.initHighlighting();
-  }
 
   render() {
     let formattedDate = '';
@@ -50,6 +48,7 @@ class FullArticle extends React.Component {
         new Date()
       );
     }
+
     return (
       <StyledArticle>
         <StyledArticleHeader>
@@ -70,6 +69,9 @@ class FullArticle extends React.Component {
         </StyledArticleHeader>
         <StyledArticleBody>
           {this.props.children}
+          <Link href={`/archive/${this.props.slug}`}>
+            <a>Read More &gt;</a>
+          </Link>
           <CommentCount comments={this.props.comments} />
         </StyledArticleBody>
         <StyledArticleFooter>
@@ -81,4 +83,4 @@ class FullArticle extends React.Component {
   }
 }
 
-export default FullArticle;
+export default BriefArticle;
