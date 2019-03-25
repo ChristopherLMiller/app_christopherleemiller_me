@@ -25,7 +25,6 @@ const ALL_ARTICLES_QUERY = gql`
       title
       content
       featured_image
-      status
       createdAt
       user {
         username
@@ -101,6 +100,7 @@ class Archives extends React.Component {
                       createdAt={article.createdAt}
                       categories={article.categories}
                       tags={article.tags}
+                      comments={article.comments}
                     />
                   ))}
                 </>

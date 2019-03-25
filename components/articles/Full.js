@@ -15,6 +15,7 @@ import {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
+  StyledCommentCount,
 } from '../styles/Articles';
 
 hljs.registerLanguage('javascript', javascript);
@@ -31,6 +32,7 @@ class FullArticle extends React.Component {
     image: propTypes.string,
     categories: propTypes.array,
     tags: propTypes.array,
+    comments: propTypes.array,
   };
 
   componentDidMount() {
@@ -60,6 +62,9 @@ class FullArticle extends React.Component {
         </StyledArticleHeader>
         <StyledArticleBody>
           <Markdown>{this.props.content}</Markdown>
+          <StyledCommentCount>
+            {this.props.comments.length} Comments
+          </StyledCommentCount>
         </StyledArticleBody>
         <StyledArticleFooter>
           <Categories categories={this.props.categories} />

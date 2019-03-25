@@ -78,6 +78,10 @@ const StyledArticleHeader = styled.div`
   h2 {
     font-size: 1.75em;
     letter-spacing: 3px;
+    margin: 0;
+  }
+  p {
+    margin: 0;
   }
 `;
 
@@ -134,6 +138,10 @@ const StyledArticleFooter = styled.div`
     content: '';
   }
 `;
+
+const StyledCommentCount = styled.p`
+  text-align: right;
+`;
 export {
   StyledArticle,
   StyledArticleBody,
@@ -141,4 +149,5 @@ export {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
+  StyledCommentCount,
 };
