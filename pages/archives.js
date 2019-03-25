@@ -20,7 +20,7 @@ const ALL_ARTICLES_QUERY = gql`
       limit: $limit
       start: $start
       sort: "createdAt:DESC"
-      where: { status: "published" }
+      where: { published: true }
     ) {
       slug
       title
@@ -109,9 +109,6 @@ class Archives extends React.Component {
               );
             }}
           </Query>
-          <FullArticle title="Text">
-            <p>Get some beef</p>
-          </FullArticle>
         </main>
         <Footer />
       </>

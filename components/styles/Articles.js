@@ -86,7 +86,7 @@ const StyledArticleHeader = styled.div`
 `;
 
 const StyledArticleHeaderImage = styled.img`
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   width: 100%;
   height: 150px;
