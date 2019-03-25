@@ -25,8 +25,18 @@ const StyledTitle = styled.h2`
 
   position: relative;
 
-  &:hover {
-    text-decoration: underline;
+  :after {
+    content: '\\A';
+    width: 0%;
+    height: 5px;
+    background: ${props => props.theme.white};
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: all 0.25s;
+  }
+  :hover:after {
+    width: 100%;
   }
 
   @media (min-width: ${props => props.theme.small}) {

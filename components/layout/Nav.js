@@ -11,6 +11,23 @@ const NavItem = styled.li`
   list-style-type: none;
   line-height: 2em;
   position: relative;
+  display: block;
+  text-align: center;
+
+  :after {
+    content: '\\A';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    z-index: -1;
+    background: ${props => props.theme.red_transparent};
+    opacity: 0;
+    transition: all 0.25s;
+  }
+  :hover:after {
+    opacity: 1;
+  }
 `;
 const Nav = () => (
   <NavStyles>
