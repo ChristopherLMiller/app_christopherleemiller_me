@@ -8,7 +8,7 @@ import { siteTitle, separator } from '../config';
 
 const title = 'Privacy Policy';
 const description = 'My policies regarding your privacy and safety';
-class PrivacyPolicy extends React.Component {
+class PrivacyPolicyPage extends React.Component {
   render() {
     return (
       <>
@@ -112,4 +112,4 @@ class PrivacyPolicy extends React.Component {
   }
 }
 
-export default PrivacyPolicy;
+export default PrivacyPolicyPage;

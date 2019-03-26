@@ -5,9 +5,9 @@ import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
 import { siteTitle, separator } from '../config';
 
-const title = 'Galleries';
-const description = 'A visual of all the things me!';
-class Gallery extends React.Component {
+const title = 'Error';
+const description = 'Uh-Oh! We broke something!';
+class Error extends React.Component {
   render() {
     return (
       <>
@@ -36,4 +36,4 @@ class Gallery extends React.Component {
   }
 }
 
-export default Gallery;
+export default Error;

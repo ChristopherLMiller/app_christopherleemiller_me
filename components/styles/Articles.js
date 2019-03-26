@@ -139,6 +139,12 @@ const StyledArticleFooter = styled.div`
   }
 `;
 
+const StyledReadMore = styled.p`
+  background: ${props => props.theme.red};
+  padding: 5px;
+  transform: skew(-20deg);
+  text-align: center;
+`;
 export {
   StyledArticle,
   StyledArticleBody,
@@ -146,4 +152,5 @@ export {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
+  StyledReadMore,
 };

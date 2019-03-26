@@ -8,7 +8,7 @@ import { siteTitle, separator } from '../config';
 const title = 'Contact Me';
 const description =
   'How to reach me with any comments, questions, and concerns regarding anything you see here!';
-class Contact extends React.Component {
+class ContactPage extends React.Component {
   render() {
     return (
       <>
@@ -35,4 +35,4 @@ class Contact extends React.Component {
   }
 }
 
-export default Contact;
+export default ContactPage;

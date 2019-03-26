@@ -5,10 +5,9 @@ import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
 import { siteTitle, separator } from '../config';
 
-const title = 'Services';
-const description = 'Services that I offer';
-
-class ServicesPage extends React.Component {
+const title = 'Galleries';
+const description = 'A visual of all the things me!';
+class GalleriesPage extends React.Component {
   render() {
     return (
       <>
@@ -26,7 +25,9 @@ class ServicesPage extends React.Component {
 
         <main>
           <Card>
-            <p>Content will appear here of all the services that i offer</p>
+            <p>
+              This will be a highly dynamic page containing all my galleries
+            </p>
           </Card>
         </main>
         <Footer />
@@ -35,4 +36,4 @@ class ServicesPage extends React.Component {
   }
 }
 
-export default ServicesPage;
+export default GalleriesPage;

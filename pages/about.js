@@ -7,7 +7,7 @@ import { siteTitle, separator } from '../config';
 
 const title = `About Me`;
 const description = 'Where I came from and what I do now';
-class About extends React.Component {
+class AboutPage extends React.Component {
   render() {
     return (
       <>
@@ -39,4 +39,4 @@ class About extends React.Component {
   }
 }
 
-export default About;
+export default AboutPage;

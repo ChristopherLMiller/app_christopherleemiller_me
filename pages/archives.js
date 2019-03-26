@@ -49,7 +49,7 @@ const ALL_ARTICLES_QUERY = gql`
   }
 `;
 
-class Archives extends React.Component {
+class ArchivesPage extends React.Component {
   static propTypes = {
     page: PropTypes.number,
   };
@@ -92,17 +92,7 @@ class Archives extends React.Component {
               return (
                 <>
                   {data.articles.map(article => (
-                    <BriefArticle
-                      key={article.title}
-                      title={article.title}
-                      slug={article.slug}
-                      comments={article.comments}
-                      categories={article.categories}
-                      tags={article.tags}
-                      createdAt={article.createdAt}
-                      image={article.featured_image}
-                      user={article.user.username}
-                    >
+                    <BriefArticle article={article} key={article.title}>
                       <Markdown>{article.content_brief}</Markdown>
                     </BriefArticle>
                   ))}
@@ -117,4 +107,4 @@ class Archives extends React.Component {
   }
 }
 
-export default Archives;
+export default ArchivesPage;

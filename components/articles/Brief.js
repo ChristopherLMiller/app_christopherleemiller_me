@@ -20,6 +20,7 @@ import {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
   StyledArticleFooter,
+  StyledReadMore,
 } from '../styles/Articles';
 
 hljs.registerLanguage('javascript', javascript);
@@ -29,22 +30,16 @@ hljs.registerLanguage('markdown', markdown);
 
 class BriefArticle extends React.Component {
   static propTypes = {
-    title: propTypes.string,
+    article: propTypes.object.isRequired,
     children: propTypes.object,
-    user: propTypes.string.isRequired,
-    createdAt: propTypes.string,
-    image: propTypes.string,
-    categories: propTypes.array,
-    tags: propTypes.array,
-    comments: propTypes.array,
-    slug: propTypes.string,
   };
 
   render() {
+    console.log(this.props.article);
     let formattedDate = '';
-    if (this.props.createdAt) {
+    if (this.props.article.createdAt) {
       formattedDate = formatRelative(
-        parseISO(this.props.createdAt),
+        parseISO(this.props.article.createdAt),
         new Date()
       );
     }
@@ -52,31 +47,33 @@ class BriefArticle extends React.Component {
     return (
       <StyledArticle>
         <StyledArticleHeader>
-          {this.props.image && (
+          {this.props.article.featured_image && (
             <StyledArticleHeaderImage
-              src={this.props.image}
-              alt={this.props.title}
+              src={this.props.article.featured_image}
+              alt={this.props.article.title}
             />
           )}
           <StyledArticleHeaderInfo>
-            <h2>{this.props.title}</h2>
-            {this.props.createdAt && (
+            <h2>{this.props.article.title}</h2>
+            {this.props.article.createdAt && (
               <p>
-                Published {formattedDate} by {this.props.user}
+                Published {formattedDate} by {this.props.article.user.username}
               </p>
             )}
           </StyledArticleHeaderInfo>
         </StyledArticleHeader>
         <StyledArticleBody>
           {this.props.children}
-          <Link href={`/archive/${this.props.slug}`}>
-            <a>Read More &gt;</a>
-          </Link>
-          <CommentCount comments={this.props.comments} />
+          <StyledReadMore>
+            <Link href={`/archive/${this.props.article.slug}`}>
+              <a>Read More</a>
+            </Link>
+          </StyledReadMore>
+          <CommentCount comments={this.props.article.comments} />
         </StyledArticleBody>
         <StyledArticleFooter>
-          <Categories categories={this.props.categories} />
-          <Tags tags={this.props.tags} />
+          <Categories categories={this.props.article.categories} />
+          <Tags tags={this.props.article.tags} />
         </StyledArticleFooter>
       </StyledArticle>
     );

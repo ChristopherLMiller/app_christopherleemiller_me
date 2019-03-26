@@ -8,7 +8,7 @@ import { siteTitle, separator } from '../config';
 const title = 'Home';
 const description =
   'Where I came from and what I do now.  Development resources, services offered, photography, and much more.';
-class Index extends React.Component {
+class IndexPage extends React.Component {
   render() {
     return (
       <>
@@ -39,4 +39,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default IndexPage;

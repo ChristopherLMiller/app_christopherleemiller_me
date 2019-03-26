@@ -8,7 +8,7 @@ import { siteTitle, separator } from '../config';
 const title = 'Projects';
 const description =
   'Projects I have built over the years in all the languages and tech stacks I have used.';
-class Projects extends React.Component {
+class ProjectsPage extends React.Component {
   render() {
     return (
       <>
@@ -39,4 +39,4 @@ class Projects extends React.Component {
   }
 }
 
-export default Projects;
+export default ProjectsPage;

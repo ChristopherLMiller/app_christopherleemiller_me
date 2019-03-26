@@ -61,8 +61,8 @@ const Nav = () => (
       </Link>
     </NavItem>
     <NavItem>
-      <Link href="/gallery" prefetch>
-        <a>Gallery</a>
+      <Link href="/galleries" prefetch>
+        <a>Galleries</a>
       </Link>
     </NavItem>
 
