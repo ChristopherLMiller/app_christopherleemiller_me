@@ -35,7 +35,6 @@ class BriefArticle extends React.Component {
   };
 
   render() {
-    console.log(this.props.article);
     let formattedDate = '';
     if (this.props.article.createdAt) {
       formattedDate = formatRelative(
@@ -65,7 +64,7 @@ class BriefArticle extends React.Component {
         <StyledArticleBody>
           {this.props.children}
           <StyledReadMore>
-            <Link href={`/archive/${this.props.article.slug}`}>
+            <Link href={`/post/${this.props.article.slug}/`}>
               <a>Read More</a>
             </Link>
           </StyledReadMore>

@@ -38,8 +38,8 @@ const Nav = () => (
     </NavItem>
 
     <NavItem>
-      <Link href="/archives" prefetch>
-        <a>Archives</a>
+      <Link href="/articles" prefetch>
+        <a>Articles</a>
       </Link>
     </NavItem>
 

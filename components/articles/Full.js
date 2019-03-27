@@ -28,14 +28,8 @@ hljs.registerLanguage('markdown', markdown);
 
 class FullArticle extends React.Component {
   static propTypes = {
-    title: propTypes.string,
+    article: propTypes.object,
     children: propTypes.object,
-    user: propTypes.string.isRequired,
-    createdAt: propTypes.string,
-    image: propTypes.string,
-    categories: propTypes.array,
-    tags: propTypes.array,
-    comments: propTypes.array,
   };
 
   componentDidMount() {
@@ -44,37 +38,38 @@ class FullArticle extends React.Component {
 
   render() {
     let formattedDate = '';
-    if (this.props.createdAt) {
+    if (this.props.article.createdAt) {
       formattedDate = formatRelative(
-        parseISO(this.props.createdAt),
+        parseISO(this.props.article.createdAt),
         new Date()
       );
     }
+
     return (
       <StyledArticle>
         <StyledArticleHeader>
-          {this.props.image && (
+          {this.props.article.featured_image && (
             <StyledArticleHeaderImage
-              src={this.props.image}
-              alt={this.props.title}
+              src={this.props.article.featured_image}
+              alt={this.props.article.title}
             />
           )}
           <StyledArticleHeaderInfo>
-            <h2>{this.props.title}</h2>
-            {this.props.createdAt && (
+            <h2>{this.props.article.title}</h2>
+            {this.props.article.createdAt && (
               <p>
-                Published {formattedDate} by {this.props.user}
+                Published {formattedDate} by {this.props.article.user.username}
               </p>
             )}
           </StyledArticleHeaderInfo>
         </StyledArticleHeader>
         <StyledArticleBody>
           {this.props.children}
-          <CommentCount comments={this.props.comments} />
+          <CommentCount comments={this.props.article.comments} />
         </StyledArticleBody>
         <StyledArticleFooter>
-          <Categories categories={this.props.categories} />
-          <Tags tags={this.props.tags} />
+          <Categories categories={this.props.article.categories} />
+          <Tags tags={this.props.article.tags} />
         </StyledArticleFooter>
       </StyledArticle>
     );

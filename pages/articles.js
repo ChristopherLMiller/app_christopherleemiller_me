@@ -1,9 +1,9 @@
 import React from 'react';
 import NextSEO from 'next-seo';
 import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
 import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
+import { ALL_ARTICLES_QUERY } from '../utils/query';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import { perPage, siteTitle, separator } from '../config';
@@ -13,41 +13,6 @@ import Card from '../components/Card';
 const title = 'From My Desk';
 const description =
   'Archives concerning all matters web development and beyond';
-
-const ALL_ARTICLES_QUERY = gql`
-  query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
-    articles(
-      limit: $limit
-      start: $start
-      sort: "createdAt:DESC"
-      where: { published: true }
-    ) {
-      slug
-      title
-      content_brief
-      featured_image
-      createdAt
-      user {
-        username
-      }
-      comments(sort: "ASC") {
-        text
-        createdAt
-        user {
-          username
-        }
-      }
-      categories {
-        slug
-        title
-      }
-      tags {
-        slug
-        title
-      }
-    }
-  }
-`;
 
 class ArchivesPage extends React.Component {
   static propTypes = {
