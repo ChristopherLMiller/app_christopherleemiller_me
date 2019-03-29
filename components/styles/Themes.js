@@ -5,12 +5,14 @@ const theme = {
   red: '#982929',
   red_transparent: 'rgba(152, 41, 41, 0.7)',
   grey_darker: '#a6a6a6',
+  grey_darkest: '#303030',
 
   small: '700px',
   med_small: '900px',
   med: '1000px',
   med_large: '1100px',
   large: '1200px',
-};
 
+  max_width: '1000px',
+};
 export { theme };

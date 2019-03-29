@@ -16,7 +16,7 @@ app
     sitemapAndRobots({ server });
 
     // Posts
-    server.get('/posts/:slug', (req, res) => {
+    server.get('/post/:slug', (req, res) => {
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);

@@ -4,8 +4,8 @@ const StyledArticle = styled.div`
   background: ${props => props.theme.grey};
   color: black;
   font-family: 'Special Elite', sans-serif;
-  max-width: 1000px;
-  margin: 0 auto 50px auto;
+  max-width: ${props => props.theme.max_width};
+  margin: 50px auto;
 `;
 
 const StyledArticleBody = styled.div`
