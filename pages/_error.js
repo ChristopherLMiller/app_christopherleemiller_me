@@ -25,9 +25,7 @@ class Error extends React.Component {
 
         <main>
           <Card>
-            <p>
-              This will be a highly dynamic page containing all my galleries
-            </p>
+            <p>Something broke an we don't know how to fix this! Yikes!</p>
           </Card>
         </main>
         <Footer />

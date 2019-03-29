@@ -64,7 +64,10 @@ class BriefArticle extends React.Component {
         <StyledArticleBody>
           {this.props.children}
           <StyledReadMore>
-            <Link href={`/post/${this.props.article.slug}/`}>
+            <Link
+              as={`/post/${this.props.article.slug}`}
+              href={`/post?slug=${this.props.article.slug}`}
+            >
               <a>Read More</a>
             </Link>
           </StyledReadMore>
