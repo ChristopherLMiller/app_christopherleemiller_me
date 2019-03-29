@@ -9,8 +9,6 @@ import scss from 'highlight.js/lib/languages/scss';
 import markdown from 'highlight.js/lib/languages/markdown';
 
 import CommentsList from '../CommentsList';
-import Categories from './Categories';
-import Tags from './Tags';
 
 import {
   StyledArticle,
@@ -18,7 +16,6 @@ import {
   StyledArticleHeader,
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
-  StyledArticleFooter,
 } from '../styles/Articles';
 
 hljs.registerLanguage('javascript', javascript);
