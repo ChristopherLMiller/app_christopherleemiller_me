@@ -6,7 +6,7 @@ import hljs from 'highlight.js/';
 import 'highlight.js/styles/atom-one-dark.css';
 import NextSEO from 'next-seo';
 import CommentsList from '../CommentsList';
-import { siteTitle, separator, siteURL } from '../../config';
+import { siteTitle, separator, siteURL, siteDefaultImage } from '../../config';
 
 import {
   StyledArticle,
@@ -53,7 +53,9 @@ class FullArticle extends React.Component {
               title: `${siteTitle}${separator}${article.title}`,
               description: article.content_brief,
               url: `${siteURL}/post/${article.slug}`,
-              image: article.featured_image ? article.featured_image : '',
+              image: article.featured_image
+                ? article.featured_image
+                : siteDefaultImage,
             },
           }}
         />
