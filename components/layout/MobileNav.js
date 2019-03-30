@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Router from 'next/router';
 import posed from 'react-pose';
 import Nav from './Nav';
 import SocialLinks from '../SocialLinks';
@@ -100,62 +99,40 @@ const StyledNavigationWrapper = styled(Navigation)`
   background: ${props => props.theme.black};
 `;
 
-class MobileNav extends React.Component {
-  constructor(props) {
-    super(props);
+function MobileNav() {
+  const [isOpen, setOpen] = useState(false);
+  const [menuText, setText] = useState('Menu');
 
-    this.state = {
-      isOpen: false,
-    };
-    this.handleMenuToggle = this.handleMenuToggle.bind(this);
-  }
+  useEffect(() => {
+    setText(isOpen ? 'Close' : 'Menu');
+  });
 
-  componentDidMount() {
-    Router.events.on('routeChangeStart', this.handleRouteChange);
-  }
-
-  componentWillUnmount() {
-    Router.events.off('routeChangeStart', this.handleRouteChange);
-  }
-
-  handleRouteChange = () => {
-    this.setState({ isOpen: false });
-  };
-
-  handleMenuToggle() {
-    this.setState(state => ({
-      isOpen: !state.isOpen,
-    }));
-  }
-
-  render() {
-    return (
-      <StyledMobileNav>
-        <StyledMobileNavWrapper>
-          <StyledHamburger onClick={this.handleMenuToggle}>
-            Menu
-          </StyledHamburger>
-          <Link href="/">
-            <a>
-              <StyledTitle>
-                <Initials>C</Initials>
-                <NameRest>hristopher </NameRest>
-                <Initials>L</Initials>
-                <NameRest>ee </NameRest>
-                <Initials>M</Initials>
-                <NameRest>iller</NameRest>
-                <Dots>.Me</Dots>
-              </StyledTitle>
-            </a>
-          </Link>
-          <StyledDescription>All About Me!</StyledDescription>
-        </StyledMobileNavWrapper>
-        <StyledNavigationWrapper pose={this.state.isOpen ? 'open' : 'closed'}>
-          <Nav />
-          <SocialLinks />
-        </StyledNavigationWrapper>
-      </StyledMobileNav>
-    );
-  }
+  return (
+    <StyledMobileNav>
+      <StyledMobileNavWrapper>
+        <StyledHamburger onClick={() => setOpen(!isOpen)}>
+          {menuText}
+        </StyledHamburger>
+        <Link href="/">
+          <a>
+            <StyledTitle>
+              <Initials>C</Initials>
+              <NameRest>hristopher </NameRest>
+              <Initials>L</Initials>
+              <NameRest>ee </NameRest>
+              <Initials>M</Initials>
+              <NameRest>iller</NameRest>
+              <Dots>.Me</Dots>
+            </StyledTitle>
+          </a>
+        </Link>
+        <StyledDescription>All About Me!</StyledDescription>
+      </StyledMobileNavWrapper>
+      <StyledNavigationWrapper pose={isOpen ? 'open' : 'closed'}>
+        <Nav />
+        <SocialLinks />
+      </StyledNavigationWrapper>
+    </StyledMobileNav>
+  );
 }
 export default MobileNav;
