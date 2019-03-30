@@ -90,22 +90,8 @@ const StyledArticleHeaderImage = styled.img`
   object-fit: fill;
   display: block;
   width: 100%;
-  height: 150px;
+  height: fit-content;
   border: 3px solid ${props => props.theme.white};
-
-  @media screen and (min-width: ${props => props.theme.med_small}) {
-    height: 200px;
-  }
-  @media screen and (min-width: ${props => props.theme.med}) {
-    height: 250px;
-    border: 5px solid ${props => props.theme.white};
-  }
-  @media screen and (min-width: ${props => props.theme.med_large}) {
-    height: 325px;
-  }
-  @media screen and (min-width: ${props => props.theme.large}) {
-    height: 400px;
-  }
 `;
 
 const StyledArticleHeaderInfo = styled.div`
