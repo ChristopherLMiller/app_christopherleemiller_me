@@ -26,7 +26,7 @@ const StyledArticleBody = styled.div`
     margin-bottom: 15px;
   }
   p {
-    margin: 15px 0;
+    margin: 15px auto;
     letter-spacing: 1px;
   }
   a {
@@ -71,11 +71,7 @@ const StyledArticleBody = styled.div`
     font-style: italic;
   }
   pre {
-    border: 1px solid ${props => props.theme.red};
-    background: ${props => props.theme.white};
-    padding: 5px;
-    overflow-x: scroll;
-    font-family: monospace;
+    border: 5px solid ${props => props.theme.red};
   }
 `;
 
@@ -149,6 +145,11 @@ const StyledReadMore = styled.p`
   padding: 5px;
   transform: skew(-20deg);
   text-align: center;
+  max-width: 200px;
+
+  a {
+    color: ${props => props.theme.white};
+  }
 `;
 export {
   StyledArticle,

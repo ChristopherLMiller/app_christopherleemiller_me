@@ -2,12 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import formatRelative from 'date-fns/formatRelative';
 import parseISO from 'date-fns/parseISO';
-import hljs from 'highlight.js/lib/highlight';
-import javascript from 'highlight.js/lib/languages/javascript';
-import css from 'highlight.js/lib/languages/css';
-import scss from 'highlight.js/lib/languages/scss';
-import markdown from 'highlight.js/lib/languages/markdown';
-
+import hljs from 'highlight.js/';
+import 'highlight.js/styles/atom-one-dark.css';
 import CommentsList from '../CommentsList';
 
 import {
@@ -17,11 +13,6 @@ import {
   StyledArticleHeaderImage,
   StyledArticleHeaderInfo,
 } from '../styles/Articles';
-
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('scss', scss);
-hljs.registerLanguage('markdown', markdown);
 
 class FullArticle extends React.Component {
   static propTypes = {

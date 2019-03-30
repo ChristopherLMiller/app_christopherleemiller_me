@@ -64,3 +64,13 @@ export const ARTICLE_QUERY = gql`
     }
   }
 `;
+
+export const ARTICLE_PAGINATION_QUERY = gql`
+  query ARTICLE_PAGINATION_QUERY {
+    articlesConnection(where: { published: true }) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;

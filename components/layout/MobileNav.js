@@ -65,6 +65,7 @@ const StyledHamburger = styled.button`
   padding: 12px;
   position: absolute;
   font-size: 1.5em;
+  width: 110px;
 
   :focus,
   :hover {

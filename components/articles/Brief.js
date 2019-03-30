@@ -34,6 +34,10 @@ class BriefArticle extends React.Component {
     children: propTypes.object,
   };
 
+  componentDidMount() {
+    hljs.initHighlighting();
+  }
+
   render() {
     let formattedDate = '';
     if (this.props.article.createdAt) {
