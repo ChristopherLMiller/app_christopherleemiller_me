@@ -27,6 +27,11 @@ const StyledArticleBody = styled.div`
   }
   p {
     margin: 15px 0;
+    letter-spacing: 1px;
+  }
+  a {
+    color: ${props => props.theme.red};
+    text-decoration: underline;
   }
   h1 {
     font-size: 1.5em;
