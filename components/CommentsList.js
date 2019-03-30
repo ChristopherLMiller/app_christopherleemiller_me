@@ -1,4 +1,5 @@
 import React from 'react';
+import propTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Comment from './Comment';
@@ -34,6 +35,10 @@ const StyledCommentSignIn = styled.p`
 `;
 
 class CommentsList extends React.Component {
+  static propTypes = {
+    comments: propTypes.array,
+  };
+
   render() {
     return (
       <StyledCommentSection>

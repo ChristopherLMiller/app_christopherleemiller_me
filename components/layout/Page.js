@@ -87,6 +87,7 @@ class Page extends Component {
       PropTypes.arrayOf(PropTypes.node),
       PropTypes.node,
     ]).isRequired,
+    router: PropTypes.object,
   };
 
   render() {

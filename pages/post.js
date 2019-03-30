@@ -1,5 +1,5 @@
 import React from 'react';
-import propTypes, { array } from 'prop-types';
+import propTypes from 'prop-types';
 import NextSEO from 'next-seo';
 import Markdown from 'markdown-to-jsx';
 import { Query } from 'react-apollo';
