@@ -1,8 +1,9 @@
 import React from 'react';
-import propTypes from 'prop-types';
+import propTypes, { array } from 'prop-types';
 import NextSEO from 'next-seo';
 import Markdown from 'markdown-to-jsx';
 import { Query } from 'react-apollo';
+import Router from 'next/router';
 
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -53,14 +54,21 @@ class PostPage extends React.Component {
                 );
               }
 
-              const article = data.articles[0];
-              return (
-                <>
-                  <FullArticle article={article}>
-                    <Markdown>{article.content}</Markdown>
-                  </FullArticle>
-                </>
-              );
+              // verify that we actually received an article, an empty array signifies no result.
+              if (data.articles && data.articles.length > 0) {
+                const article = data.articles[0];
+                return (
+                  <>
+                    <FullArticle article={article}>
+                      <Markdown>{article.content}</Markdown>
+                    </FullArticle>
+                  </>
+                );
+              }
+
+              // default to redirect to articles page
+              Router.push('/articles');
+              return null;
             }}
           </Query>
         </main>
