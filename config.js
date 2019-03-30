@@ -1,5 +1,8 @@
 // Client side things only, don't put things here that shouldn't be public
 export const endpoint = 'https://api.christopherleemiller.me/graphql';
+export const siteTitle = 'Christopher Lee Miller';
+export const siteURL = 'https://dev.christopherleemiller.me';
+export const separator = ' - ';
 
 export const DEFAULT_SEO = {
   title: 'ChristopherLeeMiller.me',
@@ -7,7 +10,7 @@ export const DEFAULT_SEO = {
   openGraph: {
     type: 'website',
     locale: 'en_IE',
-    url: 'https://www.christopherleemiller.me',
+    url: siteURL,
     title: 'ChristopherLeeMiller.me',
     description: 'Website all about me and my services',
     image:
@@ -22,6 +25,4 @@ export const DEFAULT_SEO = {
   },
 };
 
-export const siteTitle = 'Christopher Lee Miller';
-export const separator = ' - ';
 export const perPage = 10;

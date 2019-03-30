@@ -41,6 +41,7 @@ export const ARTICLE_QUERY = gql`
       slug
       title
       content
+      content_brief
       featured_image
       createdAt
       user {

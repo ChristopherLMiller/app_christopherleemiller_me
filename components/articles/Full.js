@@ -4,7 +4,9 @@ import formatRelative from 'date-fns/formatRelative';
 import parseISO from 'date-fns/parseISO';
 import hljs from 'highlight.js/';
 import 'highlight.js/styles/atom-one-dark.css';
+import NextSEO from 'next-seo';
 import CommentsList from '../CommentsList';
+import { siteTitle, separator, siteURL } from '../../config';
 
 import {
   StyledArticle,
@@ -30,6 +32,9 @@ class FullArticle extends React.Component {
   }
 
   render() {
+    // eslint-disable-next-line prefer-destructuring
+    const article = this.props.article;
+
     let formattedDate = '';
     if (this.props.article.createdAt) {
       formattedDate = formatRelative(
@@ -40,20 +45,31 @@ class FullArticle extends React.Component {
 
     return (
       <>
+        <NextSEO
+          config={{
+            title: `${siteTitle}${separator}${article.title}`,
+            description: article.content_brief,
+            openGraph: {
+              title: `${siteTitle}${separator}${article.title}`,
+              description: article.content_brief,
+              url: `${siteURL}/post/${article.slug}`,
+              image: article.featured_image ? article.featured_image : '',
+            },
+          }}
+        />
         <StyledArticle>
           <StyledArticleHeader>
-            {this.props.article.featured_image && (
+            {article.featured_image && (
               <StyledArticleHeaderImage
-                src={this.props.article.featured_image}
-                alt={this.props.article.title}
+                src={article.featured_image}
+                alt={article.title}
               />
             )}
             <StyledArticleHeaderInfo>
-              <h2>{this.props.article.title}</h2>
-              {this.props.article.createdAt && (
+              <h2>{article.title}</h2>
+              {article.createdAt && (
                 <p>
-                  Published {formattedDate} by{' '}
-                  {this.props.article.user.username}
+                  Published {formattedDate} by {article.user.username}
                 </p>
               )}
             </StyledArticleHeaderInfo>
@@ -62,7 +78,7 @@ class FullArticle extends React.Component {
         </StyledArticle>
 
         {this.props.commentsEnabled && (
-          <CommentsList comments={this.props.article.comments} />
+          <CommentsList comments={article.comments} />
         )}
       </>
     );
