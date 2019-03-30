@@ -13,6 +13,10 @@ const StyledCardBody = styled.div`
   font-size: 1.25em;
   letter-spacing: 1px;
   text-align: center;
+
+  a {
+    color: ${props => props.theme.red};
+  }
 `;
 
 export { StyledCard, StyledCardBody };
