@@ -27,6 +27,11 @@ class FullArticle extends React.Component {
   static propTypes = {
     article: propTypes.object,
     children: propTypes.object,
+    commentsEnabled: propTypes.bool,
+  };
+
+  static defaultProps = {
+    commentsEnabled: true,
   };
 
   componentDidMount() {
@@ -64,7 +69,10 @@ class FullArticle extends React.Component {
           </StyledArticleHeader>
           <StyledArticleBody>{this.props.children}</StyledArticleBody>
         </StyledArticle>
-        <CommentsList comments={this.props.article.comments} />
+
+        {this.props.commentsEnabled && (
+          <CommentsList comments={this.props.article.comments} />
+        )}
       </>
     );
   }

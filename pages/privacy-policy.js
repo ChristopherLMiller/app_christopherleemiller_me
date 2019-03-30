@@ -44,7 +44,7 @@ class PrivacyPolicyPage extends React.Component {
               const article = data.articles[0];
               return (
                 <>
-                  <FullArticle article={article}>
+                  <FullArticle article={article} commentsEnabled={false}>
                     <Markdown>{article.content}</Markdown>
                   </FullArticle>
                 </>
