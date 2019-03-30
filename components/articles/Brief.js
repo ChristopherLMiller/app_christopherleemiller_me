@@ -3,11 +3,7 @@ import propTypes from 'prop-types';
 import Link from 'next/link';
 import formatRelative from 'date-fns/formatRelative';
 import parseISO from 'date-fns/parseISO';
-import hljs from 'highlight.js/lib/highlight';
-import javascript from 'highlight.js/lib/languages/javascript';
-import css from 'highlight.js/lib/languages/css';
-import scss from 'highlight.js/lib/languages/scss';
-import markdown from 'highlight.js/lib/languages/markdown';
+import hljs from 'highlight.js';
 
 import CommentCount from './CommentCount';
 import Categories from './Categories';
@@ -22,11 +18,6 @@ import {
   StyledArticleFooter,
   StyledReadMore,
 } from '../styles/Articles';
-
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('css', css);
-hljs.registerLanguage('scss', scss);
-hljs.registerLanguage('markdown', markdown);
 
 class BriefArticle extends React.Component {
   static propTypes = {
@@ -67,6 +58,7 @@ class BriefArticle extends React.Component {
         </StyledArticleHeader>
         <StyledArticleBody>
           {this.props.children}
+          <CommentCount comments={this.props.article.comments} />
           <StyledReadMore>
             <Link
               as={`/post/${this.props.article.slug}`}
@@ -75,7 +67,6 @@ class BriefArticle extends React.Component {
               <a>Read More</a>
             </Link>
           </StyledReadMore>
-          <CommentCount comments={this.props.article.comments} />
         </StyledArticleBody>
         <StyledArticleFooter>
           <Categories categories={this.props.article.categories} />
