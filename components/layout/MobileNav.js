@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
+import Router from 'next/router';
 import posed from 'react-pose';
 import Nav from './Nav';
 import SocialLinks from '../SocialLinks';
@@ -105,7 +106,16 @@ function MobileNav() {
   const [menuText, setText] = useState('Menu');
 
   useEffect(() => {
+    function handleRouteChange() {
+      setOpen(false);
+    }
+    Router.events.on('routeChangeStart', handleRouteChange);
+
     setText(isOpen ? 'Close' : 'Menu');
+
+    return function cleanup() {
+      Router.events.off('routeChangeStart', handleRouteChange);
+    };
   });
 
   return (

@@ -50,7 +50,7 @@ const Pagination = props => (
 );
 
 Pagination.propTypes = {
-  page: propTypes.string,
+  page: propTypes.number,
 };
 
 export default Pagination;
