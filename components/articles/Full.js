@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import formatRelative from 'date-fns/formatRelative';
 import parseISO from 'date-fns/parseISO';
 import hljs from 'highlight.js/';
-import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/atom-one-dark.css';
 import NextSEO from 'next-seo';
 import CommentsList from '../CommentsList';
 import { siteTitle, separator, siteURL, siteDefaultImage } from '../../config';
