@@ -105,25 +105,6 @@ const StyledArticleFooter = styled.div`
   background: ${props => props.theme.grey_darker};
   padding: 20px;
   margin: 0;
-
-  span,
-  a {
-    font-size: 1.15em;
-    font-family: monospace;
-  }
-
-  a {
-    text-transform: uppercase;
-    text-decoration: underline;
-  }
-  a:after {
-    content: ', ';
-    color: ${props => props.theme.black};
-    text-decoration: none;
-  }
-  a:last-of-type:after {
-    content: '';
-  }
 `;
 
 const StyledReadMore = styled.p`

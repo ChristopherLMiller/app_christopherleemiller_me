@@ -43,6 +43,9 @@ class FullArticle extends React.Component {
       );
     }
 
+    const image = article.featured_image
+      ? article.featured_image
+      : siteDefaultImage;
     return (
       <>
         <NextSEO
@@ -53,9 +56,11 @@ class FullArticle extends React.Component {
               title: `${siteTitle}${separator}${article.title}`,
               description: article.content_brief,
               url: `${siteURL}/post/${article.slug}`,
-              image: article.featured_image
-                ? article.featured_image
-                : siteDefaultImage,
+              images: [
+                {
+                  url: image,
+                },
+              ],
             },
           }}
         />
