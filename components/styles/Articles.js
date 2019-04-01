@@ -90,6 +90,7 @@ const StyledArticleHeaderImage = styled.img`
   object-fit: fill;
   display: block;
   width: 100%;
+  max-height: 300px;
   border: 3px solid ${props => props.theme.white};
 `;
 
