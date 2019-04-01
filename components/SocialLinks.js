@@ -26,12 +26,12 @@ const SocialLinks = () => (
       alt="Github"
     />
     <SocialIcon
-      url="https://www.christopherleemiller.me/www.linkedin.com/in/christopher-l-miller"
+      url="https://www.linkedin.com/in/christopher-l-miller"
       icon={faLinkedinIn}
       alt="LinkedIn"
     />
     <SocialIcon
-      url="https://twitter.com/moose517"
+      url="https://twitter.com/ChrisLMiller_me"
       icon={faTwitter}
       alt="Twitter"
     />
