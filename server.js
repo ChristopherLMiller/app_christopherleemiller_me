@@ -1,5 +1,6 @@
 const express = require('express');
 const next = require('next');
+const { join } = require('path');
 const sitemapAndRobots = require('./lib/sitemapAndRobots');
 
 const port = parseInt(process.env.PORT, 10) || 5000;
@@ -20,6 +21,12 @@ app
       const actualPage = '/post';
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
+    });
+
+    // Service worker
+    server.get('/service-worker.js', (req, res) => {
+      const filePath = join(__dirname, '.next', '/service-worker.js');
+      app.serveStatic(req, res, filePath);
     });
 
     // All others
