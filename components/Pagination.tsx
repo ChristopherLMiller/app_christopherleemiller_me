@@ -1,20 +1,21 @@
-import React from 'react';
-import propTypes from 'prop-types';
+import React, { SFC } from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
 import PaginationStyles from './styles/PaginationStyles';
 import { perPage } from '../config';
 import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
 
-const Pagination = props => (
+interface PaginationProps {
+  page: number,
+}
+
+const Pagination: SFC<PaginationProps> = ({ page }) => (
   <Query query={ARTICLE_PAGINATION_QUERY}>
-    {({ data, loading, error }) => {
+    {({ data, loading }) => {
       if (loading) return <p>Loading...</p>;
       // eslint-disable-next-line prefer-destructuring
       const count = data.articlesConnection.aggregate.count;
       const pages = Math.ceil(count / perPage);
-      // eslint-disable-next-line prefer-destructuring
-      const page = props.page;
       return (
         <PaginationStyles>
           <Link
@@ -48,9 +49,5 @@ const Pagination = props => (
     }}
   </Query>
 );
-
-Pagination.propTypes = {
-  page: propTypes.number,
-};
 
 export default Pagination;
