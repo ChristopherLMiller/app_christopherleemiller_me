@@ -1,8 +1,9 @@
-import styled from 'styled-components';
 import Logo from './Logo';
-import Title from './Title';
 import Nav from './Nav';
 import SocialLinks from '../SocialLinks';
+import styled from 'styled-components';
+import Title from './Title';
+import { Props } from '../styles/Themes';
 
 const StyledSidebar = styled.aside`
   position: relative;
@@ -19,11 +20,11 @@ const StyledSidebar = styled.aside`
     z-index: -1;
   }
 
-  @media (min-width: ${props => props.theme.small}) {
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: 20px;
     display: initial;
   }
-  @media (min-width: ${props => props.theme.med_small}) {
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     min-height: 100vh;
     &:before {
       background: rgba(0, 0, 0, 0.7);

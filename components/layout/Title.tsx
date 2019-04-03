@@ -1,5 +1,6 @@
-import styled from 'styled-components';
 import Link from 'next/link';
+import styled from 'styled-components';
+import { Props } from '../styles/Themes';
 
 const TitleWrapper = styled.div`
   top: 0;
@@ -7,10 +8,10 @@ const TitleWrapper = styled.div`
   width: 100%;
   padding: 10px;
   z-index: 2;
-  background: ${props => props.theme.black};
-  border-bottom: 2px solid ${props => props.theme.grey};
+  background: ${(props: Props) => props.theme.colors.black};
+  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey};
 
-  @media screen and (min-width: ${props => props.theme.small}) {
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: inherit;
     z-index: inherit;
     background: inherit;
@@ -29,7 +30,7 @@ const StyledTitle = styled.h2`
     content: '\\A';
     width: 0%;
     height: 5px;
-    background: ${props => props.theme.white};
+    background: ${(props: Props) => props.theme.colors.white};
     position: absolute;
     bottom: -5px;
     left: 0;
@@ -39,18 +40,18 @@ const StyledTitle = styled.h2`
     width: 100%;
   }
 
-  @media (min-width: ${props => props.theme.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     text-align: left;
     margin: 10px 0;
     font-size: 1.75em;
   }
-  @media (min-width: ${props => props.theme.med_small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     font-size: 2.2em;
   }
-  @media (min-width: ${props => props.theme.med_large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     font-size: 2.6em;
   }
-  @media (min-width: ${props => props.theme.large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
     font-size: 3em;
   }
 `;
@@ -59,24 +60,24 @@ const StyledDescription = styled.h3`
   margin: 0;
   text-align: right;
 
-  @media (min-width: ${props => props.theme.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     text-align: left;
     display: initial;
     font-size: 1em;
   }
-  @media (min-width: ${props => props.theme.med_small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     font-size: 1.25em;
   }
-  @media (min-width: ${props => props.theme.med_large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     font-size: 1.5em;
   }
-  @media (min-width: ${props => props.theme.large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
     font-size: 1.75em;
   }
 `;
 
 const Block = styled.span`
-  color: ${props => props.theme.red};
+  color: ${(props: Props) => props.theme.colors.red};
 `;
 
 const Title = () => (

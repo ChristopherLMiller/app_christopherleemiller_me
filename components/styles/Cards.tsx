@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Props } from './Themes';
 
 const StyledCard = styled.div`
-  background: ${props => props.theme.grey};
+  background: ${(props: Props) => props.theme.colors.grey};
   color: black;
   font-family: 'Special Elite', sans-serif;
   max-width: 1000px;
@@ -15,7 +16,7 @@ const StyledCardBody = styled.div`
   text-align: center;
 
   a {
-    color: ${props => props.theme.red};
+    color: ${(props: Props) => props.theme.colors.red};
   }
 `;
 

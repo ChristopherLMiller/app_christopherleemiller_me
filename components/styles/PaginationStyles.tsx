@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Props } from './Themes';
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -7,12 +8,12 @@ const PaginationStyles = styled.div`
   align-items: stretch;
   justify-content: center;
   align-content: center;
-  background: ${props => props.theme.red};
-  color: ${props => props.theme.white};
+  background: ${(props: Props) => props.theme.colors.red};
+  color: ${(props: Props) => props.theme.colors.white};
   & > * {
     margin: 0;
     padding: 15px 30px;
-    border-right: 1px solid ${props => props.theme.grey_darker};
+    border-right: 1px solid ${(props: Props) => props.theme.colors.grey_darker};
     &:last-child {
       border-right: 0;
     }

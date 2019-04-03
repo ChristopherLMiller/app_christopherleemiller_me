@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { Props } from '../styles/Themes';
 
 const StyledLogo = styled.img`
-  border: 10px solid ${props => props.theme.white};
+  border: 10px solid ${(props: Props) => props.theme.colors.white};
   filter: grayscale(100%);
   transition: all 0.5s;
   display: none;
@@ -10,7 +11,7 @@ const StyledLogo = styled.img`
     filter: grayscale(0%);
   }
 
-  @media (min-width: ${props => props.theme.small}) {
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     width: 75%;
     display: block;
   }

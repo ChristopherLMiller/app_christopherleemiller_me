@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { Props } from './Themes';
+
 
 const StyledArticle = styled.div`
-  background: ${props => props.theme.grey};
+  background: ${(props: Props) => props.theme.colors.grey};
   color: black;
   font-family: 'Special Elite', sans-serif;
-  max-width: ${props => props.theme.max_width};
+  max-width: ${(props: Props) => props.theme.max_width};
   margin: 50px auto;
 `;
 
@@ -30,7 +32,7 @@ const StyledArticleBody = styled.div`
     letter-spacing: 1px;
   }
   a {
-    color: ${props => props.theme.red};
+    color: ${(props: Props) => props.theme.colors.red};
     text-decoration: underline;
   }
   h1 {
@@ -71,7 +73,7 @@ const StyledArticleBody = styled.div`
     font-style: italic;
   }
   pre {
-    border: 5px solid ${props => props.theme.red};
+    border: 5px solid ${(props: Props) => props.theme.colors.red};
   }
 `;
 
@@ -91,31 +93,31 @@ const StyledArticleHeaderImage = styled.img`
   display: block;
   width: 100%;
   max-height: 300px;
-  border: 3px solid ${props => props.theme.white};
+  border: 3px solid ${(props: Props) => props.theme.colors.white};
 `;
 
 const StyledArticleHeaderInfo = styled.div`
-  background: ${props => props.theme.red};
+  background: ${(props: Props) => props.theme.colors.red};
   padding: 20px;
   margin: 0;
-  color: ${props => props.theme.grey};
+  color: ${(props: Props) => props.theme.colors.grey};
 `;
 
 const StyledArticleFooter = styled.div`
-  background: ${props => props.theme.grey_darker};
+  background: ${(props: Props) => props.theme.colors.grey_darker};
   padding: 20px;
   margin: 0;
 `;
 
 const StyledReadMore = styled.p`
-  background: ${props => props.theme.red};
+  background: ${(props: Props) => props.theme.colors.red};
   padding: 5px;
   transform: skew(-20deg);
   text-align: center;
   max-width: 200px;
 
   a {
-    color: ${props => props.theme.white};
+    color: ${(props: Props) => props.theme.colors.white};
   }
 `;
 export {

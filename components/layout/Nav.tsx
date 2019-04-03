@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import { Props } from '../styles/Themes';
 
 const NavStyles = styled.ul`
   padding-left: 0;
@@ -21,7 +22,7 @@ const NavItem = styled.li`
     height: 100%;
     left: 0;
     z-index: -1;
-    background: ${props => props.theme.red_transparent};
+    background: ${(props: Props) => props.theme.colors.red_transparent};
     opacity: 0;
     transition: all 0.25s;
   }

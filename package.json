@@ -23,6 +23,7 @@
     "@types/date-fns": "^2.6.0",
     "@types/highlight.js": "^9.12.3",
     "@types/next": "^8.0.3",
+    "@types/nprogress": "0.0.29",
     "@types/styled-components": "^4.1.12",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",

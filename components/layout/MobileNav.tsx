@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Link from 'next/link';
-import Router from 'next/router';
-import posed from 'react-pose';
 import Nav from './Nav';
+import posed from 'react-pose';
+import React, { useEffect, useState } from 'react';
+import Router from 'next/router';
 import SocialLinks from '../SocialLinks';
+import styled from 'styled-components';
+import { Props } from '../styles/Themes';
+
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -12,11 +14,11 @@ const StyledMobileNav = styled.div`
   width: 100%;
   padding: 10px 20px;
   z-index: 2;
-  background: ${props => props.theme.black};
-  border-bottom: 2px solid ${props => props.theme.grey};
+  background: ${(props: Props) => props.theme.colors.black};
+  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey};
   position: fixed;
 
-  @media screen and (min-width: ${props => props.theme.small}) {
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: none;
   }
 `;
@@ -39,11 +41,11 @@ const StyledTitle = styled.h2`
 const StyledDescription = styled.h3`
   margin: 0;
   text-align: right;
-  color: ${props => props.theme.white};
+  color: ${(props: Props) => props.theme.colors.white};
 `;
 
 const Initials = styled.span`
-  color: ${props => props.theme.red};
+  color: ${(props: Props) => props.theme.colors.red};
 `;
 
 const NameRest = styled.span`
@@ -52,7 +54,7 @@ const NameRest = styled.span`
   }
 `;
 const Dots = styled.span`
-  color: ${props => props.theme.red};
+  color: ${(props: Props) => props.theme.colors.red};
   @media screen and (min-width: 387px) {
     display: none;
   }
@@ -61,8 +63,8 @@ const Dots = styled.span`
 const StyledHamburger = styled.button`
   text-transform: uppercase;
   background: none;
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme.red};
+  color: ${(props: Props) => props.theme.colors.white};
+  border: 2px solid ${(props: Props) => props.theme.colors.red};
   padding: 12px;
   position: absolute;
   font-size: 1.5em;
@@ -70,8 +72,8 @@ const StyledHamburger = styled.button`
 
   :focus,
   :hover {
-    outline: 1px solid ${props => props.theme.white};
-    background: ${props => props.theme.red};
+    outline: 1px solid ${(props: Props) => props.theme.colors.white};
+    background: ${(props: Props) => props.theme.colors.red};
   }
 `;
 
@@ -98,10 +100,10 @@ const StyledNavigationWrapper = styled(Navigation)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${props => props.theme.black};
+  background: ${(props: Props) => props.theme.colors.black};
 `;
 
-function MobileNav() {
+const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
   const [menuText, setText] = useState('Menu');
 
