@@ -70,7 +70,7 @@ class ArchivesPage extends React.Component {
               return (
                 <>
                   {data.articles.map(article => (
-                    <BriefArticle article={article}>
+                    <BriefArticle article={article} key={article._id}>
                       <Markdown>{article.content_brief}</Markdown>
                     </BriefArticle>
                   ))}

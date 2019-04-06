@@ -11,7 +11,7 @@ const StyledArticle = styled.div`
 `;
 
 const StyledArticleBody = styled.div`
-  padding: 40px;
+  padding: 40px 20px;
   font-size: 1.25em;
   letter-spacing: 1px;
 
@@ -74,6 +74,10 @@ const StyledArticleBody = styled.div`
   }
   pre {
     border: 5px solid ${(props: Props) => props.theme.colors.red};
+  }
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    padding: 40px;
   }
 `;
 

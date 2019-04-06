@@ -8,6 +8,7 @@ export const ALL_ARTICLES_QUERY = gql`
       sort: "createdAt:DESC"
       where: { published: true }
     ) {
+      _id
       slug
       title
       content_brief
@@ -17,6 +18,7 @@ export const ALL_ARTICLES_QUERY = gql`
         username
       }
       comments(sort: "ASC") {
+        _id
         text
         createdAt
         user {
@@ -24,10 +26,12 @@ export const ALL_ARTICLES_QUERY = gql`
         }
       }
       categories {
+        _id
         slug
         title
       }
       tags {
+        _id
         slug
         title
       }
@@ -38,6 +42,7 @@ export const ALL_ARTICLES_QUERY = gql`
 export const ARTICLE_QUERY = gql`
   query ARTICLE_QUERY($slug: String) {
     articles(where: { slug: $slug }) {
+      _id
       slug
       title
       content
@@ -48,6 +53,7 @@ export const ARTICLE_QUERY = gql`
         username
       }
       comments(sort: "ASC") {
+        _id
         text
         createdAt
         user {
@@ -55,10 +61,12 @@ export const ARTICLE_QUERY = gql`
         }
       }
       categories {
+        _id
         slug
         title
       }
       tags {
+        _id
         slug
         title
       }
