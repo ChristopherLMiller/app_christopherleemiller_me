@@ -7,6 +7,7 @@ export const separator = ` - `;
 export const DEFAULT_SEO = {
   title: `ChristopherLeeMiller.me`,
   description: `Website all about me and my services`,
+  canonical: process.env.SITE_URL,
   openGraph: {
     type: `website`,
     locale: `en_IE`,
@@ -19,7 +20,7 @@ export const DEFAULT_SEO = {
     imageHeight: 300,
   },
   twitter: {
-    handle: `@moose517`,
+    handle: `@ChrisLMiller_me`,
     cardType: `summary_large_image`,
   },
 };

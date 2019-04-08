@@ -6,14 +6,5 @@ export default withApollo(({ initialState }) => (
   new ApolloClient({
     uri: GRAPHQL_ENDPOINT,
     cache: new InMemoryCache().restore(initialState || {})
-  }).defaultOptions = {
-    watchQuery: {
-      fetchPolicy: 'cache-and-network',
-      errorPolicy: 'all',
-    },
-    query: {
-      fetchPolicy: 'cache-and-network',
-      errorPolicy: 'all',
-    }
-  }
+  })
 ));

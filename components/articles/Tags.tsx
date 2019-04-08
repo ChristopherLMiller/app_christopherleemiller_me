@@ -30,6 +30,9 @@ const Tags: SFC<TagsType> = ({ tags }) => (
         </Link>
       </TagsLink>
     ))}
+    {(tags.length < 1) && (
+      <span>None</span>
+    )}
   </TagsWrapper>
 );
 

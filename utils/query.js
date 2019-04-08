@@ -14,6 +14,7 @@ export const ALL_ARTICLES_QUERY = gql`
       content_brief
       featured_image
       createdAt
+      updatedAt
       user {
         username
       }
@@ -48,7 +49,10 @@ export const ARTICLE_QUERY = gql`
       content
       content_brief
       featured_image
+      seo_title
+      seo_description
       createdAt
+      updatedAt
       user {
         username
       }

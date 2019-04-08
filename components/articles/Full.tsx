@@ -22,17 +22,27 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
 
   return (
     <>
+      {console.log(article)}
       <NextSEO
         config={{
           title: `${siteTitle}${separator}Post${separator}${article.title}`,
-          description: article.content_brief,
+          description: article.seo_description,
           openGraph: {
             title: `${siteTitle}${separator}Post${separator}${article.title}`,
-            description: article.content_brief,
+            description: article.seo_description,
             url: `${process.env.SITE_URL}/post/${article.slug}`,
+            type: 'article',
+            article: {
+              publishedTime: article.createdAt,
+              modifiedTime: article.updatedAt,
+              authors: [
+                article.user.username,
+              ]
+            },
             images: [
               {
                 url: article.featured_image || siteDefaultImage,
+                alt: article.title
               },
             ],
           },
