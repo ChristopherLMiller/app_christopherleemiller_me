@@ -4,15 +4,13 @@ import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
 import LogRocket from 'logrocket';
-// import setupLogRocketReact from 'logrocket-react';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
 import { DEFAULT_SEO } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 
-LogRocket.init(`xrcvkv/christopherleemillerme`);
-// setupLogRocketReact(LogRocket);
+LogRocket.init(process.env.LOGROCKET);
 
 class MyApp extends App {
   constructor(...args) {
