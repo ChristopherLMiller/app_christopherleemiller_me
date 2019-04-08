@@ -7,7 +7,6 @@ import {
   separator,
   siteDefaultImage,
   siteTitle,
-  siteURL
 } from '../../config';
 import { SFC, useEffect } from 'react';
 // import 'highlight.js/styles/atom-one-dark.css';
@@ -25,12 +24,12 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
     <>
       <NextSEO
         config={{
-          title: `${siteTitle}${separator}${article.title}`,
+          title: `${siteTitle}${separator}Post${separator}${article.title}`,
           description: article.content_brief,
           openGraph: {
-            title: `${siteTitle}${separator}${article.title}`,
+            title: `${siteTitle}${separator}Post${separator}${article.title}`,
             description: article.content_brief,
-            url: `${siteURL}/post/${article.slug}`,
+            url: `${process.env.SITE_URL}/post/${article.slug}`,
             images: [
               {
                 url: article.featured_image || siteDefaultImage,

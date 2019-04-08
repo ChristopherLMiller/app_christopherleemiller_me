@@ -1,10 +1,10 @@
-const express = require('express');
-const next = require('next');
-const { join } = require('path');
-const sitemapAndRobots = require('./lib/sitemapAndRobots');
+const express = require(`express`);
+const next = require(`next`);
+const { join } = require(`path`);
+const sitemapAndRobots = require(`./lib/sitemapAndRobots`);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
-const dev = process.env.NODE_ENV !== 'production';
+const dev = process.env.NODE_ENV !== `production`;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
@@ -17,24 +17,24 @@ app
     sitemapAndRobots({ server });
 
     // Posts
-    server.get('/post/:slug', (req, res) => {
-      const actualPage = '/post';
+    server.get(`/post/:slug`, (req, res) => {
+      const actualPage = `/post`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Service worker
-    server.get('/service-worker.js', (req, res) => {
-      const filePath = join(__dirname, '.next', '/service-worker.js');
+    server.get(`/service-worker.js`, (req, res) => {
+      const filePath = join(__dirname, `.next`, `/service-worker.js`);
       app.serveStatic(req, res, filePath);
     });
 
     // All others
-    server.get('*', (req, res) => handle(req, res));
+    server.get(`*`, (req, res) => handle(req, res));
 
     server.listen(port, err => {
       if (err) throw err;
-      console.log(`> Ready on http://localhost:${port}`);
+      console.log(`> Ready on ${process.env.SITE_URL}:${port}`);
     });
   })
   .catch(ex => {

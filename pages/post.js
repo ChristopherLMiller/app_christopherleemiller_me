@@ -13,9 +13,9 @@ import FullArticle from '../components/articles/Full';
 import { siteTitle, separator } from '../config';
 import { ARTICLE_QUERY } from '../utils/query';
 
-const title = 'From My Desk';
+const title = `From My Desk`;
 const description =
-  'Archives concerning all matters web development and beyond';
+  `Archives concerning all matters web development and beyond`;
 
 class PostPage extends React.Component {
   static propTypes = {
@@ -67,7 +67,7 @@ class PostPage extends React.Component {
               }
 
               // default to redirect to articles page
-              Router.push('/articles');
+              Router.push(`/articles`);
               return null;
             }}
           </Query>

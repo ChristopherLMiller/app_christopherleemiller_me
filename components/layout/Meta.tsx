@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import { siteURL } from '../../config';
 
 const Meta = () => (
   <Head>
@@ -8,7 +7,7 @@ const Meta = () => (
     <meta name="theme-color" content="#982929" />
 
     <link rel="manifest" href="/static/manifest.json" />
-    <link rel="canonical" href={siteURL} />
+    <link rel="canonical" href={process.env.SITE_URL} />
     <link rel="shortcut icon" href="/static/logo.png" />
     <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
     <link
