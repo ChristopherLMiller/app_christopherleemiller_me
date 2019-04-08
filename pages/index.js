@@ -5,9 +5,9 @@ import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
 import { siteTitle, separator } from '../config';
 
-const title = 'Home';
+const title = `Home`;
 const description =
-  'Where I came from and what I do now.  Development resources, services offered, photography, and much more.';
+  `Where I came from and what I do now.  Development resources, services offered, photography, and much more.`;
 class IndexPage extends React.Component {
   render() {
     return (

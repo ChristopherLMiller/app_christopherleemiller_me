@@ -7,11 +7,11 @@ import LogRocket from 'logrocket';
 // import setupLogRocketReact from 'logrocket-react';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
-import withData from '../lib/withData';
+import withApollo from '../lib/withApollo';
 import { DEFAULT_SEO } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 
-LogRocket.init('xrcvkv/christopherleemillerme');
+LogRocket.init(`xrcvkv/christopherleemillerme`);
 // setupLogRocketReact(LogRocket);
 
 class MyApp extends App {
@@ -55,7 +55,7 @@ class MyApp extends App {
   componentDidMount() {
     initGA();
     logPageView();
-    Router.router.events.on('routeChangeComplete', logPageView);
+    Router.router.events.on(`routeChangeComplete`, logPageView);
   }
 
   render() {
@@ -74,4 +74,4 @@ class MyApp extends App {
   }
 }
 
-export default withData(MyApp);
+export default withApollo(MyApp);

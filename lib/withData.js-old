@@ -1,0 +1,36 @@
+import withApollo from 'next-with-apollo';
+import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { endpoint } from '../config';
+
+function createClient({ ctx, headers, initialState }) {
+  const client = new ApolloClient({
+    connectToDevTools: process.browser,
+    ssrMode: !process.browser,
+    uri: process.env.NODE_ENV === `development` ? endpoint : endpoint,
+    request: operation => {
+      operation.setContext({
+        fetchOptions: {
+          credentials: `omit`,
+        },
+        headers,
+      });
+    },
+    cache: new InMemoryCache().restore(initialState || {}),
+  });
+
+  client.defaultOptions = {
+    watchQuery: {
+      fetchPolicy: `cache-and-network`,
+      errorPolicy: `all`,
+    },
+    query: {
+      fetchPolicy: `cache-and-network`,
+      errorPolicy: `all`,
+    },
+  };
+
+  return client;
+}
+
+export default withApollo(createClient);
