@@ -2,9 +2,18 @@ import withApollo from 'next-with-apollo'
 import ApolloClient, { InMemoryCache } from 'apollo-boost'
 import { GRAPHQL_ENDPOINT } from '../config'
 
-export default withApollo(({ ctx, headers, initialState }) => (
+export default withApollo(({ initialState }) => (
   new ApolloClient({
     uri: GRAPHQL_ENDPOINT,
     cache: new InMemoryCache().restore(initialState || {})
-  })
+  }).defaultOptions = {
+    watchQuery: {
+      fetchPolicy: 'cache-and-network',
+      errorPolicy: 'all',
+    },
+    query: {
+      fetchPolicy: 'cache-and-network',
+      errorPolicy: 'all',
+    }
+  }
 ));
