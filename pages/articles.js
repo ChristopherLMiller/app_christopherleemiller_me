@@ -4,7 +4,6 @@ import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
-import Log from '../utils/logger';
 
 import { ALL_ARTICLES_QUERY } from '../utils/query';
 import Header from '../components/layout/Header';
