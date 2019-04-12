@@ -4,6 +4,7 @@ import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Markdown from 'markdown-to-jsx';
 import styled from 'styled-components';
+import Log from '../utils/logger';
 
 import { ALL_ARTICLES_QUERY } from '../utils/query';
 import Header from '../components/layout/Header';
@@ -13,9 +14,8 @@ import BriefArticle from '../components/articles/Brief';
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
 
-const title = 'From My Desk';
-const description =
-  'Archives concerning all matters web development and beyond';
+const title = `From My Desk`;
+const description = `Archives concerning all matters web development and beyond`;
 
 const Center = styled.div`
   text-align: center;
@@ -58,7 +58,7 @@ class ArchivesPage extends React.Component {
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
               if (error) {
-                console.log(error.message);
+                Log.error(error.message, `Articles`);
                 return (
                   <Card>
                     <h3>Unable to fetch archives</h3>

@@ -1,5 +1,5 @@
 // Client side things only, don't put things here that shouldn't be public
-export const GRAPHQL_ENDPOINT = `https://api.christopherleemiller.me/graphql`;
+export const GRAPHQL_ENDPOINT = `https://strapi.christopherleemiller.me/graphql`;
 export const siteTitle = `Christopher Lee Miller`;
 export const siteDefaultImage = `https://res.cloudinary.com/christopherleemiller/image/upload/c_scale,w_300/v1544466783/clm_me/assets/logo.png`;
 export const separator = ` - `;

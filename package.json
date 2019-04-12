@@ -40,6 +40,7 @@
     "babel-plugin-add-react-displayname": "0.0.5",
     "babel-plugin-styled-components": "^1.7.1",
     "date-fns": "^2.0.0-alpha.27",
+    "debug": "^4.1.1",
     "dotenv": "^6.1.0",
     "downshift": "^2.2.3",
     "enzyme": "^3.6.0",

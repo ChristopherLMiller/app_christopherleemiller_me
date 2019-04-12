@@ -22,7 +22,6 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
 
   return (
     <>
-      {console.log(article)}
       <NextSEO
         config={{
           title: `${siteTitle}${separator}Post${separator}${article.title}`,

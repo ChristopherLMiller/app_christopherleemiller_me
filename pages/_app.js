@@ -10,8 +10,6 @@ import withApollo from '../lib/withApollo';
 import { DEFAULT_SEO } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 
-LogRocket.init(process.env.LOGROCKET);
-
 class MyApp extends App {
   constructor(...args) {
     super(...args);
@@ -19,6 +17,7 @@ class MyApp extends App {
       dsn: process.env.SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
+    LogRocket.init(process.env.LOGROCKET);
   }
 
   componentDidCatch(error, errorInfo) {
