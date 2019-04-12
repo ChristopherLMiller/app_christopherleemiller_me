@@ -12,6 +12,7 @@ import { perPage, siteTitle, separator } from '../config';
 import BriefArticle from '../components/articles/Brief';
 import Card from '../components/Card';
 import Pagination from '../components/Pagination';
+import console = require('console');
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -57,7 +58,7 @@ class ArchivesPage extends React.Component {
             {({ data, error, loading }) => {
               if (loading) return <p>Loading...</p>;
               if (error) {
-                Log.error(error.message, `Articles`);
+                console.log(`Fetch Error: ${error}`)
                 return (
                   <Card>
                     <h3>Unable to fetch archives</h3>
