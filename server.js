@@ -29,6 +29,11 @@ app
       app.serveStatic(req, res, filePath);
     });
 
+    // Redirect admin to the backend
+    server.get(`/admin`, (req, res) => {
+      res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
+    });
+
     // All others
     server.get(`*`, (req, res) => handle(req, res));
 
