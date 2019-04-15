@@ -11,10 +11,12 @@ export const ALL_ARTICLES_QUERY = gql`
       _id
       slug
       title
-      content_brief
       featured_image
       createdAt
       updatedAt
+      seo_description
+      seo_title
+      content
       user {
         username
       }
@@ -47,7 +49,6 @@ export const ARTICLE_QUERY = gql`
       slug
       title
       content
-      content_brief
       featured_image
       seo_title
       seo_description
