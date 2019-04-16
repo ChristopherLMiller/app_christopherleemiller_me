@@ -3,7 +3,7 @@ import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import NextSEO from 'next-seo';
 import React from 'react';
-import { separator, siteTitle } from '../config';
+import { SEPARATOR, SITE_TITLE } from '../config';
 
 const title = 'Contact Me';
 const description =
@@ -13,10 +13,10 @@ const ContactPage = () => (
   <>
     <NextSEO
       config={{
-        title: `${siteTitle}${separator}${title}`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${siteTitle}${separator}${title}`,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
         },
       }}

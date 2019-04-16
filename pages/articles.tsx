@@ -1,17 +1,16 @@
-import React, { SFC } from 'react';
-import NextSEO from 'next-seo';
-import { Query } from 'react-apollo';
-import ArticleTypes from '../components/articles/Types';
-import Markdown from 'markdown-to-jsx';
-import styled from 'styled-components';
-
-import { ALL_ARTICLES_QUERY } from '../utils/query';
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
-import { perPage, siteTitle, separator } from '../config';
 import BriefArticle from '../components/articles/Brief';
 import Card from '../components/Card';
+import Footer from '../components/layout/Footer';
+import Header from '../components/layout/Header';
+import Markdown from 'markdown-to-jsx';
+import NextSEO from 'next-seo';
 import Pagination from '../components/Pagination';
+import React, { SFC } from 'react';
+import styled from 'styled-components';
+import { ALL_ARTICLES_QUERY } from '../utils/query';
+import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
+import { Query } from 'react-apollo';
+
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -30,10 +29,10 @@ const ArchivesPage: SFC<ArticlesPageTypes> = ({ query }) => (
   <>
     <NextSEO
       config={{
-        title: `${siteTitle}${separator}${title}`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${siteTitle}${separator}${title}`,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
         },
       }}
@@ -47,8 +46,8 @@ const ArchivesPage: SFC<ArticlesPageTypes> = ({ query }) => (
       <Query
         query={ALL_ARTICLES_QUERY}
         variables={{
-          start: query.page * perPage - perPage,
-          limit: perPage,
+          start: query.page * PER_PAGE - PER_PAGE,
+          limit: PER_PAGE,
         }}
       >
         {({ data, error, loading }) => {

@@ -7,7 +7,7 @@ import NextSEO from 'next-seo';
 import React from 'react';
 import { ARTICLE_QUERY } from '../utils/query';
 import { Query } from 'react-apollo';
-import { separator, siteTitle } from '../config';
+import { SEPARATOR, SITE_TITLE } from '../config';
 
 const title = 'Privacy Policy';
 const description = 'My policies regarding your privacy and safety';
@@ -16,10 +16,10 @@ const PrivacyPolicyPage = () => (
   <>
     <NextSEO
       config={{
-        title: `${siteTitle}${separator}${title}`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${siteTitle}${separator}${title}`,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
         },
       }}

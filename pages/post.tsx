@@ -8,7 +8,7 @@ import React, { SFC } from 'react';
 import Router from 'next/router';
 import { ARTICLE_QUERY } from '../utils/query';
 import { Query } from 'react-apollo';
-import { separator, siteTitle } from '../config';
+import { SEPARATOR, SITE_TITLE } from '../config';
 
 const title = `From My Desk`;
 const description =
@@ -24,10 +24,10 @@ const PostPage: SFC<PostPageTypes> = ({ query }) => (
   <>
     <NextSEO
       config={{
-        title: `${siteTitle}${separator}${title}`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${siteTitle}${separator}${title}`,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
         },
       }}

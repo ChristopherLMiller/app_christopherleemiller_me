@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import NextSEO from 'next-seo';
-import { separator, siteTitle } from '../config';
+import { SEPARATOR, SITE_TITLE } from '../config';
 
 const title = 'Services';
 const description = 'Services that I offer';
@@ -11,10 +11,10 @@ const ServicesPage = () => (
   <>
     <NextSEO
       config={{
-        title: `${siteTitle}${separator}${title}`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${siteTitle}${separator}${title}`,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
         },
       }}

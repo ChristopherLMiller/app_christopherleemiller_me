@@ -3,7 +3,7 @@ import NextSEO from 'next-seo';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import Card from '../components/Card';
-import { siteTitle, separator } from '../config';
+import { SITE_TITLE, SEPARATOR } from '../config';
 
 const title = 'Error';
 const description = 'Uh-Oh! We broke something!';
@@ -13,10 +13,10 @@ class Error extends React.Component {
       <>
         <NextSEO
           config={{
-            title: `${siteTitle}${separator}${title}`,
+            title: `${SITE_TITLE}${SEPARATOR}${title}`,
             description,
             openGraph: {
-              title: `${siteTitle}${separator}${title}`,
+              title: `${SITE_TITLE}${SEPARATOR}${title}`,
               description,
             },
           }}

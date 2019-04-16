@@ -8,7 +8,7 @@ const NavStyles = styled.ul`
 
 const NavItem = styled.li`
   font-family: monospace;
-  font-size: 1.6em;
+  font-size: 1.3em;
   list-style-type: none;
   line-height: 2em;
   position: relative;
@@ -59,6 +59,11 @@ const Nav = () => (
     <NavItem>
       <Link href="/projects" prefetch>
         <a>Projects</a>
+      </Link>
+    </NavItem>
+    <NavItem>
+      <Link href="/models" prefetch>
+        <a>Models</a>
       </Link>
     </NavItem>
     <NavItem>

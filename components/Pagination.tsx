@@ -2,7 +2,7 @@ import React, { SFC } from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
 import PaginationStyles from './styles/PaginationStyles';
-import { perPage } from '../config';
+import { PER_PAGE } from '../config';
 import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
 
 interface PaginationProps {
@@ -15,7 +15,7 @@ const Pagination: SFC<PaginationProps> = ({ page }) => (
       if (loading) return <p>Loading...</p>;
       // eslint-disable-next-line prefer-destructuring
       const count = data.articlesConnection.aggregate.count;
-      const pages = Math.ceil(count / perPage);
+      const pages = Math.ceil(count / PER_PAGE);
       return (
         <PaginationStyles>
           <Link

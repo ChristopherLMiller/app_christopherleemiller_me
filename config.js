@@ -1,8 +1,12 @@
 // Client side things only, don't put things here that shouldn't be public
 export const GRAPHQL_ENDPOINT = `https://strapi.christopherleemiller.me/graphql`;
-export const siteTitle = `Christopher Lee Miller`;
-export const siteDefaultImage = `https://res.cloudinary.com/christopherleemiller/image/upload/c_scale,w_300/v1544466783/clm_me/assets/logo.png`;
-export const separator = ` - `;
+export const CLOUDINARY_URL = `https://res.cloudinary.com/christopherleemiller/image/upload`;
+export const CLOUDINARY_CLOUD = `v1554111995`;
+export const CLOUDINARY_FOLDER = `clm_me`;
+
+export const SITE_TITLE = `Christopher Lee Miller`;
+export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/c_scale,w_300/${CLOUDINARY_CLOUD}/${CLOUDINARY_FOLDER}/assets/logo.png`;
+export const SEPARATOR = ` - `;
 
 export const DEFAULT_SEO = {
   title: `ChristopherLeeMiller.me`,
@@ -14,7 +18,7 @@ export const DEFAULT_SEO = {
     url: process.env.SITE_URL,
     title: `ChristopherLeeMiller.me`,
     description: `Website all about me and my services`,
-    image: siteDefaultImage,
+    image: SITE_DEFAULT_IMAGE,
     site_name: `ChristopherLeeMiller.me`,
     imageWidth: 300,
     imageHeight: 300,
@@ -25,4 +29,4 @@ export const DEFAULT_SEO = {
   },
 };
 
-export const perPage = 10;
+export const PER_PAGE = 10;
