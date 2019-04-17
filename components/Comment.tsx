@@ -2,6 +2,7 @@ import React, { SFC } from 'react';
 import styled from 'styled-components';
 import { formatRelative, parseISO } from 'date-fns';
 import { Props } from './styles/THemes';
+import { ImageURL } from '../utils/functions';
 
 const CommentWrapper = styled.li`
   border-bottom: 1px solid black;
@@ -51,7 +52,7 @@ interface CommentProps {
 
 const Comment: SFC<CommentProps> = ({ comment }) => (
   <CommentWrapper>
-    <CommentImage src="https://res.cloudinary.com/christopherleemiller/image/upload/c_scale,w_50/v1544466783/clm_me/assets/logo.png" />
+    <CommentImage src={ImageURL('assets/avatar_default', 50)} />
     <CommentText>
       <CommentTopLine>
         <CommentName>{comment.user.username}</CommentName>

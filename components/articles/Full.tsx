@@ -7,7 +7,6 @@ import { ImageURL } from '../../utils/functions';
 import { SFC, useEffect } from 'react';
 import {
   SEPARATOR,
-  SITE_DEFAULT_IMAGE,
   SITE_TITLE,
 } from '../../config';
 // import 'highlight.js/styles/atom-one-dark.css';

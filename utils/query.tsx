@@ -88,3 +88,45 @@ export const ARTICLE_PAGINATION_QUERY = gql`
     }
   }
 `;
+
+export const ALL_MODELS_QUERY = gql`
+  query ALL_MODELS_QUERY($start: Int = 0, $limit: Int = 10) {
+    models(
+      limit: $limit
+      start: $start
+      sort: "createdAt:DESC"
+      where: { published: true }
+    ) {
+      _id
+      title
+      content
+      createdAt
+      updatedAt
+      slug
+      seo_title
+      seo_description
+      published
+      completed
+      featured_image
+      tags {
+        title
+      }
+      comments {
+        text
+        user {
+          username
+        }
+      }
+    }
+  }
+`;
+
+export const MODEL_PAGINATION_QUERY = gql`
+  query MODEL_PAGINATION_QUERY {
+    modelsConnection(where: { published: true }) {
+      aggregate {
+        count
+      }
+    }
+  }
+`;

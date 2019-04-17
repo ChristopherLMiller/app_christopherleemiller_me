@@ -1,16 +1,16 @@
 import React, { SFC } from 'react';
 import { Query } from 'react-apollo';
 import Link from 'next/link';
-import PaginationStyles from './styles/PaginationStyles';
-import { PER_PAGE } from '../config';
-import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
+import PaginationStyles from '../styles/PaginationStyles';
+import { PER_PAGE } from '../../config';
 
-interface PaginationProps {
+interface PaginationTypes {
   page: number,
+  graphql_query: string,
 }
 
-const Pagination: SFC<PaginationProps> = ({ page }) => (
-  <Query query={ARTICLE_PAGINATION_QUERY}>
+const Pagination: SFC<PaginationTypes> = ({ page, graphql_query }) => (
+  <Query query={graphql_query}>
     {({ data, loading }) => {
       if (loading) return <p>Loading...</p>;
       // eslint-disable-next-line prefer-destructuring
@@ -40,7 +40,7 @@ const Pagination: SFC<PaginationProps> = ({ page }) => (
               query: { page: page + 1 },
             }}
           >
-            <a className="prev" aria-disabled={page >= pages}>
+            <a className="next" aria-disabled={page >= pages}>
               Next →
             </a>
           </Link>

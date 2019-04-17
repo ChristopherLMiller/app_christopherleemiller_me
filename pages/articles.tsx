@@ -4,10 +4,11 @@ import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
-import Pagination from '../components/Pagination';
+import Pagination from '../components/articles/Pagination';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
 import { ALL_ARTICLES_QUERY } from '../utils/query';
+import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
 import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
 import { Query } from 'react-apollo';
 
@@ -25,60 +26,63 @@ interface ArticlesPageTypes {
   }
 }
 
-const ArchivesPage: SFC<ArticlesPageTypes> = ({ query }) => (
-  <>
-    <NextSEO
-      config={{
-        title: `${SITE_TITLE}${SEPARATOR}${title}`,
-        description,
-        openGraph: {
+const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
+
+  // set a default value for page if non provided
+  const page = parseFloat(query.page) || 1;
+
+  return (
+    <>
+      <NextSEO
+        config={{
           title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
-        },
-      }}
-    />
-    <Header title={title} description={description} />
-
-    <main>
-      <Center>
-        <Pagination page={query.page} />
-      </Center>
-      <Query
-        query={ALL_ARTICLES_QUERY}
-        variables={{
-          start: query.page * PER_PAGE - PER_PAGE,
-          limit: PER_PAGE,
+          openGraph: {
+            title: `${SITE_TITLE}${SEPARATOR}${title}`,
+            description,
+          },
         }}
-      >
-        {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) {
-            console.log(`Fetch Error: ${error}`);
+      />
+      <Header title={title} description={description} />
+
+      <main>
+        <Query
+          query={ALL_ARTICLES_QUERY}
+          variables={{
+            start: page * PER_PAGE - PER_PAGE,
+            limit: PER_PAGE,
+          }}
+        >
+          {({ data, error, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) {
+              console.log(`Fetch Error: ${error}`);
+              return (
+                <Card>
+                  <h3>Unable to fetch archives</h3>
+                  <p>{error.message}</p>
+                </Card>
+              );
+            }
+
             return (
-              <Card>
-                <h3>Unable to fetch archives</h3>
-                <p>{error.message}</p>
-              </Card>
+              <>
+                {data.articles.map(article => (
+                  <BriefArticle article={article} key={article._id}>
+                    <Markdown>{article.seo_description}</Markdown>
+                  </BriefArticle>
+                ))}
+              </>
             );
-          }
+          }}
+        </Query>
+        <Center>
+          <Pagination page={page} graphql_query={ARTICLE_PAGINATION_QUERY} />
+        </Center>
+      </main>
+      <Footer />
+    </>
+  );
+}
 
-          return (
-            <>
-              {data.articles.map(article => (
-                <BriefArticle article={article} key={article._id}>
-                  <Markdown>{article.seo_description}</Markdown>
-                </BriefArticle>
-              ))}
-            </>
-          );
-        }}
-      </Query>
-      <Center>
-        <Pagination page={query.page} />
-      </Center>
-    </main>
-    <Footer />
-  </>
-);
-
-export default ArchivesPage;
+export default ArticlesPage;
