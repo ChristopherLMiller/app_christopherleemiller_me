@@ -1,25 +1,36 @@
 import App, { Container } from 'next/app';
+import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
 import NextSEO from 'next-seo';
+import LogRocket from 'logrocket';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
-import withData from '../lib/withData';
-import { SENTRY_PUBLIC_DSN, DEFAULT_SEO } from '../config';
+import withApollo from '../lib/withApollo';
+import { DEFAULT_SEO } from '../config';
+import { initGA, logPageView } from '../utils/analytics';
 
 class MyApp extends App {
   constructor(...args) {
     super(...args);
     Sentry.init({
-      dsn: SENTRY_PUBLIC_DSN,
+      dsn: process.env.SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
+    LogRocket.init(process.env.LOGROCKET);
   }
 
   componentDidCatch(error, errorInfo) {
     Sentry.configureScope(scope => {
       Object.keys(errorInfo).forEach(key => {
         scope.setExtra(key, errorInfo[key]);
+      });
+    });
+
+    Sentry.configureScope(scope => {
+      scope.addEventProcessor(async event => {
+        event.extra.sessionURL = LogRocket.sessionURL;
+        return event;
       });
     });
     Sentry.captureException(error);
@@ -38,6 +49,12 @@ class MyApp extends App {
     return { pageProps };
   }
 
+  componentDidMount() {
+    initGA();
+    logPageView();
+    Router.router.events.on(`routeChangeComplete`, logPageView);
+  }
+
   render() {
     const { Component, apollo, pageProps } = this.props;
 
@@ -54,4 +71,4 @@ class MyApp extends App {
   }
 }
 
-export default withData(MyApp);
+export default withApollo(MyApp);

@@ -1,25 +1,32 @@
 // Client side things only, don't put things here that shouldn't be public
-export const endpoint = 'http://localhost:7777';
-export const SENTRY_PUBLIC_DSN =
-  'https://689a090684274ef79c1d224dab39e692@sentry.io/1331823';
+export const GRAPHQL_ENDPOINT = `https://strapi.christopherleemiller.me/graphql`;
+export const CLOUDINARY_URL = `https://res.cloudinary.com/christopherleemiller/image/upload`;
+export const CLOUDINARY_CLOUD = `v1554111995`;
+export const CLOUDINARY_FOLDER = `clm_me`;
+
+export const SITE_TITLE = `Christopher Lee Miller`;
+export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/c_scale,w_300/${CLOUDINARY_CLOUD}/${CLOUDINARY_FOLDER}/assets/logo.png`;
+export const SEPARATOR = ` - `;
 
 export const DEFAULT_SEO = {
-  title: 'ChristopherLeeMiller.me',
-  description: 'Website all about me and my services',
+  title: `ChristopherLeeMiller.me`,
+  description: `Website all about me and my services`,
+  canonical: process.env.SITE_URL,
   openGraph: {
-    type: 'website',
-    locale: 'en_IE',
-    url: 'https://www.christopherleemiller.me',
-    title: 'ChristopherLeeMiller.me',
-    description: 'Website all about me and my services',
-    image:
-      'https://res.cloudinary.com/christopherleemiller/image/upload/c_scale,w_300/v1544466783/clm_me/assets/logo.png',
-    site_name: 'ChristopherLeeMiller.me',
+    type: `website`,
+    locale: `en_IE`,
+    url: process.env.SITE_URL,
+    title: `ChristopherLeeMiller.me`,
+    description: `Website all about me and my services`,
+    image: SITE_DEFAULT_IMAGE,
+    site_name: `ChristopherLeeMiller.me`,
     imageWidth: 300,
     imageHeight: 300,
   },
   twitter: {
-    handle: '@moose517',
-    cardType: 'summary_large_image',
+    handle: `@ChrisLMiller_me`,
+    cardType: `summary_large_image`,
   },
 };
+
+export const PER_PAGE = 10;
