@@ -5,30 +5,30 @@
         "next/babel",
         "@zeit/next-typescript/babel"
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true
-          }
+        "plugins": [
+          [
+            "styled-components",
+            {
+              "ssr": true,
+              "displayName": true
+            }
+          ]
         ]
-      ]
     },
     "production": {
       "presets": [
         "next/babel",
         "@zeit/next-typescript/babel"
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true
-          }
+        "plugins": [
+          [
+            "styled-components",
+            {
+              "ssr": true,
+              "displayName": true
+            }
+          ]
         ]
-      ]
     },
     "test": {
       "presets": [
@@ -41,15 +41,15 @@
           }
         ]
       ],
-      "plugins": [
-        [
-          "styled-components",
-          {
-            "ssr": true,
-            "displayName": true
-          }
+        "plugins": [
+          [
+            "styled-components",
+            {
+              "ssr": true,
+              "displayName": true
+            }
+          ]
         ]
-      ]
     }
   }
 }
