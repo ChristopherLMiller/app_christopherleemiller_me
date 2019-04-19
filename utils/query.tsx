@@ -23,6 +23,7 @@ export const ARTICLES_QUERY = gql`
       }
       comments {
         comment
+        created_at
         user {
           username
         }
