@@ -5,7 +5,7 @@ import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
 import React from 'react';
-import { ARTICLE_QUERY } from '../utils/query';
+import { ARTICLES_QUERY } from '../utils/query';
 import { Query } from 'react-apollo';
 import { SEPARATOR, SITE_TITLE } from '../config';
 
@@ -26,7 +26,7 @@ const PrivacyPolicyPage = () => (
     />
     <Header title={title} description={description} />
     <main>
-      <Query query={ARTICLE_QUERY} variables={{ slug: 'privacy-policy' }}>
+      <Query query={ARTICLES_QUERY} variables={{ article_slug: 'privacy-policy', published: false }}>
         {({ data, error, loading }) => {
           if (loading) return <p>Loading...</p>;
           if (error) {

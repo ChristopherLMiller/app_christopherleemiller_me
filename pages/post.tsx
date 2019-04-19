@@ -37,7 +37,7 @@ const PostPage: SFC<PostPageTypes> = ({ query }) => (
     <main>
       <Query
         query={ARTICLES_QUERY}
-        variables={{ article_slug: query.slug, published: false }}
+        variables={{ article_slug: query.slug }}
       >
         {({ data, error, loading }) => {
           if (loading) return <p>Loading...</p>;
