@@ -48,7 +48,7 @@
     "markdown-to-jsx": "^6.9.2",
     "next": "^8.0.3",
     "next-auth": "^1.12.1",
-    "next-offline": "^3.3.6",
+    "next-offline": "^3.3.8",
     "next-seo": "^1.11.2",
     "next-with-apollo": "^3.4.0",
     "nprogress": "^0.2.0",
