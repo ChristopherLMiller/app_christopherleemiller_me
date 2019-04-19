@@ -6,7 +6,7 @@ import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
 import React, { SFC } from 'react';
 import Router from 'next/router';
-import { ARTICLE_QUERY } from '../utils/query';
+import { ARTICLES_QUERY } from '../utils/query';
 import { Query } from 'react-apollo';
 import { SEPARATOR, SITE_TITLE } from '../config';
 
@@ -36,8 +36,8 @@ const PostPage: SFC<PostPageTypes> = ({ query }) => (
 
     <main>
       <Query
-        query={ARTICLE_QUERY}
-        variables={{ slug: query.slug }}
+        query={ARTICLES_QUERY}
+        variables={{ article_slug: query.slug, published: false }}
       >
         {({ data, error, loading }) => {
           if (loading) return <p>Loading...</p>;

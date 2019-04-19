@@ -1,80 +1,43 @@
 import gql from 'graphql-tag';
 
-export const ALL_ARTICLES_QUERY = gql`
-  query ALL_ARTICLES_QUERY($start: Int = 0, $limit: Int = 10) {
+export const ARTICLES_QUERY = gql`
+  query ARTICLES_QUERY($start: Int = 0, $limit: Int = 10, $article_slug: String, $published: Boolean = true) {
     articles(
       limit: $limit
       start: $start
-      sort: "createdAt:DESC"
-      where: { published: true }
+      sort: "created_at:DESC"
+      where: { slug: $article_slug, published: $published}
     ) {
-      _id
+      id
       slug
       title
+      published
       featured_image
-      createdAt
-      updatedAt
+      created_at
+      updated_at
       seo_description
       seo_title
       content
       user {
         username
       }
-      comments(sort: "ASC") {
-        _id
-        text
-        createdAt
+      comments {
+        comment
         user {
           username
         }
       }
       categories {
-        _id
+        id
         slug
         title
       }
       tags {
-        _id
+        id
         slug
         title
       }
-    }
-  }
-`;
 
-export const ARTICLE_QUERY = gql`
-  query ARTICLE_QUERY($slug: String) {
-    articles(where: { slug: $slug }) {
-      _id
-      slug
-      title
-      content
-      featured_image
-      seo_title
-      seo_description
-      createdAt
-      updatedAt
-      user {
-        username
-      }
-      comments(sort: "ASC") {
-        _id
-        text
-        createdAt
-        user {
-          username
-        }
-      }
-      categories {
-        _id
-        slug
-        title
-      }
-      tags {
-        _id
-        slug
-        title
-      }
     }
   }
 `;
