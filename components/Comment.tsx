@@ -43,7 +43,7 @@ const CommentBottomLine = styled.p`
 interface CommentProps {
   comment: {
     created_at: string,
-    text: string,
+    comment: string,
     user: {
       username: string,
     },
@@ -61,7 +61,7 @@ const Comment: SFC<CommentProps> = ({ comment }) => (
           new Date()
         )}</CommentDate>
       </CommentTopLine>
-      <CommentBottomLine>{comment.text}</CommentBottomLine>
+      <CommentBottomLine>{comment.comment}</CommentBottomLine>
     </CommentText>
   </CommentWrapper>
 );
