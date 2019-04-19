@@ -36,8 +36,8 @@ interface ArticleTypes {
     content_brief: string,
     content: string,
     title: string,
-    createdAt: string,
-    updatedAt: string,
+    created_at: string,
+    updated_at: string,
     seo_title: string,
     seo_description: string,
     user: {

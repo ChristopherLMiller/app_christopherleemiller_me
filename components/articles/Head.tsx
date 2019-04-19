@@ -18,10 +18,10 @@ const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
     <StyledArticleHeaderInfo>
       <h2>{article.title} </h2>
       {
-        article.createdAt && (
+        article.created_at && (
           <p>
             Published{' '}
-            {formatRelative(parseISO(article.createdAt), new Date())} by{' '}{article.user.username}
+            {formatRelative(parseISO(article.created_at), new Date())} by{' '}{article.user.username}
           </p>
         )
       }

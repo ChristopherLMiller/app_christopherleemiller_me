@@ -42,7 +42,7 @@ const CommentBottomLine = styled.p`
 
 interface CommentProps {
   comment: {
-    createdAt: string,
+    created_at: string,
     text: string,
     user: {
       username: string,
@@ -57,7 +57,7 @@ const Comment: SFC<CommentProps> = ({ comment }) => (
       <CommentTopLine>
         <CommentName>{comment.user.username}</CommentName>
         <CommentDate>{formatRelative(
-          parseISO(comment.createdAt),
+          parseISO(comment.created_at),
           new Date()
         )}</CommentDate>
       </CommentTopLine>
