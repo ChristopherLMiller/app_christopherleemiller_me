@@ -8,12 +8,11 @@ const NavStyles = styled.ul`
 
 const NavItem = styled.li`
   font-family: monospace;
-  font-size: 1.5em;
+  font-size: 1.4em;
   list-style-type: none;
   line-height: 2em;
   position: relative;
   display: block;
-  text-align: center;
 
   :after {
     content: '\\A';
