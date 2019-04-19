@@ -57,14 +57,14 @@ export const ALL_MODELS_QUERY = gql`
     models(
       limit: $limit
       start: $start
-      sort: "createdAt:DESC"
+      sort: "created_at:DESC"
       where: { published: true }
     ) {
       _id
       title
       content
-      createdAt
-      updatedAt
+      created_at
+      updated_at
       slug
       seo_title
       seo_description

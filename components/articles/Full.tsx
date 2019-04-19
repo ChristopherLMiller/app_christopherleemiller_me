@@ -32,8 +32,8 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
             url: `${process.env.SITE_URL}/post/${article.slug}`,
             type: 'article',
             article: {
-              publishedTime: article.createdAt,
-              modifiedTime: article.updatedAt,
+              publishedTime: article.created_at,
+              modifiedTime: article.updated_at,
               authors: [
                 article.user.username,
               ]
