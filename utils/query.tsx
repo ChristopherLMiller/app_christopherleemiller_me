@@ -59,7 +59,7 @@ query ARTICLES_QUERY(
   }
 `;
 
-export const ALL_MODELS_QUERY = gql`
+export const MODELS_QUERY = gql`
 query MODELS_QUERY(
   $start: Int = 0,
   $limit: Int = 20,
@@ -99,13 +99,16 @@ query MODELS_QUERY(
     year_released
     scale {
       scale
+      slug
     }
     manufacturer {
       company
+      slug
     }
     tags {
       id
       title
+      slug
     }
     comments {
       id
@@ -115,6 +118,8 @@ query MODELS_QUERY(
         username
       }
     }
+    clockify_id
+    scalemates_link
   }
 }
 `;

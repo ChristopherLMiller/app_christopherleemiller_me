@@ -23,7 +23,7 @@ const Tags: SFC<TagsType> = ({ tags }) => (
   <TagsWrapper>
     <span>Tags: </span>
     {tags.map((tag, index) => (
-      <TagsLink key={tag._id}>
+      <TagsLink key={tag.id}>
         {!!index && <Splitter>|</Splitter>}
         <Link href={`/tag?slug=${tag.slug}`} as={`/tag/${tag.slug}`}>
           <a>{tag.title}</a>

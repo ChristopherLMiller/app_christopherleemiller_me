@@ -5,20 +5,14 @@ import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
 import React, { SFC } from 'react';
-import styled from 'styled-components';
-import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
 import { ARTICLES_QUERY } from '../utils/query';
 import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
 import { Query } from 'react-apollo';
-//import Pagination from '../components/articles/Pagination';
 
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-const Center = styled.div`
-  text-align: center;
-`;
 
 interface ArticlesPageTypes {
   query: {
@@ -73,7 +67,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
             return (
               <>
                 {data.articles.map(article => (
-                  <BriefArticle article={article} key={article._id}>
+                  <BriefArticle article={article} key={article.id}>
                     <Markdown>{article.seo_description}</Markdown>
                   </BriefArticle>
                 ))}
