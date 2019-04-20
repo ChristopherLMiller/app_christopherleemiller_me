@@ -1,12 +1,27 @@
 import gql from 'graphql-tag';
 
 export const ARTICLES_QUERY = gql`
-  query ARTICLES_QUERY($start: Int = 0, $limit: Int = 10, $article_slug: String, $published: Boolean = true) {
+query ARTICLES_QUERY(
+  $start: Int = 0,
+  $limit: Int = 10,
+  $article_slug: String,
+  $category: String,
+  $tag: String,
+  $published: Boolean = true) {
     articles(
-      limit: $limit
-      start: $start
-      sort: "created_at:DESC"
-      where: { slug: $article_slug, published: $published}
+      limit: $limit,
+      start: $start,
+      sort: "created_at:DESC",
+      where: {
+        slug: $article_slug,
+        published: $published,
+        categories: {
+          slug: $category,
+        },
+        tags: {
+          slug: $tag,
+        },
+      }
     ) {
       id
       slug
@@ -22,6 +37,7 @@ export const ARTICLES_QUERY = gql`
         username
       }
       comments {
+        id
         comment
         created_at
         user {
@@ -43,54 +59,62 @@ export const ARTICLES_QUERY = gql`
   }
 `;
 
-export const ARTICLE_PAGINATION_QUERY = gql`
-  query ARTICLE_PAGINATION_QUERY {
-    articlesConnection(where: { published: true }) {
-      aggregate {
-        count
-      }
-    }
-  }
-`;
-
 export const ALL_MODELS_QUERY = gql`
-  query ALL_MODELS_QUERY($start: Int = 0, $limit: Int = 10) {
-    models(
-      limit: $limit
-      start: $start
-      sort: "created_at:DESC"
-      where: { published: true }
-    ) {
-      _id
+query MODELS_QUERY(
+  $start: Int = 0,
+  $limit: Int = 20,
+  $model_slug: String,
+  $scale: String,
+  $manufacturer: String,
+  $completed: Boolean,
+  $published: Boolean = true
+) {
+  models(
+    start: $start,
+    limit: $limit,
+    sort: "created_at:DESC",
+    where: {
+      slug: $model_slug,
+      scale: {
+        scale: $scale,
+      },
+      manufacturer: {
+        company: $manufacturer,
+      },
+      completed: $completed,
+      published: $published,
+    }
+  ) {
+    id
+    created_at
+    updated_at
+    title
+    slug
+    content
+    featured_image
+    seo_title
+    seo_description
+    completed
+    kit_number
+    year_released
+    scale {
+      scale
+    }
+    manufacturer {
+      company
+    }
+    tags {
+      id
       title
-      content
+    }
+    comments {
+      id
+      comment
       created_at
-      updated_at
-      slug
-      seo_title
-      seo_description
-      published
-      completed
-      featured_image
-      tags {
-        title
-      }
-      comments {
-        text
-        user {
-          username
-        }
+      user {
+        username
       }
     }
   }
-`;
-
-export const MODEL_PAGINATION_QUERY = gql`
-  query MODEL_PAGINATION_QUERY {
-    modelsConnection(where: { published: true }) {
-      aggregate {
-        count
-      }
-    }
-  }
+}
 `;
