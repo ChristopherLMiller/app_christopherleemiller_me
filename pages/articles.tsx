@@ -4,13 +4,13 @@ import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
-//import Pagination from '../components/articles/Pagination';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
-import { ARTICLES_QUERY } from '../utils/query';
 import { ARTICLE_PAGINATION_QUERY } from '../utils/query';
+import { ARTICLES_QUERY } from '../utils/query';
 import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
 import { Query } from 'react-apollo';
+//import Pagination from '../components/articles/Pagination';
 
 
 const title = `From My Desk`;
@@ -22,7 +22,9 @@ const Center = styled.div`
 
 interface ArticlesPageTypes {
   query: {
-    page: number,
+    page: string,
+    category: string,
+    tag: string,
   }
 }
 
@@ -30,6 +32,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
 
   // set a default value for page if non provided
   const page = parseFloat(query.page) || 1;
+
 
   return (
     <>
@@ -51,9 +54,11 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
           variables={{
             start: page * PER_PAGE - PER_PAGE,
             limit: PER_PAGE,
+            category: query.category,
+            tag: query.tag,
           }}
         >
-          {({ data, error, loading }) => {
+          {({ data, error, loading, refetch }) => {
             if (loading) return <p>Loading...</p>;
             if (error) {
               console.log(`Fetch Error: ${error}`);

@@ -22,18 +22,15 @@ const Categories: SFC<CategoriesType> = ({ categories }) => (
   <CategoriesWrapper>
     <span>Categories: </span>
     {categories.map((category, index) => (
-      <CategoriesLink key={category._id}>
+      <CategoriesLink key={category.id}>
         {!!index && <Splitter>|</Splitter>}
-        <Link
-          href={`/articles?slug=${category.slug}`}
-          as={`/category/${category.slug}`}
-        >
+        <Link href={`/articles?category=${category.slug}`} as={`/articles?category=${category.slug}`} shallow>
           <a>{category.title}</a>
         </Link>
       </CategoriesLink>
     ))}
     {(categories.length < 1) && (
-      <span>None</span>
+      <span>Uncategorized</span>
     )}
   </CategoriesWrapper>
 );
