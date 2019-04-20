@@ -33,7 +33,7 @@ const Categories: SFC<CategoriesType> = ({ categories }) => (
       </CategoriesLink>
     ))}
     {(categories.length < 1) && (
-      <span>None</span>
+      <span>Uncategorized</span>
     )}
   </CategoriesWrapper>
 );
