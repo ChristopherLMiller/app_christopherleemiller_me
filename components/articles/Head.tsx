@@ -1,8 +1,9 @@
 import ArticleTypes from './Types';
+import Link from 'next/link';
 import { formatRelative, parseISO } from 'date-fns';
+import { ImageURL } from '../../utils/functions';
 import { SFC } from 'react';
 import { StyledArticleHeader, StyledArticleHeaderImage, StyledArticleHeaderInfo } from '../styles/Articles';
-import { ImageURL } from '../../utils/functions';
 
 const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
   <StyledArticleHeader>
@@ -16,7 +17,13 @@ const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
         />
       )}
     <StyledArticleHeaderInfo>
-      <h2>{article.title} </h2>
+      <h2>
+        <Link
+          as={`/post/${article.slug}`}
+          href={`/post?slug=${article.slug}`}
+        >
+          <a>{article.title}</a>
+        </Link></h2>
       {
         article.created_at && (
           <p>

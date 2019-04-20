@@ -105,6 +105,10 @@ const StyledArticleHeaderInfo = styled.div`
   padding: 20px;
   margin: 0;
   color: ${(props: Props) => props.theme.colors.grey};
+
+  a:hover {
+    text-decoration: underline;
+  }
 `;
 
 const StyledArticleFooter = styled.div`
