@@ -22,7 +22,9 @@ const Center = styled.div`
 
 interface ArticlesPageTypes {
   query: {
-    page: number,
+    page: string,
+    category: string,
+    tag: string,
   }
 }
 
@@ -51,6 +53,8 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
           variables={{
             start: page * PER_PAGE - PER_PAGE,
             limit: PER_PAGE,
+            category: query.category,
+            tag: query.tag,
           }}
         >
           {({ data, error, loading }) => {
