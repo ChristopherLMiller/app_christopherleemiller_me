@@ -46,7 +46,7 @@
     "lodash.debounce": "^4.0.8",
     "logrocket": "^0.6.19",
     "markdown-to-jsx": "^6.9.4",
-    "next": "^8.0.3",
+    "next": "^8.1.0",
     "next-auth": "^1.12.1",
     "next-offline": "^3.3.8",
     "next-seo": "^1.11.2",
