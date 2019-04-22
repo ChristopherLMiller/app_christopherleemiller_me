@@ -1,4 +1,4 @@
-import BriefArticle from '../components/articles/Brief';
+import { BriefArticle } from '../components/articles/Brief';
 import Card from '../components/Card';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';

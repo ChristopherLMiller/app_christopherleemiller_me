@@ -35,4 +35,4 @@ const Categories: SFC<CategoriesType> = ({ categories }) => (
   </CategoriesWrapper>
 );
 
-export default Categories;
+export { Categories };

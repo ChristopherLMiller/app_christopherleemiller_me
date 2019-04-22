@@ -1,6 +1,6 @@
 import Logo from './Logo';
 import Nav from './Nav';
-import SocialLinks from '../SocialLinks';
+import { SocialLinks } from '../SocialLinks';
 import styled from 'styled-components';
 import Title from './Title';
 import { Props } from '../styles/Themes';

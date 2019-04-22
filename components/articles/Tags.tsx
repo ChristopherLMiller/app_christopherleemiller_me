@@ -36,4 +36,4 @@ const Tags: SFC<TagsType> = ({ tags }) => (
   </TagsWrapper>
 );
 
-export default Tags;
+export { Tags };

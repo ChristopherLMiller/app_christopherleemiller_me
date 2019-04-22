@@ -1,8 +1,8 @@
-import React, { SFC } from 'react';
-import { Query } from 'react-apollo';
 import Link from 'next/link';
 import PaginationStyles from '../styles/PaginationStyles';
+import React, { SFC } from 'react';
 import { PER_PAGE } from '../../config';
+import { Query } from 'react-apollo';
 
 interface PaginationTypes {
   page: number,
@@ -50,4 +50,4 @@ const Pagination: SFC<PaginationTypes> = ({ page, graphql_query }) => (
   </Query>
 );
 
-export default Pagination;
+export { Pagination };

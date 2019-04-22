@@ -2,17 +2,17 @@ import React from 'react';
 import { StyledModelListingParagraph } from '../styles/Models';
 
 class BuildTime extends React.Component {
-  constructor(props) {
+  constructor(props: object) {
     super(props);
 
     this.state = {
-      time: '',
+      time: "",
       isLoading: false,
       error: null,
     }
   }
 
-  convertTime(time) {
+  convertTime(time: String) {
     let hours = 0;
     let minutes = 0;
     let output = "";
@@ -27,14 +27,14 @@ class BuildTime extends React.Component {
     // step 2: pull out hours
     let hoursIndex = time.indexOf('H');
     if (hoursIndex !== -1) {
-      hours = stripped.slice(0, hoursIndex);
+      hours = parseInt(stripped.slice(0, hoursIndex));
       output += `${hours} Hours `;
     }
 
     // step 3. grab the minutes
     let minutesIndex = time.indexOf('M');
     if (minutesIndex !== -1) {
-      minutes = stripped.slice(minutesIndex - 4, minutesIndex - 2);
+      minutes = parseInt(stripped.slice(minutesIndex - 4, minutesIndex - 2));
       output += `${minutes} Minutes`;
     }
 

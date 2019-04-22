@@ -1,6 +1,6 @@
-import Comment from './Comment';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
+import { Comment } from './Comment';
 import { Props } from './styles/Themes';
 
 const StyledCommentSection = styled.div`
@@ -51,4 +51,4 @@ const CommentsList: SFC<CommentsListProps> = ({ comments }) => (
   </StyledCommentSection>
 );
 
-export default CommentsList;
+export { CommentsList };

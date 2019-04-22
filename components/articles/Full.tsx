@@ -1,8 +1,8 @@
-import ArticleHead from './Head';
-import ArticleTypes from './Types';
-import CommentsList from '../CommentsList';
 import hljs from 'highlight.js/';
 import NextSEO from 'next-seo';
+import { ArticleHead } from './Head';
+import { ArticleTypes } from './Types';
+import { CommentsList } from '../CommentsList';
 import { ImageURL } from '../../utils/functions';
 import { SFC, useEffect } from 'react';
 import {
@@ -32,16 +32,16 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
             url: `${process.env.SITE_URL}/post/${article.slug}`,
             type: 'article',
             article: {
-              publishedTime: article.created_at,
-              modifiedTime: article.updated_at,
               authors: [
                 article.user.username,
-              ]
+              ],
+              modifiedTime: article.updated_at,
+              publishedTime: article.created_at,
             },
             images: [
               {
+                alt: article.title,
                 url: ImageURL(article.featured_image),
-                alt: article.title
               },
             ],
           },
@@ -59,4 +59,4 @@ const FullArticle: SFC<ArticleTypes> = ({ article, children, commentsEnabled = t
   );
 };
 
-export default FullArticle;
+export { FullArticle };

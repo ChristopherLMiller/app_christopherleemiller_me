@@ -1,8 +1,8 @@
 import React, { SFC } from 'react';
 import styled from 'styled-components';
 import { formatRelative, parseISO } from 'date-fns';
-import { Props } from './styles/THemes';
 import { ImageURL } from '../utils/functions';
+import { Props } from './styles/THemes';
 
 const CommentWrapper = styled.li`
   border-bottom: 1px solid black;
@@ -66,4 +66,4 @@ const Comment: SFC<CommentProps> = ({ comment }) => (
   </CommentWrapper>
 );
 
-export default Comment;
+export { Comment };

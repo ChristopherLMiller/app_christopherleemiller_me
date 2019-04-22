@@ -10,4 +10,4 @@ const CommentCount: SFC<CommentsType> = ({ comments }) => (
   <StyledCommentCount>{comments.length || 0} Comments</StyledCommentCount>
 )
 
-export default CommentCount;
+export { CommentCount };

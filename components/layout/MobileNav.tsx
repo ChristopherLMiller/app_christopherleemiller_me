@@ -3,9 +3,9 @@ import Nav from './Nav';
 import posed from 'react-pose';
 import React, { useEffect, useState } from 'react';
 import Router from 'next/router';
-import SocialLinks from '../SocialLinks';
 import styled from 'styled-components';
 import { Props } from '../styles/Themes';
+import { SocialLinks } from '../SocialLinks';
 
 
 const StyledMobileNav = styled.div`
