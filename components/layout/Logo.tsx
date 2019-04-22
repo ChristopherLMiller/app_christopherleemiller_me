@@ -12,7 +12,7 @@ const StyledLogo = styled.img`
   }
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    width: 75%;
+    width: 66%;
     display: block;
   }
 `;

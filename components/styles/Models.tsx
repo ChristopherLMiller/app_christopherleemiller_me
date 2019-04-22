@@ -1,12 +1,15 @@
 import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
-const StyledModelListings = styled.div``;
+const StyledModelListings = styled.div`
+  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
+    grid-template-columns: 50% 50%;
+    display: grid;
+  }
+`;
 
 const StyledModelListing = styled.div`
-  margin: 25px 0;
-  display: grid;
-  grid-template-columns: auto 33%;
+  margin: 0 25px 50px 25px;
 `;
 
 const StyledModelListingInfo = styled.div`
@@ -51,4 +54,10 @@ const StyledReadMore = styled.p`
   }
 `;
 
-export { StyledModelListings, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore }
+const StyledModelImage = styled.img`
+  border: 20px solid ${(props: Props) => props.theme.colors.white};
+  max-width: 100%;
+  margin-bottom: 10px;
+`;
+
+export { StyledModelListings, StyledModelImage, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore }

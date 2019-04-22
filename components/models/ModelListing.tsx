@@ -7,7 +7,6 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
   <StyledModelListing>
     <ModelImage model={model} />
     <ModelInfo model={model} />
-    {console.log(model)}
   </StyledModelListing>
 );
 

@@ -9,6 +9,7 @@ import {
   StyledModelListingTitle,
   StyledReadMore
 } from '../styles/Models';
+import BuildTime from './BuildTime';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
   let completed = model.completed ? "Yes" : "No";
@@ -25,16 +26,17 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
         </StyledModelListingColumn>
         <StyledModelListingColumn>
           <StyledModelListingParagraph>Completed: {completed}</StyledModelListingParagraph>
+          <BuildTime id={model.clockify_id} />
         </StyledModelListingColumn>
+        <StyledReadMore>
+          <Link
+            as={`/model/${model.slug}`}
+            href={`/model?slug=${model.slug}`}
+          >
+            <a>View More </a>
+          </Link>
+        </StyledReadMore>
       </StyledModelListingBlock>
-      <StyledReadMore>
-        <Link
-          as={`/model/${model.slug}`}
-          href={`/model?slug=${model.slug}`}
-        >
-          <a>View More </a>
-        </Link>
-      </StyledReadMore>
     </StyledModelListingInfo>
   );
 }
