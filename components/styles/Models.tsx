@@ -2,8 +2,14 @@ import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div`
-  display: grid;
-  grid-template-columns: auto 25%;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    display: grid;
+    grid-template-columns: auto 20%;
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
+    grid-template-columns: auto: 20%;
+  }
 `;
 
 const StyledModelListings = styled.div`
@@ -14,7 +20,11 @@ const StyledModelListings = styled.div`
 `;
 
 const StyledModelListing = styled.div`
-  margin: 0 25px 50px 25px;
+  margin: 0 0 50px 0;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
+    margin: 0 25px 50px 25px;
+  }
 `;
 
 const StyledModelListingInfo = styled.div`
@@ -48,7 +58,8 @@ const StyledModelListingColumn = styled.div`
 const StyledReadMore = styled.p`
   background: ${(props: Props) => props.theme.colors.red};
   padding: 5px;
-  transform: skew(-20deg);
+  transform: skew(-25deg);
+  transition: all 0.5s;
   text-align: center;
   margin: 20px auto;
   max-width: 200px;
@@ -57,12 +68,15 @@ const StyledReadMore = styled.p`
   a {
     color: ${(props: Props) => props.theme.colors.white};
   }
+
+  :hover {
+    transform: skew(0deg);
+  }
 `;
 
 const StyledModelImage = styled.img`
-  border: 20px solid ${(props: Props) => props.theme.colors.white};
   max-width: 100%;
-  margin-bottom: 10px;
+  display: block;
 `;
 
 export { StyledModelListings, StyledModelImage, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore, StyledModelPage }
