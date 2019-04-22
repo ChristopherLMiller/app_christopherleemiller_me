@@ -13,6 +13,11 @@ class BuildTime extends React.Component {
   }
 
   convertTime(time: String) {
+    // verify we even have something first
+    if (!time) {
+      return "N/A";
+    }
+
     let hours = 0;
     let minutes = 0;
     let output = "";

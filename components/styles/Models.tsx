@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
+const StyledModelPage = styled.div`
+  display: grid;
+  grid-template-columns: auto 25%;
+`;
+
 const StyledModelListings = styled.div`
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: 50% 50%;
@@ -60,4 +65,4 @@ const StyledModelImage = styled.img`
   margin-bottom: 10px;
 `;
 
-export { StyledModelListings, StyledModelImage, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore }
+export { StyledModelListings, StyledModelImage, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore, StyledModelPage }

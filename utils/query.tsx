@@ -72,14 +72,14 @@ query MODELS_QUERY(
   models(
     start: $start,
     limit: $limit,
-    sort: "created_at:DESC",
+    sort: "title:ASC",
     where: {
       slug: $model_slug,
       scale: {
-        scale: $scale,
+        slug: $scale,
       },
       manufacturer: {
-        company: $manufacturer,
+        slug: $manufacturer,
       },
       completed: $completed,
       published: $published,
@@ -120,6 +120,26 @@ query MODELS_QUERY(
     }
     clockify_id
     scalemates_link
+  }
+}
+`;
+
+export const ALL_MANUFACTURERS_QUERY = gql`
+query ALL_MANUFACTURERS_QUERY {
+  manufacturers(sort: "company:ASC") {
+    id
+    slug
+    company
+  }
+}
+`;
+
+export const ALL_SCALES_QUERY = gql`
+query ALL_SCALES_QUERY {
+  scales(sort: "scale:ASC") {
+    id
+    slug
+    scale
   }
 }
 `;

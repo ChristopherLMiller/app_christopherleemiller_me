@@ -1,6 +1,6 @@
 import Card from '../components/Card';
 import Footer from '../components/layout/Footer';
-import FullArticle from '../components/articles/Full';
+import { FullArticle } from '../components/articles/Full';
 import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
 import NextSEO from 'next-seo';
