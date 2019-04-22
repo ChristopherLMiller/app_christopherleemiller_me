@@ -1,5 +1,5 @@
 interface CategoryType {
-  _id: string,
+  id: string,
   slug: string,
   title: string,
 };
@@ -9,7 +9,7 @@ interface CategoriesType {
 };
 
 interface TagType {
-  _id: string,
+  id: string,
   slug: string,
   title: string,
 };
@@ -19,7 +19,7 @@ interface TagsType {
 };
 
 interface CommentType {
-  _id: string,
+  id: string,
   user: {
     username: string,
   },
@@ -31,7 +31,7 @@ interface CommentsType {
 
 interface ArticleTypes {
   article: {
-    _id: string,
+    id: string,
     featured_image: string,
     content_brief: string,
     content: string,
@@ -41,7 +41,7 @@ interface ArticleTypes {
     seo_title: string,
     seo_description: string,
     user: {
-      _id: string,
+      id: string,
       username: string,
     },
     slug: string,
