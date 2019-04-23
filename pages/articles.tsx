@@ -52,7 +52,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
             tag: query.tag,
           }}
         >
-          {({ data, error, loading, refetch }) => {
+          {({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) {
               console.log(`Fetch Error: ${error}`);
