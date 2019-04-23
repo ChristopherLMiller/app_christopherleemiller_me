@@ -7,3 +7,7 @@ export function ImageURL(file = "assets/default", width = 300, transform = "c_sc
 
   return `${CLOUDINARY_URL}/${transform},w_${width},${quality}/${CLOUDINARY_CLOUD}/${CLOUDINARY_FOLDER}/${file}`;
 }
+
+export function fetchGraphQL(query) {
+
+}

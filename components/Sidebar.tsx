@@ -8,7 +8,7 @@ interface SidebarTypes {
 };
 
 const StyledSidebar = styled.div`
-  height: 100%;
+  margin-bottom: 50px;
 `;
 
 const StyledSidebarHeader = styled.h4`

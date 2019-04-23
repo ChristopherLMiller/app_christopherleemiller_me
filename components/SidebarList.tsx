@@ -1,6 +1,8 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
 import { Props } from './styles/Themes';
+import Link from 'next/link';
+import { Query } from 'react-apollo';
 
 const StyledSidebarList = styled.div`
   border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey_darker};
@@ -28,18 +30,83 @@ const SidebarItem = styled.li`
   font-family: 'Special Elite';
 `;
 
+const SidebarItemAnchor = styled.a`
+  color: ${(props: Props) => props.theme.colors.red};
+  cursor: pointer;
+`;
+
 interface SidebarListTypes {
   title: string,
-  items: Array<object>,
+  items?: Array<object>,
+  query?: string,
+  property?: string,
 }
 
-const SidebarList: SFC<SidebarListTypes> = ({ title, items }) => (
-  <StyledSidebarList>
-    <SidebarListHeading>{title}</SidebarListHeading>
-    <SidebarListings>
-      <SidebarItem>TODO</SidebarItem>
-    </SidebarListings>
-  </StyledSidebarList>
-);
+const SidebarList: SFC<SidebarListTypes> = ({ title, items, query, property }) => {
+  // selectively render for items array
+  if (items) {
+    return (
+      <StyledSidebarList>
+        <SidebarListHeading>{title}</SidebarListHeading>
+        <SidebarListings>
+          <SidebarItem key="all">
+            <Link href={`/models`}>
+              <SidebarItemAnchor>All</SidebarItemAnchor>
+            </Link>
+          </SidebarItem>
+          {items.map(item => (
+            <SidebarItem key={item.id}>
+              <Link href={`/models?completed=${item.slug}`} >
+                <SidebarItemAnchor>{item.title}</SidebarItemAnchor>
+              </Link>
+            </SidebarItem>
+          ))}
+        </SidebarListings>
+      </StyledSidebarList>
+    )
+  }
 
+  // if a query was provided instead of an array of items
+  if (query) {
+    return (
+      <StyledSidebarList>
+        <SidebarListHeading>{title}</SidebarListHeading>
+        <Query query={query}>
+          {({ data, error, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) {
+              console.log(`Fetch Error: ${error}`);
+              return (
+                <>
+                  <h3>Unable to fetch data</h3>
+                  <p>{error.message}</p>
+                </>
+              );
+            }
+
+            return (
+              <SidebarListings>
+                <SidebarItem key="all">
+                  <Link href={`/models`}>
+                    <SidebarItemAnchor>All</SidebarItemAnchor>
+                  </Link>
+                </SidebarItem>
+                {console.log(data)}
+                {data[Object.keys(data)[0]].map(object => (
+                  <SidebarItem key={object.id}>
+                    <Link href={`/models?${property}=${object.slug}`}>
+                      <SidebarItemAnchor>{object[property]}</SidebarItemAnchor>
+                    </Link>
+                  </SidebarItem>
+                ))}
+              </SidebarListings>
+            );
+          }}
+        </Query>
+      </StyledSidebarList>
+    )
+  }
+
+  return null;
+}
 export { SidebarList };

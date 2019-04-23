@@ -66,7 +66,7 @@ query MODELS_QUERY(
   $model_slug: String,
   $scale: String,
   $manufacturer: String,
-  $completed: Boolean,
+  $completed: String,
   $published: Boolean = true
 ) {
   models(
