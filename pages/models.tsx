@@ -9,7 +9,6 @@ import ModelListing from '../components/models/ModelListing';
 import { StyledModelListings, StyledModelPage } from '../components/styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarList } from '../components/SidebarList';
-import { fetchGraphQL } from '../utils/functions';
 import { SFC } from 'react';
 
 const title = 'Models';
@@ -34,10 +33,6 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   } else if (query.completed == 'no') {
     completed = 'false';
   }
-
-  const manufacturers = fetchGraphQL(ALL_MANUFACTURERS_QUERY);
-  console.log(completed);
-
 
   return (
     <>
@@ -71,6 +66,23 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
                   <p>{error.message}</p>
                 </Card>
               );
+            }
+
+            // if there is nothing in the dataset lets let the user know this
+            if (data.models.length < 1) {
+              return (
+                <StyledModelPage>
+                  <Card>
+                    <h3>No Results Found</h3>
+                    <p>Please try different search parameters as nothing was found.</p>
+                  </Card>
+                  <Sidebar title="Filters">
+                    <SidebarList title="Brand" query={ALL_MANUFACTURERS_QUERY} property="company" />
+                    <SidebarList title="Scale" query={ALL_SCALES_QUERY} property="scale" />
+                    <SidebarList title="completed" items={[{ id: 1, slug: 'yes', title: 'Yes' }, { id: 0, slug: 'no', title: 'No' }]} />
+                  </Sidebar>
+                </StyledModelPage>
+              )
             }
 
             return (

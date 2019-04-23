@@ -50,8 +50,7 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => (
             );
           }
 
-          console.log(data);
-          // verify that we actually received an article, an empty array signifies no result.
+          // verify that we actually received an model, an empty array signifies no result.
           if (data.models && data.models.length > 0) {
             const model = data.models[0];
             return (

@@ -91,7 +91,6 @@ const SidebarList: SFC<SidebarListTypes> = ({ title, items, query, property }) =
                     <SidebarItemAnchor>All</SidebarItemAnchor>
                   </Link>
                 </SidebarItem>
-                {console.log(data)}
                 {data[Object.keys(data)[0]].map(object => (
                   <SidebarItem key={object.id}>
                     <Link href={`/models?${property}=${object.slug}`}>
