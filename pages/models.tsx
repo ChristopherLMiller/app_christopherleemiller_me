@@ -5,7 +5,7 @@ import NextSEO from 'next-seo';
 import { MODELS_QUERY, ALL_MANUFACTURERS_QUERY, ALL_SCALES_QUERY } from '../utils/query';
 import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
 import { Query } from 'react-apollo';
-import ModelListing from '../components/models/ModelListing';
+import { ModelListing } from '../components/models/ModelListing';
 import { StyledModelListings, StyledModelPage } from '../components/styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarList } from '../components/SidebarList';

@@ -1,7 +1,8 @@
-import ModelTypes from './Types';
+import { ModelImage } from './ModelImage';
+import { ModelInfo } from './ModelInfo';
+import { ModelTypes } from './Types';
+import { SFC } from 'react';
 import { StyledModelListing } from '../styles/Models';
-import ModelImage from './ModelImage';
-import ModelInfo from './ModelInfo';
 
 const ModelListing: SFC<ModelTypes> = ({ model }) => (
   <StyledModelListing>
@@ -10,4 +11,4 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
   </StyledModelListing>
 );
 
-export default ModelListing;
+export { ModelListing };

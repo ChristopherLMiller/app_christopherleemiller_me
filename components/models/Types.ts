@@ -47,5 +47,4 @@ interface ModelTypes {
   }
 }
 
-export default ModelTypes;
-export { TagType, TagsType, CommentType, CommentsType };
+export { ModelTypes, TagType, TagsType, CommentType, CommentsType };

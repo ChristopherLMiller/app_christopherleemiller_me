@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import ModelTypes from './Types';
+import { BuildTime } from './BuildTime';
+import { ModelTypes } from './Types';
 import { SFC } from 'react';
 import {
   StyledModelListingBlock,
@@ -8,8 +9,7 @@ import {
   StyledModelListingParagraph,
   StyledModelListingTitle,
   StyledReadMore
-} from '../styles/Models';
-import BuildTime from './BuildTime';
+  } from '../styles/Models';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
   let completed = model.completed ? "Yes" : "No";
@@ -40,4 +40,4 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
     </StyledModelListingInfo>
   );
 }
-export default ModelInfo;
+export { ModelInfo };

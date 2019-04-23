@@ -97,4 +97,4 @@ class BuildTime extends React.Component {
   }
 }
 
-export default BuildTime;
+export { BuildTime };
