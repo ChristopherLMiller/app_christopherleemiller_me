@@ -14,8 +14,9 @@ const GalleriesPage = () => (
         title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
+          url: `${process.env.SITE_URL}/galleries`,
         },
       }}
     />

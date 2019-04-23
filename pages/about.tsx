@@ -15,8 +15,9 @@ const AboutPage = () => (
         title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description,
         openGraph: {
-          title: `${SITE_TITLE}${SEPARATOR}${title}`,
           description,
+          title: `${SITE_TITLE}${SEPARATOR}${title}`,
+          url: `${process.env.SITE_URL}/about`,
         },
       }}
     />
@@ -24,11 +25,7 @@ const AboutPage = () => (
 
     <main>
       <Card>
-        <p>
-          There is much more content to come, this is just placeholder for
-          the time being. Please check back soon. For now feel free to check
-          out my old site:
-            </p>
+        <p>There is much more content to come, this is just placeholder for the time being. Please check back soon. For now feel free to check out my old site:</p>
         <a href="https://www.christopherleemiller.me">Old Site</a>
       </Card>
     </main>
