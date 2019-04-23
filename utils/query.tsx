@@ -3,7 +3,7 @@ import gql from 'graphql-tag';
 export const ARTICLES_QUERY = gql`
 query ARTICLES_QUERY(
   $start: Int = 0,
-  $limit: Int = 10,
+  $limit: Int = 20,
   $article_slug: String,
   $category: String,
   $tag: String,

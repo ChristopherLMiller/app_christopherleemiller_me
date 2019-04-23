@@ -47,9 +47,13 @@ class BuildTime extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({
-      isLoading: true
-    });
+    this.mounted = true;
+
+    if (this.mount) {
+      this.setState({
+        isLoading: true
+      });
+    }
 
     try {
       const response = await fetch(`https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${this.props.id}`, {
@@ -61,17 +65,25 @@ class BuildTime extends React.Component {
 
       const json = await response.json();
 
-      this.setState({
-        isLoading: false,
-        time: this.convertTime(json.duration),
-      })
+      if (this.mounted) {
+        this.setState({
+          isLoading: false,
+          time: this.convertTime(json.duration),
+        });
+      }
     } catch (error) {
-      this.setState({
-        error,
-        isLoading: false,
-      })
+      if (this.mounted) {
+        this.setState({
+          error,
+          isLoading: false,
+        });
+      }
     }
 
+  }
+
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   render() {
