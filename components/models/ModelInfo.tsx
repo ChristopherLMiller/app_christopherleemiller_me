@@ -26,7 +26,7 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
         </StyledModelListingColumn>
         <StyledModelListingColumn>
           <StyledModelListingParagraph>Completed: {completed}</StyledModelListingParagraph>
-          <BuildTime id={model.clockify_id} />
+          {model.clockify_id && (<BuildTime id={model.clockify_id} />)}
         </StyledModelListingColumn>
         <StyledReadMore>
           <Link
