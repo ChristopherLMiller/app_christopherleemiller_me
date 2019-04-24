@@ -40,9 +40,10 @@ interface SidebarListTypes {
   items?: Array<object>,
   query?: string,
   property?: string,
+  slug?: string,
 }
 
-const SidebarList: SFC<SidebarListTypes> = ({ title, items, query, property }) => {
+const SidebarList: SFC<SidebarListTypes> = ({ title, items, query, property = "title", slug }) => {
   // selectively render for items array
   if (items) {
     return (
@@ -93,7 +94,7 @@ const SidebarList: SFC<SidebarListTypes> = ({ title, items, query, property }) =
                 </SidebarItem>
                 {data[Object.keys(data)[0]].map(object => (
                   <SidebarItem key={object.id}>
-                    <Link href={`/models?${property}=${object.slug}`}>
+                    <Link href={`/models?${slug}=${object.slug}`}>
                       <SidebarItemAnchor>{object[property]}</SidebarItemAnchor>
                     </Link>
                   </SidebarItem>

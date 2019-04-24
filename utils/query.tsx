@@ -66,13 +66,15 @@ query MODELS_QUERY(
   $model_slug: String,
   $scale: String,
   $manufacturer: String,
+  $tag: String,
   $completed: String,
+  $sort: String = "title:ASC",
   $published: Boolean = true
 ) {
   models(
     start: $start,
     limit: $limit,
-    sort: "title:ASC",
+    sort: $sort,
     where: {
       slug: $model_slug,
       scale: {
@@ -80,6 +82,9 @@ query MODELS_QUERY(
       },
       manufacturer: {
         slug: $manufacturer,
+      },
+      tags: {
+        slug: $tag,
       },
       completed: $completed,
       published: $published,
@@ -143,3 +148,16 @@ query ALL_SCALES_QUERY {
   }
 }
 `;
+
+export const ALL_MODELS_TAGS_QUERY = gql`
+query ALL_MODEL_TAGS_QUERY {
+  tags{
+    id
+    title
+    slug
+    models {
+      id
+    }
+  }
+}`
+  ;

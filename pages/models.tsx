@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import NextSEO from 'next-seo';
-import { MODELS_QUERY, ALL_MANUFACTURERS_QUERY, ALL_SCALES_QUERY } from '../utils/query';
+import { MODELS_QUERY, ALL_MANUFACTURERS_QUERY, ALL_SCALES_QUERY, ALL_MODELS_TAGS_QUERY } from '../utils/query';
 import { PER_PAGE, SEPARATOR, SITE_TITLE } from '../config';
 import { Query } from 'react-apollo';
 import { ModelListing } from '../components/models/ModelListing';
@@ -10,6 +10,8 @@ import { StyledModelListings, StyledModelPage } from '../components/styles/Model
 import { Sidebar } from '../components/Sidebar';
 import { SidebarList } from '../components/SidebarList';
 import { SFC } from 'react';
+import { SidebarDropdown } from '../components/SidebarDropdown';
+import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 
 const title = 'Models';
 const description = 'Whether it plane, car or tank, its all here!';
@@ -20,6 +22,8 @@ interface ModelsPageTypes {
     scale: string,
     company: string,
     completed: string,
+    tag: string,
+    sort: string,
   }
 }
 
@@ -55,6 +59,8 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
           limit: PER_PAGE,
           scale: query.scale,
           manufacturer: query.company,
+          tag: query.tag,
+          sort: query.sort,
           completed: completed,
         }}>
           {({ data, error, loading }) => {
@@ -78,9 +84,11 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
                     <p>Please try different search parameters as nothing was found.</p>
                   </Card>
                   <Sidebar title="Filters">
+                    <SidebarDropdown items={modelsSidebarSort} />
                     <SidebarList title="Brand" query={ALL_MANUFACTURERS_QUERY} property="company" />
                     <SidebarList title="Scale" query={ALL_SCALES_QUERY} property="scale" />
-                    <SidebarList title="completed" items={[{ id: 1, slug: 'yes', title: 'Yes' }, { id: 0, slug: 'no', title: 'No' }]} />
+                    <SidebarList title="Tags" query={ALL_MODELS_TAGS_QUERY} slug="tag" />
+                    <SidebarList title="completed" items={modelsSidebarCompletedFilter} />
                   </Sidebar>
                 </StyledModelPage>
               )
@@ -94,9 +102,11 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
                   ))}
                 </StyledModelListings>
                 <Sidebar title="Filters">
-                  <SidebarList title="Brand" query={ALL_MANUFACTURERS_QUERY} property="company" />
-                  <SidebarList title="Scale" query={ALL_SCALES_QUERY} property="scale" />
-                  <SidebarList title="completed" items={[{ id: 1, slug: 'yes', title: 'Yes' }, { id: 0, slug: 'no', title: 'No' }]} />
+                  <SidebarDropdown items={modelsSidebarSort} />
+                  <SidebarList title="Brand" query={ALL_MANUFACTURERS_QUERY} property="company" slug="company" />
+                  <SidebarList title="Scale" query={ALL_SCALES_QUERY} property="scale" slug="scale" />
+                  <SidebarList title="Tags" query={ALL_MODELS_TAGS_QUERY} slug="tag" />
+                  <SidebarList title="completed" items={modelsSidebarCompletedFilter} />
                 </Sidebar>
               </StyledModelPage>
             );
