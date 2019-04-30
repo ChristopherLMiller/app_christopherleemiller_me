@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { SFC, useEffect } from 'react';
+import Router from 'next/router';
+import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import { Props } from './styles/Themes';
-import Router from 'next/router';
+import { urlBuilder } from '../utils/url';
 
 const StyledSidebarDropdown = styled.div`
   border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey_darker};
-  padding: 0 30px;;
+  padding: 0 30px;
 `;
 
 const SidebarDropdownHeading = styled.h5`
@@ -30,28 +32,67 @@ const SidebarDropdownSelect = styled.select`
 `;
 
 interface SidebarDropdownTypes {
-  items: Array<object>
+  items?: Array<object>;
+  query?: string;
+  slug: string;
+  title: string;
+  field?: string;
 }
 
-class SidebarDropdown extends React.Component<SidebarDropdownTypes> {
+const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
+  items,
+  query,
+  slug,
+  title,
+  field = `title`,
+}) => (
+  <StyledSidebarDropdown>
+    <SidebarDropdownHeading>{title}</SidebarDropdownHeading>
+    {items && (
+      <SidebarDropdownSelect
+        onChange={event => {
+          Router.push(urlBuilder(slug, event.target.value));
+        }}
+      >
+        {items.map(item => (
+          <option key={item.id} value={item.slug}>
+            {item.title}
+          </option>
+        ))}
+      </SidebarDropdownSelect>
+    )}
 
-  handleChange = (event) => {
-    Router.push(`/models?sort=${event.target.value}`);
-  };
+    {query && (
+      <Query query={query}>
+        {({ data, error, loading }) => {
+          if (loading) return <p>Loading...</p>;
+          if (error) {
+            console.log(`Fetch Error: ${error}`);
+            return null;
+          }
 
-  render() {
-    return (
-      // selectively render for items array
-      <StyledSidebarDropdown>
-        <SidebarDropdownHeading>Sort By</SidebarDropdownHeading>
-        <SidebarDropdownSelect onChange={this.handleChange}>
-          {this.props.items.map(item => (
-            <option key={item.id} value={item.slug}>{item.title}</option>
-          ))}
-        </SidebarDropdownSelect>
-      </StyledSidebarDropdown>
-    );
-  }
-}
+          return (
+            <SidebarDropdownSelect
+              key={slug}
+              onChange={event => {
+                Router.push(urlBuilder(slug, event.target.value));
+              }}
+            >
+              <option key="all" value="">
+                All
+              </option>
+              {console.log(data)}
+              {data[Object.keys(data)[0]].map(item => (
+                <option key={item.id} value={item.slug}>
+                  {item[field]}
+                </option>
+              ))}
+            </SidebarDropdownSelect>
+          );
+        }}
+      </Query>
+    )}
+  </StyledSidebarDropdown>
+);
 
 export { SidebarDropdown };
