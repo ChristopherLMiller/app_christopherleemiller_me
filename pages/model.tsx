@@ -24,7 +24,7 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => (
           console.log(error.message);
           return (
             <Card>
-              <h3>Unable to fetch archive</h3>
+              <h3>Unable to fetch data</h3>
               <p>{error.message}</p>
             </Card>
           );

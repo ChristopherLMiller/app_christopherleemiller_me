@@ -1,5 +1,6 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
+import Markdown from 'markdown-to-jsx';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../styles/Themes';
@@ -28,15 +29,39 @@ const SidebarSection = styled.div`
   margin-bottom: 50px;
 `;
 
-const SidebarList = styled.ul``;
+const SidebarList = styled.ul`
+  list-style-type: square;
+  margin: 0;
+  color: ${(props: Props) => props.theme.colors.black};
+  list-style-position: inside;
+  padding-left: 0;
+`;
 
 const SidebarListItem = styled.li``;
+
+const ModelContentArea = styled.div`
+  margin: 25px 0;
+  background: ${(props: Props) => props.theme.colors.grey};
+  color: ${(props: Props) => props.theme.colors.black};
+`;
+
+const ModelContent = styled.div`
+  font-family: 'Special Elite';
+  font-size: 1.25em;
+  padding: 20px;
+`;
 
 const Model: SFC<ModelTypes> = ({ model }) => (
   <Fragment>
     <StyledModelPage>
       <StyledContentArea>
         <ModelImage model={model} width={1500} />
+        <ModelContentArea>
+          <StyledModelListingTitle>Build Log & Review</StyledModelListingTitle>
+          <ModelContent>
+            <Markdown>{model.content}</Markdown>
+          </ModelContent>
+        </ModelContentArea>
       </StyledContentArea>
       <StyledSidebar>
         <SidebarSection>
@@ -54,19 +79,27 @@ const Model: SFC<ModelTypes> = ({ model }) => (
             <StyledModelListingParagraph>
               Released: {model.year_released}
             </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Completed: {model.completed ? `Yes` : `No`}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Scalemates: <a href={model.scalemates_link}>Link</a>
+            </StyledModelListingParagraph>
             {model.clockify_id && <BuildTime id={model.clockify_id} />}
           </StyledSidebarContent>
         </SidebarSection>
-        <SidebarSection>
-          <StyledModelListingTitle>Tags</StyledModelListingTitle>
-          <StyledSidebarContent>
-            <SidebarList>
-              {model.tags.map(tag => (
-                <SidebarListItem key={tag.id}>Yarrr</SidebarListItem>
-              ))}
-            </SidebarList>
-          </StyledSidebarContent>
-        </SidebarSection>
+        {model.tags.length > 0 && (
+          <SidebarSection>
+            <StyledModelListingTitle>Tags</StyledModelListingTitle>
+            <StyledSidebarContent>
+              <SidebarList>
+                {model.tags.map(tag => (
+                  <SidebarListItem key={tag.id}>{tag.title}</SidebarListItem>
+                ))}
+              </SidebarList>
+            </StyledSidebarContent>
+          </SidebarSection>
+        )}
       </StyledSidebar>
     </StyledModelPage>
   </Fragment>

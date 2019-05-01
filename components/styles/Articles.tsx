@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Props } from './Themes';
 
-
 const StyledArticle = styled.div`
   background: ${(props: Props) => props.theme.colors.grey};
   color: black;
@@ -17,13 +16,13 @@ const StyledArticleBody = styled.div`
 
   ol {
     list-style-type: decimal;
-    padding-left: 25px;
+    padding-left: 0;
     list-style-position: inside;
     margin-bottom: 15px;
   }
   ul {
     list-style-type: circle;
-    padding-left: 25px;
+    padding-left: 0;
     list-style-position: inside;
     margin-bottom: 15px;
   }

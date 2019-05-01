@@ -56,6 +56,13 @@ const StyledModelListingParagraph = styled.p`
   font-family: Oswald;
   color: ${(props: Props) => props.theme.colors.black};
   font-size: 1em;
+
+  a {
+    color: ${(props: Props) => props.theme.colors.red};
+  }
+  a:hover {
+    text-decoration: underline;
+  }
 `;
 
 const StyledModelListingColumn = styled.div`
