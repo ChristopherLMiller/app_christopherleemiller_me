@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
+import { withLayout } from '../components/layout/Layout';
 
 const title = `Error`;
 const description = `Uh-Oh! We broke something!`;
