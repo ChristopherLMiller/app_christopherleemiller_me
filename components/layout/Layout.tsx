@@ -1,5 +1,6 @@
 import NextSEO from 'next-seo';
 import React, { Fragment } from 'react';
+import Router from 'next/router';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
 import { SEPARATOR, SITE_TITLE } from '../../config';
@@ -17,7 +18,7 @@ const withLayout = (WrappedComponent, title, description) => {
               openGraph: {
                 description,
                 title: `${SITE_TITLE}${SEPARATOR}${title}`,
-                url: `${process.env.SITE_URL}/privacy-policy`,
+                url: `${process.env.SITE_URL}${Router.route}`,
               },
             }}
           />
