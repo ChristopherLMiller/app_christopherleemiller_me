@@ -81,7 +81,6 @@ const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
               <option key="all" value="">
                 All
               </option>
-              {console.log(data)}
               {data[Object.keys(data)[0]].map(item => (
                 <option key={item.id} value={item.slug}>
                   {item[field]}
