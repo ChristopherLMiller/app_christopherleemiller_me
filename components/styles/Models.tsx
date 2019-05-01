@@ -53,6 +53,9 @@ const StyledModelListingParagraph = styled.p`
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-family: Oswald;
+  color: ${(props: Props) => props.theme.colors.black};
+  font-size: 1em;
 `;
 
 const StyledModelListingColumn = styled.div`
@@ -84,4 +87,15 @@ const StyledModelImage = styled.img`
   display: block;
 `;
 
-export { StyledModelListings, StyledModelImage, StyledModelListing, StyledModelListingTitle, StyledModelListingInfo, StyledModelListingParagraph, StyledModelListingBlock, StyledModelListingColumn, StyledReadMore, StyledModelPage }
+export {
+  StyledModelListings,
+  StyledModelImage,
+  StyledModelListing,
+  StyledModelListingTitle,
+  StyledModelListingInfo,
+  StyledModelListingParagraph,
+  StyledModelListingBlock,
+  StyledModelListingColumn,
+  StyledReadMore,
+  StyledModelPage,
+};

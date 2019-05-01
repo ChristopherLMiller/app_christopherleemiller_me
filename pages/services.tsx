@@ -1,33 +1,17 @@
 import Card from '../components/Card';
-import Footer from '../components/layout/Footer';
-import Header from '../components/layout/Header';
-import NextSEO from 'next-seo';
-import { SEPARATOR, SITE_TITLE } from '../config';
+import { withLayout } from '../components/layout/Layout';
 
-const title = 'Services';
-const description = 'Services that I offer';
+const title = `Services`;
+const description = `Services that I offer`;
 
 const ServicesPage = () => (
-  <>
-    <NextSEO
-      config={{
-        title: `${SITE_TITLE}${SEPARATOR}${title}`,
-        description,
-        openGraph: {
-          description,
-          title: `${SITE_TITLE}${SEPARATOR}${title}`,
-          url: `${process.env.SITE_URL}/services`,
-        },
-      }}
-    />
-    <Header title={title} description={description} />
-
-    <main>
-      <Card>
-        <p>Content will appear here of all the services that i offer</p>
-      </Card>
-    </main>
-    <Footer />
-  </>
+  <main>
+    <Card>
+      <p>
+        Content will appear here of all the services that i offer, this include
+        coding, maintenance, and even backups/updates for clients.
+      </p>
+    </Card>
+  </main>
 );
-export default ServicesPage;
+export default withLayout(ServicesPage, title, description);

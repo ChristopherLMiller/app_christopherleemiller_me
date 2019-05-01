@@ -1,5 +1,6 @@
 // Client side things only, don't put things here that shouldn't be public
 export const GRAPHQL_ENDPOINT = `https://strapi.christopherleemiller.me/graphql`;
+export const STRAPI_ENDPOINT = `https://strapi.christopherleemiller.me`;
 export const CLOUDINARY_URL = `https://res.cloudinary.com/christopherleemiller/image/upload`;
 export const CLOUDINARY_CLOUD = `v1554111995`;
 export const CLOUDINARY_FOLDER = `clm_me`;
