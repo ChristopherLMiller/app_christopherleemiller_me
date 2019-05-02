@@ -18,4 +18,4 @@ const AboutPage = () => (
   </main>
 );
 
-export default withLayout(AboutPage, title, description);
+export default withLayout(AboutPage, title, description, `/about`);

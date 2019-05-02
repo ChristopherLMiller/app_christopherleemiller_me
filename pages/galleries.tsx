@@ -12,4 +12,4 @@ const GalleriesPage = () => (
   </main>
 );
 
-export default withLayout(GalleriesPage, title, description);
+export default withLayout(GalleriesPage, title, description, `/galleries`);

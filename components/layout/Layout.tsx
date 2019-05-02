@@ -1,11 +1,10 @@
 import NextSEO from 'next-seo';
 import React, { Fragment } from 'react';
-import Router from 'next/router';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 
-const withLayout = (WrappedComponent, title, description) => {
+const withLayout = (WrappedComponent, title, description, path) => {
   class HOC extends React.Component {
     render() {
       return (
@@ -18,7 +17,7 @@ const withLayout = (WrappedComponent, title, description) => {
               openGraph: {
                 description,
                 title: `${SITE_TITLE}${SEPARATOR}${title}`,
-                url: `${process.env.SITE_URL}${Router.route}`,
+                url: `${process.env.SITE_URL}${path}`,
               },
             }}
           />

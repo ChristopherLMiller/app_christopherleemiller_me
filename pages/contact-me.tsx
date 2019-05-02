@@ -13,4 +13,4 @@ const ContactPage = () => (
   </main>
 );
 
-export default withLayout(ContactPage, title, description);
+export default withLayout(ContactPage, title, description, `/contact-me`);

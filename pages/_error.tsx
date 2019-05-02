@@ -16,4 +16,4 @@ const ErrorPage: SFC<ErrorPageTypes> = ({ props }) => (
   </main>
 );
 
-export default withLayout(ErrorPage, title, description);
+export default withLayout(ErrorPage, title, description, `/404`);

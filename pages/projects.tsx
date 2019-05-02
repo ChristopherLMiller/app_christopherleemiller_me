@@ -17,4 +17,4 @@ const ProjectsPage = () => (
   </main>
 );
 
-export default withLayout(ProjectsPage, title, description);
+export default withLayout(ProjectsPage, title, description, `/projects`);

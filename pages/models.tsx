@@ -126,4 +126,4 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   );
 };
 
-export default withLayout(ModelsPage, title, description);
+export default withLayout(ModelsPage, title, description, `/models`);

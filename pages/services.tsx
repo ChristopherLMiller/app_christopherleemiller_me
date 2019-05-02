@@ -14,4 +14,4 @@ const ServicesPage = () => (
     </Card>
   </main>
 );
-export default withLayout(ServicesPage, title, description);
+export default withLayout(ServicesPage, title, description, `/services`);

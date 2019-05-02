@@ -39,4 +39,9 @@ const PrivacyPolicyPage = () => (
   </main>
 );
 
-export default withLayout(PrivacyPolicyPage, title, description);
+export default withLayout(
+  PrivacyPolicyPage,
+  title,
+  description,
+  `/privacy-policy`
+);

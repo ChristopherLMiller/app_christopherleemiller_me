@@ -60,4 +60,4 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
   );
 };
 
-export default withLayout(ArticlesPage, title, description);
+export default withLayout(ArticlesPage, title, description, `/articles`);
