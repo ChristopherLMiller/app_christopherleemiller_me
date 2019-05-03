@@ -35,7 +35,7 @@ interface ModelsPageTypes {
 const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   // set a default value for page if non provided
   const page = parseFloat(query.page) || 1;
-  let completed = ``;
+  let completed;
 
   if (query.completed == `yes`) {
     completed = `true`;
