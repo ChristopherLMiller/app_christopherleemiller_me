@@ -1,13 +1,14 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "NODE_ENV=test jest && codecov"
   },
   "author": "",
   "license": "ISC",

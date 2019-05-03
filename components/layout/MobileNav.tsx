@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import Nav from './Nav';
 import posed from 'react-pose';
 import React, { useEffect, useState } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
+import Nav from './Nav';
 import { Props } from '../styles/Themes';
 import { SocialLinks } from '../SocialLinks';
-
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -79,15 +78,15 @@ const StyledHamburger = styled.button`
 
 const Navigation = posed.div({
   closed: {
-    transform: 'rotateX(-90deg)',
-    height: '0vh',
+    transform: `rotateX(-90deg)`,
+    height: `0vh`,
     opacity: 0,
   },
   open: {
-    height: 'calc(100vh - 75px)',
-    transform: 'rotateX(0deg)',
+    height: `calc(100vh - 75px)`,
+    transform: `rotateX(0deg)`,
     opacity: 1,
-    marginTop: '1px',
+    marginTop: `1px`,
   },
 });
 
@@ -105,18 +104,18 @@ const StyledNavigationWrapper = styled(Navigation)`
 
 const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
-  const [menuText, setText] = useState('Menu');
+  const [menuText, setText] = useState(`Menu`);
 
   useEffect(() => {
     function handleRouteChange() {
       setOpen(false);
     }
-    Router.events.on('routeChangeStart', handleRouteChange);
+    Router.events.on(`routeChangeStart`, handleRouteChange);
 
-    setText(isOpen ? 'Close' : 'Menu');
+    setText(isOpen ? `Close` : `Menu`);
 
     return function cleanup() {
-      Router.events.off('routeChangeStart', handleRouteChange);
+      Router.events.off(`routeChangeStart`, handleRouteChange);
     };
   });
 
@@ -141,11 +140,11 @@ const MobileNav = () => {
         </Link>
         <StyledDescription>All About Me!</StyledDescription>
       </StyledMobileNavWrapper>
-      <StyledNavigationWrapper pose={isOpen ? 'open' : 'closed'}>
+      <StyledNavigationWrapper pose={isOpen ? `open` : `closed`}>
         <Nav />
         <SocialLinks />
       </StyledNavigationWrapper>
     </StyledMobileNav>
   );
-}
+};
 export default MobileNav;
