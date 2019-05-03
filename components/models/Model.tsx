@@ -101,9 +101,15 @@ const Model: SFC<ModelTypes> = ({ model }) => (
       <StyledContentArea>
         <ModelImage model={model} width={1500} />
         <ModelContentArea>
-          <StyledModelListingTitle>Build Log & Review</StyledModelListingTitle>
+          <StyledModelListingTitle>Build Log</StyledModelListingTitle>
           <ModelContent>
             <Markdown>{model.content}</Markdown>
+          </ModelContent>
+        </ModelContentArea>
+        <ModelContentArea>
+          <StyledModelListingTitle>Review</StyledModelListingTitle>
+          <ModelContent>
+            <Markdown>{model.review}</Markdown>
           </ModelContent>
         </ModelContentArea>
         <CommentsList comments={model.comments} />

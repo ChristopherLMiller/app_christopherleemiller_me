@@ -28,6 +28,7 @@ interface ModelTypes {
     slug: string;
     featured_image: string;
     content: string;
+    review: String;
     seo_title: string;
     seo_description: string;
     completed: Boolean;

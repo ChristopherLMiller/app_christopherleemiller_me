@@ -1,26 +1,23 @@
 import gql from 'graphql-tag';
 
 export const ARTICLES_QUERY = gql`
-query ARTICLES_QUERY(
-  $start: Int = 0,
-  $limit: Int = 20,
-  $article_slug: String,
-  $category: String,
-  $tag: String,
-  $published: Boolean = true) {
+  query ARTICLES_QUERY(
+    $start: Int = 0
+    $limit: Int = 20
+    $article_slug: String
+    $category: String
+    $tag: String
+    $published: Boolean = true
+  ) {
     articles(
-      limit: $limit,
-      start: $start,
-      sort: "created_at:DESC",
+      limit: $limit
+      start: $start
+      sort: "created_at:DESC"
       where: {
-        slug: $article_slug,
-        published: $published,
-        categories: {
-          slug: $category,
-        },
-        tags: {
-          slug: $tag,
-        },
+        slug: $article_slug
+        published: $published
+        categories: { slug: $category }
+        tags: { slug: $tag }
       }
     ) {
       id
@@ -54,110 +51,104 @@ query ARTICLES_QUERY(
         slug
         title
       }
-
     }
   }
 `;
 
 export const MODELS_QUERY = gql`
-query MODELS_QUERY(
-  $start: Int = 0,
-  $limit: Int = 20,
-  $model_slug: String,
-  $scale: String,
-  $manufacturer: String,
-  $tag: String,
-  $completed: String,
-  $sort: String = "title:ASC",
-  $published: Boolean = true
-) {
-  models(
-    start: $start,
-    limit: $limit,
-    sort: $sort,
-    where: {
-      slug: $model_slug,
-      scale: {
-        slug: $scale,
-      },
-      manufacturer: {
-        slug: $manufacturer,
-      },
-      tags: {
-        slug: $tag,
-      },
-      completed: $completed,
-      published: $published,
-    }
+  query MODELS_QUERY(
+    $start: Int = 0
+    $limit: Int = 20
+    $model_slug: String
+    $scale: String
+    $manufacturer: String
+    $tag: String
+    $completed: String
+    $sort: String = "title:ASC"
+    $published: Boolean = true
   ) {
-    id
-    created_at
-    updated_at
-    title
-    slug
-    content
-    featured_image
-    seo_title
-    seo_description
-    completed
-    kit_number
-    year_released
-    scale {
-      scale
+    models(
+      start: $start
+      limit: $limit
+      sort: $sort
+      where: {
+        slug: $model_slug
+        scale: { slug: $scale }
+        manufacturer: { slug: $manufacturer }
+        tags: { slug: $tag }
+        completed: $completed
+        published: $published
+      }
+    ) {
+      id
+      created_at
+      updated_at
+      title
       slug
+      content
+      review
+      featured_image
+      seo_title
+      seo_description
+      completed
+      kit_number
+      year_released
+      scale {
+        scale
+        slug
+      }
+      manufacturer {
+        company
+        slug
+      }
+      tags {
+        id
+        title
+        slug
+      }
+      comments {
+        id
+        comment
+        created_at
+        user {
+          username
+        }
+      }
+      clockify_id
+      scalemates_link
     }
-    manufacturer {
+  }
+`;
+
+export const ALL_MANUFACTURERS_QUERY = gql`
+  query ALL_MANUFACTURERS_QUERY {
+    manufacturers(sort: "company:ASC") {
+      id
+      slug
       company
-      slug
     }
+  }
+`;
+
+export const ALL_SCALES_QUERY = gql`
+  query ALL_SCALES_QUERY {
+    scales(sort: "scale:ASC") {
+      id
+      slug
+      scale
+    }
+  }
+`;
+
+export const ALL_MODELS_TAGS_QUERY = gql`
+  query ALL_MODEL_TAGS_QUERY {
     tags {
       id
       title
       slug
-    }
-    comments {
-      id
-      comment
-      created_at
-      user {
-        username
+      models {
+        id
       }
     }
-    clockify_id
-    scalemates_link
   }
-}
 `;
-
-export const ALL_MANUFACTURERS_QUERY = gql`
-query ALL_MANUFACTURERS_QUERY {
-  manufacturers(sort: "company:ASC") {
-    id
-    slug
-    company
-  }
-}
-`;
-
-export const ALL_SCALES_QUERY = gql`
-query ALL_SCALES_QUERY {
-  scales(sort: "scale:ASC") {
-    id
-    slug
-    scale
-  }
-}
-`;
-
-export const ALL_MODELS_TAGS_QUERY = gql`
-query ALL_MODEL_TAGS_QUERY {
-  tags{
-    id
-    title
-    slug
-    models {
-      id
-    }
-  }
-}`
-  ;
