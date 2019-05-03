@@ -44,7 +44,7 @@
     "graphql-tag": "^2.10.1",
     "highlight.js": "^9.15.6",
     "lodash.debounce": "^4.0.8",
-    "logrocket": "^0.6.20",
+    "logrocket": "^0.6.21",
     "markdown-to-jsx": "^6.9.4",
     "next": "^8.1.0",
     "next-auth": "^1.12.1",
