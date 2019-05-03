@@ -29,12 +29,12 @@ export const modelsSidebarSort = [
   },
   {
     id: 2,
-    slug: `year_released:ASC`,
+    slug: `year_released:DESC`,
     title: `Newest Release Year First`,
   },
   {
     id: 3,
-    slug: `year_released:DESC`,
+    slug: `year_released:ASC`,
     title: `Oldest Release Year First`,
   },
   {
@@ -49,12 +49,12 @@ export const modelsSidebarSort = [
   },
   {
     id: 6,
-    slug: `updated_at:ASC`,
+    slug: `updated_at:DESC`,
     title: `Recently Updated First`,
   },
   {
     id: 7,
-    slug: `updated_at:DESC`,
+    slug: `updated_at:ASC`,
     title: `Oldest Updated First`,
   },
 ];

@@ -42,6 +42,9 @@ const StyledModelListingTitle = styled.h2`
   color: ${(props: Props) => props.theme.colors.white};
   margin: 0;
   padding: 20px;
+  font-family: Monospace;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 `;
 
 const StyledModelListingBlock = styled.div`

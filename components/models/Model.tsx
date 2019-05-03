@@ -1,6 +1,8 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
 import Markdown from 'markdown-to-jsx';
+import NextSeo from 'next-seo';
+import { CommentsList } from '../CommentsList';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../styles/Themes';
@@ -9,15 +11,32 @@ import {
   StyledModelListingParagraph,
   StyledModelListingTitle,
 } from '../styles/Models';
+import { SEPARATOR, SITE_TITLE } from '../../config';
+import { ImageURL } from '../../utils/functions';
 
 const StyledModelPage = styled.div`
-  display: grid;
-  grid-template-columns: auto 25%;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    display: grid;
+    grid-template-columns: auto 25%;
+  }
 `;
 
-const StyledContentArea = styled.div``;
+const StyledContentArea = styled.div`
+  max-width: ${(props: Props) => props.theme.max_width};
+  margin: 0 auto;
+  order: 1;
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    order: 0;
+  }
+`;
 const StyledSidebar = styled.div`
-  padding-left: 25px;
+  order: 0;
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    padding-left: 25px;
+  }
 `;
 const StyledSidebarContent = styled.div`
   background: ${(props: Props) => props.theme.colors.grey};
@@ -26,7 +45,10 @@ const StyledSidebarContent = styled.div`
 `;
 
 const SidebarSection = styled.div`
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    margin-bottom: 50px;
+  }
 `;
 
 const SidebarList = styled.ul`
@@ -53,6 +75,28 @@ const ModelContent = styled.div`
 
 const Model: SFC<ModelTypes> = ({ model }) => (
   <Fragment>
+    <NextSeo
+      config={{
+        title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`,
+        description: model.seo_description,
+        openGraph: {
+          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
+          description: model.seo_description,
+          url: `${process.env.SITE_URL}/model/${model.slug}`,
+          type: `article`,
+          article: {
+            modifiedTime: model.updated_at,
+            publishedTime: model.created_at,
+          },
+          images: [
+            {
+              alt: model.title,
+              url: ImageURL(model.featured_image),
+            },
+          ],
+        },
+      }}
+    />
     <StyledModelPage>
       <StyledContentArea>
         <ModelImage model={model} width={1500} />
@@ -62,6 +106,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
             <Markdown>{model.content}</Markdown>
           </ModelContent>
         </ModelContentArea>
+        <CommentsList comments={model.comments} />
       </StyledContentArea>
       <StyledSidebar>
         <SidebarSection>
