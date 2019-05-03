@@ -35,7 +35,7 @@
     "apollo-link-http": "^1.5.14",
     "date-fns": "^2.0.0-alpha.27",
     "dotenv": "^7.0.0",
-    "downshift": "^3.2.8",
+    "downshift": "^3.2.10",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "express": "^4.16.4",
