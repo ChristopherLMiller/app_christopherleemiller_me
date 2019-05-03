@@ -1,40 +1,48 @@
 import React from 'react';
 import { StyledModelListingParagraph } from '../styles/Models';
 
-class BuildTime extends React.Component {
-  constructor(props) {
+interface BuildTimeTypes {
+  id: string;
+}
+class BuildTime extends React.Component<BuildTimeTypes> {
+  constructor(props: object) {
     super(props);
 
     this.state = {
-      time: '',
+      time: ``,
       isLoading: false,
       error: null,
-    }
+    };
   }
 
-  convertTime(time) {
+  convertTime(time: String) {
+    // verify we even have something first
+    if (!time) {
+      return `N/A`;
+    }
+
     let hours = 0;
     let minutes = 0;
-    let output = "";
+    let output = ``;
 
     // step 1: remove the PT/FT
-    let stripped = time.slice(2);
+    const stripped = time.slice(2);
 
-    if (stripped == "0S") {
-      return "None"
+    if (stripped == `0S`) {
+      return `None`;
     }
 
     // step 2: pull out hours
-    let hoursIndex = time.indexOf('H');
+    const hoursIndex = time.indexOf(`H`);
     if (hoursIndex !== -1) {
-      hours = stripped.slice(0, hoursIndex);
+      hours = parseInt(stripped.slice(0, hoursIndex));
       output += `${hours} Hours `;
     }
 
     // step 3. grab the minutes
-    let minutesIndex = time.indexOf('M');
+    const minutesIndex = time.indexOf(`M`);
     if (minutesIndex !== -1) {
-      minutes = stripped.slice(minutesIndex - 4, minutesIndex - 2);
+      minutes = parseInt(stripped.slice(minutesIndex - 4, minutesIndex - 2));
       output += `${minutes} Minutes`;
     }
 
@@ -42,36 +50,50 @@ class BuildTime extends React.Component {
   }
 
   async componentDidMount() {
-    this.setState({
-      isLoading: true
-    });
+    this.mounted = true;
+
+    if (this.mount) {
+      this.setState({
+        isLoading: true,
+      });
+    }
 
     try {
-      const response = await fetch(`https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${this.props.id}`, {
-        headers: {
-          "Content-Type": "application/json",
-          "X-Api-Key": process.env.CLOCKIFY_API_KEY,
+      const response = await fetch(
+        `https://api.clockify.me/api/workspaces/${
+          process.env.CLOCKIFY_WORKSPACE_ID
+        }/projects/${this.props.id}`,
+        {
+          headers: {
+            'Content-Type': `application/json`,
+            'X-Api-Key': process.env.CLOCKIFY_API_KEY,
+          },
         }
-      });
+      );
 
       const json = await response.json();
 
-      this.setState({
-        isLoading: false,
-        time: this.convertTime(json.duration),
-      })
+      if (this.mounted) {
+        this.setState({
+          isLoading: false,
+          time: this.convertTime(json.duration),
+        });
+      }
     } catch (error) {
-      this.setState({
-        error,
-        isLoading: false,
-      })
+      if (this.mounted) {
+        this.setState({
+          error,
+          isLoading: false,
+        });
+      }
     }
+  }
 
+  componentWillUnmount() {
+    this.mounted = false;
   }
 
   render() {
-
-
     return (
       <StyledModelListingParagraph>
         Build Time: {this.state.time}
@@ -80,4 +102,4 @@ class BuildTime extends React.Component {
   }
 }
 
-export default BuildTime;
+export { BuildTime };

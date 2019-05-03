@@ -1,9 +1,10 @@
-import ModelTypes from "./Types";
-import { ImageURL } from "../../utils/functions";
+import { SFC } from 'react';
+import { ImageURL } from '../../utils/functions';
+import { ModelTypes } from './Types';
 import { StyledModelImage } from '../styles/Models';
 
-const ModelImage: SFC<ModelTypes> = ({ model }) => (
-  <StyledModelImage src={ImageURL(model.featured_image, 700)} />
-)
+const ModelImage: SFC<ModelTypes> = ({ model, width }) => (
+  <StyledModelImage src={ImageURL(model.featured_image, width)} />
+);
 
-export default ModelImage;
+export { ModelImage };

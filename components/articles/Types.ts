@@ -52,5 +52,4 @@ interface ArticleTypes {
   commentsEnabled?: boolean,
 };
 
-export default ArticleTypes;
-export { CategoryType, CategoriesType, CommentType, CommentsType, TagType, TagsType };
+export { ArticleTypes, CategoryType, CategoriesType, CommentType, CommentsType, TagType, TagsType };

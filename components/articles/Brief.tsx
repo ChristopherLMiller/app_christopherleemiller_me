@@ -1,9 +1,9 @@
-import ArticleFooter from './Footer';
-import ArticleHead from './Head';
-import ArticleTypes from './Types';
-import CommentCount from './CommentCount';
+import { ArticleTypes } from './Types';
 import hljs from 'highlight.js';
 import Link from 'next/link';
+import { ArticleFooter } from './Footer';
+import { ArticleHead } from './Head';
+import { CommentCount } from './CommentCount';
 import { SFC, useEffect } from 'react';
 //import 'highlight.js/styles/atom-one-dark.css';
 import {
@@ -38,4 +38,4 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
 };
 
 
-export default BriefArticle;
+export { BriefArticle };

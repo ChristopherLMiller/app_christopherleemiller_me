@@ -1,5 +1,5 @@
-import ArticleTypes from './Types';
 import Link from 'next/link';
+import { ArticleTypes } from './Types';
 import { formatRelative, parseISO } from 'date-fns';
 import { ImageURL } from '../../utils/functions';
 import { SFC } from 'react';
@@ -36,4 +36,4 @@ const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
   </StyledArticleHeader>
 )
 
-export default ArticleHead;
+export { ArticleHead };

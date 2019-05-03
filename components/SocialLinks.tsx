@@ -1,4 +1,4 @@
-import SocialIcon from './SocialIcon';
+import { SocialIcon } from './SocialIcon';
 import styled from 'styled-components';
 import {
   faFacebookF,
@@ -38,4 +38,4 @@ const SocialLinks = () => (
   </SocialLinksBar>
 );
 
-export default SocialLinks;
+export { SocialLinks };

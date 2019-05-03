@@ -1,8 +1,8 @@
+import { ArticleTypes } from './Types';
+import { Tags } from './Tags';
+import { Categories } from './Categories';
 import { SFC } from 'react';
-import Categories from './Categories';
-import Tags from './Tags';
 import { StyledArticleFooter } from '../styles/Articles';
-import ArticleTypes from './Types';
 
 const ArticleFooter: SFC<ArticleTypes> = ({ article }) => (
   <StyledArticleFooter >
@@ -10,4 +10,4 @@ const ArticleFooter: SFC<ArticleTypes> = ({ article }) => (
     <Tags tags={article.tags} />
   </StyledArticleFooter>
 )
-export default ArticleFooter;
+export { ArticleFooter };

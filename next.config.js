@@ -1,8 +1,8 @@
-require('dotenv').config();
-const webpack = require('webpack');
-const withOffline = require('next-offline');
+require(`dotenv`).config();
+const webpack = require(`webpack`);
+const withOffline = require(`next-offline`);
 // const withCSS = require('@zeit/next-css');
-const withTypescript = require('@zeit/next-typescript');
+const withTypescript = require(`@zeit/next-typescript`);
 
 const nextConfig = {
   webpack: config => {

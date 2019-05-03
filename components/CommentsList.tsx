@@ -1,12 +1,13 @@
-import Comment from './Comment';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
+import { Comment } from './Comment';
 import { Props } from './styles/Themes';
 
 const StyledCommentSection = styled.div`
   background: ${(props: Props) => props.theme.colors.grey};
   max-width: ${(props: Props) => props.theme.max_width};
   margin: 0 auto;
+  padding: 0;
 `;
 const StyledCommentHeader = styled.h3`
   background: ${(props: Props) => props.theme.colors.red};
@@ -34,7 +35,7 @@ const StyledCommentSignIn = styled.p`
 `;
 
 interface CommentsListProps {
-  comments: Array<Object>,
+  comments: Array<Object>;
 }
 
 const CommentsList: SFC<CommentsListProps> = ({ comments }) => (
@@ -44,11 +45,9 @@ const CommentsList: SFC<CommentsListProps> = ({ comments }) => (
       {comments.map(comment => (
         <Comment comment={comment} />
       ))}
-      <StyledCommentSignIn>
-        To Add a Comment Please Sign In
-      </StyledCommentSignIn>
+      <StyledCommentSignIn>To Add a Comment Please Sign In</StyledCommentSignIn>
     </StyledCommentContent>
   </StyledCommentSection>
 );
 
-export default CommentsList;
+export { CommentsList };

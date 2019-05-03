@@ -1,57 +1,47 @@
-import Card from '../components/Card';
-import Footer from '../components/layout/Footer';
-import FullArticle from '../components/articles/Full';
-import Header from '../components/layout/Header';
 import Markdown from 'markdown-to-jsx';
-import NextSEO from 'next-seo';
-import React from 'react';
-import { ARTICLES_QUERY } from '../utils/query';
+import React, { Fragment } from 'react';
 import { Query } from 'react-apollo';
-import { SEPARATOR, SITE_TITLE } from '../config';
+import Card from '../components/Card';
+import { ARTICLES_QUERY } from '../utils/query';
+import { FullArticle } from '../components/articles/Full';
+import { withLayout } from '../components/layout/Layout';
 
-const title = 'Privacy Policy';
-const description = 'My policies regarding your privacy and safety';
+const title = `Privacy Policy`;
+const description = `My policies regarding your privacy and safety`;
 
 const PrivacyPolicyPage = () => (
-  <>
-    <NextSEO
-      config={{
-        title: `${SITE_TITLE}${SEPARATOR}${title}`,
-        description,
-        openGraph: {
-          title: `${SITE_TITLE}${SEPARATOR}${title}`,
-          description,
-        },
-      }}
-    />
-    <Header title={title} description={description} />
-    <main>
-      <Query query={ARTICLES_QUERY} variables={{ article_slug: 'privacy-policy', published: false }}>
-        {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) {
-            console.log(error.message);
-            return (
-              <Card>
-                <h3>Unable to fetch archive</h3>
-                <p>{error.message}</p>
-              </Card>
-            );
-          }
-
-          const article = data.articles[0];
+  <main>
+    <Query
+      query={ARTICLES_QUERY}
+      variables={{ article_slug: `privacy-policy`, published: false }}
+    >
+      {({ data, error, loading }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) {
+          console.log(error.message);
           return (
-            <>
-              <FullArticle article={article} commentsEnabled={false}>
-                <Markdown>{article.content}</Markdown>
-              </FullArticle>
-            </>
+            <Card>
+              <h3>Unable to fetch data, possibly offline?</h3>
+              <p>{error.message}</p>
+            </Card>
           );
-        }}
-      </Query>
-    </main>
-    <Footer />
-  </>
+        }
+
+        return (
+          <Fragment>
+            <FullArticle article={data.articles[0]} commentsEnabled={false}>
+              <Markdown>{data.articles[0].content}</Markdown>
+            </FullArticle>
+          </Fragment>
+        );
+      }}
+    </Query>
+  </main>
 );
 
-export default PrivacyPolicyPage;
+export default withLayout(
+  PrivacyPolicyPage,
+  title,
+  description,
+  `/privacy-policy`
+);
