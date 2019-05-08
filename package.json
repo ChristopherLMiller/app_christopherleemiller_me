@@ -62,7 +62,7 @@
     "react-stripe-checkout": "^2.6.3",
     "react-transition-group": "^2.9.0",
     "save": "^2.3.3",
-    "sitemap": "^2.1.0",
+    "sitemap": "^2.2.0",
     "styled-components": "^4.2.0",
     "waait": "^1.0.4",
     "webpack": "^4.30.0"
