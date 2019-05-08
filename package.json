@@ -40,7 +40,7 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
-    "graphql": "^14.2.1",
+    "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
     "highlight.js": "^9.15.6",
     "lodash.debounce": "^4.0.8",
