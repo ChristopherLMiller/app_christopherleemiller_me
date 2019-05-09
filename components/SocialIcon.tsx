@@ -13,9 +13,9 @@ const SocialIconPosed = posed.span({
 });
 
 interface SocialIconProps {
-  url: string,
-  icon: string,
-  alt: string,
+  url: string;
+  icon: string;
+  alt: string;
 }
 const SocialIcon: SFC<SocialIconProps> = ({ url, icon, alt }) => (
   <li>
@@ -30,8 +30,8 @@ const SocialIcon: SFC<SocialIconProps> = ({ url, icon, alt }) => (
           <FontAwesomeIcon icon={icon} className="fa-stack-1x" />
         </SocialIconPosed>
       </a>
-    </Link >
+    </Link>
   </li>
 );
 
-export { SocialIcon }
+export { SocialIcon };
