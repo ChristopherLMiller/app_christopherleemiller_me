@@ -23,18 +23,18 @@ export interface Props {
     colors: {
       black: string;
       grey: string;
-      white: string;
-      red: string;
-      red_transparent: string;
       grey_darker: string;
       grey_darkest: string;
+      red: string;
+      red_transparent: string;
+      white: string;
     };
     sizes: {
       small: string;
-      med_small: string;
+      large: string;
       med: string;
       med_large: string;
-      large: string;
+      med_small: string;
     };
     max_width: string;
   };

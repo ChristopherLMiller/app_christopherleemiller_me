@@ -78,15 +78,15 @@ const StyledHamburger = styled.button`
 
 const Navigation = posed.div({
   closed: {
-    transform: `rotateX(-90deg)`,
     height: `0vh`,
     opacity: 0,
+    transform: `rotateX(-90deg)`,
   },
   open: {
     height: `calc(100vh - 75px)`,
-    transform: `rotateX(0deg)`,
-    opacity: 1,
     marginTop: `1px`,
+    opacity: 1,
+    transform: `rotateX(0deg)`,
   },
 });
 
