@@ -3,6 +3,7 @@ import { StyledModelListingParagraph } from '../styles/Models';
 
 interface BuildTimeTypes {
   id: string;
+  mounted: Boolean;
 }
 class BuildTime extends React.Component<BuildTimeTypes> {
   constructor(props: object) {
@@ -21,38 +22,26 @@ class BuildTime extends React.Component<BuildTimeTypes> {
       return `N/A`;
     }
 
-    let hours = 0;
-    let minutes = 0;
-    let output = ``;
-
     // step 1: remove the PT/FT
     const stripped = time.slice(2);
 
+    // 0S only shows if there is no time logged but a project has been created, so just return none
     if (stripped == `0S`) {
       return `None`;
     }
 
-    // step 2: pull out hours
-    const hoursIndex = time.indexOf(`H`);
-    if (hoursIndex !== -1) {
-      hours = parseInt(stripped.slice(0, hoursIndex));
-      output += `${hours} Hours `;
-    }
+    const regex = new RegExp(/((\d+)H)?(\d+)M(\d+)S/);
+    const splitString = stripped.match(regex);
+    const hours = splitString[2];
+    const minutes = splitString[3];
 
-    // step 3. grab the minutes
-    const minutesIndex = time.indexOf(`M`);
-    if (minutesIndex !== -1) {
-      minutes = parseInt(stripped.slice(minutesIndex - 4, minutesIndex - 2));
-      output += `${minutes} Minutes`;
-    }
-
-    return output;
+    return `${hours || 0} Hours ${minutes} Minutes`;
   }
 
   async componentDidMount() {
     this.mounted = true;
 
-    if (this.mount) {
+    if (this.mounted) {
       this.setState({
         isLoading: true,
       });
