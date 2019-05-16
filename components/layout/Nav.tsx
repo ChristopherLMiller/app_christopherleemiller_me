@@ -17,7 +17,7 @@ const NavItem = styled.li`
   :after {
     content: '\\A';
     position: absolute;
-    width: 100%;
+    width: 0%;
     height: 100%;
     left: 0;
     z-index: -1;
@@ -26,6 +26,7 @@ const NavItem = styled.li`
     transition: all 0.25s;
   }
   :hover:after {
+    width: 100%;
     opacity: 1;
   }
 `;

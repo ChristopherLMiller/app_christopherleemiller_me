@@ -1,8 +1,5 @@
-import React, { Component, SFC } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, SFC } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
-import { withRouter } from 'next/router';
-import posed, { PoseGroup } from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
@@ -17,13 +14,15 @@ const StyledPage = styled.div`
     display: grid;
     grid-template-columns: 300px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+  @media screen and (min-width: ${(props: Props) =>
+      props.theme.sizes.med_small}) {
     grid-template-columns: 350px 1fr;
   }
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: 350px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+  @media screen and (min-width: ${(props: Props) =>
+      props.theme.sizes.med_large}) {
     grid-template-columns: 400px 1fr;
   }
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
@@ -31,12 +30,7 @@ const StyledPage = styled.div`
   }
 `;
 
-const posedInner = posed.div({
-  enter: { opacity: 1, delay: 300, beforeChildren: true },
-  exit: { opacity: 0 },
-});
-
-const Inner = styled(posedInner)`
+const Inner = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -75,34 +69,34 @@ const GlobalStyles = createGlobalStyle`
   main {
     flex-grow: 2;
     padding: 20px;
+    overflow-x: hidden;
 
-    @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    @media screen and (min-width: ${(props: Props) =>
+      props.theme.sizes.small}) {
       padding: 30px;
     }
   }
 `;
 
 interface PageProps {
-  children: object,
+  children: object;
   router: {
-    route: any
-  },
+    route: any;
+  };
 }
 
-const Page: SFC<PageProps> = ({ children, router }) => (
+const Page: SFC<PageProps> = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <>
+    <Fragment>
       <StyledPage>
         <Meta />
         <Sidebar />
-        <PoseGroup>
-          <Inner key={router.route}>{children}</Inner>
-        </PoseGroup>
+        <Inner>{children}</Inner>
       </StyledPage>
       <MobileNav />
       <GlobalStyles />
-    </>
+    </Fragment>
   </ThemeProvider>
 );
 
-export default withRouter(Page);
+export default Page;

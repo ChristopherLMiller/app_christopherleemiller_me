@@ -1,12 +1,25 @@
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from './Themes';
 
-const StyledArticle = styled.div`
+const PosedArticle = posed.div({
+  visible: {
+    opacity: `1.0`,
+  },
+  invisible: {
+    opacity: `0.0`,
+  },
+});
+
+const StyledArticle = styled(PosedArticle)`
   background: ${(props: Props) => props.theme.colors.grey};
   color: black;
   font-family: 'Special Elite', sans-serif;
   max-width: ${(props: Props) => props.theme.max_width};
   margin: 50px auto;
+  transition-delay: 2s;
+  transition: all 0.25s;
+  opacity: 0;
 `;
 
 const StyledArticleBody = styled.div`

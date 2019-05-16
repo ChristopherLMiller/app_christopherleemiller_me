@@ -1,5 +1,5 @@
 import Markdown from 'markdown-to-jsx';
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
@@ -27,12 +27,12 @@ const PrivacyPolicyPage = () => (
           );
         }
 
+        console.log(data.articles);
+
         return (
-          <Fragment>
-            <FullArticle article={data.articles[0]} commentsEnabled={false}>
-              <Markdown>{data.articles[0].content}</Markdown>
-            </FullArticle>
-          </Fragment>
+          <FullArticle article={data.articles[0]} commentsEnabled={false}>
+            <Markdown>{data.articles[0].content}</Markdown>
+          </FullArticle>
         );
       }}
     </Query>

@@ -1,12 +1,25 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import { getYear } from 'date-fns';
+import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
-const StyledFooter = styled.footer`
+const FooterPopped = posed.footer({
+  enter: {
+    transform: `rotateX(0deg)`,
+  },
+  exit: {
+    transform: `rotateX(-90deg)`,
+  },
+});
+
+const StyledFooter = styled(FooterPopped)`
   background: ${(props: Props) => props.theme.colors.red_transparent};
   padding: 30px 10px;
   position: sticky;
+  transform: rotateX(-90deg);
+  transition: all 0.25s;
+  transition-delay: 0.75s;
 `;
 const SiteInfo = styled.div`
   font-family: monospace;
@@ -20,7 +33,7 @@ const Separator = styled.span`
   margin: auto 10px;
 `;
 const Footer = () => (
-  <StyledFooter>
+  <StyledFooter initialPose="exit" pose="enter">
     <SiteInfo>
       <Link href="/privacy-policy" prefetch>
         <a>Privacy Policy</a>

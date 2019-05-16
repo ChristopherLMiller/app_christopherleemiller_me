@@ -1,7 +1,8 @@
 require(`dotenv`).config();
 const webpack = require(`webpack`);
 const withOffline = require(`next-offline`);
-// const withCSS = require('@zeit/next-css');
+const withCSS = require(`@zeit/next-css`);
+
 const withTypescript = require(`@zeit/next-typescript`);
 
 const nextConfig = {
@@ -12,4 +13,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withOffline(withTypescript(nextConfig));
+module.exports = withCSS(withOffline(withTypescript(nextConfig)));

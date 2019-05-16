@@ -1,13 +1,25 @@
+import styled from 'styled-components';
+import posed from 'react-pose';
 import Logo from './Logo';
 import Nav from './Nav';
 import { SocialLinks } from '../SocialLinks';
-import styled from 'styled-components';
 import Title from './Title';
 import { Props } from '../styles/Themes';
 
-const StyledSidebar = styled.aside`
+const SidebarPop = posed.aside({
+  enter: {
+    left: `0`,
+  },
+  exit: {
+    left: `-100%`,
+  },
+});
+
+const StyledSidebar = styled(SidebarPop)`
   position: relative;
   display: none;
+  transition: all 0.5s;
+  left: -100%;
 
   &:before {
     background: rgba(0, 0, 0);
@@ -24,7 +36,8 @@ const StyledSidebar = styled.aside`
     padding: 20px;
     display: initial;
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+  @media screen and (min-width: ${(props: Props) =>
+      props.theme.sizes.med_small}) {
     min-height: 100vh;
     &:before {
       background: rgba(0, 0, 0, 0.7);
@@ -42,7 +55,7 @@ const StyledSidebarInner = styled.div`
 `;
 
 const Sidebar = () => (
-  <StyledSidebar>
+  <StyledSidebar initialPose="exit" pose="enter">
     <StyledSidebarInner>
       <Logo />
       <Title />

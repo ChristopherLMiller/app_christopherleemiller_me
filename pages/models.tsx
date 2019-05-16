@@ -13,6 +13,7 @@ import { ModelListing } from '../components/models/ModelListing';
 import {
   StyledModelListings,
   StyledModelPage,
+  ModelListingPose,
 } from '../components/styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarDropdown } from '../components/SidebarDropdown';
@@ -83,9 +84,13 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             }
 
             return (
-              <StyledModelListings>
+              <StyledModelListings initialPose="exit" pose="enter">
                 {data.models.map(model => (
-                  <ModelListing key={model.id} model={model} />
+                  <ModelListing
+                    ModelListingPose={ModelListingPose}
+                    key={model.id}
+                    model={model}
+                  />
                 ))}
               </StyledModelListings>
             );

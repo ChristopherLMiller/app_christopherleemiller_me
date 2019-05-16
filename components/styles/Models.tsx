@@ -1,5 +1,8 @@
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from '../styles/Themes';
+
+`react-pose`;
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -14,7 +17,21 @@ const StyledModelPage = styled.div`
   }
 `;
 
-const StyledModelListings = styled.div`
+const ModelListingsPose = posed.div({
+  exit: {
+    opacity: `0`,
+  },
+  enter: {
+    opacity: `1`,
+    beforeChildren: true,
+    staggerChildren: 100,
+  },
+});
+
+const StyledModelListings = styled(ModelListingsPose)`
+  opacity: 0;
+  transition-delay: 1s;
+  transition: all 0.25s;
   order: 1;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
@@ -23,6 +40,15 @@ const StyledModelListings = styled.div`
     order: 0;
   }
 `;
+
+const ModelListingPose = {
+  enter: {
+    opacity: `1`,
+  },
+  exit: {
+    opacity: `0`,
+  },
+};
 
 const StyledModelListing = styled.div`
   margin: 0 0 50px 0;
@@ -108,4 +134,5 @@ export {
   StyledModelListingColumn,
   StyledReadMore,
   StyledModelPage,
+  ModelListingPose,
 };
