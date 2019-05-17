@@ -42,24 +42,23 @@ const CommentBottomLine = styled.p`
 
 interface CommentProps {
   comment: {
-    created_at: string,
-    comment: string,
+    created_at: string;
+    comment: string;
     user: {
-      username: string,
-    },
-  }
+      username: string;
+    };
+  };
 }
 
 const Comment: SFC<CommentProps> = ({ comment }) => (
   <CommentWrapper>
-    <CommentImage src={ImageURL('assets/avatar_default', 50)} />
+    <CommentImage src={ImageURL(`assets/avatar_default`, 50)} />
     <CommentText>
       <CommentTopLine>
         <CommentName>{comment.user.username}</CommentName>
-        <CommentDate>{formatRelative(
-          parseISO(comment.created_at),
-          new Date()
-        )}</CommentDate>
+        <CommentDate>
+          {formatRelative(parseISO(comment.created_at), new Date())}
+        </CommentDate>
       </CommentTopLine>
       <CommentBottomLine>{comment.comment}</CommentBottomLine>
     </CommentText>

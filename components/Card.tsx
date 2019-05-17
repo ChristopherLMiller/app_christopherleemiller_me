@@ -2,13 +2,13 @@ import React, { SFC } from 'react';
 import { StyledCard, StyledCardBody } from './styles/Cards';
 
 interface CardProps {
-  children: object,
+  children: object;
 }
 
 const Card: SFC<CardProps> = ({ children }) => (
-  <StyledCard>
+  <StyledCard initialPose="exit" pose="enter">
     <StyledCardBody>{children}</StyledCardBody>
   </StyledCard>
-)
+);
 
 export default Card;

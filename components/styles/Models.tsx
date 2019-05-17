@@ -15,6 +15,8 @@ const StyledModelPage = styled.div`
 `;
 
 const StyledModelListings = styled.div`
+  transition-delay: 1s;
+  transition: all 0.25s;
   order: 1;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
@@ -23,6 +25,15 @@ const StyledModelListings = styled.div`
     order: 0;
   }
 `;
+
+const ModelListingPose = {
+  enter: {
+    opacity: `1`,
+  },
+  exit: {
+    opacity: `0`,
+  },
+};
 
 const StyledModelListing = styled.div`
   margin: 0 0 50px 0;
@@ -108,4 +119,5 @@ export {
   StyledModelListingColumn,
   StyledReadMore,
   StyledModelPage,
+  ModelListingPose,
 };

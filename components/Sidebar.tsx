@@ -1,5 +1,6 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from './styles/Themes';
 
 interface SidebarTypes {
@@ -7,8 +8,21 @@ interface SidebarTypes {
   children: object;
 }
 
-const StyledSidebar = styled.div`
+const SidebarPopped = posed.div({
+  visible: {
+    right: `0`,
+  },
+  invisible: {
+    right: `-150%`,
+  },
+});
+
+const StyledSidebar = styled(SidebarPopped)`
   margin-bottom: 50px;
+  position: relative;
+  right: -150%;
+  transition: all 0.5s;
+  transition-delay: 0.5s;
 `;
 
 const StyledSidebarHeader = styled.h4`
@@ -23,7 +37,7 @@ const StyledSidebarContent = styled.div`
 `;
 
 const Sidebar: SFC<SidebarTypes> = ({ title, children }) => (
-  <StyledSidebar>
+  <StyledSidebar initialPose="invisible" pose="visible">
     <StyledSidebarHeader>{title}</StyledSidebarHeader>
     <StyledSidebarContent>{children}</StyledSidebarContent>
   </StyledSidebar>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { formatRelative, parseISO } from 'date-fns';
-import { SFC } from 'react';
+import { SFC, Fragment } from 'react';
 import { ArticleTypes } from './Types';
 import { ImageURL } from '../../utils/functions';
 import {
@@ -24,11 +24,18 @@ const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
         </Link>
       </h2>
       {article.created_at && (
-        <p>
-          Published {formatRelative(parseISO(article.created_at), new Date())}
-          {` `}
-          by {article.user.username}
-        </p>
+        <Fragment>
+          <p>
+            Published {formatRelative(parseISO(article.created_at), new Date())}
+            {` `}
+            by {article.user.username}
+          </p>
+          {article.created_at != article.updated_at && (
+            <p>
+              Revised {formatRelative(parseISO(article.updated_at), new Date())}
+            </p>
+          )}
+        </Fragment>
       )}
     </StyledArticleHeaderInfo>
   </StyledArticleHeader>

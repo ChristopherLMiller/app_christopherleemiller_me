@@ -1,11 +1,11 @@
-import { ArticleTypes } from './Types';
 import hljs from 'highlight.js';
 import Link from 'next/link';
+import { SFC, useEffect } from 'react';
+import { ArticleTypes } from './Types';
 import { ArticleFooter } from './Footer';
 import { ArticleHead } from './Head';
 import { CommentCount } from './CommentCount';
-import { SFC, useEffect } from 'react';
-//import 'highlight.js/styles/atom-one-dark.css';
+// import 'highlight.js/styles/atom-one-dark.css';
 import {
   StyledArticle,
   StyledArticleBody,
@@ -22,7 +22,7 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
       <ArticleHead article={article} />
       <StyledArticleBody>
         {children}
-        < CommentCount comments={article.comments} />
+        <CommentCount comments={article.comments} />
         <StyledReadMore>
           <Link
             as={`/post/${article.slug}`}
@@ -36,6 +36,5 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
     </StyledArticle>
   );
 };
-
 
 export { BriefArticle };

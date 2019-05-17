@@ -2,6 +2,7 @@ import NProgress from 'nprogress';
 import React, { SFC } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
 Router.onRouteChangeStart = () => {
@@ -15,9 +16,20 @@ Router.onRouteChangeError = () => {
   NProgress.done();
 };
 
-const StyledHeader = styled.header`
+const HeaderPopped = posed.header({
+  open: {
+    y: `0%`,
+    delay: 500,
+  },
+  closed: {
+    y: `-100%`,
+  },
+});
+
+const StyledHeader = styled(HeaderPopped)`
   background: ${(props: Props) => props.theme.colors.red_transparent};
   padding: 30px;
+  transform: translateY(-100%);
 `;
 
 const StyledHeaderTitle = styled.h1`
@@ -30,15 +42,13 @@ const StyledHeaderDescription = styled.p`
 `;
 
 interface HeaderProps {
-  title: string,
-  description: string,
+  title: string;
+  description: string;
 }
 const Header: SFC<HeaderProps> = ({ title, description }) => (
-  <StyledHeader>
+  <StyledHeader pose="open" initialPose="closed">
     <StyledHeaderTitle>{title}</StyledHeaderTitle>
-    <StyledHeaderDescription>
-      {description}
-    </StyledHeaderDescription>
+    <StyledHeaderDescription>{description}</StyledHeaderDescription>
   </StyledHeader>
 );
 

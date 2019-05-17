@@ -8,7 +8,12 @@ const SocialIconPosed = posed.span({
   hoverable: true,
   init: { scale: 1 },
   hover: {
-    scale: 1.2,
+    scale: 1.1,
+    transition: {
+      type: `spring`,
+      stiffness: 100,
+      damping: 0,
+    },
   },
 });
 

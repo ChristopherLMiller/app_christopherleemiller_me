@@ -6,19 +6,19 @@ import { SEPARATOR, SITE_TITLE } from '../../config';
 
 const withLayout = (WrappedComponent, title, description, path) => {
   class HOC extends React.Component {
-    render() {
+    public render() {
       return (
         <Fragment>
           <Header title={title} description={description} />
           <NextSEO
             config={{
-              title: `${SITE_TITLE}${SEPARATOR}${title}`,
               description,
               openGraph: {
                 description,
                 title: `${SITE_TITLE}${SEPARATOR}${title}`,
                 url: `${process.env.SITE_URL}${path}`,
               },
+              title: `${SITE_TITLE}${SEPARATOR}${title}`,
             }}
           />
           <WrappedComponent {...this.props} />

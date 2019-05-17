@@ -8,6 +8,6 @@ const StyledCommentCount = styled.p`
 
 const CommentCount: SFC<CommentsType> = ({ comments }) => (
   <StyledCommentCount>{comments.length || 0} Comments</StyledCommentCount>
-)
+);
 
 export { CommentCount };
