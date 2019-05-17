@@ -13,7 +13,7 @@ const Meta = () => (
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite|Permanent+Marker"
+      href="https://fonts.googleapis.com/css?family=Oswald|Special+Elite|Permanent+Marker&display=swap"
     />
   </Head>
 );

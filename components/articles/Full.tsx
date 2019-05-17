@@ -6,7 +6,8 @@ import { ArticleTypes } from './Types';
 import { CommentsList } from '../CommentsList';
 import { ImageURL } from '../../utils/functions';
 import { SEPARATOR, SITE_TITLE } from '../../config';
-import 'highlight.js/styles/atom-one-dark.css';
+// Next line is commented out till next-css is fixed
+// import 'highlight.js/styles/atom-one-dark.css';
 import { StyledArticle, StyledArticleBody } from '../styles/Articles';
 
 const FullArticle: SFC<ArticleTypes> = ({

@@ -18,7 +18,7 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
   });
 
   return (
-    <StyledArticle initialPose="invisible" pose="visible">
+    <StyledArticle>
       <ArticleHead article={article} />
       <StyledArticleBody>
         {children}

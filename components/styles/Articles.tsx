@@ -19,7 +19,7 @@ const StyledArticle = styled(PosedArticle)`
   margin: 50px auto;
   transition-delay: 2s;
   transition: all 0.25s;
-  opacity: 0;
+  opacity: 1;
 `;
 
 const StyledArticleBody = styled.div`
