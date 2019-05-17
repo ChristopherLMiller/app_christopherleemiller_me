@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import posed from 'react-pose';
+import { useState, useEffect } from 'react';
 import Logo from './Logo';
 import Nav from './Nav';
 import { SocialLinks } from '../SocialLinks';
@@ -7,19 +8,21 @@ import Title from './Title';
 import { Props } from '../styles/Themes';
 
 const SidebarPop = posed.aside({
-  enter: {
-    left: `0`,
+  open: {
+    x: `0%`,
+    delayChildren: 200,
+    staggerChildren: 50,
+    delay: 200,
   },
-  exit: {
-    left: `-100%`,
+  closed: {
+    x: `-100%`,
   },
 });
 
 const StyledSidebar = styled(SidebarPop)`
   position: relative;
   display: none;
-  transition: all 0.5s;
-  left: -100%;
+  transform: translateX(-100%);
 
   &:before {
     background: rgba(0, 0, 0);
@@ -54,15 +57,24 @@ const StyledSidebarInner = styled.div`
   flex-direction: column;
 `;
 
-const Sidebar = () => (
-  <StyledSidebar initialPose="exit" pose="enter">
-    <StyledSidebarInner>
-      <Logo />
-      <Title />
-      <Nav />
-      <SocialLinks />
-    </StyledSidebarInner>
-  </StyledSidebar>
-);
+const Sidebar = () => {
+  const [isOpen, setOpen] = useState(false);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true), 1000;
+    });
+  });
+
+  return (
+    <StyledSidebar pose={isOpen ? `open` : `closed`}>
+      <StyledSidebarInner>
+        <Logo />
+        <Title />
+        <Nav />
+        <SocialLinks />
+      </StyledSidebarInner>
+    </StyledSidebar>
+  );
+};
 export default Sidebar;

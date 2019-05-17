@@ -84,7 +84,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             }
 
             return (
-              <StyledModelListings initialPose="exit" pose="enter">
+              <StyledModelListings>
                 {data.models.map(model => (
                   <ModelListing
                     ModelListingPose={ModelListingPose}

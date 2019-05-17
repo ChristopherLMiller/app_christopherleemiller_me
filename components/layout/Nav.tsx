@@ -1,37 +1,55 @@
 import Link from 'next/link';
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
-const NavStyles = styled.ul`
+const PosedNav = posed.ul({
+  open: {
+    beforeChildren: true,
+    staggerChildren: 100,
+    delayChildren: 1000,
+  },
+});
+
+const NavStyles = styled(PosedNav)`
   padding-left: 0;
 `;
 
-const NavItem = styled.li`
+const PosedNavItem = posed.li({
+  open: {
+    opacity: 1,
+    x: `0%`,
+  },
+  closed: {
+    opacity: 0,
+    x: `-100%`,
+  },
+});
+
+const NavItem = styled(PosedNavItem)`
   font-family: monospace;
   font-size: 1.4em;
   list-style-type: none;
   line-height: 2em;
-  position: relative;
-  display: block;
 
   :after {
     content: '\\A';
     position: absolute;
-    width: 0%;
+    width: 100%;
     height: 100%;
-    left: 0;
+    left: -100%;
     z-index: -1;
     background: ${(props: Props) => props.theme.colors.red_transparent};
     opacity: 0;
     transition: all 0.25s;
   }
   :hover:after {
-    width: 100%;
     opacity: 1;
+    left: -15%;
   }
 `;
 const Nav = () => (
-  <NavStyles>
+  <NavStyles pose="open">
     <NavItem>
       <Link href="/" prefetch>
         <a>Home</a>

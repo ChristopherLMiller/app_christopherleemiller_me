@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import posed from 'react-pose';
 import { Props } from '../styles/Themes';
-
-`react-pose`;
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -17,19 +14,7 @@ const StyledModelPage = styled.div`
   }
 `;
 
-const ModelListingsPose = posed.div({
-  exit: {
-    opacity: `0`,
-  },
-  enter: {
-    opacity: `1`,
-    beforeChildren: true,
-    staggerChildren: 100,
-  },
-});
-
-const StyledModelListings = styled(ModelListingsPose)`
-  opacity: 0;
+const StyledModelListings = styled.div`
   transition-delay: 1s;
   transition: all 0.25s;
   order: 1;
