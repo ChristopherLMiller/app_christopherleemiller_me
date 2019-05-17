@@ -24,14 +24,15 @@ const Categories: SFC<CategoriesType> = ({ categories }) => (
     {categories.map((category, index) => (
       <CategoriesLink key={category.id}>
         {!!index && <Splitter>|</Splitter>}
-        <Link href={`/articles?category=${category.slug}`} as={`/articles?category=${category.slug}`}>
+        <Link
+          href={`/articles?category=${category.slug}`}
+          as={`/articles?category=${category.slug}`}
+        >
           <a>{category.title}</a>
         </Link>
       </CategoriesLink>
     ))}
-    {(categories.length < 1) && (
-      <span>Uncategorized</span>
-    )}
+    {categories.length < 1 && <span>Uncategorized</span>}
   </CategoriesWrapper>
 );
 

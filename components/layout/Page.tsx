@@ -1,9 +1,9 @@
 import React, { Fragment, SFC } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import posed from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
-
 import { theme, Props } from '../styles/Themes';
 
 const StyledPage = styled.div`
@@ -30,7 +30,14 @@ const StyledPage = styled.div`
   }
 `;
 
-const Inner = styled.div`
+const PosedInner = posed.div({
+  open: {
+    beforeChildren: true,
+    delayChildren: 500,
+  },
+});
+
+const Inner = styled(PosedInner)`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -91,7 +98,7 @@ const Page: SFC<PageProps> = ({ children }) => (
       <StyledPage>
         <Meta />
         <Sidebar />
-        <Inner>{children}</Inner>
+        <Inner pose="open">{children}</Inner>
       </StyledPage>
       <MobileNav />
       <GlobalStyles />

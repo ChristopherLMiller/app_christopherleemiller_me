@@ -1,4 +1,3 @@
-import { SocialIcon } from './SocialIcon';
 import styled from 'styled-components';
 import {
   faFacebookF,
@@ -6,6 +5,7 @@ import {
   faGithubAlt,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
+import { SocialIcon } from './SocialIcon';
 
 const SocialLinksBar = styled.ul`
   list-style-type: none;

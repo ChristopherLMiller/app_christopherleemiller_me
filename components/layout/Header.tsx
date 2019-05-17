@@ -17,20 +17,19 @@ Router.onRouteChangeError = () => {
 };
 
 const HeaderPopped = posed.header({
-  enter: {
-    transform: `rotateX(0deg)`,
+  open: {
+    y: `0%`,
+    delay: 500,
   },
-  exit: {
-    transform: `rotateX(90deg)`,
+  closed: {
+    y: `-100%`,
   },
 });
 
 const StyledHeader = styled(HeaderPopped)`
   background: ${(props: Props) => props.theme.colors.red_transparent};
   padding: 30px;
-  transform: rotateX(90deg);
-  transition: all 0.25s;
-  transition-delay: 0.5s;
+  transform: translateY(-100%);
 `;
 
 const StyledHeaderTitle = styled.h1`
@@ -47,7 +46,7 @@ interface HeaderProps {
   description: string;
 }
 const Header: SFC<HeaderProps> = ({ title, description }) => (
-  <StyledHeader initialPose="exit" pose="enter">
+  <StyledHeader pose="open" initialPose="closed">
     <StyledHeaderTitle>{title}</StyledHeaderTitle>
     <StyledHeaderDescription>{description}</StyledHeaderDescription>
   </StyledHeader>

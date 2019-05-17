@@ -16,9 +16,6 @@ const StyledCard = styled(CardPopTransition)`
   font-family: 'Special Elite', sans-serif;
   max-width: 1000px;
   margin: 25px auto;
-  opacity: 0;
-  transition: all 0.25s;
-  transition-delay: 1s;
 `;
 
 const StyledCardBody = styled.div`

@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import PaginationStyles from '../styles/PaginationStyles';
 import React, { SFC } from 'react';
-import { PER_PAGE } from '../../config';
 import { Query } from 'react-apollo';
+import PaginationStyles from '../styles/PaginationStyles';
+import { PER_PAGE } from '../../config';
 
 interface PaginationTypes {
-  page: number,
-  graphql_query: string,
+  page: number;
+  graphql_query: string;
 }
 
 const Pagination: SFC<PaginationTypes> = ({ page, graphql_query }) => (
@@ -21,7 +21,7 @@ const Pagination: SFC<PaginationTypes> = ({ page, graphql_query }) => (
           <Link
             prefetch
             href={{
-              pathname: 'articles',
+              pathname: `articles`,
               query: { page: page - 1 },
             }}
           >
@@ -36,7 +36,7 @@ const Pagination: SFC<PaginationTypes> = ({ page, graphql_query }) => (
           <Link
             prefetch
             href={{
-              pathname: 'articles',
+              pathname: `articles`,
               query: { page: page + 1 },
             }}
           >

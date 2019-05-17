@@ -5,11 +5,12 @@ import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
 const FooterPopped = posed.footer({
-  enter: {
-    transform: `rotateX(0deg)`,
+  open: {
+    y: `0%`,
+    delay: 750,
   },
-  exit: {
-    transform: `rotateX(-90deg)`,
+  closed: {
+    y: `100%`,
   },
 });
 
@@ -17,9 +18,7 @@ const StyledFooter = styled(FooterPopped)`
   background: ${(props: Props) => props.theme.colors.red_transparent};
   padding: 30px 10px;
   position: sticky;
-  transform: rotateX(-90deg);
-  transition: all 0.25s;
-  transition-delay: 0.75s;
+  transform: translateY(100%);
 `;
 const SiteInfo = styled.div`
   font-family: monospace;
@@ -33,7 +32,7 @@ const Separator = styled.span`
   margin: auto 10px;
 `;
 const Footer = () => (
-  <StyledFooter initialPose="exit" pose="enter">
+  <StyledFooter initialPose="closed" pose="open">
     <SiteInfo>
       <Link href="/privacy-policy" prefetch>
         <a>Privacy Policy</a>
