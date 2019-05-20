@@ -2,8 +2,7 @@ import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div`
-  display: flex;
-  flex-direction: column;
+  display: block;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     display: grid;

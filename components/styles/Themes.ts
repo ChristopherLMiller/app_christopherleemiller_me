@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 const theme = {
   colors: {
     black: `#000000`,
@@ -17,6 +19,10 @@ const theme = {
   },
   max_width: `1000px`,
 };
+
+const Center = styled.div`
+  margin: 0 auto;
+`;
 
 export interface Props {
   theme: {
@@ -40,4 +46,4 @@ export interface Props {
   };
 }
 
-export { theme };
+export { theme, Center };
