@@ -1,7 +1,7 @@
 import hljs from 'highlight.js/';
 import NextSEO from 'next-seo';
 import { SFC, useEffect, Fragment } from 'react';
-import { ArticleHead } from './Head';
+import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
 import { CommentsList } from '../CommentsList';
 import { ImageURL } from '../../utils/functions';
@@ -9,6 +9,7 @@ import { SEPARATOR, SITE_TITLE } from '../../config';
 // Next line is commented out till next-css is fixed
 // import 'highlight.js/styles/atom-one-dark.css';
 import { StyledArticle, StyledArticleBody } from '../styles/Articles';
+import { ArticleBody } from './elements/Body';
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,
@@ -38,15 +39,15 @@ const FullArticle: SFC<ArticleTypes> = ({
             images: [
               {
                 alt: article.title,
-                url: ImageURL(article.featured_image),
+                url: ImageURL(article.featured_image.public_id),
               },
             ],
           },
         }}
       />
-      <StyledArticle initialPose="invisible" pose="visible">
+      <StyledArticle>
         <ArticleHead article={article} />
-        <StyledArticleBody>{children}</StyledArticleBody>
+        <ArticleBody>{children}</ArticleBody>
       </StyledArticle>
 
       {commentsEnabled && <CommentsList comments={article.comments} />}

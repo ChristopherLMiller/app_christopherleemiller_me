@@ -83,25 +83,6 @@ const StyledModelListingColumn = styled.div`
   grid-template-columns: 50% 50%;
 `;
 
-const StyledReadMore = styled.p`
-  background: ${(props: Props) => props.theme.colors.red};
-  padding: 5px;
-  transform: skew(-25deg);
-  transition: all 0.5s;
-  text-align: center;
-  margin: 20px auto;
-  max-width: 200px;
-  letter-spacing: 2px;
-
-  a {
-    color: ${(props: Props) => props.theme.colors.white};
-  }
-
-  :hover {
-    transform: skew(0deg);
-  }
-`;
-
 const StyledModelImage = styled.img`
   max-width: 100%;
   display: block;
@@ -116,7 +97,6 @@ export {
   StyledModelListingParagraph,
   StyledModelListingBlock,
   StyledModelListingColumn,
-  StyledReadMore,
   StyledModelPage,
   ModelListingPose,
 };

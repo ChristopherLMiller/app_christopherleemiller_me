@@ -8,8 +8,8 @@ import {
   StyledModelListingInfo,
   StyledModelListingParagraph,
   StyledModelListingTitle,
-  StyledReadMore,
 } from '../styles/Models';
+import { Button } from '../Buttons';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
   const completed = model.completed ? `Yes` : `No`;
@@ -38,11 +38,11 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
           </StyledModelListingParagraph>
           {model.clockify_id && <BuildTime id={model.clockify_id} />}
         </StyledModelListingColumn>
-        <StyledReadMore>
-          <Link as={`/model/${model.slug}`} href={`/model?slug=${model.slug}`}>
-            <a>View More </a>
-          </Link>
-        </StyledReadMore>
+        <Button
+          as={`/model/${model.slug}`}
+          href={`/model?slug=${model.slug}`}
+          text="View More"
+        />
       </StyledModelListingBlock>
     </StyledModelListingInfo>
   );

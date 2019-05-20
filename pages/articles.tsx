@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { withLayout } from '../components/layout/Layout';
+import { Pagination } from '../components/Pagination';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -56,6 +57,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
           );
         }}
       </Query>
+      <Pagination page={page} content_type="articles" />
     </main>
   );
 };

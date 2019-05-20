@@ -24,7 +24,9 @@ export const ARTICLES_QUERY = gql`
       slug
       title
       published
-      featured_image
+      featured_image {
+        public_id
+      }
       created_at
       updated_at
       seo_description

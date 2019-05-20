@@ -1,23 +1,27 @@
 import Link from 'next/link';
 import React, { SFC, useEffect, useState } from 'react';
-import PaginationStyles from '../styles/PaginationStyles';
-import { Center } from '../styles/Themes';
-import { PER_PAGE, STRAPI_ENDPOINT } from '../../config';
+import PaginationStyles from './styles/PaginationStyles';
+import { Center } from './styles/Themes';
+import { PER_PAGE, STRAPI_ENDPOINT } from '../config';
 
 interface PaginationTypes {
   page: number;
+  content_type: string;
 }
 
-const Pagination: SFC<PaginationTypes> = ({ page }) => {
+const Pagination: SFC<PaginationTypes> = ({ page, content_type }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`${STRAPI_ENDPOINT}/models/count`, {
-        headers: {
-          'Content-Type': `application/json`,
-        },
-      });
+      const response = await fetch(
+        `${STRAPI_ENDPOINT}/${content_type}/count?published=true`,
+        {
+          headers: {
+            'Content-Type': `application/json`,
+          },
+        }
+      );
       const data = await response.json();
       setCount(data);
     }
@@ -30,7 +34,7 @@ const Pagination: SFC<PaginationTypes> = ({ page }) => {
         <Link
           prefetch
           href={{
-            pathname: `models`,
+            pathname: `${content_type}`,
             query: { page: page - 1 },
           }}
         >
@@ -41,11 +45,13 @@ const Pagination: SFC<PaginationTypes> = ({ page }) => {
         <p>
           Page {page} of {Math.ceil(count / PER_PAGE)}
         </p>
-        <p>{count} Models Total</p>
+        <p>
+          {count} {content_type} Total
+        </p>
         <Link
           prefetch
           href={{
-            pathname: `models`,
+            pathname: `${content_type}`,
             query: { page: page + 1 },
           }}
         >

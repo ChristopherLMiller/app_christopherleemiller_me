@@ -1,16 +1,13 @@
 import hljs from 'highlight.js';
-import Link from 'next/link';
 import { SFC, useEffect } from 'react';
 import { ArticleTypes } from './Types';
-import { ArticleFooter } from './Footer';
-import { ArticleHead } from './Head';
+import { ArticleFooter } from './elements/Footer';
+import { ArticleHead } from './elements/Head';
 import { CommentCount } from './CommentCount';
 // import 'highlight.js/styles/atom-one-dark.css';
-import {
-  StyledArticle,
-  StyledArticleBody,
-  StyledReadMore,
-} from '../styles/Articles';
+import { StyledArticle } from '../styles/Articles';
+import { ArticleBody } from './elements/Body';
+import { Button } from '../Buttons';
 
 const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
   useEffect(() => {
@@ -20,18 +17,15 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
   return (
     <StyledArticle>
       <ArticleHead article={article} />
-      <StyledArticleBody>
+      <ArticleBody>
         {children}
         <CommentCount comments={article.comments} />
-        <StyledReadMore>
-          <Link
-            as={`/post/${article.slug}`}
-            href={`/post?slug=${article.slug}`}
-          >
-            <a>Read More </a>
-          </Link>
-        </StyledReadMore>
-      </StyledArticleBody>
+        <Button
+          as={`/post/${article.slug}`}
+          href={`/post?slug=${article.slug}`}
+          text="Read More"
+        />
+      </ArticleBody>
       <ArticleFooter article={article} />
     </StyledArticle>
   );
