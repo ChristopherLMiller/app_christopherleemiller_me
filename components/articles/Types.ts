@@ -32,7 +32,9 @@ interface CommentsType {
 interface ArticleTypes {
   article: {
     id: string;
-    featured_image: string;
+    featured_image: {
+      public_id: string;
+    };
     content_brief: string;
     content: string;
     title: string;

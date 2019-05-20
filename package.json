@@ -34,6 +34,7 @@
     "apollo-link": "^1.2.11",
     "apollo-link-error": "^1.1.10",
     "apollo-link-http": "^1.5.14",
+    "cloudinary-react": "^1.1.0",
     "date-fns": "^2.0.0-alpha.27",
     "dotenv": "^8.0.0",
     "downshift": "^3.2.10",

@@ -22,6 +22,7 @@ const theme = {
 
 const Center = styled.div`
   margin: 0 auto;
+  text-align: center;
 `;
 
 export interface Props {
