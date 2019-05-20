@@ -1,7 +1,7 @@
 export const modelsSidebarCompletedFilter = [
   {
     id: 2,
-    slug: `all`,
+    slug: ``,
     title: `All`,
   },
   {

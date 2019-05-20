@@ -1,5 +1,5 @@
-import React, { SFC, useEffect } from 'react';
-import Router from 'next/router';
+import React, { SFC } from 'react';
+import Router, { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import { Props } from './styles/Themes';
@@ -39,7 +39,7 @@ interface SidebarDropdownTypes {
   field?: string;
 }
 
-const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
+const Dropdown: SFC<SidebarDropdownTypes> = ({
   items,
   query,
   slug,
@@ -51,7 +51,7 @@ const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
     {items && (
       <SidebarDropdownSelect
         onChange={event => {
-          Router.push(urlBuilder(slug, event.target.value));
+          Router.push(urlBuilder(Router.asPath, slug, event.target.value));
         }}
       >
         {items.map(item => (
@@ -75,7 +75,9 @@ const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
             <SidebarDropdownSelect
               key={slug}
               onChange={event => {
-                Router.push(urlBuilder(slug, event.target.value));
+                Router.push(
+                  urlBuilder(Router.asPath, slug, event.target.value)
+                );
               }}
             >
               <option key="all" value="">
@@ -94,4 +96,5 @@ const SidebarDropdown: SFC<SidebarDropdownTypes> = ({
   </StyledSidebarDropdown>
 );
 
+const SidebarDropdown = withRouter(Dropdown);
 export { SidebarDropdown };

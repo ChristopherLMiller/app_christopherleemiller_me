@@ -18,6 +18,7 @@ import {
 import { Sidebar } from '../components/Sidebar';
 import { SidebarDropdown } from '../components/SidebarDropdown';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
+import { Pagination } from '../components/models/pagination';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -126,6 +127,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             field="title"
           />
         </Sidebar>
+        <Pagination page={page} />
       </StyledModelPage>
     </main>
   );
