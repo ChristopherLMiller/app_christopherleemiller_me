@@ -26,7 +26,9 @@ interface ModelTypes {
     updated_at: string;
     title: string;
     slug: string;
-    featured_image: string;
+    featured_image: {
+      public_id: string;
+    };
     content: string;
     review: String;
     seo_title: string;

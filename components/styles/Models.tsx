@@ -83,14 +83,8 @@ const StyledModelListingColumn = styled.div`
   grid-template-columns: 50% 50%;
 `;
 
-const StyledModelImage = styled.img`
-  max-width: 100%;
-  display: block;
-`;
-
 export {
   StyledModelListings,
-  StyledModelImage,
   StyledModelListing,
   StyledModelListingTitle,
   StyledModelListingInfo,

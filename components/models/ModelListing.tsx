@@ -1,12 +1,12 @@
 import { SFC } from 'react';
-import { ModelImage } from './ModelImage';
 import { ModelInfo } from './ModelInfo';
 import { ModelTypes } from './Types';
 import { StyledModelListing } from '../styles/Models';
+import { FeaturedImage } from '../FeaturedImage';
 
 const ModelListing: SFC<ModelTypes> = ({ model }) => (
   <StyledModelListing>
-    <ModelImage model={model} width={700} />
+    <FeaturedImage image={model.featured_image} width={700} alt={model.title} />
     <ModelInfo model={model} />
   </StyledModelListing>
 );

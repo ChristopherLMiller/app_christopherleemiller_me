@@ -89,7 +89,9 @@ export const MODELS_QUERY = gql`
       slug
       content
       review
-      featured_image
+      featured_image {
+        public_id
+      }
       seo_title
       seo_description
       completed

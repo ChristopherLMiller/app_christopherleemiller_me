@@ -7,17 +7,46 @@ const StyledFeaturedImage = styled.img`
   object-fit: fill;
   display: block;
   width: 100%;
-  max-height: 300px;
-  border: 3px solid ${(props: Props) => props.theme.colors.white};
+  max-height: ${(props: Props) =>
+    props.max_height ? `${props.max_height}px` : `initial`};
+  border: ${(props: Props) => (props.border ? `3px` : `0`)} solid
+    ${(props: Props) => props.theme.colors.white};
 `;
 
 interface FeaturedImageTypes {
-  image: string;
+  image: {
+    public_id: string;
+  };
   width: number;
   alt: string;
+  border?: boolean;
+  max_height?: number;
 }
-const FeaturedImage: SFC<FeaturedImageTypes> = ({ image, width, alt }) => (
-  <StyledFeaturedImage src={ImageURL(image, width)} alt={alt} />
-);
+const FeaturedImage: SFC<FeaturedImageTypes> = ({
+  image,
+  width,
+  max_height,
+  alt,
+  border = false,
+}) => {
+  if (image) {
+    return (
+      <StyledFeaturedImage
+        src={ImageURL(image.public_id, width)}
+        alt={alt}
+        border={border}
+        max_height={max_height}
+      />
+    );
+  }
+  return (
+    <StyledFeaturedImage
+      src={ImageURL(`clm_me/assets/default`, width)}
+      alt="Default Image"
+      border={border}
+      max_height={max_height}
+    />
+  );
+};
 
 export { FeaturedImage };
