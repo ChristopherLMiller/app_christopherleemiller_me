@@ -77,6 +77,7 @@ const GlobalStyles = createGlobalStyle`
     flex-grow: 2;
     padding: 20px;
     overflow-x: hidden;
+    overflow-y: hidden;
 
     @media screen and (min-width: ${(props: Props) =>
       props.theme.sizes.small}) {
