@@ -39,7 +39,7 @@
     "dotenv": "^8.0.0",
     "downshift": "^3.2.10",
     "enzyme": "^3.9.0",
-    "enzyme-adapter-react-16": "^1.13.0",
+    "enzyme-adapter-react-16": "^1.13.1",
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "graphql": "^14.3.0",
