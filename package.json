@@ -50,7 +50,7 @@
     "markdown-to-jsx": "^6.9.4",
     "next": "^8.1.0",
     "next-auth": "^1.12.1",
-    "next-offline": "^3.4.0",
+    "next-offline": "^4.0.0",
     "next-seo": "^1.11.2",
     "next-with-apollo": "^3.4.0",
     "nprogress": "^0.2.0",
