@@ -6,13 +6,13 @@ import { CommentsList } from '../CommentsList';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../styles/Themes';
-import { ModelImage } from './ModelImage';
 import {
   StyledModelListingParagraph,
   StyledModelListingTitle,
 } from '../styles/Models';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 import { ImageURL } from '../../utils/functions';
+import { FeaturedImage } from '../FeaturedImage';
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -106,7 +106,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
           images: [
             {
               alt: model.title,
-              url: ImageURL(model.featured_image),
+              url: ImageURL(model.featured_image.public_id),
             },
           ],
         },
@@ -114,7 +114,11 @@ const Model: SFC<ModelTypes> = ({ model }) => (
     />
     <StyledModelPage>
       <StyledContentArea>
-        <ModelImage model={model} width={1500} />
+        <FeaturedImage
+          image={model.featured_image}
+          width={1500}
+          alt={model.title}
+        />
         <ModelContentArea>
           <StyledModelListingTitle>Build Log</StyledModelListingTitle>
           <ModelContent>

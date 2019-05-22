@@ -30,9 +30,11 @@ const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
   <StyledArticleHeader>
     {article.featured_image && (
       <FeaturedImage
-        image={article.featured_image.public_id}
+        image={article.featured_image}
         width={1000}
         alt={article.title}
+        border
+        max_height={300}
       />
     )}
     <StyledArticleHeaderInfo>

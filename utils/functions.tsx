@@ -11,7 +11,7 @@ export function ImageURL(
   quality = `q_auto`
 ): string {
   // check some conditions first like being null
-  if (file == null) file = `assets/default`;
+  if (file == null) file = `clm_me/assets/default`;
 
   return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${transform},w_${width},${quality},f_auto/${CLOUDINARY_VERSION}/${file}`;
 }
