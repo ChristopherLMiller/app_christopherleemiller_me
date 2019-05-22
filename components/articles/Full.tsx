@@ -39,7 +39,7 @@ const FullArticle: SFC<ArticleTypes> = ({
             images: [
               {
                 alt: article.title,
-                url: ImageURL(article.featured_image.public_id),
+                url: `${ImageURL(article.featured_image.public_id)}.jpg`,
               },
             ],
           },
