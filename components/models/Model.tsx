@@ -106,7 +106,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
           images: [
             {
               alt: model.title,
-              url: ImageURL(model.featured_image.public_id),
+              url: `${ImageURL(model.featured_image.public_id)}.jpg`,
             },
           ],
         },
