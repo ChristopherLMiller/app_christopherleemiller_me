@@ -25,7 +25,7 @@ const StyledSidebar = styled(SidebarPop)`
   transform: translateX(-100%);
 
   &:before {
-    background: rgba(0, 0, 0);
+    background: rgba(0, 0, 0.7);
     position: absolute;
     top: 0;
     left: 0;
@@ -42,9 +42,6 @@ const StyledSidebar = styled(SidebarPop)`
   @media screen and (min-width: ${(props: Props) =>
       props.theme.sizes.med_small}) {
     min-height: 100vh;
-    &:before {
-      background: rgba(0, 0, 0, 0.7);
-    }
     padding: 40px;
   }
 `;

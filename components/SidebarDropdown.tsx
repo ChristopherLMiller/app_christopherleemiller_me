@@ -15,15 +15,14 @@ const SidebarDropdownHeading = styled.h5`
   color: ${(props: Props) => props.theme.colors.grey_darkest};
   text-align: center;
   font-size: 1.5em;
-  font-family: 'Special Elite';
+  font-family: Roboto, sans-serif;
   text-transform: uppercase;
   text-decoration: underline;
   padding: 20px 0 0 0;
 `;
 
 const SidebarDropdownSelect = styled.select`
-  font-family: 'Special ELite';
-  text-transform: uppercase;
+  font-family: Roboto, sans-serif;
   padding: 5px;
   font-size: 1.25em;
   width: 100%;

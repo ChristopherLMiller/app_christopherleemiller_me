@@ -52,19 +52,20 @@ const StyledModelListingTitle = styled.h2`
   color: ${(props: Props) => props.theme.colors.white};
   margin: 0;
   padding: 20px;
-  font-family: Monospace;
+  font-family: Roboto, sans-serif;
   text-transform: uppercase;
   letter-spacing: 5px;
+  text-align: center;
 `;
 
 const StyledModelListingBlock = styled.div`
-  padding: 10px;
+  padding: 15px 20px;
   font-size: 1.25em;
 `;
 
 const StyledModelListingParagraph = styled.p`
   margin: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
   font-family: Roboto;
   color: ${(props: Props) => props.theme.colors.black};
@@ -80,7 +81,7 @@ const StyledModelListingParagraph = styled.p`
 
 const StyledModelListingColumn = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 60% auto;
 `;
 
 export {

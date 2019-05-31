@@ -15,9 +15,10 @@ const CardPopTransition = posed.div({
 const StyledCard = styled(CardPopTransition)`
   background: ${(props: Props) => props.theme.colors.grey};
   color: black;
-  font-family: 'Special Elite', sans-serif;
+  font-family: Roboto, sans-serif;
+  font-weight: 300;
   max-width: 1000px;
-  margin: 25px auto;
+  margin: 0 auto;
 `;
 
 const CardHeading = styled.div`

@@ -20,12 +20,12 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
       <ArticleBody>
         {children}
         <CommentCount comments={article.comments} />
-        <Button
-          as={`/post/${article.slug}`}
-          href={`/post?slug=${article.slug}`}
-          text="Read More"
-        />
       </ArticleBody>
+      <Button
+        as={`/post/${article.slug}`}
+        href={`/post?slug=${article.slug}`}
+        text="Read More"
+      />
       <ArticleFooter article={article} />
     </StyledArticle>
   );

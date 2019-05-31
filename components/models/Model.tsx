@@ -68,7 +68,7 @@ const ModelContentArea = styled.div`
 `;
 
 const ModelContent = styled.div`
-  font-family: 'Special Elite';
+  font-family: Roboto, sans-serif;
   font-size: 1.25em;
   padding: 20px;
 

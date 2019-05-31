@@ -20,9 +20,15 @@ const SocialIconPosed = posed.span({
 interface SocialIconProps {
   url: string;
   icon: string;
+  color: string;
   alt: string;
 }
-const SocialIcon: SFC<SocialIconProps> = ({ url, icon, alt }) => (
+const SocialIcon: SFC<SocialIconProps> = ({
+  url,
+  icon,
+  color = `#FFFFFF`,
+  alt,
+}) => (
   <li>
     <Link href={url}>
       <a title={alt} aria-label={alt}>
@@ -32,7 +38,7 @@ const SocialIcon: SFC<SocialIconProps> = ({ url, icon, alt }) => (
             className="fa-stack-2x"
             color="#982929"
           />
-          <FontAwesomeIcon icon={icon} className="fa-stack-1x" />
+          <FontAwesomeIcon icon={icon} color={color} className="fa-stack-1x" />
         </SocialIconPosed>
       </a>
     </Link>

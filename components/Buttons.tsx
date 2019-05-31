@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { SFC } from 'react';
 import Link from 'next/link';
 import posed from 'react-pose';
+import { NoEmitOnErrorsPlugin } from 'webpack';
 import { Props } from '../components/styles/Themes';
 
 const PosedButton = posed.p({
@@ -22,10 +23,12 @@ const StyledButton = styled(PosedButton)`
   margin: 20px auto;
   max-width: 200px;
   letter-spacing: 2px;
+  cursor: pointer;
+  font-size: 2rem;
+`;
 
-  a {
-    color: ${(props: Props) => props.theme.colors.white};
-  }
+const ButtonAnchor = styled.a`
+  color: ${(props: Props) => props.theme.colors.white};
 `;
 
 interface ButtonTypes {
@@ -37,7 +40,7 @@ interface ButtonTypes {
 const Button: SFC<ButtonTypes> = ({ href, as, text }) => (
   <StyledButton>
     <Link as={as} href={href}>
-      <a>{text}</a>
+      <ButtonAnchor>{text}</ButtonAnchor>
     </Link>
   </StyledButton>
 );

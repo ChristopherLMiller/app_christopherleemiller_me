@@ -38,7 +38,7 @@ const StyledSidebarContent = styled.div`
 
 const Sidebar: SFC<SidebarTypes> = ({ title, children }) => (
   <StyledSidebar initialPose="invisible" pose="visible">
-    <StyledSidebarHeader>{title}</StyledSidebarHeader>
+    {title && <StyledSidebarHeader>{title}</StyledSidebarHeader>}
     <StyledSidebarContent>{children}</StyledSidebarContent>
   </StyledSidebar>
 );

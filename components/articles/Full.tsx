@@ -10,7 +10,6 @@ import { SEPARATOR, SITE_TITLE } from '../../config';
 // import 'highlight.js/styles/atom-one-dark.css';
 import { StyledArticle } from '../styles/Articles';
 import { ArticleBody } from './elements/Body';
-import Sidebar from '../layout/Sidebar';
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,

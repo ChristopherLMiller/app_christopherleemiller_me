@@ -6,9 +6,9 @@ const ArticleBody = styled.div`
   font-size: 1.5em;
   letter-spacing: 1px;
   font-weight: 300;
-
+  color: ${(props: Props) => props.theme.colors.grey_darkest};
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    font-size: calc(1.5rem + ((1vw - 0em) * 0.5));
+    font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
   }
 
   ol {
@@ -74,7 +74,12 @@ const ArticleBody = styled.div`
     font-style: italic;
   }
   pre {
-    border: 5px solid ${(props: Props) => props.theme.colors.red};
+    border: 1px solid ${(props: Props) => props.theme.colors.red_transparent};
+  }
+  pre,
+  code {
+    white-space: pre;
+    overflow-x: auto;
   }
 
   .hljs {
