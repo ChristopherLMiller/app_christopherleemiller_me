@@ -22,7 +22,7 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   return (
     <main>
       {onlineStatus && (
-        <Query query={MODELS_QUERY} variables={{ model_slug: query.slug }}>
+        <Query query={MODELS_QUERY} variables={{ model_slug: query.slug }} notifyOnNetworkStatusChange>
           {({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) {

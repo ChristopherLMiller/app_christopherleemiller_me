@@ -66,7 +66,7 @@ export const MODELS_QUERY = gql`
     $manufacturer: String
     $tag: String
     $completed: String
-    $sort: String = "title:ASC"
+    $sort: String = "updated_at:DESC"
     $published: Boolean = true
   ) {
     models(
