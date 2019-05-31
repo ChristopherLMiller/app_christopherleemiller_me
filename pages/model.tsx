@@ -1,3 +1,4 @@
+import useOnlineStatus from '@rehooks/online-status';
 import React, { SFC } from 'react';
 import Router from 'next/router';
 import { Query } from 'react-apollo';
@@ -15,32 +16,46 @@ interface ModelPageTypes {
   };
 }
 
-const ModelPage: SFC<ModelPageTypes> = ({ query }) => (
-  <main>
-    <Query query={MODELS_QUERY} variables={{ model_slug: query.slug }}>
-      {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) {
-          console.log(error.message);
-          return (
-            <Card>
-              <h3>Unable to fetch data</h3>
-              <p>{error.message}</p>
-            </Card>
-          );
-        }
+const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
+  const onlineStatus = useOnlineStatus();
 
-        // verify that we actually received an model, an empty array signifies no result.
-        if (data.models && data.models.length > 0) {
-          const model = data.models[0];
-          return <Model model={model} />;
-        }
+  return (
+    <main>
+      {onlineStatus && (
+        <Query query={MODELS_QUERY} variables={{ model_slug: query.slug }}>
+          {({ data, error, loading }) => {
+            if (loading) return <p>Loading...</p>;
+            if (error) {
+              console.log(error.message);
+              return (
+                <Card>
+                  <h3>Unable to fetch data</h3>
+                  <p>{error.message}</p>
+                </Card>
+              );
+            }
 
-        // default to redirect to articles page
-        Router.push(`/models`);
-        return null;
-      }}
-    </Query>
-  </main>
-);
+            console.log(onlineStatus);
+
+            // verify that we actually received an model, an empty array signifies no result.
+            if (data.models && data.models.length > 0) {
+              const model = data.models[0];
+              return <Model model={model} />;
+            }
+
+            // default to redirect to articles page
+            Router.push(`/models`);
+            return null;
+          }}
+        </Query>
+      )}
+
+      {!onlineStatus && (
+        <Card heading="Internet Offline">
+          <p>Unable to connect to the internet. Please try again</p>
+        </Card>
+      )}
+    </main>
+  );
+};
 export default withLayout(ModelPage, title, description);

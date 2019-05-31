@@ -35,10 +35,14 @@ const StyledHeader = styled(HeaderPopped)`
 const StyledHeaderTitle = styled.h1`
   margin: 0;
   font-size: 2.5em;
+  font-weight: 300;
+  text-transform: uppercase;
 `;
 
 const StyledHeaderDescription = styled.p`
   font-size: 1.25em;
+  font-weight: 100;
+  margin-top: 5px;
 `;
 
 interface HeaderProps {

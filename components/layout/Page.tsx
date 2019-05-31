@@ -57,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-family: 'Oswald', sans-serif;
+    font-family: Roboto, sans-serif;
     padding: 0;
     margin: 0;
     font-size: 1.5rem;

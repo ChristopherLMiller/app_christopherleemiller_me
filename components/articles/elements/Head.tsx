@@ -1,25 +1,26 @@
-import Link from 'next/link';
 import { formatRelative, parseISO } from 'date-fns';
-import { SFC, Fragment } from 'react';
+import { SFC } from 'react';
 import styled from 'styled-components';
 import { ArticleTypes } from '../Types';
 import { Props } from '../../styles/Themes';
 import { FeaturedImage } from '../../FeaturedImage';
 
-const StyledArticleHeader = styled.div``;
+const StyledArticleHeader = styled.div`
+  font-family: Roboto;
+  font-weight: 100;
+`;
 
 const StyledArticleHeaderInfo = styled.div`
   background: ${(props: Props) => props.theme.colors.red};
-  padding: 20px;
+  padding: 20px 40px;
   margin: 0;
   color: ${(props: Props) => props.theme.colors.white};
 `;
 
 const StyledHeading = styled.h2`
-  font-family: 'Oswald';
   font-size: 2em;
-  font-weight: 100;
   margin: 5px 0;
+  font-weight: 200;
 `;
 
 const StyledPublishDate = styled.p`

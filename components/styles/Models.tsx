@@ -66,7 +66,7 @@ const StyledModelListingParagraph = styled.p`
   margin: 0;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: Oswald;
+  font-family: Roboto;
   color: ${(props: Props) => props.theme.colors.black};
   font-size: 1em;
 

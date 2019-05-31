@@ -3,8 +3,13 @@ import { Props } from '../../styles/Themes';
 
 const ArticleBody = styled.div`
   padding: 40px 20px;
-  font-size: 1.25em;
+  font-size: 1.5em;
   letter-spacing: 1px;
+  font-weight: 300;
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    font-size: calc(1.5rem + ((1vw - 0em) * 0.5));
+  }
 
   ol {
     list-style-type: decimal;
@@ -21,6 +26,11 @@ const ArticleBody = styled.div`
   p {
     margin: 15px auto;
     letter-spacing: 1px;
+    text-indent: 1.25em;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
   }
   a {
     color: ${(props: Props) => props.theme.colors.red};

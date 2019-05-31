@@ -6,11 +6,11 @@ import { Props } from '../styles/Themes';
 
 const FooterPopped = posed.footer({
   open: {
-    y: `0%`,
+    transform: `rotateX(0deg)`,
     delay: 750,
   },
   closed: {
-    y: `100%`,
+    transform: `rotateX(-90deg)`,
   },
 });
 
@@ -18,14 +18,13 @@ const StyledFooter = styled(FooterPopped)`
   background: ${(props: Props) => props.theme.colors.red_transparent};
   padding: 30px 10px;
   position: sticky;
-  transform: translateY(100%);
+  transform: rotateX(-90deg);
 `;
 const SiteInfo = styled.div`
-  font-family: monospace;
+  font-family: Roboto;
   color: ${(props: Props) => props.theme.colors.white};
-  text-decoration: none;
-  text-transform: uppercase;
 `;
+
 const Separator = styled.span`
   content: '\\A';
   border: 1px solid ${(props: Props) => props.theme.colors.white};

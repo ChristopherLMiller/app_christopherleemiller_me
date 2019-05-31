@@ -8,6 +8,7 @@ const TitleWrapper = styled.div`
   width: 100%;
   padding: 10px;
   z-index: 2;
+  font-family: Oswald;
   background: ${(props: Props) => props.theme.colors.black};
   border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey};
 
@@ -23,14 +24,14 @@ const StyledTitle = styled.h2`
   text-align: right;
   font-size: 2em;
   margin: 0;
-
+  font-variant: petite-caps;
   position: relative;
 
   :after {
     content: '\\A';
     width: 0%;
     height: 5px;
-    background: ${(props: Props) => props.theme.colors.white};
+    background: ${(props: Props) => props.theme.colors.red};
     position: absolute;
     bottom: -5px;
     left: 0;

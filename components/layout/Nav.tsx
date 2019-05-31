@@ -7,7 +7,7 @@ const PosedNav = posed.ul({
   open: {
     beforeChildren: true,
     staggerChildren: 100,
-    delayChildren: 1000,
+    delayChildren: 500,
   },
 });
 
@@ -28,9 +28,9 @@ const PosedNavItem = posed.li({
 
 const NavItem = styled(PosedNavItem)`
   font-family: monospace;
-  font-size: 1.4em;
+  font-size: 1.75em;
   list-style-type: none;
-  line-height: 2em;
+  line-height: 2.5em;
 
   :after {
     content: '\\A';
@@ -46,6 +46,11 @@ const NavItem = styled(PosedNavItem)`
   :hover:after {
     opacity: 1;
     left: -15%;
+  }
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    font-size: 1.4em;
+    line-height: 2em;
   }
 `;
 const Nav = () => (

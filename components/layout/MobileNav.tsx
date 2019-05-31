@@ -35,6 +35,8 @@ const StyledTitle = styled.h2`
   &:hover {
     text-decoration: underline;
   }
+  font-family: Oswald, sans-serif;
+  font-variant: petite-caps;
 `;
 
 const StyledDescription = styled.h3`
