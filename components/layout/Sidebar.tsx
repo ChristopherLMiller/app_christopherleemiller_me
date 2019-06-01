@@ -25,7 +25,7 @@ const StyledSidebar = styled(SidebarPop)`
   transform: translateX(-100%);
 
   &:before {
-    background: rgba(0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
     left: 0;

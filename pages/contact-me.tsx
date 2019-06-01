@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import posed from 'react-pose';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
+import { Props } from '../components/styles/Themes';
 import { Sidebar } from '../components/Sidebar';
 
 const title = `Contact Me`;
@@ -13,7 +15,7 @@ const description = `How to reach me with any comments, questions, and concerns 
 // form validation schema
 const ContactSchema = Yup.object().shape({
   email: Yup.string()
-    .email()
+    .email(`I need a valid email to reach you`)
     .required(`How can I contact you?`),
   name: Yup.string().required(`What's your name?`),
   message: Yup.string().required(`What do you need help with?`),
@@ -24,6 +26,67 @@ const StyledGrid = styled.div`
   grid-template-columns: 66% auto;
 `;
 
+const StyledContactForm = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  input,
+  textarea {
+    width: 100%;
+    font-size: 0.75em;
+    padding: 5px;
+    display: block;
+    font-family: roboto;
+    font-weight: 300;
+  }
+`;
+
+const StyledContactFormFieldset = styled.fieldset`
+  border: none;
+  font-size: 1.5em;
+`;
+
+const StyledContactFormLabel = styled.label`
+  display: block;
+  text-align: left;
+`;
+
+const StyledContactFormFullWidth = styled.fieldset`
+  grid-column-start: 1;
+  grid-column-end: 3;
+  border: none;
+  font-size: 1.5em;
+`;
+
+const StyledContactFormErrorMessage = styled.div`
+  background: ${(props: Props) => props.theme.colors.red};
+  color: ${(props: Props) => props.theme.colors.white};
+`;
+
+const PosedButton = posed.button({
+  hoverable: true,
+  init: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.1,
+  },
+});
+
+const StyledButton = styled(PosedButton)`
+  background: ${(props: Props) => props.theme.colors.red};
+  padding: 10px 30px;
+  transition: all 0.25s;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 200px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  color: ${(props: Props) => props.theme.colors.white};
+  font-size: 2rem;
+  border: none;
+`;
+
 const ContactPage = () => (
   <main>
     <StyledGrid>
@@ -32,32 +95,73 @@ const ContactPage = () => (
         subHeading="Got a question?  Looking for some work to be done?  I'd love to hear from you.  Send me a message and I'll reply as soon as possible."
       >
         <Formik
-          initialValues={{ email: ``, name: ``, subject: `` }}
+          initialValues={{ email: ``, name: ``, message: `` }}
           onSubmit={(values, actions) => {
-            console.log(`Submit form`);
-            console.log(values, actions);
+            console.log(JSON.stringify(values));
+            fetch(`/api/contact`, {
+              method: `post`,
+              headers: {
+                Accept: `application/json`,
+                'Content-Type': `application/json`,
+              },
+              body: JSON.stringify(values),
+            }).then(res => {
+              console.log(`Submitted!`);
+              alert(`Thank you`);
+            });
           }}
           validationSchema={ContactSchema}
         >
-          {({ errors, status, touched, isSubmitting }) => (
-            <Form>
-              {console.log(errors, status, touched, isSubmitting)}
+          {({ errors, status, touched, isSubmitting, handleSubmit }) => (
+            <Form onSubmit={handleSubmit}>
+              <StyledContactForm>
+                <StyledContactFormFieldset>
+                  <StyledContactFormLabel htmlFor="name">
+                    Name:{` `}
+                  </StyledContactFormLabel>
+                  <Field type="text" name="name" />
+                  <StyledContactFormErrorMessage>
+                    <ErrorMessage name="name" component="span" />
+                  </StyledContactFormErrorMessage>
+                </StyledContactFormFieldset>
+                <StyledContactFormFieldset>
+                  <StyledContactFormLabel htmlFor="email">
+                    Email:{` `}
+                  </StyledContactFormLabel>
+                  <Field type="email" name="email" />
+                  <StyledContactFormErrorMessage>
+                    <ErrorMessage name="email" component="span" />
+                  </StyledContactFormErrorMessage>
+                </StyledContactFormFieldset>
 
-              <Field type="text" name="name" placeholder="Name" />
-              <ErrorMessage name="name" component="div" />
-              <Field type="email" name="email" placeholder="Email Address" />
-              <ErrorMessage name="email" component="div" />
-              <Field type="textarea" name="Message" />
-              <ErrorMessage name="message" component="div" />
-              {status && status.msg && <div>{status.msg}</div>}
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
+                <StyledContactFormFullWidth>
+                  <StyledContactFormLabel htmlFor="message">
+                    Message:
+                  </StyledContactFormLabel>
+                  <Field component="textarea" name="message" rows="5" />
+                  <StyledContactFormErrorMessage>
+                    <ErrorMessage name="message" component="span" />
+                  </StyledContactFormErrorMessage>
+                </StyledContactFormFullWidth>
+              </StyledContactForm>
+              <StyledButton type="submit" aria-disabled={isSubmitting}>
+                Send It!
+              </StyledButton>
             </Form>
           )}
         </Formik>
       </Card>
-      <SocialLinks />
+      <Sidebar title="Other Methods To Reach Me">
+        <SocialLinks />
+        <h3>Email</h3>
+        <p>
+          <a href="mailto:info@christopherleemiller.me">
+            info@christopherleemiller.me
+          </a>
+        </p>
+        <h3>Phone</h3>
+        <p>+1 (574) 370-2148</p>
+      </Sidebar>
     </StyledGrid>
   </main>
 );

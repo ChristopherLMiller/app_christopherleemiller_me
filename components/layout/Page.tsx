@@ -75,7 +75,7 @@ const GlobalStyles = createGlobalStyle`
 
   main {
     flex-grow: 2;
-    padding: 3vh 2vw;
+    padding: 6vh 2vw;
   }
 `;
 

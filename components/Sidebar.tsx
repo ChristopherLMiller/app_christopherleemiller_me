@@ -18,11 +18,13 @@ const SidebarPopped = posed.div({
 });
 
 const StyledSidebar = styled(SidebarPopped)`
+  margin: 0 auto;
   margin-bottom: 50px;
   position: relative;
   right: -150%;
   transition: all 0.5s;
   transition-delay: 0.5s;
+  max-width: 350px;
 `;
 
 const StyledSidebarHeader = styled.h4`
@@ -33,7 +35,18 @@ const StyledSidebarHeader = styled.h4`
 `;
 
 const StyledSidebarContent = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: ${(props: Props) => props.theme.colors.grey_darker};
+  padding: 20px;
+  padding-top: 0;
+
+  h3 {
+    color: ${(props: Props) => props.theme.colors.red};
+    font-size: 1.5em;
+  }
+  p {
+    margin: 0;
+    font-size: 1.5em;
+  }
 `;
 
 const Sidebar: SFC<SidebarTypes> = ({ title, children }) => (

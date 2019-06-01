@@ -13,7 +13,6 @@ const CardPopTransition = posed.div({
 });
 
 const StyledCard = styled(CardPopTransition)`
-  background: ${(props: Props) => props.theme.colors.grey};
   color: black;
   font-family: Roboto, sans-serif;
   font-weight: 300;
@@ -30,7 +29,7 @@ const CardHeading = styled.div`
 `;
 
 const CardHeadingHeading = styled.h2`
-  margin: 0 0 20px 0;
+  margin: 0;
   font-size: 2.5em;
   font-weight: 300;
 `;
@@ -41,6 +40,7 @@ const CardHeadingSubHeading = styled.h3`
 `;
 
 const CardBody = styled.div`
+  background: ${(props: Props) => props.theme.colors.grey};
   padding: 40px;
   font-size: 1.25em;
   letter-spacing: 1px;
@@ -48,6 +48,10 @@ const CardBody = styled.div`
 
   a {
     color: ${(props: Props) => props.theme.colors.red};
+
+    :hover {
+      text-decoration: underline;
+    }
   }
 `;
 

@@ -6,8 +6,12 @@ import { Props } from './styles/Themes';
 import { urlBuilder } from '../utils/url';
 
 const StyledSidebarDropdown = styled.div`
-  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey_darker};
+  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey_dark};
   padding: 0 30px;
+
+  :last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const SidebarDropdownHeading = styled.h5`
@@ -27,6 +31,7 @@ const SidebarDropdownSelect = styled.select`
   font-size: 1.25em;
   width: 100%;
   outline: ${(props: Props) => props.theme.colors.red_transparent};
+  border: 1px solid ${(props: Props) => props.theme.colors.red_transparent};
   margin: 15px 0;
 `;
 

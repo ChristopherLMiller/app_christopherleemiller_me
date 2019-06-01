@@ -7,15 +7,22 @@ const description = `Where I came from and what I do now.  Development resources
 
 const IndexPage = () => (
   <main>
-    <Card>
+    <Card heading="Welcome">
       <p>
-        There is much more content to come, this is just placeholder for the
-        time being. Please check back soon. For now feel free to check out my
-        old site:
+        Please excuse the mess while I'm remodeling. Many great things are in
+        progress and will appear here as they are built.
       </p>
-      <a href="https://www.christopherleemiller.me">Old Site</a>
+      <p>
+        If you want to enjoy what I have to offer so far though go ahead and
+        have a look around as I've got many pieces in place, nothing compared to
+        what I have to go yet though.
+      </p>
+      <p>
+        If you find any errors or problems you can submit an issue on GitHub, or
+        reach me at one of the other places in the sidebar on the left.
+      </p>
     </Card>
   </main>
 );
 
-export default withLayout(IndexPage, title, description);
+export default withLayout(IndexPage, title, description, `/`);

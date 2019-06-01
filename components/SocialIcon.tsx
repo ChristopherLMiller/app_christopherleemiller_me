@@ -20,7 +20,7 @@ const SocialIconPosed = posed.span({
 interface SocialIconProps {
   url: string;
   icon: string;
-  color: string;
+  color?: string;
   alt: string;
 }
 const SocialIcon: SFC<SocialIconProps> = ({

@@ -7,13 +7,12 @@ const description = `Where I came from and what I do now`;
 
 const AboutPage = () => (
   <main>
-    <Card>
+    <Card heading="How I got my start">
       <p>
-        There is much more content to come, this is just placeholder for the
-        time being. Please check back soon. For now feel free to check out my
-        old site:
+        Back in highschool I picked up a book on programming, took a class in
+        QBasic (yikes!) and decided this is what I wanted to do. I enjoyed every
+        second of it, but what exactly I wanted to do I didn't know.
       </p>
-      <a href="https://www.christopherleemiller.me">Old Site</a>
     </Card>
   </main>
 );
