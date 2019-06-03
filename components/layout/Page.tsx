@@ -13,6 +13,7 @@ const StyledPage = styled.div`
   :before {
     content: '';
     position: fixed;
+    transform: scale(1.1);
     left: 0;
     right: 0;
     z-index: -1;
@@ -23,7 +24,7 @@ const StyledPage = styled.div`
     width: 100%;
     height: 100%;
 
-    filter: blur(1px);
+    filter: blur(4px);
   }
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {

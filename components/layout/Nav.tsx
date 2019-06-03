@@ -44,7 +44,7 @@ const NavItem = styled(PosedNavItem)`
     transition: all 0.25s;
   }
   :hover:after {
-    opacity: 1;
+    opacity: 0.7;
     left: -15%;
   }
 
