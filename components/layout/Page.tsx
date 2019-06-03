@@ -56,6 +56,7 @@ const PosedInner = posed.div({
 const Inner = styled(PosedInner)`
   display: grid;
   grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
 `;
 
 const GlobalStyles = createGlobalStyle`
