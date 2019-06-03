@@ -52,6 +52,9 @@ const GlobalStyles = createGlobalStyle`
     --main-color-transparent: ${(props: Props) =>
       props.theme.colors.red_transparent};
     --text-color-light: ${(props: Props) => props.theme.colors.white};
+    --font-family: Roboto, sans-serif;
+    --font-monospace: monospace;
+    --font-alt: Oswald, sans-serif;
   }
 
   html {
@@ -62,7 +65,7 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-family: Roboto, sans-serif;
+    font-family: var(--font-family);
     padding: 0;
     margin: 0;
     font-size: 1.5rem;

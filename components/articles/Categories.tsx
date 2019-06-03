@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { CategoriesType } from './Types';
 
 const CategoriesWrapper = styled.span`
-  font-family: monospace;
+  font-family: var(--font-monospace);
   font-size: 1.25em;
 `;
 const CategoriesLink = styled.span`

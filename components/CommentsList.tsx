@@ -15,7 +15,7 @@ const StyledCommentHeader = styled.h3`
   margin: 0;
   color: var(--background-light);
   text-transform: uppercase;
-  font-family: Monospace;
+  font-family: var(--font-monospace);
   letter-spacing: 5px;
   font-size: 1.5em;
 `;

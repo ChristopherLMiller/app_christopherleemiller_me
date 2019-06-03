@@ -27,7 +27,7 @@ const PosedNavItem = posed.li({
 });
 
 const NavItem = styled(PosedNavItem)`
-  font-family: monospace;
+  font-family: var(--font-monospace);
   font-size: 1.75em;
   list-style-type: none;
   line-height: 2.5em;

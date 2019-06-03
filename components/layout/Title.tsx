@@ -7,7 +7,7 @@ const TitleWrapper = styled.div`
   left: 0;
   width: 100%;
   padding: 10px;
-  font-family: Oswald;
+  font-family: var(--font-alt);
   border-bottom: 2px solid var(--background-light);
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {

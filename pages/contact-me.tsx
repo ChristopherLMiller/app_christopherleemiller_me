@@ -36,7 +36,7 @@ const StyledContactForm = styled.div`
     font-size: 0.75em;
     padding: 5px;
     display: block;
-    font-family: roboto;
+    font-family: var(--font-family);
     font-weight: 300;
   }
 `;

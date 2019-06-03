@@ -5,7 +5,7 @@ import { ArticleTypes } from '../Types';
 import { FeaturedImage } from '../../FeaturedImage';
 
 const StyledArticleHeader = styled.div`
-  font-family: Roboto;
+  font-family: var(--font-family);
   font-weight: 100;
 `;
 

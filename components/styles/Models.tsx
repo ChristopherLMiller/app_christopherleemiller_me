@@ -52,7 +52,7 @@ const StyledModelListingTitle = styled.h2`
   color: var(--text-color-light);
   margin: 0;
   padding: 20px;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   letter-spacing: 5px;
   text-align: center;
@@ -67,7 +67,7 @@ const StyledModelListingParagraph = styled.p`
   margin: 0;
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-family: Roboto;
+  font-family: var(--font-family);
   color: var(--text-color);
   font-size: 1em;
 

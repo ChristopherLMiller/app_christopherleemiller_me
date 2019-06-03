@@ -20,7 +20,7 @@ const StyledFooter = styled(FooterPopped)`
   transform: rotateX(-90deg);
 `;
 const SiteInfo = styled.div`
-  font-family: Roboto;
+  font-family: var(--font-family);
   color: var(--text-color-light);
 `;
 

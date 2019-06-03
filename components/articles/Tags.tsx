@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { TagsType } from './Types';
 
 const TagsWrapper = styled.div`
-  font-family: monospace;
+  font-family: var(--font-monospace);
   font-size: 1.25em;
 `;
 

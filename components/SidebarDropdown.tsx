@@ -18,14 +18,14 @@ const SidebarDropdownHeading = styled.h5`
   color: var(--background-darker);
   text-align: center;
   font-size: 1.5em;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-family);
   text-transform: uppercase;
   text-decoration: underline;
   padding: 20px 0 0 0;
 `;
 
 const SidebarDropdownSelect = styled.select`
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-family);
   padding: 5px;
   font-size: 1.25em;
   width: 100%;

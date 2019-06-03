@@ -13,7 +13,7 @@ const CardPopTransition = posed.div({
 
 const StyledCard = styled(CardPopTransition)`
   color: black;
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-family);
   font-weight: 300;
   max-width: 1000px;
   margin: 0 auto;
@@ -23,7 +23,7 @@ const CardHeading = styled.div`
   background: var(--main-color);
   padding: 20px;
   color: var(--text-color-light);
-  font-family: Roboto;
+  font-family: var(--font-family);
   text-align: center;
 `;
 
