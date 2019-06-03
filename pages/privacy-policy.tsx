@@ -30,7 +30,11 @@ const PrivacyPolicyPage = () => (
         console.log(data.articles);
 
         return (
-          <FullArticle article={data.articles[0]} commentsEnabled={false}>
+          <FullArticle
+            article={data.articles[0]}
+            commentsEnabled={false}
+            header={false}
+          >
             <Markdown>{data.articles[0].content}</Markdown>
           </FullArticle>
         );

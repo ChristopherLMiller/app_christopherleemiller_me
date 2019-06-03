@@ -2,6 +2,8 @@ const express = require(`express`);
 const next = require(`next`);
 const { join } = require(`path`);
 const sitemapAndRobots = require(`./lib/sitemapAndRobots`);
+const mailer = require(`./utils/mailer`);
+const bodyParser = require(`body-parser`);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
@@ -13,8 +15,26 @@ app
   .then(() => {
     const server = express();
 
+    server.use(bodyParser.json());
+    server.use(bodyParser.urlencoded({ extended: true }));
+
     // Sitemap and Robots
     sitemapAndRobots({ server });
+
+    // Contact Form Submissions
+    server.post(`/api/contact`, (req, res) => {
+      const { email, name, message } = req.body;
+
+      mailer({ email, name, message })
+        .then(() => {
+          console.log(`Mailed Successfully`);
+          res.send(`success`);
+        })
+        .catch(error => {
+          console.log(`mail failed`, error);
+          res.send(`bad`);
+        });
+    });
 
     // Posts
     server.get(`/post/:slug`, (req, res) => {

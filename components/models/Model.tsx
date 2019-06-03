@@ -39,7 +39,7 @@ const StyledSidebar = styled.div`
   }
 `;
 const StyledSidebarContent = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: var(--background-light);
   padding: 10px 20px;
   font-size: 1.5em;
 `;
@@ -54,7 +54,7 @@ const SidebarSection = styled.div`
 const SidebarList = styled.ul`
   list-style-type: square;
   margin: 0;
-  color: ${(props: Props) => props.theme.colors.black};
+  color: var(--text-color);
   list-style-position: inside;
   padding-left: 0;
 `;
@@ -63,12 +63,12 @@ const SidebarListItem = styled.li``;
 
 const ModelContentArea = styled.div`
   margin: 25px 0;
-  background: ${(props: Props) => props.theme.colors.grey};
-  color: ${(props: Props) => props.theme.colors.black};
+  background: var(--background-light);
+  color: var(--text-color);
 `;
 
 const ModelContent = styled.div`
-  font-family: 'Special Elite';
+  font-family: var(--font-family);
   font-size: 1.25em;
   padding: 20px;
 
@@ -106,7 +106,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
           images: [
             {
               alt: model.title,
-              url: ImageURL(model.featured_image.public_id),
+              url: `${ImageURL(model.featured_image.public_id)}.jpg`,
             },
           ],
         },

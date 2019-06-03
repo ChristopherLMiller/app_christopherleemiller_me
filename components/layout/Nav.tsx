@@ -7,7 +7,7 @@ const PosedNav = posed.ul({
   open: {
     beforeChildren: true,
     staggerChildren: 100,
-    delayChildren: 1000,
+    delayChildren: 500,
   },
 });
 
@@ -27,10 +27,10 @@ const PosedNavItem = posed.li({
 });
 
 const NavItem = styled(PosedNavItem)`
-  font-family: monospace;
-  font-size: 1.4em;
+  font-family: var(--font-monospace);
+  font-size: 1.75em;
   list-style-type: none;
-  line-height: 2em;
+  line-height: 2.5em;
 
   :after {
     content: '\\A';
@@ -39,13 +39,18 @@ const NavItem = styled(PosedNavItem)`
     height: 100%;
     left: -100%;
     z-index: -1;
-    background: ${(props: Props) => props.theme.colors.red_transparent};
+    background: var(--main-color);
     opacity: 0;
     transition: all 0.25s;
   }
   :hover:after {
     opacity: 1;
     left: -15%;
+  }
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    font-size: 1.4em;
+    line-height: 2em;
   }
 `;
 const Nav = () => (

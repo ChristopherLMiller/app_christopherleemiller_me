@@ -12,6 +12,8 @@ const SocialLinksBar = styled.ul`
   padding-left: 0;
   display: flex;
   justify-content: space-around;
+  margin: 0;
+  padding: 20px 0;
 `;
 const SocialLinks = () => (
   <SocialLinksBar>

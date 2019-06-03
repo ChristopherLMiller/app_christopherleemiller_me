@@ -5,13 +5,13 @@
 [![Build Status](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me.svg?branch=dev)](https://travis-ci.org/ChristopherLMiller/app.christopherleemiller.me)
 [![codecov](https://codecov.io/gh/ChristopherLMiller/app.christopherleemiller.me/branch/dev/graph/badge.svg)](https://codecov.io/gh/ChristopherLMiller/app.christopherleemiller.me)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/88b8b264ffe647cba0adbc9b88063775)](https://www.codacy.com/app/ChristopherLMiller/app.christopherleemiller.me?utm_source=github.com&utm_medium=referral&utm_content=ChristopherLMiller/app.christopherleemiller.me&utm_campaign=Badge_Grade)
-</a>
+![version](https://img.shields.io/badge/version-0.8.0-blue.svg)
 
 </p>
 
 ### Purpose
 
-As part of learning and proper project management, I introduce this git repo containing all code, tests, etc for my personal website frontend. Many technologies are used and are listed below.
+As part of learning and proper project management, I introduce this git repo containing all code, tests, etc for my personal website frontend. Many technologies are used and are listed below. In addition this is a chance for me to showcase my work, and as a proof of concept for any potential client work regarding various things.
 
 ### Technologies
 
@@ -23,3 +23,11 @@ As part of learning and proper project management, I introduce this git repo con
 - Styled Components
 - GraphQL
 - Service Worker
+
+### Features
+
+- Offline
+- CSS Variables
+- Decoupled CMS from frontend
+- SEO support
+- Asset management including images and video

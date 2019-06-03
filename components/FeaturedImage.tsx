@@ -10,7 +10,7 @@ const StyledFeaturedImage = styled.img`
   max-height: ${(props: Props) =>
     props.max_height ? `${props.max_height}px` : `initial`};
   border: ${(props: Props) => (props.border ? `3px` : `0`)} solid
-    ${(props: Props) => props.theme.colors.white};
+    var(--text-color-light);
 `;
 
 interface FeaturedImageTypes {

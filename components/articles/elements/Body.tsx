@@ -3,8 +3,13 @@ import { Props } from '../../styles/Themes';
 
 const ArticleBody = styled.div`
   padding: 40px 20px;
-  font-size: 1.25em;
+  font-size: 1.5em;
   letter-spacing: 1px;
+  font-weight: 300;
+  color: var(--main-color-darker);
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
+  }
 
   ol {
     list-style-type: decimal;
@@ -21,9 +26,14 @@ const ArticleBody = styled.div`
   p {
     margin: 15px auto;
     letter-spacing: 1px;
+    text-indent: 1.25em;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
   }
   a {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color)
     text-decoration: underline;
   }
   h1 {
@@ -64,7 +74,12 @@ const ArticleBody = styled.div`
     font-style: italic;
   }
   pre {
-    border: 5px solid ${(props: Props) => props.theme.colors.red};
+    border: 1px solid var(--main-color-transparent);
+  }
+  pre,
+  code {
+    white-space: pre;
+    overflow-x: auto;
   }
 
   .hljs {

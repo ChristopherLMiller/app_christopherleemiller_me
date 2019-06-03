@@ -8,13 +8,14 @@ import { ImageURL } from '../../utils/functions';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 // Next line is commented out till next-css is fixed
 // import 'highlight.js/styles/atom-one-dark.css';
-import { StyledArticle, StyledArticleBody } from '../styles/Articles';
+import { StyledArticle } from '../styles/Articles';
 import { ArticleBody } from './elements/Body';
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,
   children,
   commentsEnabled = true,
+  header = true,
 }) => {
   useEffect(() => {
     hljs.initHighlighting();
@@ -39,14 +40,14 @@ const FullArticle: SFC<ArticleTypes> = ({
             images: [
               {
                 alt: article.title,
-                url: ImageURL(article.featured_image.public_id),
+                url: `${ImageURL(article.featured_image)}.jpg`,
               },
             ],
           },
         }}
       />
       <StyledArticle>
-        <ArticleHead article={article} />
+        {header && <ArticleHead article={article} />}
         <ArticleBody>{children}</ArticleBody>
       </StyledArticle>
 

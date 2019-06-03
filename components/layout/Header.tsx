@@ -22,23 +22,31 @@ const HeaderPopped = posed.header({
     delay: 500,
   },
   closed: {
-    y: `-100%`,
+    y: `-120%`,
   },
 });
 
 const StyledHeader = styled(HeaderPopped)`
-  background: ${(props: Props) => props.theme.colors.red_transparent};
+  background: var(--main-color-red-transparent);
   padding: 30px;
-  transform: translateY(-100%);
+  margin-top: 76px;
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    margin-top: 25px;
+  }
 `;
 
 const StyledHeaderTitle = styled.h1`
   margin: 0;
   font-size: 2.5em;
+  font-weight: 300;
+  text-transform: uppercase;
 `;
 
 const StyledHeaderDescription = styled.p`
   font-size: 1.25em;
+  font-weight: 100;
+  margin-top: 5px;
 `;
 
 interface HeaderProps {

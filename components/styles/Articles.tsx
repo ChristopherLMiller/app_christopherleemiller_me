@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Props } from './Themes';
 
 const StyledArticle = styled.article`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: var(--background-light);
   color: black;
-  font-family: 'Special Elite', sans-serif;
+  font-family: var(--font-family);
   max-width: ${(props: Props) => props.theme.max_width};
   margin: 0 auto 50px auto;
   transition-delay: 2s;
@@ -19,7 +19,7 @@ const StyledArticle = styled.article`
   }
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    margin: 0 auto 150px auto;
+    margin: 0 auto 100px auto;
   }
 `;
 

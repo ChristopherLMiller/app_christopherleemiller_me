@@ -2,33 +2,31 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { getYear } from 'date-fns';
 import posed from 'react-pose';
-import { Props } from '../styles/Themes';
 
 const FooterPopped = posed.footer({
   open: {
-    y: `0%`,
+    transform: `rotateX(0deg)`,
     delay: 750,
   },
   closed: {
-    y: `100%`,
+    transform: `rotateX(-90deg)`,
   },
 });
 
 const StyledFooter = styled(FooterPopped)`
-  background: ${(props: Props) => props.theme.colors.red_transparent};
+  background: var(--main-color-transparent);
   padding: 30px 10px;
   position: sticky;
-  transform: translateY(100%);
+  transform: rotateX(-90deg);
 `;
 const SiteInfo = styled.div`
-  font-family: monospace;
-  color: ${(props: Props) => props.theme.colors.white};
-  text-decoration: none;
-  text-transform: uppercase;
+  font-family: var(--font-family);
+  color: var(--text-color-light);
 `;
+
 const Separator = styled.span`
   content: '\\A';
-  border: 1px solid ${(props: Props) => props.theme.colors.white};
+  border: 1px solid var(--text-color-light);
   margin: auto 10px;
 `;
 const Footer = () => (

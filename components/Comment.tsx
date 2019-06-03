@@ -2,16 +2,15 @@ import React, { SFC } from 'react';
 import styled from 'styled-components';
 import { formatRelative, parseISO } from 'date-fns';
 import { ImageURL } from '../utils/functions';
-import { Props } from './styles/THemes';
 
 const CommentWrapper = styled.li`
   border-bottom: 1px solid black;
   display: flex;
   padding: 10px;
-  color: ${(props: Props) => props.theme.colors.grey_darkest};
+  color: var(--background-darker);
 `;
 const CommentImage = styled.img`
-  border: 2px solid ${(props: Props) => props.theme.colors.white};
+  border: 2px solid var(--text-color-light);
   max-height: fit-content;
 `;
 const CommentText = styled.div`
@@ -25,7 +24,7 @@ const CommentTopLine = styled.p`
 `;
 
 const CommentName = styled.span`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color);
   text-transform: uppercase;
   font-size: 1.5em;
 `;

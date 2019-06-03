@@ -43,35 +43,36 @@ const StyledModelListing = styled.div`
 `;
 
 const StyledModelListingInfo = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
-  color: ${(props: Props) => props.theme.colors.black};
+  background: var(--background-light);
+  color: var(--text-color);
 `;
 
 const StyledModelListingTitle = styled.h2`
-  background: ${(props: Props) => props.theme.colors.red};
-  color: ${(props: Props) => props.theme.colors.white};
+  background: var(--main-color);
+  color: var(--text-color-light);
   margin: 0;
   padding: 20px;
-  font-family: Monospace;
+  font-family: var(--font-family);
   text-transform: uppercase;
   letter-spacing: 5px;
+  text-align: center;
 `;
 
 const StyledModelListingBlock = styled.div`
-  padding: 10px;
+  padding: 15px 20px;
   font-size: 1.25em;
 `;
 
 const StyledModelListingParagraph = styled.p`
   margin: 0;
-  text-transform: uppercase;
+  text-transform: capitalize;
   letter-spacing: 1px;
-  font-family: Oswald;
-  color: ${(props: Props) => props.theme.colors.black};
+  font-family: var(--font-family);
+  color: var(--text-color);
   font-size: 1em;
 
   a {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color);
   }
   a:hover {
     text-decoration: underline;
@@ -80,7 +81,7 @@ const StyledModelListingParagraph = styled.p`
 
 const StyledModelListingColumn = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 60% auto;
 `;
 
 export {
