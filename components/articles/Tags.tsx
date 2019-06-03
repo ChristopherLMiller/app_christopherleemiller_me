@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
-import { Props } from '../styles/Themes';
 import { TagsType } from './Types';
 
 const TagsWrapper = styled.div`
@@ -14,7 +13,7 @@ const TagsLink = styled.span`
 `;
 
 const Splitter = styled.div`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color);
   padding: 0 5px;
   display: inline-block;
 `;

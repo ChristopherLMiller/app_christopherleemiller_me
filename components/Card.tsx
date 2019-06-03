@@ -1,7 +1,6 @@
 import React, { SFC } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
-import { Props } from './styles/Themes';
 
 const CardPopTransition = posed.div({
   enter: {
@@ -21,9 +20,9 @@ const StyledCard = styled(CardPopTransition)`
 `;
 
 const CardHeading = styled.div`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   padding: 20px;
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--text-color-light);
   font-family: Roboto;
   text-align: center;
 `;
@@ -40,14 +39,14 @@ const CardHeadingSubHeading = styled.h3`
 `;
 
 const CardBody = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: var(--background-light);
   padding: 40px;
   font-size: 1.25em;
   letter-spacing: 1px;
   text-align: center;
 
   a {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color);
 
     :hover {
       text-decoration: underline;

@@ -12,9 +12,8 @@ const StyledMobileNav = styled.div`
   left: 0;
   width: 100%;
   padding: 10px 20px;
-  z-index: 2;
-  background: ${(props: Props) => props.theme.colors.black};
-  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey};
+  background: var(--main-color-black);
+  border-bottom: 2px solid var(--main-color-grey);
   position: fixed;
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
@@ -42,11 +41,11 @@ const StyledTitle = styled.h2`
 const StyledDescription = styled.h3`
   margin: 0;
   text-align: right;
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--main-color-white);
 `;
 
 const Initials = styled.span`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color-red);
 `;
 
 const NameRest = styled.span`
@@ -55,7 +54,7 @@ const NameRest = styled.span`
   }
 `;
 const Dots = styled.span`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color-red);
   @media screen and (min-width: 387px) {
     display: none;
   }
@@ -64,8 +63,8 @@ const Dots = styled.span`
 const StyledHamburger = styled.button`
   text-transform: uppercase;
   background: none;
-  color: ${(props: Props) => props.theme.colors.white};
-  border: 2px solid ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color-white);
+  border: 2px solid var(--main-color-red);
   padding: 12px;
   position: absolute;
   font-size: 1.5em;
@@ -73,8 +72,8 @@ const StyledHamburger = styled.button`
 
   :focus,
   :hover {
-    outline: 1px solid ${(props: Props) => props.theme.colors.white};
-    background: ${(props: Props) => props.theme.colors.red};
+    outline: 1px solid var(--main-color-white);
+    background: var(--main-color-red);
   }
 `;
 
@@ -101,7 +100,7 @@ const StyledNavigationWrapper = styled(Navigation)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: ${(props: Props) => props.theme.colors.black};
+  background: var(--main-color-black);
 `;
 
 const MobileNav = () => {

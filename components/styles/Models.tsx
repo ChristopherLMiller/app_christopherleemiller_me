@@ -43,13 +43,13 @@ const StyledModelListing = styled.div`
 `;
 
 const StyledModelListingInfo = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
-  color: ${(props: Props) => props.theme.colors.black};
+  background: var(--background-light);
+  color: var(--text-color);
 `;
 
 const StyledModelListingTitle = styled.h2`
-  background: ${(props: Props) => props.theme.colors.red};
-  color: ${(props: Props) => props.theme.colors.white};
+  background: var(--main-color);
+  color: var(--text-color-light);
   margin: 0;
   padding: 20px;
   font-family: Roboto, sans-serif;
@@ -68,11 +68,11 @@ const StyledModelListingParagraph = styled.p`
   text-transform: capitalize;
   letter-spacing: 1px;
   font-family: Roboto;
-  color: ${(props: Props) => props.theme.colors.black};
+  color: var(--text-color);
   font-size: 1em;
 
   a {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color);
   }
   a:hover {
     text-decoration: underline;

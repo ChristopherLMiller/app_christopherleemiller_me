@@ -22,14 +22,18 @@ const HeaderPopped = posed.header({
     delay: 500,
   },
   closed: {
-    y: `-100%`,
+    y: `-120%`,
   },
 });
 
 const StyledHeader = styled(HeaderPopped)`
-  background: ${(props: Props) => props.theme.colors.red_transparent};
+  background: var(--main-color-red-transparent);
   padding: 30px;
-  transform: translateY(-100%);
+  margin-top: 76px;
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    margin-top: 25px;
+  }
 `;
 
 const StyledHeaderTitle = styled.h1`

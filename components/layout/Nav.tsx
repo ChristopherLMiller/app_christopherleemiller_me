@@ -39,7 +39,7 @@ const NavItem = styled(PosedNavItem)`
     height: 100%;
     left: -100%;
     z-index: -1;
-    background: ${(props: Props) => props.theme.colors.red_transparent};
+    background: var(--main-color);
     opacity: 0;
     transition: all 0.25s;
   }

@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { SFC } from 'react';
 import Link from 'next/link';
 import posed from 'react-pose';
-import { NoEmitOnErrorsPlugin } from 'webpack';
-import { Props } from '../components/styles/Themes';
 
 const PosedButton = posed.p({
   hoverable: true,
@@ -16,7 +14,7 @@ const PosedButton = posed.p({
 });
 
 const StyledButton = styled(PosedButton)`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   padding: 10px;
   transition: all 0.25s;
   text-align: center;
@@ -28,7 +26,7 @@ const StyledButton = styled(PosedButton)`
 `;
 
 const ButtonAnchor = styled.a`
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--text-color-light);
 `;
 
 interface ButtonTypes {

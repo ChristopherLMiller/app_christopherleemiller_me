@@ -2,11 +2,10 @@ import React, { SFC } from 'react';
 import Router, { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
-import { Props } from './styles/Themes';
 import { urlBuilder } from '../utils/url';
 
 const StyledSidebarDropdown = styled.div`
-  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey_dark};
+  border-bottom: 2px solid var(--background-light);
   padding: 0 30px;
 
   :last-of-type {
@@ -16,7 +15,7 @@ const StyledSidebarDropdown = styled.div`
 
 const SidebarDropdownHeading = styled.h5`
   margin: 0;
-  color: ${(props: Props) => props.theme.colors.grey_darkest};
+  color: var(--background-darker);
   text-align: center;
   font-size: 1.5em;
   font-family: Roboto, sans-serif;
@@ -30,8 +29,8 @@ const SidebarDropdownSelect = styled.select`
   padding: 5px;
   font-size: 1.25em;
   width: 100%;
-  outline: ${(props: Props) => props.theme.colors.red_transparent};
-  border: 1px solid ${(props: Props) => props.theme.colors.red_transparent};
+  outline: var(--main-color-transparent);
+  border: 1px solid var(--main-color-transparent);
   margin: 15px 0;
 `;
 

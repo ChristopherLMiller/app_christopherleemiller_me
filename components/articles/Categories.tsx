@@ -2,7 +2,6 @@ import Link from 'next/link';
 import React, { SFC } from 'react';
 import styled from 'styled-components';
 import { CategoriesType } from './Types';
-import { Props } from '../styles/Themes';
 
 const CategoriesWrapper = styled.span`
   font-family: monospace;
@@ -13,7 +12,7 @@ const CategoriesLink = styled.span`
 `;
 
 const Splitter = styled.div`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color-red);
   padding: 0 5px;
   display: inline-block;
 `;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Props } from './Themes';
 
 const StyledArticle = styled.article`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: var(--background-light);
   color: black;
   font-family: Roboto, sans-serif;
   max-width: ${(props: Props) => props.theme.max_width};

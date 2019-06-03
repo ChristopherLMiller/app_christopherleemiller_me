@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
 const StyledLogo = styled.img`
-  border: 10px solid ${(props: Props) => props.theme.colors.white};
+  border: 10px solid var(--text-color-light);
   filter: grayscale(100%);
   transition: all 0.5s;
   display: none;

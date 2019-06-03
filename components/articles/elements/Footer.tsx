@@ -3,10 +3,9 @@ import styled from 'styled-components';
 import { ArticleTypes } from '../Types';
 import { Tags } from '../Tags';
 import { Categories } from '../Categories';
-import { Props } from '../../styles/Themes';
 
 const StyledArticleFooter = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey_darker};
+  background: var(--background-dark);
   padding: 20px;
   margin: 0;
 `;

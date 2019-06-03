@@ -59,8 +59,8 @@ const StyledContactFormFullWidth = styled.fieldset`
 `;
 
 const StyledContactFormErrorMessage = styled.div`
-  background: ${(props: Props) => props.theme.colors.red};
-  color: ${(props: Props) => props.theme.colors.white};
+  background: var(--main-color);
+  color: var(--text-color-light);
 `;
 
 const PosedButton = posed.button({
@@ -74,7 +74,7 @@ const PosedButton = posed.button({
 });
 
 const StyledButton = styled(PosedButton)`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   padding: 10px 30px;
   transition: all 0.25s;
   text-align: center;
@@ -82,7 +82,7 @@ const StyledButton = styled(PosedButton)`
   max-width: 200px;
   letter-spacing: 2px;
   cursor: pointer;
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--text-color-light);
   font-size: 2rem;
   border: none;
 `;

@@ -4,16 +4,16 @@ import { Comment } from './Comment';
 import { Props } from './styles/Themes';
 
 const StyledCommentSection = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey};
+  background: var(--background-light);
   max-width: ${(props: Props) => props.theme.max_width};
   margin: 0 auto;
   padding: 0;
 `;
 const StyledCommentHeader = styled.h3`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   padding: 20px;
   margin: 0;
-  color: ${(props: Props) => props.theme.colors.grey};
+  color: var(--background-light);
   text-transform: uppercase;
   font-family: Monospace;
   letter-spacing: 5px;
@@ -29,7 +29,7 @@ const StyledCommentSignIn = styled.p`
   font-size: 2em;
   text-align: center;
   margin: 0;
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color);
   text-transform: uppercase;
   padding: 15px;
 `;

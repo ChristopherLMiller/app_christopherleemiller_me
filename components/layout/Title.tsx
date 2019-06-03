@@ -7,15 +7,11 @@ const TitleWrapper = styled.div`
   left: 0;
   width: 100%;
   padding: 10px;
-  z-index: 2;
   font-family: Oswald;
-  background: ${(props: Props) => props.theme.colors.black};
-  border-bottom: 2px solid ${(props: Props) => props.theme.colors.grey};
+  border-bottom: 2px solid var(--background-light);
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: inherit;
-    z-index: inherit;
-    background: inherit;
     border-bottom: none;
   }
 `;
@@ -31,7 +27,7 @@ const StyledTitle = styled.h2`
     content: '\\A';
     width: 0%;
     height: 5px;
-    background: ${(props: Props) => props.theme.colors.red};
+    background: var(--main-color);
     position: absolute;
     bottom: -5px;
     left: 0;
@@ -78,7 +74,7 @@ const StyledDescription = styled.h3`
 `;
 
 const Block = styled.span`
-  color: ${(props: Props) => props.theme.colors.red};
+  color: var(--main-color);
 `;
 
 const Title = () => (

@@ -7,7 +7,7 @@ import MobileNav from './MobileNav';
 import { theme, Props } from '../styles/Themes';
 
 const StyledPage = styled.div`
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--main-color-white);
   transition: all 0.5s;
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
@@ -38,17 +38,22 @@ const PosedInner = posed.div({
 });
 
 const Inner = styled(PosedInner)`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  padding-top: 76px;
-
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    padding-top: 0;
-  }
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 `;
 
 const GlobalStyles = createGlobalStyle`
+  :root {
+    --text-color: ${(props: Props) => props.theme.colors.black};
+    --background-light: ${(props: Props) => props.theme.colors.grey};
+    --background-dark: ${(props: Props) => props.theme.colors.grey_darker};
+    --background-darker: ${(props: Props) => props.theme.colors.grey_darkest};
+    --main-color: ${(props: Props) => props.theme.colors.red};
+    --main-color-transparent: ${(props: Props) =>
+      props.theme.colors.red_transparent};
+    --text-color-light: ${(props: Props) => props.theme.colors.white};
+  }
+
   html {
     font-size: 10px;
     min-height: 100vh;
@@ -70,12 +75,7 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${(props: Props) => props.theme.colors.white};
-  }
-
-  main {
-    flex-grow: 2;
-    padding: 6vh 2vw;
+    color: var(--text-color-light);
   }
 `;
 

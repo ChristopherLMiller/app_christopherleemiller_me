@@ -1,7 +1,6 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
-import { Props } from './styles/Themes';
 
 interface SidebarTypes {
   title: string;
@@ -28,19 +27,19 @@ const StyledSidebar = styled(SidebarPopped)`
 `;
 
 const StyledSidebarHeader = styled.h4`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   margin: 0;
   padding: 20px;
   font-size: 1.5em;
 `;
 
 const StyledSidebarContent = styled.div`
-  background: ${(props: Props) => props.theme.colors.grey_darker};
+  background: var(--background-dark);
   padding: 20px;
   padding-top: 0;
 
   h3 {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color);
     font-size: 1.5em;
   }
   p {

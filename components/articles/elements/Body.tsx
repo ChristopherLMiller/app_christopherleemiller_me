@@ -6,7 +6,7 @@ const ArticleBody = styled.div`
   font-size: 1.5em;
   letter-spacing: 1px;
   font-weight: 300;
-  color: ${(props: Props) => props.theme.colors.grey_darkest};
+  color: var(--main-color-darker);
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
   }
@@ -33,7 +33,7 @@ const ArticleBody = styled.div`
     margin-top: 0;
   }
   a {
-    color: ${(props: Props) => props.theme.colors.red};
+    color: var(--main-color)
     text-decoration: underline;
   }
   h1 {
@@ -74,7 +74,7 @@ const ArticleBody = styled.div`
     font-style: italic;
   }
   pre {
-    border: 1px solid ${(props: Props) => props.theme.colors.red_transparent};
+    border: 1px solid var(--main-color-transparent);
   }
   pre,
   code {

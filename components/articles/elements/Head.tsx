@@ -2,7 +2,6 @@ import { formatRelative, parseISO } from 'date-fns';
 import { SFC } from 'react';
 import styled from 'styled-components';
 import { ArticleTypes } from '../Types';
-import { Props } from '../../styles/Themes';
 import { FeaturedImage } from '../../FeaturedImage';
 
 const StyledArticleHeader = styled.div`
@@ -11,10 +10,10 @@ const StyledArticleHeader = styled.div`
 `;
 
 const StyledArticleHeaderInfo = styled.div`
-  background: ${(props: Props) => props.theme.colors.red};
+  background: var(--main-color);
   padding: 20px 40px;
   margin: 0;
-  color: ${(props: Props) => props.theme.colors.white};
+  color: var(--text-color-light);
 `;
 
 const StyledHeading = styled.h2`
