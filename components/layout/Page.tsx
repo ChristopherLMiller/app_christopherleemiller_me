@@ -7,8 +7,24 @@ import MobileNav from './MobileNav';
 import { theme, Props } from '../styles/Themes';
 
 const StyledPage = styled.div`
-  color: var(--main-color-white);
+  color: var(--text-color-light);
   transition: all 0.5s;
+
+  :before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+
+    display: block;
+    background-image: url('https://res.cloudinary.com/christopherleemiller/image/upload/v1544460951/clm_me/assets/background.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    filter: blur(1px);
+  }
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: grid;
@@ -70,15 +86,16 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     font-size: 1.5rem;
     line-height: 1.15;
-    background: url("https://res.cloudinary.com/christopherleemiller/image/upload/v1544460951/clm_me/assets/background.jpg") no-repeat center;
-    background-attachment: fixed;
-    background-size: cover;
     min-height: 100vh;
   }
 
   a {
     text-decoration: none;
     color: var(--text-color-light);
+  }
+
+  main {
+    padding: 6vh 2vw;
   }
 `;
 

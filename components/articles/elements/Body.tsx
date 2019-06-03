@@ -6,7 +6,7 @@ const ArticleBody = styled.div`
   font-size: 1.5em;
   letter-spacing: 1px;
   font-weight: 300;
-  color: var(--main-color-darker);
+  color: var(--background-darker);
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
   }

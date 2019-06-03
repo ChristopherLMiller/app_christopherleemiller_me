@@ -11,9 +11,8 @@ const StyledMobileNav = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  padding: 10px 20px;
-  background: var(--main-color-black);
-  border-bottom: 2px solid var(--main-color-grey);
+  background: var(--text-color);
+  border-bottom: 2px solid var(--background-light);
   position: fixed;
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
@@ -23,6 +22,7 @@ const StyledMobileNav = styled.div`
 
 const StyledMobileNavWrapper = styled.div`
   position: relative;
+  padding: 10px 20px;
 `;
 
 const StyledTitle = styled.h2`
@@ -41,11 +41,11 @@ const StyledTitle = styled.h2`
 const StyledDescription = styled.h3`
   margin: 0;
   text-align: right;
-  color: var(--main-color-white);
+  color: var(--text-color-light);
 `;
 
 const Initials = styled.span`
-  color: var(--main-color-red);
+  color: var(--main-color);
 `;
 
 const NameRest = styled.span`
@@ -54,7 +54,7 @@ const NameRest = styled.span`
   }
 `;
 const Dots = styled.span`
-  color: var(--main-color-red);
+  color: var(--main-color);
   @media screen and (min-width: 387px) {
     display: none;
   }
@@ -63,8 +63,8 @@ const Dots = styled.span`
 const StyledHamburger = styled.button`
   text-transform: uppercase;
   background: none;
-  color: var(--main-color-white);
-  border: 2px solid var(--main-color-red);
+  color: var(--text-color-light);
+  border: 2px solid var(--main-color);
   padding: 12px;
   position: absolute;
   font-size: 1.5em;
@@ -72,8 +72,8 @@ const StyledHamburger = styled.button`
 
   :focus,
   :hover {
-    outline: 1px solid var(--main-color-white);
-    background: var(--main-color-red);
+    outline: 1px solid var(--text-color-light);
+    background: var(--main-color);
   }
 `;
 
@@ -96,11 +96,12 @@ const StyledNavigationWrapper = styled(Navigation)`
   transform: rotateX(-90deg);
   height: 0vh;
   opacity: 0;
+  padding: 0 20px;
   transform-origin: top;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--main-color-black);
+  background: var(--text-color);
 `;
 
 const MobileNav = () => {

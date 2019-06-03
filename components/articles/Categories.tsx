@@ -12,7 +12,7 @@ const CategoriesLink = styled.span`
 `;
 
 const Splitter = styled.div`
-  color: var(--main-color-red);
+  color: var(--main-color);
   padding: 0 5px;
   display: inline-block;
 `;
