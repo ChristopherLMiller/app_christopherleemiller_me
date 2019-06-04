@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { SFC } from 'react';
 import { BuildTime } from './BuildTime';
 import { ModelTypes } from './Types';
@@ -9,7 +8,6 @@ import {
   StyledModelListingParagraph,
   StyledModelListingTitle,
 } from '../styles/Models';
-import { Button } from '../Buttons';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
   const completed = model.completed ? `Yes` : `No`;
@@ -38,11 +36,6 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
           </StyledModelListingParagraph>
           {model.clockify_id && <BuildTime id={model.clockify_id} />}
         </StyledModelListingColumn>
-        <Button
-          as={`/model/${model.slug}`}
-          href={`/model?slug=${model.slug}`}
-          text="View More"
-        />
       </StyledModelListingBlock>
     </StyledModelListingInfo>
   );

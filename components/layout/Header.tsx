@@ -27,7 +27,8 @@ const HeaderPopped = posed.header({
 });
 
 const StyledHeader = styled(HeaderPopped)`
-  background: var(--main-color-red-transparent);
+  background: var(--main-color-transparent);
+  color: var(--text-color-light);
   padding: 30px;
   margin-top: 76px;
 

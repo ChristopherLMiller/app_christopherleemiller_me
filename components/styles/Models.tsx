@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div`
@@ -25,17 +26,21 @@ const StyledModelListings = styled.div`
   }
 `;
 
-const ModelListingPose = {
-  enter: {
-    opacity: `1`,
+const ModelListingHover = posed.a({
+  hoverable: true,
+  init: {
+    scale: 1,
+    boxShadow: `none`,
   },
-  exit: {
-    opacity: `0`,
+  hover: {
+    scale: 1.05,
+    boxShadow: `0 10px 6px -6px #777`,
   },
-};
+});
 
-const StyledModelListing = styled.div`
+const StyledModelListing = styled(ModelListingHover)`
   margin: 0 0 50px 0;
+  cursor: pointer;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     margin: 0 25px 50px 25px;
@@ -93,5 +98,4 @@ export {
   StyledModelListingBlock,
   StyledModelListingColumn,
   StyledModelPage,
-  ModelListingPose,
 };

@@ -17,7 +17,7 @@ interface FeaturedImageTypes {
   image: {
     public_id: string;
   };
-  width: number;
+  width?: number;
   alt: string;
   border?: boolean;
   max_height?: number;
@@ -41,7 +41,7 @@ const FeaturedImage: SFC<FeaturedImageTypes> = ({
   }
   return (
     <StyledFeaturedImage
-      src={ImageURL(`clm_me/assets/default`, width)}
+      src={ImageURL(`clm_me/assets/default`, width )}
       alt="Default Image"
       border={border}
       max_height={max_height}
