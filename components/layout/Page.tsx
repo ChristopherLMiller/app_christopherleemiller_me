@@ -97,7 +97,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   main {
-    padding: 6vh 2vw;
+    padding: 6vh 4vw;
   }
 `;
 
