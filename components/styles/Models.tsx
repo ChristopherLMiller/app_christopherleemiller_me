@@ -41,6 +41,7 @@ const ModelListingHover = posed.a({
 const StyledModelListing = styled(ModelListingHover)`
   margin: 0 0 50px 0;
   cursor: pointer;
+  display: block;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     margin: 0 25px 50px 25px;
