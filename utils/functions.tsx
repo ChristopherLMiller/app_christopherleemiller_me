@@ -5,7 +5,7 @@ import {
 } from '../config';
 
 export function ImageURL(
-  file = `assets/default`,
+  file = `clm_me/assets/default`,
   width = 300,
   transform = `c_scale`,
   quality = `q_auto`
