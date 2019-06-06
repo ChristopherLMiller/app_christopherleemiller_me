@@ -22,6 +22,7 @@ const StyledModelListings = styled.div`
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: 50% 50%;
     display: grid;
+    grid-gap: 40px;
     order: 0;
   }
 `;
@@ -44,7 +45,7 @@ const StyledModelListing = styled(ModelListingHover)`
   display: block;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    margin: 0 25px 50px 25px;
+    margin: 0 0 40px 0;
   }
 `;
 
