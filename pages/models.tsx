@@ -49,6 +49,36 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   return (
     <Main>
       <StyledModelPage>
+        <Sidebar title="Filters">
+          <SidebarDropdown
+            items={modelsSidebarSort}
+            slug="sort"
+            title="Sort By"
+          />
+          <SidebarDropdown
+            items={modelsSidebarCompletedFilter}
+            slug="completed"
+            title="Completed"
+          />
+          <SidebarDropdown
+            query={ALL_MANUFACTURERS_QUERY}
+            slug="company"
+            title="Brand"
+            field="company"
+          />
+          <SidebarDropdown
+            query={ALL_SCALES_QUERY}
+            slug="scale"
+            title="Scale"
+            field="scale"
+          />
+          <SidebarDropdown
+            query={ALL_MODELS_TAGS_QUERY}
+            slug="tag"
+            title="Tags"
+            field="title"
+          />
+        </Sidebar>
         <Query
           query={MODELS_QUERY}
           variables={{
@@ -98,36 +128,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             );
           }}
         </Query>
-        <Sidebar title="Filters">
-          <SidebarDropdown
-            items={modelsSidebarSort}
-            slug="sort"
-            title="Sort By"
-          />
-          <SidebarDropdown
-            items={modelsSidebarCompletedFilter}
-            slug="completed"
-            title="Completed"
-          />
-          <SidebarDropdown
-            query={ALL_MANUFACTURERS_QUERY}
-            slug="company"
-            title="Brand"
-            field="company"
-          />
-          <SidebarDropdown
-            query={ALL_SCALES_QUERY}
-            slug="scale"
-            title="Scale"
-            field="scale"
-          />
-          <SidebarDropdown
-            query={ALL_MODELS_TAGS_QUERY}
-            slug="tag"
-            title="Tags"
-            field="title"
-          />
-        </Sidebar>
+
         <Pagination page={page} content_type="models" />
       </StyledModelPage>
     </Main>

@@ -2,27 +2,22 @@ import styled from 'styled-components';
 import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
-const StyledModelPage = styled.div`
-  display: block;
-
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    display: grid;
-    grid-template-columns: auto 225px;
-  }
-`;
+const StyledModelPage = styled.div``;
 
 const StyledModelListings = styled.div`
   transition-delay: 1s;
   transition: all 0.25s;
-  order: 1;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    grid-template-columns: 100%;
+    grid-template-columns: repeat(1, 1fr);
     display: grid;
-    order: 0;
+    grid-gap: 20px;
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    grid-template-columns: repeat(2, 1fr);
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
@@ -42,9 +37,6 @@ const StyledModelListing = styled(ModelListingHover)`
   margin: 0 0 50px 0;
   cursor: pointer;
   display: block;
-  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    padding: 0 10px;
-  }
 `;
 
 const StyledModelListingInfo = styled.div`

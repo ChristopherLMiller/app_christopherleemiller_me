@@ -151,7 +151,7 @@ const ContactPage = () => (
           )}
         </Formik>
       </Card>
-      <Sidebar title="Other Methods To Reach Me">
+      <Card heading="Other Methods" dark>
         <SocialLinks />
         <h3>Email</h3>
         <p>
@@ -161,7 +161,7 @@ const ContactPage = () => (
         </p>
         <h3>Phone</h3>
         <p>+1 (574) 370-2148</p>
-      </Sidebar>
+      </Card>
     </StyledGrid>
   </Main>
 );

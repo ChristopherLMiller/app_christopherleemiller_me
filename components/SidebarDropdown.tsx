@@ -5,12 +5,7 @@ import styled from 'styled-components';
 import { urlBuilder } from '../utils/url';
 
 const StyledSidebarDropdown = styled.div`
-  border-bottom: 2px solid var(--background-light);
   padding: 0 30px;
-
-  :last-of-type {
-    border-bottom: none;
-  }
 `;
 
 const SidebarDropdownHeading = styled.h5`

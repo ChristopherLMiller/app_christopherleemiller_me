@@ -1,29 +1,15 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
-import posed from 'react-pose';
 
 interface SidebarTypes {
   title: string;
   children: object;
 }
 
-const SidebarPopped = posed.div({
-  visible: {
-    right: `0`,
-  },
-  invisible: {
-    right: `-150%`,
-  },
-});
-
-const StyledSidebar = styled(SidebarPopped)`
+const StyledSidebar = styled.div`
   margin: 0 auto;
   margin-bottom: 50px;
-  position: relative;
-  right: -150%;
-  transition: all 0.5s;
-  transition-delay: 0.5s;
-  max-width: 350px;
+  max-width: fit-content;
 `;
 
 const StyledSidebarHeader = styled.h4`
@@ -35,8 +21,8 @@ const StyledSidebarHeader = styled.h4`
 
 const StyledSidebarContent = styled.div`
   background: var(--background-dark);
-  padding: 20px;
-  padding-top: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
   h3 {
     color: var(--main-color);
@@ -45,6 +31,13 @@ const StyledSidebarContent = styled.div`
   p {
     margin: 0;
     font-size: 1.5em;
+  }
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
+    grid-template-columns: repeat(5, 1fr);
   }
 `;
 
