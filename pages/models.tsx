@@ -118,11 +118,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             return (
               <StyledModelListings>
                 {data.models.map(model => (
-                  <ModelListing
-                    ModelListingPose={ModelListingPose}
-                    key={model.id}
-                    model={model}
-                  />
+                  <ModelListing key={model.id} model={model} />
                 ))}
               </StyledModelListings>
             );

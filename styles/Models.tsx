@@ -11,7 +11,7 @@ const StyledModelListings = styled.div`
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: repeat(1, 1fr);
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 25px;
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     grid-template-columns: repeat(2, 1fr);
@@ -25,16 +25,15 @@ const ModelListingHover = posed.a({
   hoverable: true,
   init: {
     scale: 1,
-    boxShadow: `none`,
+    boxShadow: 0,
   },
   hover: {
     scale: 1.05,
-    boxShadow: `0 10px 6px -6px #777`,
+    boxShadow: `0 15px 15px 0px #2a2a2a`,
   },
 });
 
 const StyledModelListing = styled(ModelListingHover)`
-  margin: 0 0 50px 0;
   cursor: pointer;
   display: block;
 `;
