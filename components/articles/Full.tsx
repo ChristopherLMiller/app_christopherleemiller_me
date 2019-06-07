@@ -8,7 +8,7 @@ import { ImageURL } from '../../utils/functions';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 // Next line is commented out till next-css is fixed
 // import 'highlight.js/styles/atom-one-dark.css';
-import { StyledArticle } from '../styles/Articles';
+import { StyledArticle } from '../../styles/Articles';
 import { ArticleBody } from './elements/Body';
 
 const FullArticle: SFC<ArticleTypes> = ({

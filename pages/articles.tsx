@@ -7,6 +7,7 @@ import { ARTICLES_QUERY } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { withLayout } from '../components/layout/Layout';
 import { Pagination } from '../components/Pagination';
+import { Main } from '../styles/Themes';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -24,7 +25,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
   const page = parseFloat(query.page) || 1;
 
   return (
-    <main>
+    <Main>
       <Query
         query={ARTICLES_QUERY}
         variables={{
@@ -58,7 +59,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
         }}
       </Query>
       <Pagination page={page} content_type="articles" />
-    </main>
+    </Main>
   );
 };
 

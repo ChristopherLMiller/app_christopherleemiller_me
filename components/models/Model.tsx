@@ -5,11 +5,11 @@ import NextSeo from 'next-seo';
 import { CommentsList } from '../CommentsList';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
-import { Props } from '../styles/Themes';
+import { Props } from '../../styles/Themes';
 import {
   StyledModelListingParagraph,
   StyledModelListingTitle,
-} from '../styles/Models';
+} from '../../styles/Models';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 import { FeaturedImage } from '../FeaturedImage';

@@ -1,20 +1,19 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
+import { Main } from '../styles/Themes';
 
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
 
 const ProjectsPage = () => (
-  <main>
+  <Main>
     <Card>
       <p>
-        There is much more content to come, this is just placeholder for the
-        time being. Please check back soon. For now feel free to check out my
-        old site:
+        Plans for this page include a list of the programming projects i've done
+        over the years, helped with etc.
       </p>
-      <a href="https://www.christopherleemiller.me">Old Site</a>
     </Card>
-  </main>
+  </Main>
 );
 
 export default withLayout(ProjectsPage, title, description, `/projects`);

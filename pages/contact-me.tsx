@@ -6,7 +6,7 @@ import posed from 'react-pose';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
-import { Props } from '../components/styles/Themes';
+import { Props, Main } from '../styles/Themes';
 import { Sidebar } from '../components/Sidebar';
 
 const title = `Contact Me`;
@@ -88,7 +88,7 @@ const StyledButton = styled(PosedButton)`
 `;
 
 const ContactPage = () => (
-  <main>
+  <Main>
     <StyledGrid>
       <Card
         heading="Send me a message"
@@ -163,7 +163,7 @@ const ContactPage = () => (
         <p>+1 (574) 370-2148</p>
       </Sidebar>
     </StyledGrid>
-  </main>
+  </Main>
 );
 
 export default withLayout(ContactPage, title, description, `/contact-me`);

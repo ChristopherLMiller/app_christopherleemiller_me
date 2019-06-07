@@ -1,12 +1,13 @@
 import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
+import { Main } from '../styles/Themes';
 
 const title = `Home`;
 const description = `Where I came from and what I do now.  Development resources, services offered, photography, and much more.`;
 
 const IndexPage = () => (
-  <main>
+  <Main>
     <Card heading="Welcome">
       <p>
         Please excuse the mess while I'm remodeling. Many great things are in
@@ -22,7 +23,7 @@ const IndexPage = () => (
         reach me at one of the other places in the sidebar on the left.
       </p>
     </Card>
-  </main>
+  </Main>
 );
 
 export default withLayout(IndexPage, title, description, `/`);

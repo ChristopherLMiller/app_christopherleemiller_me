@@ -14,11 +14,12 @@ import {
   StyledModelListings,
   StyledModelPage,
   ModelListingPose,
-} from '../components/styles/Models';
+} from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarDropdown } from '../components/SidebarDropdown';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 import { Pagination } from '../components/Pagination';
+import { Main } from '../styles/Themes';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -46,7 +47,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   }
 
   return (
-    <main>
+    <Main>
       <StyledModelPage>
         <Query
           query={MODELS_QUERY}
@@ -129,7 +130,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
         </Sidebar>
         <Pagination page={page} content_type="models" />
       </StyledModelPage>
-    </main>
+    </Main>
   );
 };
 

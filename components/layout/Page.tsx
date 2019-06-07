@@ -4,7 +4,7 @@ import posed from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
-import { theme, Props } from '../styles/Themes';
+import { theme, Props } from '../../styles/Themes';
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -94,10 +94,6 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--text-color-light);
-  }
-
-  main {
-    padding: 6vh 4vw;
   }
 `;
 

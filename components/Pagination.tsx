@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React, { SFC, useEffect, useState } from 'react';
-import PaginationStyles from './styles/PaginationStyles';
-import { Center } from './styles/Themes';
+import PaginationStyles from '../styles/PaginationStyles';
+import { Center } from '../styles/Themes';
 import { PER_PAGE, STRAPI_ENDPOINT } from '../config';
 
 interface PaginationTypes {

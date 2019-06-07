@@ -5,12 +5,13 @@ import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
 import { FullArticle } from '../components/articles/Full';
 import { withLayout } from '../components/layout/Layout';
+import { Main } from '../styles/Themes';
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
 
 const PrivacyPolicyPage = () => (
-  <main>
+  <Main>
     <Query
       query={ARTICLES_QUERY}
       variables={{ article_slug: `privacy-policy`, published: false }}
@@ -40,7 +41,7 @@ const PrivacyPolicyPage = () => (
         );
       }}
     </Query>
-  </main>
+  </Main>
 );
 
 export default withLayout(

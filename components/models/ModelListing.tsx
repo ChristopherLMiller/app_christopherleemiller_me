@@ -2,7 +2,7 @@ import { SFC } from 'react';
 import Link from 'next/link';
 import { ModelInfo } from './ModelInfo';
 import { ModelTypes } from './Types';
-import { StyledModelListing } from '../styles/Models';
+import { StyledModelListing } from '../../styles/Models';
 import { FeaturedImage } from '../FeaturedImage';
 
 const ModelListing: SFC<ModelTypes> = ({ model }) => (

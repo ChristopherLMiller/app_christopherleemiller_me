@@ -7,10 +7,7 @@ const StyledModelPage = styled.div`
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     display: grid;
-    grid-template-columns: auto 20%;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    grid-template-columns: auto: 20%;
+    grid-template-columns: auto 225px;
   }
 `;
 
@@ -20,10 +17,12 @@ const StyledModelListings = styled.div`
   order: 1;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
     display: grid;
-    grid-gap: 40px;
     order: 0;
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
+    grid-template-columns: 50% 50%;
   }
 `;
 
@@ -43,9 +42,8 @@ const StyledModelListing = styled(ModelListingHover)`
   margin: 0 0 50px 0;
   cursor: pointer;
   display: block;
-
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    margin: 0 0 40px 0;
+    padding: 0 10px;
   }
 `;
 

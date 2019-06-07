@@ -6,6 +6,7 @@ import Card from '../components/Card';
 import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
 import { withLayout } from '../components/layout/Layout';
+import { Main } from '../styles/Themes';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -17,7 +18,7 @@ interface PostPageTypes {
 }
 
 const PostPage: SFC<PostPageTypes> = ({ query }) => (
-  <main>
+  <Main>
     <Query query={ARTICLES_QUERY} variables={{ article_slug: query.slug }}>
       {({ data, error, loading }) => {
         if (loading) return <p>Loading...</p>;
@@ -46,6 +47,6 @@ const PostPage: SFC<PostPageTypes> = ({ query }) => (
         return null;
       }}
     </Query>
-  </main>
+  </Main>
 );
 export default withLayout(PostPage, title, description);
