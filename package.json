@@ -69,7 +69,7 @@
     "react-transition-group": "^4.0.1",
     "save": "^2.4.0",
     "sitemap": "^2.2.0",
-    "styled-components": "^4.2.0",
+    "styled-components": "^4.3.1",
     "waait": "^1.0.4",
     "webpack": "^4.32.2",
     "yup": "^0.27.0"
