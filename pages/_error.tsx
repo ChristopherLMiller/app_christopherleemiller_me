@@ -1,7 +1,7 @@
 import { SFC } from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/themes';
+import { Main } from '../styles/Themes';
 
 const title = `Error`;
 const description = `Uh-Oh! We broke something!`;
