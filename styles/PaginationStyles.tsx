@@ -9,6 +9,7 @@ const PaginationStyles = styled.div`
   align-content: center;
   background: var(--main-color);
   color: var(--text-color-light);
+  margin: 25px 0;
   & > * {
     margin: 0;
     padding: 15px 30px;

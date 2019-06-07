@@ -22,7 +22,7 @@ const StyledSidebarHeader = styled.h4`
 const StyledSidebarContent = styled.div`
   background: var(--background-dark);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
 
   h3 {
     color: var(--main-color);
@@ -31,6 +31,10 @@ const StyledSidebarContent = styled.div`
   p {
     margin: 0;
     font-size: 1.5em;
+  }
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {

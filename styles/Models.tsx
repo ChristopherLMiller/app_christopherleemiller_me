@@ -7,11 +7,11 @@ const StyledModelPage = styled.div``;
 const StyledModelListings = styled.div`
   transition-delay: 1s;
   transition: all 0.25s;
+  display: grid;
+  grid-gap: 25px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: repeat(1, 1fr);
-    display: grid;
-    grid-gap: 25px;
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     grid-template-columns: repeat(2, 1fr);
