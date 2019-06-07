@@ -14,7 +14,6 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
 
   return (
     <StyledModelListingInfo>
-      <StyledModelListingTitle>{model.title}</StyledModelListingTitle>
       <StyledModelListingBlock>
         <StyledModelListingColumn>
           <StyledModelListingParagraph>

@@ -8,7 +8,7 @@ const StyledModelListings = styled.div`
   transition-delay: 1s;
   transition: all 0.25s;
   display: grid;
-  grid-gap: 25px;
+  grid-gap: 50px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: repeat(1, 1fr);
@@ -25,17 +25,16 @@ const ModelListingHover = posed.a({
   hoverable: true,
   init: {
     scale: 1,
-    boxShadow: 0,
   },
   hover: {
     scale: 1.05,
-    boxShadow: `0 15px 15px 0px #2a2a2a`,
   },
 });
 
 const StyledModelListing = styled(ModelListingHover)`
   cursor: pointer;
   display: block;
+  height: fit-content;
 `;
 
 const StyledModelListingInfo = styled.div`
@@ -44,14 +43,15 @@ const StyledModelListingInfo = styled.div`
 `;
 
 const StyledModelListingTitle = styled.h2`
-  background: var(--main-color);
-  color: var(--text-color-light);
   margin: 0;
   padding: 20px;
-  font-family: var(--font-family);
+  background: var(--main-color);
+  color: var(--text-color-light);
+  font-family: 'Permanent Marker';
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   text-align: center;
+  transform: rotate(-4deg) translateY(45px) scale(1.1);
 `;
 
 const StyledModelListingBlock = styled.div`
@@ -63,7 +63,9 @@ const StyledModelListingParagraph = styled.p`
   margin: 0;
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-family: var(--font-family);
+  font-family: 'Permanent Marker';
+  padding: 0;
+  font-style: italic;
   color: var(--text-color);
   font-size: 1em;
 
@@ -77,7 +79,7 @@ const StyledModelListingParagraph = styled.p`
 
 const StyledModelListingColumn = styled.div`
   display: grid;
-  grid-template-columns: 60% auto;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export {
