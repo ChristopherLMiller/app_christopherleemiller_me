@@ -131,4 +131,10 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   );
 };
 
-export default withLayout(ModelsPage, title, description, `/models`);
+export default withLayout(
+  ModelsPage,
+  title,
+  description,
+  `/models`,
+  `clm_me/stash`
+);
