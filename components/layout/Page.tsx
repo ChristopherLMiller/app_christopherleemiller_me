@@ -55,8 +55,9 @@ const PosedInner = posed.div({
 });
 
 const Inner = styled(PosedInner)`
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  //grid-template-rows: auto 1fr auto;
+  flex-direction: column;
   min-height: 100vh;
 `;
 

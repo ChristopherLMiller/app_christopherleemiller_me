@@ -6,7 +6,6 @@ import {
   StyledModelListingColumn,
   StyledModelListingInfo,
   StyledModelListingParagraph,
-  StyledModelListingTitle,
 } from '../../styles/Models';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {

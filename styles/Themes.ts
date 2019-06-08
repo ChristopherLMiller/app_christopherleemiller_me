@@ -28,6 +28,7 @@ const Center = styled.div`
 
 const Main = styled.main`
   padding: 20px;
+  overflow-x: hidden;
 
   @media screen and (min-width: ${(props: Props) =>
       props.theme.sizes.med_small}) {
