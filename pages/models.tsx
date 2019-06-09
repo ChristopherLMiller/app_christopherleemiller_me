@@ -1,5 +1,5 @@
 import { Query } from 'react-apollo';
-import React, { SFC } from 'react';
+import React, { SFC, Fragment } from 'react';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import {
@@ -10,15 +10,10 @@ import {
 } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { ModelListing } from '../components/models/ModelListing';
-import {
-  StyledModelListings,
-  StyledModelPage,
-  ModelListingPose,
-} from '../styles/Models';
+import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarDropdown } from '../components/SidebarDropdown';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
-import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Themes';
 
 const title = `Models`;
@@ -83,7 +78,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
           query={MODELS_QUERY}
           variables={{
             start: page * PER_PAGE - PER_PAGE,
-            limit: PER_PAGE,
+            limit: 100,
             scale: query.scale,
             manufacturer: query.company,
             tag: query.tag,
@@ -116,16 +111,16 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             }
 
             return (
-              <StyledModelListings>
-                {data.models.map(model => (
-                  <ModelListing key={model.id} model={model} />
-                ))}
-              </StyledModelListings>
+              <Fragment>
+                <StyledModelListings>
+                  {data.models.map(model => (
+                    <ModelListing key={model.id} model={model} />
+                  ))}
+                </StyledModelListings>
+              </Fragment>
             );
           }}
         </Query>
-
-        <Pagination page={page} content_type="models" />
       </StyledModelPage>
     </Main>
   );
