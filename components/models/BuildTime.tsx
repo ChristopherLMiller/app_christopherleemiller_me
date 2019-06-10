@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledModelListingParagraph } from '../styles/Models';
+import { StyledModelListingParagraph } from '../../styles/Models';
 
 interface BuildTimeTypes {
   id: string;

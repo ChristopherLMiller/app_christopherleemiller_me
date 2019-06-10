@@ -58,9 +58,10 @@ interface CardProps {
   children: object;
   heading?: string;
   subHeading?: string;
+  dark?: boolean;
 }
 
-const Card: SFC<CardProps> = ({ heading, subHeading, children }) => (
+const Card: SFC<CardProps> = ({ heading, subHeading, dark, children }) => (
   <StyledCard initialPose="exit" pose="enter">
     {(heading || subHeading) && (
       <CardHeading>

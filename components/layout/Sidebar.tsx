@@ -22,7 +22,6 @@ const SidebarPop = posed.aside({
 const StyledSidebar = styled(SidebarPop)`
   position: relative;
   display: none;
-  transform: translateX(-100%);
 
   &:before {
     background: rgba(0, 0, 0, 0.7);
@@ -64,7 +63,7 @@ const Sidebar = () => {
   });
 
   return (
-    <StyledSidebar pose={isOpen ? `open` : `closed`}>
+    <StyledSidebar pose={isOpen ? `open` : `closed`} initialPose="closed">
       <StyledSidebarInner>
         <Logo />
         <Title />

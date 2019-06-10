@@ -4,7 +4,7 @@ import posed from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
-import { theme, Props } from '../styles/Themes';
+import { theme, Props } from '../../styles/Themes';
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -55,8 +55,9 @@ const PosedInner = posed.div({
 });
 
 const Inner = styled(PosedInner)`
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  //grid-template-rows: auto 1fr auto;
+  flex-direction: column;
   min-height: 100vh;
 `;
 
@@ -94,10 +95,6 @@ const GlobalStyles = createGlobalStyle`
   a {
     text-decoration: none;
     color: var(--text-color-light);
-  }
-
-  main {
-    padding: 6vh 2vw;
   }
 `;
 

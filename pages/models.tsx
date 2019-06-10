@@ -1,5 +1,5 @@
 import { Query } from 'react-apollo';
-import React, { SFC } from 'react';
+import React, { SFC, Fragment, useEffect, useState } from 'react';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import {
@@ -10,15 +10,11 @@ import {
 } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { ModelListing } from '../components/models/ModelListing';
-import {
-  StyledModelListings,
-  StyledModelPage,
-  ModelListingPose,
-} from '../components/styles/Models';
+import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { SidebarDropdown } from '../components/SidebarDropdown';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
-import { Pagination } from '../components/Pagination';
+import { Main } from '../styles/Themes';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -45,14 +41,52 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     completed = `false`;
   }
 
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true), 1000;
+    });
+  });
+
   return (
-    <main>
+    <Main>
       <StyledModelPage>
+        <Sidebar title="Filters">
+          <SidebarDropdown
+            items={modelsSidebarSort}
+            slug="sort"
+            title="Sort By"
+          />
+          <SidebarDropdown
+            items={modelsSidebarCompletedFilter}
+            slug="completed"
+            title="Completed"
+          />
+          <SidebarDropdown
+            query={ALL_MANUFACTURERS_QUERY}
+            slug="company"
+            title="Brand"
+            field="company"
+          />
+          <SidebarDropdown
+            query={ALL_SCALES_QUERY}
+            slug="scale"
+            title="Scale"
+            field="scale"
+          />
+          <SidebarDropdown
+            query={ALL_MODELS_TAGS_QUERY}
+            slug="tag"
+            title="Tags"
+            field="title"
+          />
+        </Sidebar>
         <Query
           query={MODELS_QUERY}
           variables={{
             start: page * PER_PAGE - PER_PAGE,
-            limit: PER_PAGE,
+            limit: 100,
             scale: query.scale,
             manufacturer: query.company,
             tag: query.tag,
@@ -85,52 +119,32 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             }
 
             return (
-              <StyledModelListings>
-                {data.models.map(model => (
-                  <ModelListing
-                    ModelListingPose={ModelListingPose}
-                    key={model.id}
-                    model={model}
-                  />
-                ))}
-              </StyledModelListings>
+              <Fragment>
+                <StyledModelListings
+                  pose={isOpen ? `visible` : `invisible`}
+                  initialPose="invisible"
+                >
+                  {data.models.map(model => (
+                    <ModelListing
+                      key={model.id}
+                      model={model}
+                      initialPose="invisible"
+                    />
+                  ))}
+                </StyledModelListings>
+              </Fragment>
             );
           }}
         </Query>
-        <Sidebar title="Filters">
-          <SidebarDropdown
-            items={modelsSidebarSort}
-            slug="sort"
-            title="Sort By"
-          />
-          <SidebarDropdown
-            items={modelsSidebarCompletedFilter}
-            slug="completed"
-            title="Completed"
-          />
-          <SidebarDropdown
-            query={ALL_MANUFACTURERS_QUERY}
-            slug="company"
-            title="Brand"
-            field="company"
-          />
-          <SidebarDropdown
-            query={ALL_SCALES_QUERY}
-            slug="scale"
-            title="Scale"
-            field="scale"
-          />
-          <SidebarDropdown
-            query={ALL_MODELS_TAGS_QUERY}
-            slug="tag"
-            title="Tags"
-            field="title"
-          />
-        </Sidebar>
-        <Pagination page={page} content_type="models" />
       </StyledModelPage>
-    </main>
+    </Main>
   );
 };
 
-export default withLayout(ModelsPage, title, description, `/models`);
+export default withLayout(
+  ModelsPage,
+  title,
+  description,
+  `/models`,
+  `clm_me/stash`
+);

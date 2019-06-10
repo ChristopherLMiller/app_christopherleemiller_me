@@ -2,27 +2,30 @@ import styled from 'styled-components';
 import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
-const StyledModelPage = styled.div`
-  display: block;
+const StyledModelPage = styled.div``;
 
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    display: grid;
-    grid-template-columns: auto 20%;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    grid-template-columns: auto: 20%;
-  }
-`;
+const ModelListingsEnter = posed.div({
+  visible: {
+    delayChildren: 200,
+    staggerChildren: 100,
+  },
+  invisible: {},
+});
 
-const StyledModelListings = styled.div`
+const StyledModelListings = styled(ModelListingsEnter)`
   transition-delay: 1s;
   transition: all 0.25s;
-  order: 1;
+  display: grid;
+  grid-gap: 50px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    grid-template-columns: 50% 50%;
-    display: grid;
-    order: 0;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 
@@ -30,21 +33,22 @@ const ModelListingHover = posed.a({
   hoverable: true,
   init: {
     scale: 1,
-    boxShadow: `none`,
   },
   hover: {
     scale: 1.05,
-    boxShadow: `0 10px 6px -6px #777`,
+  },
+  visible: {
+    opacity: 1,
+  },
+  invisible: {
+    opacity: 0,
   },
 });
 
 const StyledModelListing = styled(ModelListingHover)`
-  margin: 0 0 50px 0;
   cursor: pointer;
-
-  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    margin: 0 25px 50px 25px;
-  }
+  display: block;
+  height: fit-content;
 `;
 
 const StyledModelListingInfo = styled.div`
@@ -53,14 +57,15 @@ const StyledModelListingInfo = styled.div`
 `;
 
 const StyledModelListingTitle = styled.h2`
-  background: var(--main-color);
-  color: var(--text-color-light);
   margin: 0;
   padding: 20px;
-  font-family: var(--font-family);
+  background: var(--main-color);
+  color: var(--text-color-light);
+  font-family: 'Permanent Marker';
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
   text-align: center;
+  transform: rotate(-4deg) translateY(45px) scale(1.1);
 `;
 
 const StyledModelListingBlock = styled.div`
@@ -72,7 +77,9 @@ const StyledModelListingParagraph = styled.p`
   margin: 0;
   text-transform: capitalize;
   letter-spacing: 1px;
-  font-family: var(--font-family);
+  font-family: 'Permanent Marker';
+  padding: 0;
+  font-style: italic;
   color: var(--text-color);
   font-size: 1em;
 
@@ -86,7 +93,7 @@ const StyledModelListingParagraph = styled.p`
 
 const StyledModelListingColumn = styled.div`
   display: grid;
-  grid-template-columns: 60% auto;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export {

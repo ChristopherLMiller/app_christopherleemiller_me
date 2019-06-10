@@ -6,15 +6,13 @@ import {
   StyledModelListingColumn,
   StyledModelListingInfo,
   StyledModelListingParagraph,
-  StyledModelListingTitle,
-} from '../styles/Models';
+} from '../../styles/Models';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
   const completed = model.completed ? `Yes` : `No`;
 
   return (
     <StyledModelListingInfo>
-      <StyledModelListingTitle>{model.title}</StyledModelListingTitle>
       <StyledModelListingBlock>
         <StyledModelListingColumn>
           <StyledModelListingParagraph>

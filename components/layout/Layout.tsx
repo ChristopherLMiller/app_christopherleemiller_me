@@ -2,9 +2,10 @@ import NextSEO from 'next-seo';
 import React, { Fragment } from 'react';
 import Footer from '../layout/Footer';
 import Header from '../layout/Header';
-import { SEPARATOR, SITE_TITLE } from '../../config';
+import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE } from '../../config';
+import { ImageURL } from '../../utils/functions';
 
-const withLayout = (WrappedComponent, title, description, path) => {
+const withLayout = (WrappedComponent, title, description, path, image) => {
   class HOC extends React.Component {
     public render() {
       return (
@@ -13,8 +14,15 @@ const withLayout = (WrappedComponent, title, description, path) => {
           <NextSEO
             config={{
               description,
+              canonical: `${process.env.SITE_URL}${path}`,
               openGraph: {
                 description,
+                images: [
+                  {
+                    alt: title,
+                    url: image ? `${ImageURL(image)}.jpg` : SITE_DEFAULT_IMAGE,
+                  },
+                ],
                 title: `${SITE_TITLE}${SEPARATOR}${title}`,
                 url: `${process.env.SITE_URL}${path}`,
               },

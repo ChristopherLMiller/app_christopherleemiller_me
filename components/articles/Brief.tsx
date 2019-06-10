@@ -5,7 +5,7 @@ import { ArticleFooter } from './elements/Footer';
 import { ArticleHead } from './elements/Head';
 import { CommentCount } from './CommentCount';
 // import 'highlight.js/styles/atom-one-dark.css';
-import { StyledArticle } from '../styles/Articles';
+import { StyledArticle } from '../../styles/Articles';
 import { ArticleBody } from './elements/Body';
 import { Button } from '../Buttons';
 

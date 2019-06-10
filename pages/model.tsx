@@ -6,6 +6,7 @@ import { withLayout } from '../components/layout/Layout';
 import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
 import { Model } from '../components/models/Model';
+import { Main } from '../styles/Themes';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -20,9 +21,13 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   const onlineStatus = useOnlineStatus();
 
   return (
-    <main>
+    <Main>
       {onlineStatus && (
-        <Query query={MODELS_QUERY} variables={{ model_slug: query.slug }} notifyOnNetworkStatusChange>
+        <Query
+          query={MODELS_QUERY}
+          variables={{ model_slug: query.slug }}
+          notifyOnNetworkStatusChange
+        >
           {({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
             if (error) {
@@ -55,7 +60,7 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
           <p>Unable to connect to the internet. Please try again</p>
         </Card>
       )}
-    </main>
+    </Main>
   );
 };
 export default withLayout(ModelPage, title, description);
