@@ -4,7 +4,15 @@ import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div``;
 
-const StyledModelListings = styled.div`
+const ModelListingsEnter = posed.div({
+  visible: {
+    delayChildren: 200,
+    staggerChildren: 100,
+  },
+  invisible: {},
+});
+
+const StyledModelListings = styled(ModelListingsEnter)`
   transition-delay: 1s;
   transition: all 0.25s;
   display: grid;
@@ -28,6 +36,12 @@ const ModelListingHover = posed.a({
   },
   hover: {
     scale: 1.05,
+  },
+  visible: {
+    opacity: 1,
+  },
+  invisible: {
+    opacity: 0,
   },
 });
 

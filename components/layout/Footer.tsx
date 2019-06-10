@@ -17,7 +17,6 @@ const StyledFooter = styled(FooterPopped)`
   background: var(--main-color-transparent);
   padding: 30px 10px;
   position: sticky;
-  transform: rotateX(-90deg);
 `;
 const SiteInfo = styled.div`
   font-family: var(--font-family);

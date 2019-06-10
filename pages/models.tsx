@@ -1,5 +1,5 @@
 import { Query } from 'react-apollo';
-import React, { SFC, Fragment } from 'react';
+import React, { SFC, Fragment, useEffect, useState } from 'react';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import {
@@ -40,6 +40,14 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   } else if (query.completed == `no`) {
     completed = `false`;
   }
+
+  const [isOpen, setOpen] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setOpen(true), 1000;
+    });
+  });
 
   return (
     <Main>
@@ -112,9 +120,16 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
 
             return (
               <Fragment>
-                <StyledModelListings>
+                <StyledModelListings
+                  pose={isOpen ? `visible` : `invisible`}
+                  initialPose="invisible"
+                >
                   {data.models.map(model => (
-                    <ModelListing key={model.id} model={model} />
+                    <ModelListing
+                      key={model.id}
+                      model={model}
+                      initialPose="invisible"
+                    />
                   ))}
                 </StyledModelListings>
               </Fragment>
