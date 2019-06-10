@@ -47,7 +47,7 @@
     "fs": "0.0.1-security",
     "graphql": "^14.3.1",
     "graphql-tag": "^2.10.1",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^9.15.8",
     "lodash.debounce": "^4.0.8",
     "logrocket": "^1.0.0",
     "markdown-to-jsx": "^6.10.2",
