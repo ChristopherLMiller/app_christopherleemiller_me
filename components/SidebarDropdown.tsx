@@ -43,14 +43,22 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
   slug,
   title,
   field = `title`,
+  router,
 }) => (
   <StyledSidebarDropdown>
     <SidebarDropdownHeading>{title}</SidebarDropdownHeading>
     {items && (
       <SidebarDropdownSelect
         onChange={event => {
-          Router.push(urlBuilder(Router.asPath, slug, event.target.value));
+          Router.push(
+            `${router.pathname}${urlBuilder(
+              router.query,
+              slug,
+              event.target.value
+            )}`
+          );
         }}
+        value={router.query[slug]}
       >
         {items.map(item => (
           <option key={item.id} value={item.slug}>
@@ -66,7 +74,24 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
           if (loading) return <p>Loading...</p>;
           if (error) {
             console.log(`Fetch Error: ${error}`);
-            return null;
+            return (
+              <SidebarDropdownSelect
+                onChange={event => {
+                  Router.push(
+                    `${router.pathname}${urlBuilder(
+                      router.query,
+                      slug,
+                      event.target.value
+                    )}`
+                  );
+                }}
+                value={router.query[slug]}
+              >
+                <option key="all" value="">
+                  All
+                </option>
+              </SidebarDropdownSelect>
+            );
           }
 
           return (
@@ -74,9 +99,14 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
               key={slug}
               onChange={event => {
                 Router.push(
-                  urlBuilder(Router.asPath, slug, event.target.value)
+                  `${router.pathname}${urlBuilder(
+                    router.query,
+                    slug,
+                    event.target.value
+                  )}`
                 );
               }}
+              value={router.query[slug]}
             >
               <option key="all" value="">
                 All
@@ -91,8 +121,8 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
         }}
       </Query>
     )}
+    {console.log(router)}
   </StyledSidebarDropdown>
 );
-
 const SidebarDropdown = withRouter(Dropdown);
 export { SidebarDropdown };
