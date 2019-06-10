@@ -84,7 +84,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-plugin-styled-components": "^1.10.0",
-    "casual": "^1.6.0",
+    "casual": "^1.6.2",
     "enzyme-to-json": "^3.3.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
