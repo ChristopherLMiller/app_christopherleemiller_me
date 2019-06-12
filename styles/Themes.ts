@@ -17,6 +17,7 @@ const theme = {
     med_large: `1100px`,
     large: `1200px`,
     extra_large: `1300px`,
+    super_large: `1600px`,
   },
   max_width: `1000px`,
 };
@@ -68,6 +69,7 @@ export interface Props {
       med: string;
       med_large: string;
       med_small: string;
+      super_large: string;
     };
     max_width: string;
   };

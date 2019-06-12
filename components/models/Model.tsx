@@ -6,13 +6,11 @@ import { CommentsList } from '../CommentsList';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../../styles/Themes';
-import {
-  StyledModelListingParagraph,
-  StyledModelListingTitle,
-} from '../../styles/Models';
+import { StyledModelListingParagraph } from '../../styles/Models';
 import { SEPARATOR, SITE_TITLE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 import { FeaturedImage } from '../FeaturedImage';
+import { Title } from './elements/Title';
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -120,13 +118,13 @@ const Model: SFC<ModelTypes> = ({ model }) => (
           alt={model.title}
         />
         <ModelContentArea>
-          <StyledModelListingTitle>Build Log</StyledModelListingTitle>
+          <Title>Build Log</Title>
           <ModelContent>
             <Markdown>{model.content}</Markdown>
           </ModelContent>
         </ModelContentArea>
         <ModelContentArea>
-          <StyledModelListingTitle>Review</StyledModelListingTitle>
+          <Title>Review</Title>
           <ModelContent>
             <Markdown>{model.review}</Markdown>
           </ModelContent>
@@ -135,7 +133,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
       </StyledContentArea>
       <StyledSidebar>
         <SidebarSection>
-          <StyledModelListingTitle>{model.title}</StyledModelListingTitle>
+          <Title>{model.title}</Title>
           <StyledSidebarContent>
             <StyledModelListingParagraph>
               Brand: {model.manufacturer.company}
@@ -160,7 +158,7 @@ const Model: SFC<ModelTypes> = ({ model }) => (
         </SidebarSection>
         {model.tags.length > 0 && (
           <SidebarSection>
-            <StyledModelListingTitle>Tags</StyledModelListingTitle>
+            <Title>Tags</Title>
             <StyledSidebarContent>
               <SidebarList>
                 {model.tags.map(tag => (

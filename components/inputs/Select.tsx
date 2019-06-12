@@ -1,25 +1,10 @@
-import React, { SFC } from 'react';
+import React, { SFC, Fragment } from 'react';
 import Router, { withRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
-import { urlBuilder } from '../utils/url';
+import { urlBuilder } from '../../utils/url';
 
-const StyledSidebarDropdown = styled.div`
-  padding: 0 30px;
-`;
-
-const SidebarDropdownHeading = styled.h5`
-  margin: 0;
-  color: var(--background-darker);
-  text-align: center;
-  font-size: 1.5em;
-  font-family: var(--font-family);
-  text-transform: uppercase;
-  text-decoration: underline;
-  padding: 20px 0 0 0;
-`;
-
-const SidebarDropdownSelect = styled.select`
+const StyledSelect = styled.select`
   font-family: var(--font-family);
   padding: 5px;
   font-size: 1.25em;
@@ -29,26 +14,24 @@ const SidebarDropdownSelect = styled.select`
   margin: 15px 0;
 `;
 
-interface SidebarDropdownTypes {
+interface SelectTypes {
   items?: Array<object>;
   query?: string;
   slug: string;
-  title: string;
   field?: string;
+  router: object;
 }
 
-const Dropdown: SFC<SidebarDropdownTypes> = ({
+const SelectBox: SFC<SelectTypes> = ({
   items,
   query,
   slug,
-  title,
   field = `title`,
   router,
 }) => (
-  <StyledSidebarDropdown>
-    <SidebarDropdownHeading>{title}</SidebarDropdownHeading>
+  <div>
     {items && (
-      <SidebarDropdownSelect
+      <StyledSelect
         onChange={event => {
           Router.push(
             `${router.pathname}${urlBuilder(
@@ -65,7 +48,7 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
             {item.title}
           </option>
         ))}
-      </SidebarDropdownSelect>
+      </StyledSelect>
     )}
 
     {query && (
@@ -75,7 +58,7 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
           if (error) {
             console.log(`Fetch Error: ${error}`);
             return (
-              <SidebarDropdownSelect
+              <StyledSelect
                 onChange={event => {
                   Router.push(
                     `${router.pathname}${urlBuilder(
@@ -90,12 +73,12 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
                 <option key="all" value="">
                   All
                 </option>
-              </SidebarDropdownSelect>
+              </StyledSelect>
             );
           }
 
           return (
-            <SidebarDropdownSelect
+            <StyledSelect
               key={slug}
               onChange={event => {
                 Router.push(
@@ -116,13 +99,12 @@ const Dropdown: SFC<SidebarDropdownTypes> = ({
                   {item[field]}
                 </option>
               ))}
-            </SidebarDropdownSelect>
+            </StyledSelect>
           );
         }}
       </Query>
     )}
-    {console.log(router)}
-  </StyledSidebarDropdown>
+  </div>
 );
-const SidebarDropdown = withRouter(Dropdown);
-export { SidebarDropdown };
+const Select = withRouter(SelectBox);
+export { Select };

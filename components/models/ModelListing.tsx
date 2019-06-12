@@ -1,32 +1,49 @@
-import { SFC } from 'react';
+import posed from 'react-pose';
+import { SFC, Fragment } from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { ModelInfo } from './ModelInfo';
 import { ModelTypes } from './Types';
-import {
-  StyledModelListing,
-  StyledModelListingTitle,
-} from '../../styles/Models';
+import { StyledModelListing } from '../../styles/Models';
 import { FeaturedImage } from '../FeaturedImage';
+import { ListingTitle } from './elements/ListingTitle';
 
-const ModelListingContent = styled.div`
+const ModelListingContentHover = posed.div({
+  hoverable: true,
+  init: {
+    scale: 1,
+  },
+  hover: {
+    scale: 1.05,
+  },
+});
+
+const ModelListingContent = styled(ModelListingContentHover)`
   border: 20px solid var(--background-light);
+  cursor: pointer;
 `;
 
 const ModelListing: SFC<ModelTypes> = ({ model }) => (
-  <Link as={`/model/${model.slug}`} href={`/model?slug=${model.slug}`}>
-    <StyledModelListing>
-      <StyledModelListingTitle>{model.title}</StyledModelListingTitle>
+  <StyledModelListing>
+    <ListingTitle
+      as={`/model/${model.slug}`}
+      href={`/model?slug=${model.slug}`}
+    >
+      {model.title}
+    </ListingTitle>
+    <Link as={`/model/${model.slug}`} href={`/model?slug=${model.slug}`}>
       <ModelListingContent>
-        <FeaturedImage
-          image={model.featured_image}
-          width={700}
-          alt={model.title}
-        />
-        <ModelInfo model={model} />
+        <Fragment>
+          <FeaturedImage
+            image={model.featured_image}
+            width={700}
+            alt={model.title}
+          />
+          <ModelInfo model={model} />
+        </Fragment>
       </ModelListingContent>
-    </StyledModelListing>
-  </Link>
+    </Link>
+  </StyledModelListing>
 );
 
 export { ModelListing };
