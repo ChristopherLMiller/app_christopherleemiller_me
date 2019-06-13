@@ -1,5 +1,6 @@
 import hljs from 'highlight.js';
 import { SFC, useEffect } from 'react';
+import Router from 'next/router';
 import { ArticleTypes } from './Types';
 import { ArticleFooter } from './elements/Footer';
 import { ArticleHead } from './elements/Head';
@@ -11,7 +12,14 @@ import { Button } from '../Buttons';
 
 const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
   useEffect(() => {
-    hljs.initHighlighting();
+    function initHighlighting() {
+      hljs.initHighlighting();
+    }
+    Router.events.on(`routeChangeComplete`, initHighlighting);
+
+    return function cleanup() {
+      Router.events.off(`routeChangeComplete`, initHighlighting);
+    };
   });
 
   return (
@@ -19,7 +27,7 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => {
       <ArticleHead article={article} />
       <ArticleBody>
         {children}
-        <CommentCount comments={article.comments} />
+        <CommentCount article={article} />
       </ArticleBody>
       <Button
         as={`/post/${article.slug}`}
