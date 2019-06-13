@@ -71,7 +71,7 @@
     "sitemap": "^2.2.0",
     "styled-components": "^4.3.1",
     "waait": "^1.0.5",
-    "webpack": "^4.32.2",
+    "webpack": "^4.34.0",
     "yup": "^0.27.0"
   },
   "devDependencies": {
