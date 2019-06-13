@@ -35,14 +35,6 @@ export const ARTICLES_QUERY = gql`
       user {
         username
       }
-      comments {
-        id
-        comment
-        created_at
-        user {
-          username
-        }
-      }
       categories {
         id
         slug
@@ -109,14 +101,6 @@ export const MODELS_QUERY = gql`
         id
         title
         slug
-      }
-      comments {
-        id
-        comment
-        created_at
-        user {
-          username
-        }
       }
       clockify_id
       scalemates_link
