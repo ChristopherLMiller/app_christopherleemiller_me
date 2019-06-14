@@ -35,7 +35,7 @@ const FullArticle: SFC<ArticleTypes> = ({
 
   const disqusConfig = {
     url: `${process.env.SITE_URL}/post/${article.slug}`,
-    identifier: article.id,
+    identifier: article.slug,
     title: article.title,
   };
 

@@ -94,7 +94,7 @@ const ModelComments = styled.div`
 const Model: SFC<ModelTypes> = ({ model }) => {
   const disqusConfig = {
     url: `${process.env.SITE_URL}/model/${model.slug}`,
-    identifier: model.id,
+    identifier: model.slug,
     title: model.title,
   };
 

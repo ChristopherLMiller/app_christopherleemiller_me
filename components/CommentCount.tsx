@@ -10,7 +10,6 @@ const StyledCommentCount = styled.p`
 interface CommentType {
   article: {
     slug: string;
-    id: string;
     title: string;
   };
   slug: string;
@@ -19,7 +18,7 @@ interface CommentType {
 const CommentCount: SFC<CommentType> = ({ article, slug }) => {
   const disqusConfig = {
     url: `${process.env.SITE_URL}/${slug}/${article.slug}`,
-    identifier: article.id,
+    identifier: article.slug,
     title: article.title,
   };
   return (
