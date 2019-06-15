@@ -6,8 +6,10 @@ const theme = {
     grey: `#E9E9E9`,
     white: `#FFFFFF`,
     red: `#982929`,
+    red_opposite: `#C20000`,
     red_transparent: `rgba(152, 41, 41, 0.7)`,
     grey_darker: `#a6a6a6`,
+    grey_intermediate: `#6B6B6B`,
     grey_darkest: `#303030`,
   },
   sizes: {
@@ -58,7 +60,9 @@ export interface Props {
       grey: string;
       grey_darker: string;
       grey_darkest: string;
+      grey_intermediate: string;
       red: string;
+      red_opposite: string;
       red_transparent: string;
       white: string;
     };

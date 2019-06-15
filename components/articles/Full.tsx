@@ -1,20 +1,15 @@
 import hljs from 'highlight.js/';
 import NextSEO from 'next-seo';
 import { SFC, useEffect, Fragment } from 'react';
-import Disqus from 'disqus-react';
-import styled from 'styled-components';
 import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
 import { ImageURL } from '../../utils/functions';
-import { SEPARATOR, SITE_TITLE, DISQUS_SHORTNAME } from '../../config';
+import { SEPARATOR, SITE_TITLE } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
 import { ArticleBody } from './elements/Body';
+import { CommentThread } from '../CommentThread';
 
-const CommentContent = styled.div`
-  padding: 40px;
-  background: var(--background-dark);
-`;
 const FullArticle: SFC<ArticleTypes> = ({
   article,
   children,
@@ -32,12 +27,6 @@ const FullArticle: SFC<ArticleTypes> = ({
       Router.events.off(`routeChangeComplete`, initHighlighting);
     };
   });
-
-  const disqusConfig = {
-    url: `${process.env.SITE_URL}/post/${article.slug}`,
-    identifier: article.slug,
-    title: article.title,
-  };
 
   return (
     <Fragment>
@@ -68,14 +57,7 @@ const FullArticle: SFC<ArticleTypes> = ({
         {header && <ArticleHead article={article} />}
         <ArticleBody>{children}</ArticleBody>
 
-        {commentsEnabled && (
-          <CommentContent>
-            <Disqus.DiscussionEmbed
-              shortname={DISQUS_SHORTNAME}
-              config={disqusConfig}
-            />
-          </CommentContent>
-        )}
+        {commentsEnabled && <CommentThread item={article} slug="post" />}
       </StyledArticle>
     </Fragment>
   );

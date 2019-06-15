@@ -2,15 +2,15 @@ import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
 import Markdown from 'markdown-to-jsx';
 import NextSeo from 'next-seo';
-import Disqus from 'disqus-react';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../../styles/Themes';
 import { StyledModelListingParagraph } from '../../styles/Models';
-import { SEPARATOR, SITE_TITLE, DISQUS_SHORTNAME } from '../../config';
+import { SEPARATOR, SITE_TITLE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 import { FeaturedImage } from '../FeaturedImage';
 import { Title } from './elements/Title';
+import { CommentThread } from '../CommentThread';
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -86,111 +86,91 @@ const ModelContent = styled.div`
   }
 `;
 
-const ModelComments = styled.div`
-  background: var(--background-light);
-  padding: 40px;
-`;
-
-const Model: SFC<ModelTypes> = ({ model }) => {
-  const disqusConfig = {
-    url: `${process.env.SITE_URL}/model/${model.slug}`,
-    identifier: model.slug,
-    title: model.title,
-  };
-
-  return (
-    <Fragment>
-      <NextSeo
-        config={{
-          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`,
+const Model: SFC<ModelTypes> = ({ model }) => (
+  <Fragment>
+    <NextSeo
+      config={{
+        title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`,
+        description: model.seo_description,
+        openGraph: {
+          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
           description: model.seo_description,
-          openGraph: {
-            title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${
-              model.seo_title
-            }`,
-            description: model.seo_description,
-            url: `${process.env.SITE_URL}/model/${model.slug}`,
-            type: `article`,
-            article: {
-              modifiedTime: model.updated_at,
-              publishedTime: model.created_at,
-            },
-            images: [
-              {
-                alt: model.title,
-                url: `${ImageURL(model.featured_image.public_id)}.jpg`,
-              },
-            ],
+          url: `${process.env.SITE_URL}/model/${model.slug}`,
+          type: `article`,
+          article: {
+            modifiedTime: model.updated_at,
+            publishedTime: model.created_at,
           },
-        }}
-      />
-      <StyledModelPage>
-        <StyledContentArea>
-          <FeaturedImage
-            image={model.featured_image}
-            width={1500}
-            alt={model.title}
-          />
-          <ModelContentArea>
-            <Title>Build Log</Title>
-            <ModelContent>
-              <Markdown>{model.content}</Markdown>
-            </ModelContent>
-          </ModelContentArea>
-          <ModelContentArea>
-            <Title>Review</Title>
-            <ModelContent>
-              <Markdown>{model.review}</Markdown>
-            </ModelContent>
-          </ModelContentArea>
-          <ModelComments>
-            <Disqus.DiscussionEmbed
-              shortname={DISQUS_SHORTNAME}
-              config={disqusConfig}
-            />
-          </ModelComments>
-        </StyledContentArea>
-        <StyledSidebar>
+          images: [
+            {
+              alt: model.title,
+              url: `${ImageURL(model.featured_image.public_id)}.jpg`,
+            },
+          ],
+        },
+      }}
+    />
+    <StyledModelPage>
+      <StyledContentArea>
+        <FeaturedImage
+          image={model.featured_image}
+          width={1500}
+          alt={model.title}
+        />
+        <ModelContentArea>
+          <Title>Build Log</Title>
+          <ModelContent>
+            <Markdown>{model.content}</Markdown>
+          </ModelContent>
+        </ModelContentArea>
+        <ModelContentArea>
+          <Title>Review</Title>
+          <ModelContent>
+            <Markdown>{model.review}</Markdown>
+          </ModelContent>
+        </ModelContentArea>
+        <CommentThread item={model} slug="model" />
+      </StyledContentArea>
+      <StyledSidebar>
+        <SidebarSection>
+          <Title>{model.title}</Title>
+          <StyledSidebarContent>
+            <StyledModelListingParagraph>
+              Brand: {model.manufacturer.company}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Kit Number: {model.kit_number}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Scale: {model.scale.scale}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Released: {model.year_released}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Completed: {model.completed ? `Yes` : `No`}
+            </StyledModelListingParagraph>
+            <StyledModelListingParagraph>
+              Scalemates: <a href={model.scalemates_link}>Link</a>
+            </StyledModelListingParagraph>
+            {model.clockify_id && <BuildTime id={model.clockify_id} />}
+          </StyledSidebarContent>
+        </SidebarSection>
+        {model.tags.length > 0 && (
           <SidebarSection>
-            <Title>{model.title}</Title>
+            <Title>Tags</Title>
             <StyledSidebarContent>
-              <StyledModelListingParagraph>
-                Brand: {model.manufacturer.company}
-              </StyledModelListingParagraph>
-              <StyledModelListingParagraph>
-                Kit Number: {model.kit_number}
-              </StyledModelListingParagraph>
-              <StyledModelListingParagraph>
-                Scale: {model.scale.scale}
-              </StyledModelListingParagraph>
-              <StyledModelListingParagraph>
-                Released: {model.year_released}
-              </StyledModelListingParagraph>
-              <StyledModelListingParagraph>
-                Completed: {model.completed ? `Yes` : `No`}
-              </StyledModelListingParagraph>
-              <StyledModelListingParagraph>
-                Scalemates: <a href={model.scalemates_link}>Link</a>
-              </StyledModelListingParagraph>
-              {model.clockify_id && <BuildTime id={model.clockify_id} />}
+              <SidebarList>
+                {model.tags.map(tag => (
+                  <SidebarListItem key={tag.id}>{tag.title}</SidebarListItem>
+                ))}
+              </SidebarList>
             </StyledSidebarContent>
           </SidebarSection>
-          {model.tags.length > 0 && (
-            <SidebarSection>
-              <Title>Tags</Title>
-              <StyledSidebarContent>
-                <SidebarList>
-                  {model.tags.map(tag => (
-                    <SidebarListItem key={tag.id}>{tag.title}</SidebarListItem>
-                  ))}
-                </SidebarList>
-              </StyledSidebarContent>
-            </SidebarSection>
-          )}
-        </StyledSidebar>
-      </StyledModelPage>
-    </Fragment>
-  );
-};
+        )}
+      </StyledSidebar>
+    </StyledModelPage>
+  </Fragment>
+);
 
 export { Model };

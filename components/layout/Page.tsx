@@ -66,8 +66,11 @@ const GlobalStyles = createGlobalStyle`
     --text-color: ${(props: Props) => props.theme.colors.black};
     --background-light: ${(props: Props) => props.theme.colors.grey};
     --background-dark: ${(props: Props) => props.theme.colors.grey_darker};
+    --background-intermediate: ${(props: Props) =>
+      props.theme.colors.grey_intermediate};
     --background-darker: ${(props: Props) => props.theme.colors.grey_darkest};
     --main-color: ${(props: Props) => props.theme.colors.red};
+    --main-color-opposite: ${(props: Props) => props.theme.colors.red_opposite};
     --main-color-transparent: ${(props: Props) =>
       props.theme.colors.red_transparent};
     --text-color-light: ${(props: Props) => props.theme.colors.white};
