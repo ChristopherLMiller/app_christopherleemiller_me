@@ -6,8 +6,10 @@ const theme = {
     grey: `#E9E9E9`,
     white: `#FFFFFF`,
     red: `#982929`,
+    red_opposite: `#C20000`,
     red_transparent: `rgba(152, 41, 41, 0.7)`,
     grey_darker: `#a6a6a6`,
+    grey_intermediate: `#6B6B6B`,
     grey_darkest: `#303030`,
   },
   sizes: {
@@ -17,6 +19,7 @@ const theme = {
     med_large: `1100px`,
     large: `1200px`,
     extra_large: `1300px`,
+    super_large: `1600px`,
   },
   max_width: `1000px`,
 };
@@ -57,7 +60,9 @@ export interface Props {
       grey: string;
       grey_darker: string;
       grey_darkest: string;
+      grey_intermediate: string;
       red: string;
+      red_opposite: string;
       red_transparent: string;
       white: string;
     };
@@ -68,6 +73,7 @@ export interface Props {
       med: string;
       med_large: string;
       med_small: string;
+      super_large: string;
     };
     max_width: string;
   };

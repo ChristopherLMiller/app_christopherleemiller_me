@@ -1,5 +1,6 @@
 import { Query } from 'react-apollo';
 import React, { SFC, Fragment, useEffect, useState } from 'react';
+import styled from 'styled-components';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import {
@@ -12,12 +13,27 @@ import { PER_PAGE } from '../config';
 import { ModelListing } from '../components/models/ModelListing';
 import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
-import { SidebarDropdown } from '../components/SidebarDropdown';
+import { Select } from '../components/inputs/Select';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 import { Main } from '../styles/Themes';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
+
+const StyledSidebarItem = styled.div`
+  padding: 10px;
+`;
+
+const SidebarDropdownHeading = styled.h5`
+  margin: 0;
+  color: var(--background-darker);
+  text-align: center;
+  font-size: 1.5em;
+  font-family: var(--font-family);
+  text-transform: uppercase;
+  text-decoration: underline;
+  padding: 20px 0 0 0;
+`;
 
 interface ModelsPageTypes {
   query: {
@@ -53,35 +69,32 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     <Main>
       <StyledModelPage>
         <Sidebar title="Filters">
-          <SidebarDropdown
-            items={modelsSidebarSort}
-            slug="sort"
-            title="Sort By"
-          />
-          <SidebarDropdown
-            items={modelsSidebarCompletedFilter}
-            slug="completed"
-            title="Completed"
-          />
-          <SidebarDropdown
-            query={ALL_MANUFACTURERS_QUERY}
-            slug="company"
-            title="Brand"
-            field="company"
-          />
-          <SidebarDropdown
-            query={ALL_SCALES_QUERY}
-            slug="scale"
-            title="Scale"
-            field="scale"
-          />
-          <SidebarDropdown
-            query={ALL_MODELS_TAGS_QUERY}
-            slug="tag"
-            title="Tags"
-            field="title"
-          />
+          <StyledSidebarItem>
+            <SidebarDropdownHeading>Sort By</SidebarDropdownHeading>
+            <Select items={modelsSidebarSort} slug="sort" />
+          </StyledSidebarItem>
+          <StyledSidebarItem>
+            <SidebarDropdownHeading>Completed</SidebarDropdownHeading>
+            <Select items={modelsSidebarCompletedFilter} slug="completed" />
+          </StyledSidebarItem>
+          <StyledSidebarItem>
+            <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
+            <Select
+              query={ALL_MANUFACTURERS_QUERY}
+              slug="company"
+              field="company"
+            />
+          </StyledSidebarItem>
+          <StyledSidebarItem>
+            <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
+            <Select query={ALL_SCALES_QUERY} slug="scale" field="scale" />
+          </StyledSidebarItem>
+          <StyledSidebarItem>
+            <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
+            <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
+          </StyledSidebarItem>
         </Sidebar>
+
         <Query
           query={MODELS_QUERY}
           variables={{
@@ -125,11 +138,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
                   initialPose="invisible"
                 >
                   {data.models.map(model => (
-                    <ModelListing
-                      key={model.id}
-                      model={model}
-                      initialPose="invisible"
-                    />
+                    <ModelListing key={model.id} model={model} />
                   ))}
                 </StyledModelListings>
               </Fragment>

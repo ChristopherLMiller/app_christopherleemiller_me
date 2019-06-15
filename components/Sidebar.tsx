@@ -9,7 +9,6 @@ interface SidebarTypes {
 const StyledSidebar = styled.div`
   margin: 0 auto;
   margin-bottom: 50px;
-  max-width: fit-content;
 `;
 
 const StyledSidebarHeader = styled.h4`

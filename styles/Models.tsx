@@ -24,19 +24,12 @@ const StyledModelListings = styled(ModelListingsEnter)`
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.super_large}) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
 
-const ModelListingHover = posed.a({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.05,
-  },
+const ModelListingHover = posed.div({
   visible: {
     opacity: 1,
   },
@@ -46,7 +39,6 @@ const ModelListingHover = posed.a({
 });
 
 const StyledModelListing = styled(ModelListingHover)`
-  cursor: pointer;
   display: block;
   height: fit-content;
 `;
@@ -54,18 +46,6 @@ const StyledModelListing = styled(ModelListingHover)`
 const StyledModelListingInfo = styled.div`
   background: var(--background-light);
   color: var(--text-color);
-`;
-
-const StyledModelListingTitle = styled.h2`
-  margin: 0;
-  padding: 20px;
-  background: var(--main-color);
-  color: var(--text-color-light);
-  font-family: 'Permanent Marker';
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-align: center;
-  transform: rotate(-4deg) translateY(45px) scale(1.1);
 `;
 
 const StyledModelListingBlock = styled.div`
@@ -99,7 +79,6 @@ const StyledModelListingColumn = styled.div`
 export {
   StyledModelListings,
   StyledModelListing,
-  StyledModelListingTitle,
   StyledModelListingInfo,
   StyledModelListingParagraph,
   StyledModelListingBlock,

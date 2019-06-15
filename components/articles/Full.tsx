@@ -1,15 +1,14 @@
 import hljs from 'highlight.js/';
 import NextSEO from 'next-seo';
 import { SFC, useEffect, Fragment } from 'react';
+import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
-import { CommentsList } from '../CommentsList';
 import { ImageURL } from '../../utils/functions';
 import { SEPARATOR, SITE_TITLE } from '../../config';
-// Next line is commented out till next-css is fixed
-// import 'highlight.js/styles/atom-one-dark.css';
 import { StyledArticle } from '../../styles/Articles';
 import { ArticleBody } from './elements/Body';
+import { CommentThread } from '../CommentThread';
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,
@@ -18,7 +17,15 @@ const FullArticle: SFC<ArticleTypes> = ({
   header = true,
 }) => {
   useEffect(() => {
-    hljs.initHighlighting();
+    function initHighlighting() {
+      hljs.initHighlighting();
+    }
+    Router.events.on(`routeChangeComplete`, initHighlighting);
+    initHighlighting();
+
+    return function cleanup() {
+      Router.events.off(`routeChangeComplete`, initHighlighting);
+    };
   });
 
   return (
@@ -49,9 +56,9 @@ const FullArticle: SFC<ArticleTypes> = ({
       <StyledArticle>
         {header && <ArticleHead article={article} />}
         <ArticleBody>{children}</ArticleBody>
-      </StyledArticle>
 
-      {commentsEnabled && <CommentsList comments={article.comments} />}
+        {commentsEnabled && <CommentThread item={article} slug="post" />}
+      </StyledArticle>
     </Fragment>
   );
 };

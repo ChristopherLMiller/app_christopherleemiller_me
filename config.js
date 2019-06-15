@@ -31,4 +31,5 @@ export const DEFAULT_SEO = {
   },
 };
 
+export const DISQUS_SHORTNAME = `christopherleemiller-me`;
 export const PER_PAGE = 20;
