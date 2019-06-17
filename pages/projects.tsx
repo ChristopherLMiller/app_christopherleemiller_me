@@ -1,6 +1,6 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;

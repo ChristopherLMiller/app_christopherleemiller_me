@@ -19,9 +19,9 @@ interface CommentType {
 
 const CommentThread: SFC<CommentType> = ({ item, slug }) => {
   const disqusConfig = {
-    url: `${process.env.SITE_URL}/${slug}/${item.slug}`,
     identifier: `${item.slug}+${item.id}`,
     title: item.title,
+    url: `${process.env.SITE_URL}/${slug}/${item.slug}`,
   };
   return (
     <ItemComments>

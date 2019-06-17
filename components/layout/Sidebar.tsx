@@ -58,8 +58,8 @@ const Sidebar = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      setOpen(true), 1000;
-    });
+      setOpen(true);
+    }, 1000);
   });
 
   return (

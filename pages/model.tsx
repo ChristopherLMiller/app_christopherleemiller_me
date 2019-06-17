@@ -6,7 +6,7 @@ import { withLayout } from '../components/layout/Layout';
 import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
 import { Model } from '../components/models/Model';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;

@@ -4,12 +4,12 @@ import { getYear } from 'date-fns';
 import posed from 'react-pose';
 
 const FooterPopped = posed.footer({
-  open: {
-    transform: `rotateX(0deg)`,
-    delay: 750,
-  },
   closed: {
     transform: `rotateX(-90deg)`,
+  },
+  open: {
+    delay: 750,
+    transform: `rotateX(0deg)`,
   },
 });
 
@@ -18,6 +18,7 @@ const StyledFooter = styled(FooterPopped)`
   padding: 30px 10px;
   position: sticky;
 `;
+
 const SiteInfo = styled.div`
   font-family: var(--font-family);
   color: var(--text-color-light);

@@ -1,5 +1,6 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
+import { Props } from '../styles/Themes';
 
 interface SidebarTypes {
   title: string;

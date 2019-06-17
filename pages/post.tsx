@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;

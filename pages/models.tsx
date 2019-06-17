@@ -15,7 +15,7 @@ import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { Select } from '../components/inputs/Select';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -61,8 +61,8 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      setOpen(true), 1000;
-    });
+      setOpen(true);
+    }, 1000);
   });
 
   return (

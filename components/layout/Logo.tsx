@@ -4,11 +4,11 @@ import { Props } from '../styles/Themes';
 
 const LogoFilter = posed.img({
   hoverable: true,
-  init: {
-    filter: `grayscale(100%)`,
-  },
   hover: {
     filter: `grayscale(0%)`,
+  },
+  init: {
+    filter: `grayscale(100%)`,
   },
 });
 
