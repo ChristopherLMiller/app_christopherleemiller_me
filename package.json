@@ -37,7 +37,7 @@
     "apollo-link-http": "^1.5.14",
     "body-parser": "^1.19.0",
     "cloudinary-react": "^1.1.1",
-    "date-fns": "^2.0.0-alpha.34",
+    "date-fns": "^2.0.0-alpha.36",
     "disqus-react": "^1.0.5",
     "dotenv": "^8.0.0",
     "enzyme": "^3.10.0",
