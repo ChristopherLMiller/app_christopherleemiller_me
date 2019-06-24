@@ -1,6 +1,6 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Services`;
 const description = `Services that I offer`;

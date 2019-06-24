@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Home`;
 const description = `Where I came from and what I do now.  Development resources, services offered, photography, and much more.`;

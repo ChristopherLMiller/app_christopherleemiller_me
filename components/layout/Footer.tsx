@@ -2,25 +2,32 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { getYear } from 'date-fns';
 import posed from 'react-pose';
+import { Paper } from '../Paper';
 
 const FooterPopped = posed.footer({
-  open: {
-    transform: `rotateX(0deg)`,
-    delay: 750,
-  },
   closed: {
     transform: `rotateX(-90deg)`,
+  },
+  open: {
+    delay: 750,
+    transform: `rotateX(0deg)`,
   },
 });
 
 const StyledFooter = styled(FooterPopped)`
-  background: var(--main-color-transparent);
   padding: 30px 10px;
-  position: sticky;
+  position: relative;
+  overflow-y: hidden;
+  min-height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 `;
+
 const SiteInfo = styled.div`
   font-family: var(--font-family);
   color: var(--text-color-light);
+  text-align: right;
 `;
 
 const Separator = styled.span`
@@ -37,6 +44,7 @@ const Footer = () => (
       <Separator />
       <span>Copyright © {getYear(new Date())}</span>
     </SiteInfo>
+    <Paper translate="-10%" />
   </StyledFooter>
 );
 

@@ -5,7 +5,7 @@ import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
 import { FullArticle } from '../components/articles/Full';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;

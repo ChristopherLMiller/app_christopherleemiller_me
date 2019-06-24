@@ -1,10 +1,10 @@
 import React, { Fragment, SFC } from 'react';
-import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import posed from 'react-pose';
 import Meta from './Meta';
 import Sidebar from './Sidebar';
 import MobileNav from './MobileNav';
-import { theme, Props } from '../../styles/Themes';
+import { theme, Props, GlobalStyles } from '../../styles/Themes';
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -56,49 +56,9 @@ const PosedInner = posed.div({
 
 const Inner = styled(PosedInner)`
   display: flex;
-  //grid-template-rows: auto 1fr auto;
   flex-direction: column;
   min-height: 100vh;
-`;
-
-const GlobalStyles = createGlobalStyle`
-  :root {
-    --text-color: ${(props: Props) => props.theme.colors.black};
-    --background-light: ${(props: Props) => props.theme.colors.grey};
-    --background-dark: ${(props: Props) => props.theme.colors.grey_darker};
-    --background-intermediate: ${(props: Props) =>
-      props.theme.colors.grey_intermediate};
-    --background-darker: ${(props: Props) => props.theme.colors.grey_darkest};
-    --main-color: ${(props: Props) => props.theme.colors.red};
-    --main-color-opposite: ${(props: Props) => props.theme.colors.red_opposite};
-    --main-color-transparent: ${(props: Props) =>
-      props.theme.colors.red_transparent};
-    --text-color-light: ${(props: Props) => props.theme.colors.white};
-    --font-family: Roboto, sans-serif;
-    --font-monospace: monospace;
-    --font-alt: Oswald, sans-serif;
-  }
-
-  html {
-    font-size: 10px;
-    min-height: 100vh;
-  }
-  *, *:before, *:after {
-    box-sizing: border-box;
-  }
-  body {
-    font-family: var(--font-family);
-    padding: 0;
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 1.15;
-    min-height: 100vh;
-  }
-
-  a {
-    text-decoration: none;
-    color: var(--text-color-light);
-  }
+  overflow-x: hidden;
 `;
 
 interface PageProps {

@@ -7,7 +7,7 @@ import { ARTICLES_QUERY } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { withLayout } from '../components/layout/Layout';
 import { Pagination } from '../components/Pagination';
-import { Main } from '../styles/Themes';
+import { Main } from '../styles/Generics';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;

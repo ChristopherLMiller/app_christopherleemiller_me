@@ -1,5 +1,6 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
+import { Props } from '../styles/Themes';
 
 interface SidebarTypes {
   title: string;
@@ -9,6 +10,7 @@ interface SidebarTypes {
 const StyledSidebar = styled.div`
   margin: 0 auto;
   margin-bottom: 50px;
+  box-shadow: var(--box-shadow);
 `;
 
 const StyledSidebarHeader = styled.h4`

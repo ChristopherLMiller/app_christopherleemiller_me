@@ -1,9 +1,32 @@
 import Link from 'next/link';
 import React, { SFC, useEffect, useState } from 'react';
-import PaginationStyles from '../styles/PaginationStyles';
-import { Center } from '../styles/Themes';
+import styled from 'styled-components';
+import { Center } from '../styles/Generics';
 import { PER_PAGE, STRAPI_ENDPOINT } from '../config';
 
+const PaginationStyles = styled.div`
+  text-align: center;
+  display: inline-grid;
+  grid-template-columns: repeat(4, auto);
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+  background: var(--main-color);
+  color: var(--text-color-light);
+  margin: 25px 0;
+  & > * {
+    margin: 0;
+    padding: 15px 30px;
+    border-right: 1px solid var(--background-darker);
+    &:last-child {
+      border-right: 0;
+    }
+  }
+  a[aria-disabled='true'] {
+    color: grey;
+    pointer-events: none;
+  }
+`;
 interface PaginationTypes {
   page: number;
   content_type: string;

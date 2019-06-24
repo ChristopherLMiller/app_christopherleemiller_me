@@ -6,8 +6,7 @@ import posed from 'react-pose';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
-import { Props, Main } from '../styles/Themes';
-import { Sidebar } from '../components/Sidebar';
+import { Main } from '../styles/Generics';
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-const theme = {
+export const theme = {
   colors: {
     black: `#000000`,
     grey: `#E9E9E9`,
@@ -23,35 +23,6 @@ const theme = {
   },
   max_width: `1000px`,
 };
-
-const Center = styled.div`
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const Main = styled.main`
-  padding: 20px;
-  overflow-x: hidden;
-  flex-grow: 2;
-
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_small}) {
-    padding: 25px;
-  }
-
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    padding: 30px;
-  }
-
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_large}) {
-    padding: 35px;
-  }
-
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    padding: 40px;
-  }
-`;
 
 export interface Props {
   theme: {
@@ -79,4 +50,41 @@ export interface Props {
   };
 }
 
-export { Center, Main, theme };
+export const GlobalStyles = createGlobalStyle`
+  :root {
+    --text-color: ${theme.colors.black};
+    --background-light: ${theme.colors.grey};
+    --background-dark: ${theme.colors.grey_darker};
+    --background-intermediate: ${theme.colors.grey_intermediate};
+    --background-darker: ${theme.colors.grey_darkest};
+    --main-color: ${theme.colors.red};
+    --main-color-opposite: ${theme.colors.red_opposite};
+    --main-color-transparent: ${theme.colors.red_transparent};
+    --text-color-light: ${theme.colors.white};
+    --font-family: Roboto, sans-serif;
+    --font-monospace: monospace;
+    --font-alt: Oswald, sans-serif;
+    --box-shadow: 0px 0px 22px rgba(0,0,0,0.4),0px 0px 4px rgba(0,0,0,0.25)
+  }
+
+  html {
+    font-size: 10px;
+    min-height: 100vh;
+  }
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-family);
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    min-height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--text-color-light);
+  }
+`;

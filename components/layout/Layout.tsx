@@ -13,8 +13,8 @@ const withLayout = (WrappedComponent, title, description, path, image) => {
           <Header title={title} description={description} />
           <NextSEO
             config={{
-              description,
               canonical: `${process.env.SITE_URL}${path}`,
+              description,
               openGraph: {
                 description,
                 images: [
