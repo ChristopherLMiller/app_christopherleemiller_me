@@ -34,12 +34,11 @@ const StyledSidebar = styled(SidebarPop)`
     z-index: -1;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: 20px;
     display: initial;
   }
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     min-height: 100vh;
     padding: 40px;
   }

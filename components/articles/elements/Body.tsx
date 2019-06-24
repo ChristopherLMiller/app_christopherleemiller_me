@@ -7,7 +7,7 @@ const ArticleBody = styled.div`
   letter-spacing: 1px;
   font-weight: 300;
   color: var(--background-darker);
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
   }
 
@@ -159,7 +159,7 @@ const ArticleBody = styled.div`
     text-decoration: underline;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: 40px;
   }
 `;

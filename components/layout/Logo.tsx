@@ -17,7 +17,7 @@ const StyledLogo = styled(LogoFilter)`
   transition: all 0.5s;
   display: none;
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     width: 66%;
     display: block;
   }

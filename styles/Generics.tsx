@@ -11,21 +11,19 @@ const Main = styled.main`
   overflow-x: hidden;
   flex-grow: 2;
 
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     padding: 25px;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     padding: 30px;
   }
 
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     padding: 35px;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
     padding: 40px;
   }
 `;

@@ -21,7 +21,7 @@ const StyledFooter = styled(FooterPopped)`
   min-height: 175px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 `;
 
 const SiteInfo = styled.div`

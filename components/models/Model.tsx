@@ -74,12 +74,12 @@ const ModelContent = styled.div`
     width: 100%;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     img {
       width: calc(50% - 5px);
     }
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
     img {
       width: calc(33% - 5px);
     }
