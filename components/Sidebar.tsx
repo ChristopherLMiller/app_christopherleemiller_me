@@ -10,6 +10,7 @@ interface SidebarTypes {
 const StyledSidebar = styled.div`
   margin: 0 auto;
   margin-bottom: 50px;
+  box-shadow: var(--box-shadow);
 `;
 
 const StyledSidebarHeader = styled.h4`

@@ -4,6 +4,7 @@ import Router from 'next/router';
 import styled from 'styled-components';
 import posed from 'react-pose';
 import { Props } from '../styles/Themes';
+import { Paper } from '../Paper';
 
 Router.onRouteChangeStart = () => {
   NProgress.configure({ showSpinner: false });
@@ -27,10 +28,10 @@ const HeaderPopped = posed.header({
 });
 
 const StyledHeader = styled(HeaderPopped)`
-  background: var(--main-color-transparent);
   color: var(--text-color-light);
   padding: 30px;
   margin-top: 76px;
+  min-height: 220px;
 
   @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
     margin-top: 25px;
@@ -42,12 +43,14 @@ const StyledHeaderTitle = styled.h1`
   font-size: 2.5em;
   font-weight: 300;
   text-transform: uppercase;
+  text-indent: 20px;
 `;
 
 const StyledHeaderDescription = styled.p`
   font-size: 1.25em;
   font-weight: 100;
-  margin-top: 5px;
+  margin: 0;
+  margin-bottom: 5px;
 `;
 
 interface HeaderProps {
@@ -56,8 +59,9 @@ interface HeaderProps {
 }
 const Header: SFC<HeaderProps> = ({ title, description }) => (
   <StyledHeader pose="open" initialPose="closed">
-    <StyledHeaderTitle>{title}</StyledHeaderTitle>
     <StyledHeaderDescription>{description}</StyledHeaderDescription>
+    <StyledHeaderTitle>{title}</StyledHeaderTitle>
+    <Paper />
   </StyledHeader>
 );
 
