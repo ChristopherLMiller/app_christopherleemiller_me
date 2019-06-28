@@ -44,7 +44,7 @@ const Footer = () => (
       <Separator />
       <span>Copyright © {getYear(new Date())}</span>
     </SiteInfo>
-    <Paper translate="-10%" />
+    <Paper translate="5%" />
   </StyledFooter>
 );
 

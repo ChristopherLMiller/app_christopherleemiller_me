@@ -11,7 +11,7 @@ const StyledPaper = styled.div`
   z-index: -1;
   background: var(--main-color-transparent);
   box-shadow: var(--box-shadow);
-  min-height: 150px;
+  min-height: 175px;
 `;
 
 interface PaperTypes {

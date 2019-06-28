@@ -23,11 +23,12 @@ const HeaderPopped = posed.header({
     delay: 500,
   },
   closed: {
-    y: `-120%`,
+    y: `-100%`,
   },
 });
 
 const StyledHeader = styled(HeaderPopped)`
+  position: relative;
   color: var(--text-color-light);
   padding: 30px;
   margin-top: 76px;
@@ -61,7 +62,7 @@ const Header: SFC<HeaderProps> = ({ title, description }) => (
   <StyledHeader pose="open" initialPose="closed">
     <StyledHeaderDescription>{description}</StyledHeaderDescription>
     <StyledHeaderTitle>{title}</StyledHeaderTitle>
-    <Paper />
+    <Paper translate="-115%" />
   </StyledHeader>
 );
 
