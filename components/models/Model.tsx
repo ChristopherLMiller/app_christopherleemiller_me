@@ -96,6 +96,8 @@ const Model: SFC<ModelTypes> = ({ model }) => {
     };
   });
 
+  console.log(model.content);
+
   return (
     <Fragment>
       <NextSeo
@@ -134,13 +136,15 @@ const Model: SFC<ModelTypes> = ({ model }) => {
           <ModelContentArea>
             <Title>Build Log</Title>
             <ModelContent>
-              <Markdown>{model.content}</Markdown>
+              {model.content != null && <Markdown>{model.content}</Markdown> }
+              {model.content == null && <Markdown>### No Build Log Found</Markdown>}
             </ModelContent>
           </ModelContentArea>
           <ModelContentArea>
             <Title>Review</Title>
             <ModelContent>
-              <Markdown>{model.review}</Markdown>
+              {model.review != null && <Markdown>{model.review}</Markdown> }
+              {model.review == null && <Markdown>### No Review Found</Markdown>}
             </ModelContent>
           </ModelContentArea>
           <CommentThread item={model} slug="model" />

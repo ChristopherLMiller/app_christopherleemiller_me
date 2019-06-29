@@ -23,8 +23,6 @@ const StyledPage = styled.div`
     background-size: cover;
     width: 100%;
     height: 100%;
-
-    filter: blur(4px);
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
