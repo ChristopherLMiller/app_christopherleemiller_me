@@ -61,7 +61,7 @@
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-pose": "^4.0.8",
-    "sitemap": "^2.2.0",
+    "sitemap": "^3.0.0",
     "styled-components": "^4.3.2",
     "webpack": "^4.35.0",
     "yup": "^0.27.0"
