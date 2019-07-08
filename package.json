@@ -59,7 +59,7 @@
     "react": "^16.8.6",
     "react-apollo": "^2.5.8",
     "react-dom": "^16.8.6",
-    "react-ga": "^2.5.7",
+    "react-ga": "^2.6.0",
     "react-image-gallery": "^0.8.17",
     "react-pose": "^4.0.8",
     "sitemap": "^2.2.0",
