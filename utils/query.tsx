@@ -102,6 +102,15 @@ export const MODELS_QUERY = gql`
         title
         slug
       }
+      images(sort: "updated_at:DESC") {
+        id
+        title
+        description
+        slug
+        image {
+          public_id
+        }
+      }
       clockify_id
       scalemates_link
     }

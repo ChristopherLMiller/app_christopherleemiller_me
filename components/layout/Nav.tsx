@@ -48,7 +48,7 @@ const NavItem = styled(PosedNavItem)`
     left: -15%;
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: 1.4em;
     line-height: 2em;
   }

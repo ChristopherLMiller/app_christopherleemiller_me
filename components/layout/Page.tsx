@@ -23,26 +23,22 @@ const StyledPage = styled.div`
     background-size: cover;
     width: 100%;
     height: 100%;
-
-    filter: blur(4px);
   }
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: grid;
     grid-template-columns: 300px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     grid-template-columns: 350px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
     grid-template-columns: 350px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) =>
-      props.theme.sizes.med_large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     grid-template-columns: 400px 1fr;
   }
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
     grid-template-columns: 450px 1fr;
   }
 `;

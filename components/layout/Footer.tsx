@@ -21,7 +21,7 @@ const StyledFooter = styled(FooterPopped)`
   min-height: 175px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 `;
 
 const SiteInfo = styled.div`
@@ -44,7 +44,7 @@ const Footer = () => (
       <Separator />
       <span>Copyright © {getYear(new Date())}</span>
     </SiteInfo>
-    <Paper translate="-10%" />
+    <Paper translate="5%" />
   </StyledFooter>
 );
 

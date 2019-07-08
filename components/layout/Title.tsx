@@ -10,7 +10,7 @@ const TitleWrapper = styled.div`
   font-family: var(--font-alt);
   border-bottom: 2px solid var(--background-light);
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     padding: inherit;
     border-bottom: none;
   }

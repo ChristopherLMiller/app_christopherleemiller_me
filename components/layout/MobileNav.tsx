@@ -15,7 +15,7 @@ const StyledMobileNav = styled.div`
   border-bottom: 2px solid var(--background-light);
   position: fixed;
 
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: none;
   }
 `;
@@ -49,13 +49,13 @@ const Initials = styled.span`
 `;
 
 const NameRest = styled.span`
-  @media screen and (max-width: 387px) {
+  @media (max-width: 387px) {
     display: none;
   }
 `;
 const Dots = styled.span`
   color: var(--main-color);
-  @media screen and (min-width: 387px) {
+  @media (min-width: 387px) {
     display: none;
   }
 `;
@@ -74,6 +74,10 @@ const StyledHamburger = styled.button`
   :hover {
     outline: 1px solid var(--text-color-light);
     background: var(--main-color);
+  }
+
+  @media print {
+    display: none;
   }
 `;
 
