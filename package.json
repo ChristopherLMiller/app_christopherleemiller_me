@@ -22,7 +22,7 @@
     "@sentry/browser": "^5.5.0",
     "@types/date-fns": "^2.6.0",
     "@types/highlight.js": "^9.12.3",
-    "@types/next": "^8.0.5",
+    "@types/next": "^8.0.6",
     "@types/next-seo": "^1.10.0",
     "@types/nprogress": "0.2.0",
     "@types/styled-components": "^4.1.16",
