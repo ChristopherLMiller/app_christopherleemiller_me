@@ -28,7 +28,7 @@
     "@types/styled-components": "^4.1.18",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-typescript": "^1.1.1",
-    "acorn": "^6.2.0",
+    "acorn": "^6.2.1",
     "apollo-boost": "^0.4.3",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
