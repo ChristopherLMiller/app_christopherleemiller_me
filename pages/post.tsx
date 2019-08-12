@@ -7,7 +7,7 @@ import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
 import { withLayout } from '../components/layout/Layout';
 import { Main } from '../styles/Generics';
-import { ArticleTypes } from '../components/articles/Types';
+import { iData } from '../components/articles/Types';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -18,13 +18,12 @@ interface PostPageTypes {
   };
 }
 
-interface iData {
-  [key: string]: Array<ArticleTypes["article"]>;
-}
-
 const PostPage: SFC<PostPageTypes> = ({ query }) => (
   <Main>
-    <Query<iData> query={ARTICLES_QUERY} variables={{ article_slug: query.slug }}>
+    <Query<iData>
+      query={ARTICLES_QUERY}
+      variables={{ article_slug: query.slug }}
+    >
       {({ data, error, loading }) => {
         if (loading) return <p>Loading...</p>;
         if (error) {

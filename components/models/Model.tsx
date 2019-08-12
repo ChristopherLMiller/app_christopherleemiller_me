@@ -1,7 +1,7 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import NextSeo from 'next-seo';
+import { NextSeo } from 'next-seo';
 import ImageGallery from 'react-image-gallery';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
@@ -100,25 +100,23 @@ const Model: SFC<ModelTypes> = ({ model }) => {
   return (
     <Fragment>
       <NextSeo
-        config={{
-          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`,
+        title={`${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`}
+        description={model.seo_description}
+        openGraph={{
+          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
           description: model.seo_description,
-          openGraph: {
-            title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
-            description: model.seo_description,
-            url: `${process.env.SITE_URL}/model/${model.slug}`,
-            type: `article`,
-            article: {
-              modifiedTime: model.updated_at,
-              publishedTime: model.created_at,
-            },
-            images: [
-              {
-                alt: model.title,
-                url: `${ImageURL(model.featured_image.public_id)}.jpg`,
-              },
-            ],
+          url: `${process.env.SITE_URL}/model/${model.slug}`,
+          type: `article`,
+          article: {
+            modifiedTime: model.updated_at,
+            publishedTime: model.created_at,
           },
+          images: [
+            {
+              alt: model.title,
+              url: `${ImageURL(model.featured_image.public_id)}.jpg`,
+            },
+          ],
         }}
       />
       <StyledModelPage>

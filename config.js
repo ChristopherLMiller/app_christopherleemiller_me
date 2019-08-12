@@ -10,26 +10,5 @@ export const SITE_TITLE = `Christopher Lee Miller`;
 export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/c_scale,w_300/${CLOUDINARY_VERSION}/${CLOUDINARY_FOLDER}/assets/logo.png`;
 export const SEPARATOR = ` - `;
 
-export const DEFAULT_SEO = {
-  title: `ChristopherLeeMiller.me`,
-  description: `Website all about me and my services`,
-  canonical: process.env.SITE_URL,
-  openGraph: {
-    type: `website`,
-    locale: `en_IE`,
-    url: process.env.SITE_URL,
-    title: `ChristopherLeeMiller.me`,
-    description: `Website all about me and my services`,
-    image: SITE_DEFAULT_IMAGE,
-    site_name: `ChristopherLeeMiller.me`,
-    imageWidth: 300,
-    imageHeight: 300,
-  },
-  twitter: {
-    handle: `@ChrisLMiller_me`,
-    cardType: `summary_large_image`,
-  },
-};
-
 export const DISQUS_SHORTNAME = `christopherleemiller-me`;
 export const PER_PAGE = 20;
