@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Props } from '../../styles/Themes';
+import { Props } from '../../../styles/Themes';
 
 const ArticleBody = styled.div`
   padding: 40px 20px;

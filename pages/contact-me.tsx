@@ -95,8 +95,7 @@ const ContactPage = () => (
       >
         <Formik
           initialValues={{ email: ``, name: ``, message: `` }}
-          onSubmit={(values, actions) => {
-            console.log(JSON.stringify(values));
+          onSubmit={values => {
             fetch(`/api/contact`, {
               method: `post`,
               headers: {
@@ -105,14 +104,14 @@ const ContactPage = () => (
               },
               body: JSON.stringify(values),
             }).then(res => {
-              console.log(`Submitted!`);
+              console.log(res);
               alert(`Thank you`);
             });
           }}
           validationSchema={ContactSchema}
         >
-          {({ errors, status, touched, isSubmitting, handleSubmit }) => (
-            <Form onSubmit={handleSubmit}>
+          {({ isSubmitting }) => (
+            <Form>
               <StyledContactForm>
                 <StyledContactFormFieldset>
                   <StyledContactFormLabel htmlFor="name">

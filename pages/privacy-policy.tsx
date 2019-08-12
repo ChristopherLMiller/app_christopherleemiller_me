@@ -1,4 +1,4 @@
-import Markdown from 'markdown-to-jsx';
+import ReactMarkdown from 'react-markdown';
 import React from 'react';
 import { Query } from 'react-apollo';
 import Card from '../components/Card';
@@ -6,13 +6,18 @@ import { ARTICLES_QUERY } from '../utils/query';
 import { FullArticle } from '../components/articles/Full';
 import { withLayout } from '../components/layout/Layout';
 import { Main } from '../styles/Generics';
+import { ArticleTypes } from '../components/articles/Types';
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
 
+interface iData {
+  [key: string]: Array<ArticleTypes["article"]>;
+}
+
 const PrivacyPolicyPage = () => (
   <Main>
-    <Query
+    <Query<iData>
       query={ARTICLES_QUERY}
       variables={{ article_slug: `privacy-policy`, published: false }}
     >
@@ -28,17 +33,20 @@ const PrivacyPolicyPage = () => (
           );
         }
 
-        console.log(data.articles);
+        if (data != undefined) {
+          return (
+            data.articles.map(article => (
+<FullArticle
+              article={article}
+              commentsEnabled={false}
+              header={false}
+            >
+              <ReactMarkdown source={article.content} />
+            </FullArticle>
+            ))
 
-        return (
-          <FullArticle
-            article={data.articles[0]}
-            commentsEnabled={false}
-            header={false}
-          >
-            <Markdown>{data.articles[0].content}</Markdown>
-          </FullArticle>
-        );
+          );
+        }
       }}
     </Query>
   </Main>

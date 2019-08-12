@@ -1,5 +1,5 @@
-import React, { SFC, Fragment } from 'react';
-import Router, { withRouter } from 'next/router';
+import React, { SFC } from 'react';
+import Router, { withRouter, SingletonRouter } from 'next/router';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import { urlBuilder } from '../../utils/url';
@@ -14,15 +14,27 @@ const StyledSelect = styled.select`
   margin: 15px 0;
 `;
 
-interface SelectTypes {
-  items?: Array<object>;
-  query?: string;
+interface Data {
+  [key: string]: Array<Item>;
+}
+type Item = {
+  id: string;
+  slug: string;
+  title: string;
+  [key: string]: string;
+};
+
+type Items = Item[];
+
+interface ISelectBox {
+  items?: Items;
+  query?: object;
   slug: string;
   field?: string;
-  router: object;
+  router: SingletonRouter;
 }
 
-const SelectBox: SFC<SelectTypes> = ({
+const SelectBox: SFC<ISelectBox> = ({
   items,
   query,
   slug,
@@ -43,7 +55,7 @@ const SelectBox: SFC<SelectTypes> = ({
         }}
         value={router.query[slug]}
       >
-        {items.map(item => (
+        {items.map((item: Item) => (
           <option key={item.id} value={item.slug}>
             {item.title}
           </option>
@@ -52,11 +64,10 @@ const SelectBox: SFC<SelectTypes> = ({
     )}
 
     {query && (
-      <Query query={query}>
+      <Query<Data> query={query}>
         {({ data, error, loading }) => {
           if (loading) return <p>Loading...</p>;
-          if (error) {
-            console.log(`Fetch Error: ${error}`);
+          if (error || !data) {
             return (
               <StyledSelect
                 onChange={event => {
@@ -94,7 +105,7 @@ const SelectBox: SFC<SelectTypes> = ({
               <option key="all" value="">
                 All
               </option>
-              {data[Object.keys(data)[0]].map(item => (
+              {data[Object.keys(data)[0]].map((item: Item) => (
                 <option key={item.id} value={item.slug}>
                   {item[field]}
                 </option>

@@ -5,7 +5,7 @@ import Logo from './Logo';
 import Nav from './Nav';
 import { SocialLinks } from '../SocialLinks';
 import Title from './Title';
-import { Props } from '../styles/Themes';
+import { Props } from '../../styles/Themes';
 
 const SidebarPop = posed.aside({
   open: {

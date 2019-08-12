@@ -1,4 +1,4 @@
-import Markdown from 'markdown-to-jsx';
+import ReactMarkdown from 'react-markdown';
 import React, { SFC } from 'react';
 import { Query } from 'react-apollo';
 import { BriefArticle } from '../components/articles/Brief';
@@ -8,10 +8,14 @@ import { PER_PAGE } from '../config';
 import { withLayout } from '../components/layout/Layout';
 import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Generics';
+import { ArticleTypes } from '../components/articles/Types';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
+interface Data {
+  [key: string]: Array<ArticleTypes["article"]>;
+}
 interface ArticlesPageTypes {
   query: {
     page: string;
@@ -26,7 +30,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
 
   return (
     <Main>
-      <Query
+      <Query<Data>
         query={ARTICLES_QUERY}
         variables={{
           start: page * PER_PAGE - PER_PAGE,
@@ -49,11 +53,12 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
 
           return (
             <React.Fragment>
-              {data.articles.map(article => (
-                <BriefArticle article={article} key={article.id}>
-                  <Markdown>{article.seo_description}</Markdown>
-                </BriefArticle>
-              ))}
+              {data !== undefined &&
+                data.articles.map(article => (
+                  <BriefArticle article={article} key={article.id}>
+                    <ReactMarkdown source={article.seo_description} />
+                  </BriefArticle>
+                ))}
             </React.Fragment>
           );
         }}

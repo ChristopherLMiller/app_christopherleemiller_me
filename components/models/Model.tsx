@@ -1,6 +1,6 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
-import Markdown from 'markdown-to-jsx';
+import ReactMarkdown from 'react-markdown';
 import NextSeo from 'next-seo';
 import ImageGallery from 'react-image-gallery';
 import { ModelTypes } from './Types';
@@ -13,6 +13,7 @@ import { Title } from './elements/Title';
 import { CommentThread } from '../CommentThread';
 import { StyledGallery } from './gallery';
 import { FeaturedImage } from '../FeaturedImage';
+
 
 const StyledModelPage = styled.div`
   display: flex;
@@ -96,8 +97,6 @@ const Model: SFC<ModelTypes> = ({ model }) => {
     };
   });
 
-  console.log(model.content);
-
   return (
     <Fragment>
       <NextSeo
@@ -116,7 +115,7 @@ const Model: SFC<ModelTypes> = ({ model }) => {
             images: [
               {
                 alt: model.title,
-                url: `${ImageURL(model.featured_image)}.jpg`,
+                url: `${ImageURL(model.featured_image.public_id)}.jpg`,
               },
             ],
           },
@@ -124,6 +123,7 @@ const Model: SFC<ModelTypes> = ({ model }) => {
       />
       <StyledModelPage>
         <StyledContentArea>
+          <Title>{model.title}</Title>
           { (images.length > 0) &&
           <StyledGallery>
             <ImageGallery items={images} showPlayButton={false} showFullscreenButton={false} defaultImage={ImageURL()} showBullets/>
@@ -136,22 +136,22 @@ const Model: SFC<ModelTypes> = ({ model }) => {
           <ModelContentArea>
             <Title>Build Log</Title>
             <ModelContent>
-              {model.content != null && <Markdown>{model.content}</Markdown> }
-              {model.content == null && <Markdown>### No Build Log Found</Markdown>}
+              {model.content != null && <ReactMarkdown source={model.content} />}
+              {model.content == null && <ReactMarkdown source={`### No Build Log Found`} />}
             </ModelContent>
           </ModelContentArea>
           <ModelContentArea>
             <Title>Review</Title>
             <ModelContent>
-              {model.review != null && <Markdown>{model.review}</Markdown> }
-              {model.review == null && <Markdown>### No Review Found</Markdown>}
+              {model.review != null && <ReactMarkdown source={model.review}/> }
+              {model.review == null && <ReactMarkdown source={`### No Review Found`}/>}
             </ModelContent>
           </ModelContentArea>
           <CommentThread item={model} slug="model" />
         </StyledContentArea>
         <StyledSidebar>
           <SidebarSection>
-            <Title>{model.title}</Title>
+            <Title>Information</Title>
             <StyledSidebarContent>
               <StyledModelListingParagraph>
                 Brand: {model.manufacturer.company}
@@ -171,7 +171,9 @@ const Model: SFC<ModelTypes> = ({ model }) => {
               <StyledModelListingParagraph>
                 Scalemates: <a href={model.scalemates_link}>Link</a>
               </StyledModelListingParagraph>
-              {model.clockify_id && <BuildTime id={model.clockify_id} />}
+              <StyledModelListingParagraph>
+                Build Time: {model.clockify_id && <BuildTime id={model.clockify_id} />}
+              </StyledModelListingParagraph>
             </StyledSidebarContent>
           </SidebarSection>
           {model.tags.length > 0 && (

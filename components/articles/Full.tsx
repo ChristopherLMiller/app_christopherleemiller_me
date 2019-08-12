@@ -1,4 +1,4 @@
-import hljs from 'highlight.js/';
+import hljs from 'highlight.js';
 import NextSEO from 'next-seo';
 import { SFC, useEffect, Fragment } from 'react';
 import Router from 'next/router';
@@ -47,7 +47,7 @@ const FullArticle: SFC<ArticleTypes> = ({
             images: [
               {
                 alt: article.title,
-                url: `${ImageURL(article.featured_image)}.jpg`,
+                url: `${ImageURL(article.featured_image.public_id)}.jpg`,
               },
             ],
           },

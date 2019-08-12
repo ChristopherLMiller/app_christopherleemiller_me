@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import Nav from './Nav';
-import { Props } from '../styles/Themes';
+import { Props } from '../../styles/Themes';
 import { SocialLinks } from '../SocialLinks';
 
 const StyledMobileNav = styled.div`

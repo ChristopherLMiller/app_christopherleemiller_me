@@ -49,7 +49,7 @@ const StyledModelListingInfo = styled.div`
 `;
 
 const StyledModelListingBlock = styled.div`
-  padding: 15px 20px;
+  padding: 15px 0;
   font-size: 1.25em;
 `;
 

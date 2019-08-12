@@ -2,6 +2,7 @@ import Link from 'next/link';
 import posed from 'react-pose';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SFC } from 'react';
 
 const SocialIconPosed = posed.span({
@@ -19,7 +20,7 @@ const SocialIconPosed = posed.span({
 
 interface SocialIconProps {
   url: string;
-  icon: string;
+  icon: IconProp;
   color?: string;
   alt: string;
 }

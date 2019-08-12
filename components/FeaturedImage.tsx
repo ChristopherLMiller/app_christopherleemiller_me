@@ -1,16 +1,19 @@
 import styled from 'styled-components';
 import { SFC } from 'react';
 import { ImageURL } from '../utils/functions';
-import { Props } from '../components/styles/Themes';
 
-const StyledFeaturedImage = styled.img`
+interface IFeaturedImage {
+  max_height?: number;
+  border?: boolean;
+}
+
+const StyledFeaturedImage = styled.img<IFeaturedImage>`
   object-fit: fill;
   display: block;
   width: 100%;
-  max-height: ${(props: Props) =>
+  max-height: ${props =>
     props.max_height ? `${props.max_height}px` : `initial`};
-  border: ${(props: Props) => (props.border ? `3px` : `0`)} solid
-    var(--text-color-light);
+  border: ${props => (props.border ? `3px` : `0`)} solid var(--text-color-light);
 `;
 
 interface FeaturedImageTypes {
@@ -41,7 +44,7 @@ const FeaturedImage: SFC<FeaturedImageTypes> = ({
   }
   return (
     <StyledFeaturedImage
-      src={ImageURL(`clm_me/assets/default`, width )}
+      src={ImageURL(`clm_me/assets/default`, width)}
       alt="Default Image"
       border={border}
       max_height={max_height}

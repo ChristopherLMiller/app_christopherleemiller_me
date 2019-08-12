@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import posed from 'react-pose';
-import { Props } from '../styles/Themes';
+import { Props } from '../../styles/Themes';
 
 const PosedNav = posed.ul({
   open: {
