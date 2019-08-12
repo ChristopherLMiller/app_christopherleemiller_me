@@ -5,8 +5,21 @@ import Header from '../layout/Header';
 import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 
-const withLayout = (WrappedComponent, title, description, path, image) => {
-  class HOC extends React.Component {
+interface withLayoutProps {
+  title: string;
+  description: string;
+  path?: string;
+  image?: string;
+}
+
+const withLayout = <P extends object>(
+  WrappedComponent: React.ComponentType<P>,
+  title: string,
+  description: string,
+  path?: string,
+  image?: string
+) => {
+  class HOC extends React.Component<P & withLayoutProps> {
     public render() {
       return (
         <Fragment>
@@ -29,7 +42,7 @@ const withLayout = (WrappedComponent, title, description, path, image) => {
               title: `${SITE_TITLE}${SEPARATOR}${title}`,
             }}
           />
-          <WrappedComponent {...this.props} />
+          <WrappedComponent {...(this.props as P)} />
           <Footer />
         </Fragment>
       );

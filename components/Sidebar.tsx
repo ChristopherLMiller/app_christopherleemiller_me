@@ -7,7 +7,12 @@ interface SidebarTypes {
   children: object;
 }
 
-const StyledSidebar = styled.div`
+type SidebarProps = {
+  initialPose: string;
+  pose: string;
+};
+
+const StyledSidebar = styled.div<SidebarProps>`
   margin: 0 auto;
   margin-bottom: 50px;
   box-shadow: var(--box-shadow);

@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 import { SFC } from 'react';
 
-const StyledPaper = styled.div`
+type PaperProps = {
+  translate: string;
+};
+
+const StyledPaper = styled.div<PaperProps>`
   position: absolute;
   top: 50%;
   left: 0px;
@@ -11,11 +15,11 @@ const StyledPaper = styled.div`
   z-index: -1;
   background: var(--main-color-transparent);
   box-shadow: var(--box-shadow);
-  min-height: 175px;
+  min-height: 250px;
 `;
 
 interface PaperTypes {
-  translate: String;
+  translate: string;
 }
 const Paper: SFC<PaperTypes> = ({ translate = `-100%` }) => (
   <StyledPaper translate={translate} />

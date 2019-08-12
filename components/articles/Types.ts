@@ -1,35 +1,35 @@
-interface CategoryType {
+export interface CategoryType {
   id: string;
   slug: string;
   title: string;
 }
 
-interface CategoriesType {
+export interface CategoriesType {
   categories: Array<CategoryType>;
 }
 
-interface TagType {
+export interface TagType {
   id: string;
   slug: string;
   title: string;
 }
 
-interface TagsType {
+export interface TagsType {
   tags: Array<TagType>;
 }
 
-interface CommentType {
+export interface CommentType {
   id: string;
   user: {
     username: string;
   };
 }
 
-interface CommentsType {
+export interface CommentsType {
   comments: Array<CommentType>;
 }
 
-interface ArticleTypes {
+export interface ArticleTypes {
   article: {
     id: string;
     featured_image: {
@@ -52,14 +52,8 @@ interface ArticleTypes {
     tags: Array<TagType>;
   };
   commentsEnabled?: boolean;
+  header?: boolean;
 }
-
-export {
-  ArticleTypes,
-  CategoryType,
-  CategoriesType,
-  CommentType,
-  CommentsType,
-  TagType,
-  TagsType,
-};
+export interface ArticlesTypes {
+  articles: Array<ArticleTypes>;
+}

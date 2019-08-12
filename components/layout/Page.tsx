@@ -59,7 +59,7 @@ const Inner = styled(PosedInner)`
 
 interface PageProps {
   children: object;
-  router: {
+  router?: {
     route: any;
   };
 }

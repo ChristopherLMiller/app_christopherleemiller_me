@@ -1,25 +1,35 @@
-interface TagType {
+export interface TagType {
   id: string;
   slug: string;
   title: string;
 }
 
-interface TagsType {
+export interface TagsType {
   tags: Array<TagType>;
 }
 
-interface CommentType {
+export interface CommentType {
   id: string;
   user: {
     username: string;
   };
 }
 
-interface CommentsType {
+export interface CommentsType {
   comments: Array<CommentType>;
 }
 
-interface ModelTypes {
+export interface ImageType {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  image: {
+    public_id: string;
+  };
+}
+
+export interface ModelTypes {
   model: {
     id: string;
     created_at: string;
@@ -30,7 +40,8 @@ interface ModelTypes {
       public_id: string;
     };
     content: string;
-    review: String;
+    images: Array<ImageType>;
+    review: string;
     seo_title: string;
     seo_description: string;
     completed: Boolean;
@@ -51,4 +62,6 @@ interface ModelTypes {
   };
 }
 
-export { ModelTypes, TagType, TagsType, CommentType, CommentsType };
+export interface ModelsType {
+  models: Array<ModelTypes>;
+}

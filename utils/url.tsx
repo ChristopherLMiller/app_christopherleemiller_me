@@ -1,17 +1,15 @@
-function serialize(obj) {
-  return `?${Object.keys(obj)
-    .reduce((a, k) => {
-      a.push(`${k}=${encodeURIComponent(obj[k])}`);
-      return a;
-    }, [])
-    .join(`&`)}`;
-}
+import querystring, { ParsedUrlQuery } from 'querystring';
 
-export function urlBuilder(current, slug, value) {
+export function urlBuilder(
+  current: ParsedUrlQuery,
+  slug: string,
+  value: string
+) {
   if (value != ``) {
     current[slug] = value;
   } else {
     delete current[slug];
   }
-  return serialize(current);
+
+  return querystring.stringify(current);
 }

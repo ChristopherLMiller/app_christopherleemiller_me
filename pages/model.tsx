@@ -7,6 +7,7 @@ import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
 import { Model } from '../components/models/Model';
 import { Main } from '../styles/Generics';
+import { ModelTypes } from '../components/models/Types';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -17,13 +18,16 @@ interface ModelPageTypes {
   };
 }
 
+interface iData {
+  [key: string]: Array<ModelTypes[`model`]>;
+}
 const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   const onlineStatus = useOnlineStatus();
 
   return (
     <Main>
       {onlineStatus && (
-        <Query
+        <Query<iData>
           query={MODELS_QUERY}
           variables={{ model_slug: query.slug }}
           notifyOnNetworkStatusChange
@@ -40,17 +44,17 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
               );
             }
 
-            console.log(onlineStatus);
-
             // verify that we actually received an model, an empty array signifies no result.
-            if (data.models && data.models.length > 0) {
-              const model = data.models[0];
-              return <Model model={model} />;
+            if (data !== undefined) {
+              if (data.models && data.models.length > 0) {
+                return data.models.map(model => (
+                  <Model model={model} key={model.id} />
+                ));
+              }
+            } else {
+              Router.push(`/models`);
+              return null;
             }
-
-            // default to redirect to articles page
-            Router.push(`/models`);
-            return null;
           }}
         </Query>
       )}

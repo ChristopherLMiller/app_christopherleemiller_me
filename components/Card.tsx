@@ -71,6 +71,7 @@ const Card: SFC<CardProps> = ({ heading, subHeading, dark, children }) => (
         )}
       </CardHeading>
     )}
+    {console.log(dark)}
 
     <CardBody>{children}</CardBody>
   </StyledCard>

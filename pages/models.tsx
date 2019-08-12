@@ -16,6 +16,7 @@ import { Sidebar } from '../components/Sidebar';
 import { Select } from '../components/inputs/Select';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 import { Main } from '../styles/Generics';
+import { ModelTypes } from '../components/models/Types';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -44,6 +45,10 @@ interface ModelsPageTypes {
     tag: string;
     sort: string;
   };
+}
+
+interface iData {
+  [key: string]: Array<ModelTypes["model"]>;
 }
 
 const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
@@ -95,7 +100,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
           </StyledSidebarItem>
         </Sidebar>
 
-        <Query
+        <Query<iData>
           query={MODELS_QUERY}
           variables={{
             start: page * PER_PAGE - PER_PAGE,
@@ -120,15 +125,17 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             }
 
             // if there is nothing in the dataset lets let the user know this
-            if (data.models.length < 1) {
-              return (
-                <Card>
-                  <h3>No Results Found</h3>
-                  <p>
-                    Please try different search parameters as nothing was found.
-                  </p>
-                </Card>
-              );
+            if (data !== undefined) {
+              if (data.models.length < 1) {
+                return (
+                  <Card>
+                    <h3>No Results Found</h3>
+                    <p>
+                      Please try different search parameters as nothing was found.
+                    </p>
+                  </Card>
+                );
+              }
             }
 
             return (
@@ -137,7 +144,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
                   pose={isOpen ? `visible` : `invisible`}
                   initialPose="invisible"
                 >
-                  {data.models.map(model => (
+                  {data !== undefined && data.models.map(model => (
                     <ModelListing key={model.id} model={model} />
                   ))}
                 </StyledModelListings>

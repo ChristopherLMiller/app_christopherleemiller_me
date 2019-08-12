@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import posed from 'react-pose';
-import { Props } from '../styles/Themes';
+import { Props } from '../../styles/Themes';
 
 const LogoFilter = posed.img({
   hoverable: true,

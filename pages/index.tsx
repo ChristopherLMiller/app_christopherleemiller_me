@@ -4,7 +4,7 @@ import { withLayout } from '../components/layout/Layout';
 import { Main } from '../styles/Generics';
 
 const title = `Home`;
-const description = `Where I came from and what I do now.  Development resources, services offered, photography, and much more.`;
+const description = `Programmer.  Amateur Designer. Model Enthusiast.`;
 
 const IndexPage = () => (
   <Main>

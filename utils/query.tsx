@@ -127,6 +127,10 @@ export const ALL_MANUFACTURERS_QUERY = gql`
   }
 `;
 
+export type AllManufacturersQuery = {
+  [key: string]: string;
+};
+
 export const ALL_SCALES_QUERY = gql`
   query ALL_SCALES_QUERY {
     scales(sort: "scale:ASC") {
