@@ -39,7 +39,7 @@
     "highlight.js": "^9.15.8",
     "logrocket": "^1.0.3",
     "next": "^9.0.1",
-    "next-offline": "^4.0.2",
+    "next-offline": "^4.0.3",
     "next-seo": "^2.0.0",
     "next-with-apollo": "^3.4.0",
     "nodemailer": "^6.3.0",
