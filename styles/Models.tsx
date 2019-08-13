@@ -44,7 +44,7 @@ const StyledModelListing = styled(ModelListingHover)`
 `;
 
 const StyledModelListingInfo = styled.div`
-  background: var(--background-light);
+  background: var(--background-white);
   color: var(--text-color);
 `;
 

@@ -1,27 +1,9 @@
-import posed from 'react-pose';
-import { SFC, Fragment } from 'react';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { ModelInfo } from './ModelInfo';
+import { SFC } from 'react';
 import { ModelTypes } from './Types';
 import { StyledModelListing } from '../../styles/Models';
-import { FeaturedImage } from '../FeaturedImage';
 import { ListingTitle } from './elements/ListingTitle';
-
-const ModelListingContentHover = posed.div({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.05,
-  },
-});
-
-const ModelListingContent = styled(ModelListingContentHover)`
-  border: 20px solid var(--background-light);
-  cursor: pointer;
-`;
+import { Polaroid } from '../Polaroid';
+import { ModelInfo } from './ModelInfo';
 
 const ModelListing: SFC<ModelTypes> = ({ model }) => (
   <StyledModelListing>
@@ -31,18 +13,12 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
     >
       {model.title}
     </ListingTitle>
-    <Link as={`/model/${model.slug}`} href={`/model?slug=${model.slug}`}>
-      <ModelListingContent>
-        <Fragment>
-          <FeaturedImage
-            image={model.featured_image}
-            width={700}
-            alt={model.title}
-          />
-          <ModelInfo model={model} />
-        </Fragment>
-      </ModelListingContent>
-    </Link>
+    <Polaroid
+      image={model.featured_image}
+      link={{ as: `/model/${model.slug}`, href: `/model?slug=${model.slug}` }}
+    >
+      <ModelInfo model={model} />
+    </Polaroid>
   </StyledModelListing>
 );
 

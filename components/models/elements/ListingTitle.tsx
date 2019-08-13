@@ -6,10 +6,10 @@ import { FunctionComponent } from 'react';
 const ModelListingTitleHover = posed.h2({
   hoverable: true,
   init: {
-    transform: `rotate(4deg) translateY(40px) translateX(-5px) scale(1.1)`,
+    transform: `rotate(4deg) translateY(40px) translateX(0px) scale(1.1)`,
   },
   hover: {
-    transform: `rotate(0deg) translateY(40px) translateX(-5px) scale(1.1)`,
+    transform: `rotate(0deg) translateY(40px) translateX(0px) scale(1.1)`,
   },
 });
 

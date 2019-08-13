@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
 import { ImageURL } from '../../utils/functions';
-import { SEPARATOR, SITE_TITLE } from '../../config';
+import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
 import { ArticleBody } from './elements/Body';
 import { CommentThread } from '../CommentThread';
@@ -28,6 +28,10 @@ const FullArticle: SFC<ArticleTypes> = ({
     };
   });
 
+  const image = article.featured_image
+    ? article.featured_image.public_id
+    : SITE_DEFAULT_IMAGE_FILE;
+
   return (
     <Fragment>
       <NextSeo
@@ -46,7 +50,7 @@ const FullArticle: SFC<ArticleTypes> = ({
           images: [
             {
               alt: article.title,
-              url: `${ImageURL(article.featured_image.public_id)}.jpg`,
+              url: `${ImageURL(image)}.jpg`,
             },
           ],
         }}

@@ -21,7 +21,7 @@ interface FeaturedImageTypes {
     public_id: string;
   };
   width?: number;
-  alt: string;
+  alt?: string;
   border?: boolean;
   max_height?: number;
 }

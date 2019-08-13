@@ -48,16 +48,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
     // super.componentDidCatch(error, errorInfo);
   }
 
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps = {} as any;
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    // this exposes the query to the user
-    pageProps.query = ctx.query;
-    return { pageProps };
-  }
-
   componentDidMount() {
     initGA();
     logPageView();
@@ -66,6 +56,16 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
 
   componentWillUnmount() {
     Router.events.off(`routeChangeComplete`, logPageView);
+  }
+
+  static async getInitialProps({ Component, ctx }: AppContext) {
+    let pageProps = {} as any;
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+    // this exposes the query to the user
+    pageProps.query = ctx.query;
+    return { pageProps };
   }
 
   render() {

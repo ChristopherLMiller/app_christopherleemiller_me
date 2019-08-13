@@ -53,6 +53,7 @@ export interface Props {
 export const GlobalStyles = createGlobalStyle`
   :root {
     --text-color: ${theme.colors.black};
+    --background-white: ${theme.colors.white};
     --background-light: ${theme.colors.grey};
     --background-dark: ${theme.colors.grey_darker};
     --background-intermediate: ${theme.colors.grey_intermediate};
@@ -63,6 +64,7 @@ export const GlobalStyles = createGlobalStyle`
     --text-color-light: ${theme.colors.white};
     --font-family: Roboto, sans-serif;
     --font-monospace: monospace;
+    --font-marker: 'Permanent Marker';
     --font-alt: Oswald, sans-serif;
     --box-shadow: 0px 0px 22px rgba(0,0,0,0.4),0px 0px 4px rgba(0,0,0,0.25)
   }

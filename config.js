@@ -9,6 +9,7 @@ export const CLOUDINARY_FOLDER = `clm_me`;
 export const SITE_TITLE = `Christopher Lee Miller`;
 export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/c_scale,w_300/${CLOUDINARY_VERSION}/${CLOUDINARY_FOLDER}/assets/logo.png`;
 export const SEPARATOR = ` - `;
+export const SITE_DEFAULT_IMAGE_FILE = `clm_me/assets/default`;
 
 export const DISQUS_SHORTNAME = `christopherleemiller-me`;
 export const PER_PAGE = 20;

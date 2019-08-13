@@ -7,7 +7,7 @@ import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../../styles/Themes';
 import { StyledModelListingParagraph } from '../../styles/Models';
-import { SEPARATOR, SITE_TITLE } from '../../config';
+import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 import { Title } from './elements/Title';
 import { CommentThread } from '../CommentThread';
@@ -97,6 +97,10 @@ const Model: SFC<ModelTypes> = ({ model }) => {
     };
   });
 
+  const image = model.featured_image
+    ? model.featured_image.public_id
+    : SITE_DEFAULT_IMAGE_FILE;
+
   return (
     <Fragment>
       <NextSeo
@@ -114,7 +118,7 @@ const Model: SFC<ModelTypes> = ({ model }) => {
           images: [
             {
               alt: model.title,
-              url: `${ImageURL(model.featured_image.public_id)}.jpg`,
+              url: `${ImageURL(image)}.jpg`,
             },
           ],
         }}
