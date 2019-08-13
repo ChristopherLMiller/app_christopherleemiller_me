@@ -7,7 +7,7 @@ import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
 import { Model } from '../components/models/Model';
 import { Main } from '../styles/Generics';
-import { ModelTypes } from '../components/models/Types';
+import { iData } from '../components/models/Types';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -18,9 +18,6 @@ interface ModelPageTypes {
   };
 }
 
-interface iData {
-  [key: string]: Array<ModelTypes[`model`]>;
-}
 const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   const onlineStatus = useOnlineStatus();
 

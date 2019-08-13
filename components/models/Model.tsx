@@ -1,13 +1,13 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
-import NextSeo from 'next-seo';
+import { NextSeo } from 'next-seo';
 import ImageGallery from 'react-image-gallery';
 import { ModelTypes } from './Types';
 import { BuildTime } from './BuildTime';
 import { Props } from '../../styles/Themes';
 import { StyledModelListingParagraph } from '../../styles/Models';
-import { SEPARATOR, SITE_TITLE } from '../../config';
+import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 import { Title } from './elements/Title';
 import { CommentThread } from '../CommentThread';
@@ -97,28 +97,30 @@ const Model: SFC<ModelTypes> = ({ model }) => {
     };
   });
 
+  const image = model.featured_image
+    ? model.featured_image.public_id
+    : SITE_DEFAULT_IMAGE_FILE;
+
   return (
     <Fragment>
       <NextSeo
-        config={{
-          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`,
+        title={`${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`}
+        description={model.seo_description}
+        openGraph={{
+          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
           description: model.seo_description,
-          openGraph: {
-            title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
-            description: model.seo_description,
-            url: `${process.env.SITE_URL}/model/${model.slug}`,
-            type: `article`,
-            article: {
-              modifiedTime: model.updated_at,
-              publishedTime: model.created_at,
-            },
-            images: [
-              {
-                alt: model.title,
-                url: `${ImageURL(model.featured_image.public_id)}.jpg`,
-              },
-            ],
+          url: `${process.env.SITE_URL}/model/${model.slug}`,
+          type: `article`,
+          article: {
+            modifiedTime: model.updated_at,
+            publishedTime: model.created_at,
           },
+          images: [
+            {
+              alt: model.title,
+              url: `${ImageURL(image)}.jpg`,
+            },
+          ],
         }}
       />
       <StyledModelPage>

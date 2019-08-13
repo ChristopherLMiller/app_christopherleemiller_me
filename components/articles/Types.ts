@@ -57,3 +57,8 @@ export interface ArticleTypes {
 export interface ArticlesTypes {
   articles: Array<ArticleTypes>;
 }
+
+
+export interface iData {
+  [key: string]: Array<ArticleTypes["article"]>;
+}

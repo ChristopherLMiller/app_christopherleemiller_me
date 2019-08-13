@@ -65,3 +65,7 @@ export interface ModelTypes {
 export interface ModelsType {
   models: Array<ModelTypes>;
 }
+
+export interface iData {
+  [key: string]: Array<ModelTypes["model"]>;
+}

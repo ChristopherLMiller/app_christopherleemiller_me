@@ -16,7 +16,7 @@ import { Sidebar } from '../components/Sidebar';
 import { Select } from '../components/inputs/Select';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 import { Main } from '../styles/Generics';
-import { ModelTypes } from '../components/models/Types';
+import { iData } from '../components/models/Types';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -45,10 +45,6 @@ interface ModelsPageTypes {
     tag: string;
     sort: string;
   };
-}
-
-interface iData {
-  [key: string]: Array<ModelTypes["model"]>;
 }
 
 const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {

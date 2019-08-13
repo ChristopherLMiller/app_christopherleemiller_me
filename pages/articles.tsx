@@ -8,14 +8,11 @@ import { PER_PAGE } from '../config';
 import { withLayout } from '../components/layout/Layout';
 import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Generics';
-import { ArticleTypes } from '../components/articles/Types';
+import { iData } from '../components/articles/Types';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-interface Data {
-  [key: string]: Array<ArticleTypes["article"]>;
-}
 interface ArticlesPageTypes {
   query: {
     page: string;
@@ -30,7 +27,7 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
 
   return (
     <Main>
-      <Query<Data>
+      <Query<iData>
         query={ARTICLES_QUERY}
         variables={{
           start: page * PER_PAGE - PER_PAGE,

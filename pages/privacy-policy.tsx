@@ -6,14 +6,10 @@ import { ARTICLES_QUERY } from '../utils/query';
 import { FullArticle } from '../components/articles/Full';
 import { withLayout } from '../components/layout/Layout';
 import { Main } from '../styles/Generics';
-import { ArticleTypes } from '../components/articles/Types';
+import { iData } from '../components/articles/Types';
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
-
-interface iData {
-  [key: string]: Array<ArticleTypes["article"]>;
-}
 
 const PrivacyPolicyPage = () => (
   <Main>
@@ -34,18 +30,15 @@ const PrivacyPolicyPage = () => (
         }
 
         if (data != undefined) {
-          return (
-            data.articles.map(article => (
-<FullArticle
+          return data.articles.map(article => (
+            <FullArticle
               article={article}
               commentsEnabled={false}
               header={false}
             >
               <ReactMarkdown source={article.content} />
             </FullArticle>
-            ))
-
-          );
+          ));
         }
       }}
     </Query>

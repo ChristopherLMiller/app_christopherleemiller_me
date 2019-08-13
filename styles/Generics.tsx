@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { Props } from '../styles/Themes';
 
-const Center = styled.div`
+export const Center = styled.div`
   margin: 0 auto;
   text-align: center;
 `;
 
-const Main = styled.main`
+export const Main = styled.main`
   padding: 20px;
   overflow-x: hidden;
   flex-grow: 2;
@@ -27,5 +27,3 @@ const Main = styled.main`
     padding: 40px;
   }
 `;
-
-export { Center, Main };
