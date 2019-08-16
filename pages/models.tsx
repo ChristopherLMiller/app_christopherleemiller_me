@@ -99,6 +99,49 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     );
   }
 
+  if (data !== undefined && data.models.length >= 1) {
+    return (
+      <Main>
+        <StyledModelPage>
+          <Sidebar title="Filters">
+            <StyledSidebarItem>
+              <SidebarDropdownHeading>Sort By</SidebarDropdownHeading>
+              <Select items={modelsSidebarSort} slug="sort" />
+            </StyledSidebarItem>
+            <StyledSidebarItem>
+              <SidebarDropdownHeading>Completed</SidebarDropdownHeading>
+              <Select items={modelsSidebarCompletedFilter} slug="completed" />
+            </StyledSidebarItem>
+            <StyledSidebarItem>
+              <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
+              <Select
+                query={ALL_MANUFACTURERS_QUERY}
+                slug="company"
+                field="company"
+              />
+            </StyledSidebarItem>
+            <StyledSidebarItem>
+              <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
+              <Select query={ALL_SCALES_QUERY} slug="scale" field="scale" />
+            </StyledSidebarItem>
+            <StyledSidebarItem>
+              <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
+              <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
+            </StyledSidebarItem>
+          </Sidebar>
+          <StyledModelListings
+            pose={isOpen ? `visible` : `invisible`}
+            initialPose="invisible"
+          >
+            {data.models.map(model => (
+              <ModelListing model={model} key={model.id} />
+            ))}
+          </StyledModelListings>
+        </StyledModelPage>
+      </Main>
+    );
+  }
+
   return (
     <Main>
       <StyledModelPage>
@@ -128,15 +171,12 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
           </StyledSidebarItem>
         </Sidebar>
-        <StyledModelListings
-          pose={isOpen ? `visible` : `invisible`}
-          initialPose="invisible"
-        >
-          {data !== undefined &&
-            data.models.map(model => (
-              <ModelListing model={model} key={model.id} />
-            ))}
-        </StyledModelListings>
+        <Card heading="No results found">
+          <p>
+            Nothing was found matching your parameters. Please broaden results
+            or select other criteria.
+          </p>
+        </Card>
       </StyledModelPage>
     </Main>
   );
