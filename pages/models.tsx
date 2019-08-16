@@ -1,6 +1,6 @@
-import { Query } from 'react-apollo';
-import React, { SFC, Fragment, useEffect, useState } from 'react';
+import React, { SFC, useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { useQuery } from 'react-apollo';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
 import {
@@ -10,13 +10,14 @@ import {
   ALL_MODELS_TAGS_QUERY,
 } from '../utils/query';
 import { PER_PAGE } from '../config';
-import { ModelListing } from '../components/models/ModelListing';
 import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { Sidebar } from '../components/Sidebar';
 import { Select } from '../components/inputs/Select';
 import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
 import { Main } from '../styles/Generics';
+
 import { iData } from '../components/models/Types';
+import { ModelListing } from '../components/models/ModelListing';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
@@ -48,7 +49,6 @@ interface ModelsPageTypes {
 }
 
 const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
-  // set a default value for page if non provided
   const page = parseFloat(query.page) || 1;
   let completed;
 
@@ -59,12 +59,45 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   }
 
   const [isOpen, setOpen] = useState(false);
-
   useEffect(() => {
     setTimeout(() => {
       setOpen(true);
     }, 1000);
   });
+
+  const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
+    variables: {
+      start: page * PER_PAGE - PER_PAGE,
+      limit: 100,
+      scale: query.scale,
+      manufacturer: query.company,
+      tag: query.tag,
+      sort: query.sort,
+      completed,
+    },
+  });
+
+  if (loading)
+    return (
+      <Main>
+        <p>Loading...</p>
+      </Main>
+    );
+  if (error) {
+    console.error(`Fetch Error: ${error.message}`);
+
+    return (
+      <Main>
+        <Card heading="Unable to load data">
+          <h2>{error.message}</h2>
+          <p>
+            Sorry. Something happened and we can't seem to load data right now.
+            Possibly you're offline and if not please let us know.
+          </p>
+        </Card>
+      </Main>
+    );
+  }
 
   return (
     <Main>
@@ -95,59 +128,15 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
           </StyledSidebarItem>
         </Sidebar>
-
-        <Query<iData>
-          query={MODELS_QUERY}
-          variables={{
-            start: page * PER_PAGE - PER_PAGE,
-            limit: 100,
-            scale: query.scale,
-            manufacturer: query.company,
-            tag: query.tag,
-            sort: query.sort,
-            completed,
-          }}
+        <StyledModelListings
+          pose={isOpen ? `visible` : `invisible`}
+          initialPose="invisible"
         >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) {
-              console.log(`Fetch Error: ${error}`);
-              return (
-                <Card>
-                  <h3>Unable to fetch models</h3>
-                  <p>{error.message}</p>
-                </Card>
-              );
-            }
-
-            // if there is nothing in the dataset lets let the user know this
-            if (data !== undefined) {
-              if (data.models.length < 1) {
-                return (
-                  <Card>
-                    <h3>No Results Found</h3>
-                    <p>
-                      Please try different search parameters as nothing was found.
-                    </p>
-                  </Card>
-                );
-              }
-            }
-
-            return (
-              <Fragment>
-                <StyledModelListings
-                  pose={isOpen ? `visible` : `invisible`}
-                  initialPose="invisible"
-                >
-                  {data !== undefined && data.models.map(model => (
-                    <ModelListing key={model.id} model={model} />
-                  ))}
-                </StyledModelListings>
-              </Fragment>
-            );
-          }}
-        </Query>
+          {data !== undefined &&
+            data.models.map(model => (
+              <ModelListing model={model} key={model.id} />
+            ))}
+        </StyledModelListings>
       </StyledModelPage>
     </Main>
   );

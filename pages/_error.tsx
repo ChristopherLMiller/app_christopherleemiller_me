@@ -11,7 +11,7 @@ interface ErrorPageTypes {
 }
 const ErrorPage: SFC<ErrorPageTypes> = ({ props }) => (
   <Main>
-    <Card>
+    <Card heading="Something isn't right.">
       <p>Something broke an we don't know how to fix this! Yikes!</p>
       <p>{props}</p>
     </Card>
