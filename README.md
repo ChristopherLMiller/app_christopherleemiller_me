@@ -24,6 +24,7 @@ As part of learning and proper project management, I introduce this git repo con
 - Styled Components
 - GraphQL
 - Service Worker
+- Typescript
 
 ### Features
 
