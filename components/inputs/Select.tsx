@@ -1,6 +1,6 @@
 import React, { SFC } from 'react';
 import Router, { withRouter, SingletonRouter } from 'next/router';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import styled from 'styled-components';
 import { urlBuilder } from '../../utils/url';
 
@@ -40,13 +40,14 @@ const SelectBox: SFC<ISelectBox> = ({
   slug,
   field = `title`,
   router,
-}) => (
-  <div>
-    {items && (
+}) => {
+  console.log(router.pathname);
+  if (items) {
+    return (
       <StyledSelect
         onChange={event => {
           Router.push(
-            `${router.pathname}${urlBuilder(
+            `${router.pathname}?${urlBuilder(
               router.query,
               slug,
               event.target.value
@@ -61,61 +62,58 @@ const SelectBox: SFC<ISelectBox> = ({
           </option>
         ))}
       </StyledSelect>
-    )}
+    );
+  }
 
-    {query && (
-      <Query<Data> query={query}>
-        {({ data, error, loading }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error || !data) {
-            return (
-              <StyledSelect
-                onChange={event => {
-                  Router.push(
-                    `${router.pathname}${urlBuilder(
-                      router.query,
-                      slug,
-                      event.target.value
-                    )}`
-                  );
-                }}
-                value={router.query[slug]}
-              >
-                <option key="all" value="">
-                  All
-                </option>
-              </StyledSelect>
-            );
-          }
+  if (query) {
+    const { loading, data, error } = useQuery<Data>(query);
 
-          return (
-            <StyledSelect
-              key={slug}
-              onChange={event => {
-                Router.push(
-                  `${router.pathname}${urlBuilder(
-                    router.query,
-                    slug,
-                    event.target.value
-                  )}`
-                );
-              }}
-              value={router.query[slug]}
-            >
-              <option key="all" value="">
-                All
-              </option>
-              {data[Object.keys(data)[0]].map((item: Item) => (
-                <option key={item.id} value={item.slug}>
-                  {item[field]}
-                </option>
-              ))}
-            </StyledSelect>
+    if (loading)
+      return (
+        <StyledSelect>
+          <option>Loading...</option>
+        </StyledSelect>
+      );
+    if (error) {
+      console.log(`Fetch Error: ${error.message}`);
+      <StyledSelect>
+        <option>------</option>
+      </StyledSelect>;
+    }
+
+    return (
+      <StyledSelect
+        key={slug}
+        onChange={event => {
+          Router.push(
+            `${router.pathname}?${urlBuilder(
+              router.query,
+              slug,
+              event.target.value
+            )}`
           );
         }}
-      </Query>
-    )}
-  </div>
-);
+        value={router.query[slug]}
+      >
+        <option key="all" value="">
+          All
+        </option>
+        {data !== undefined &&
+          data[Object.keys(data)[0]].map((item: Item) => (
+            <option key={item.id} value={item.slug}>
+              {item[field]}
+            </option>
+          ))}
+      </StyledSelect>
+    );
+  }
+
+  return (
+    <StyledSelect>
+      <option>All</option>
+    </StyledSelect>
+  );
+};
+
 const Select = withRouter(SelectBox);
 export { Select };

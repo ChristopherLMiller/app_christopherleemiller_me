@@ -1,7 +1,7 @@
+import Link from 'next/link';
 import useOnlineStatus from '@rehooks/online-status';
 import React, { SFC } from 'react';
-import Router from 'next/router';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
 import { withLayout } from '../components/layout/Layout';
 import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
@@ -20,47 +20,62 @@ interface ModelPageTypes {
 
 const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   const onlineStatus = useOnlineStatus();
+  const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
+    variables: {
+      model_slug: query.slug,
+    },
+  });
+
+  console.log(onlineStatus);
+
+  if (loading)
+    return (
+      <Main>
+        <p>Loading...</p>
+      </Main>
+    );
+  if (error) {
+    console.error(`Fetch Error: ${error.message}`);
+
+    return (
+      <Main>
+        <Card heading="Unable to load data">
+          <h2>{error.message}</h2>
+          <p>
+            Sorry. Something happened and we can't seem to load data right now.
+            Possibly you're offline and if not please let us know.
+          </p>
+        </Card>
+      </Main>
+    );
+  }
+
+  if (data !== undefined) {
+    if (data.models.length >= 1) {
+      return (
+        <Main>
+          {data.models.map(model => (
+            <Model model={model} key={model.id} />
+          ))}
+        </Main>
+      );
+    }
+  }
 
   return (
     <Main>
-      {onlineStatus && (
-        <Query<iData>
-          query={MODELS_QUERY}
-          variables={{ model_slug: query.slug }}
-          notifyOnNetworkStatusChange
-        >
-          {({ data, error, loading }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) {
-              console.log(error.message);
-              return (
-                <Card>
-                  <h3>Unable to fetch data</h3>
-                  <p>{error.message}</p>
-                </Card>
-              );
-            }
-
-            // verify that we actually received an model, an empty array signifies no result.
-            if (data !== undefined) {
-              if (data.models && data.models.length > 0) {
-                return data.models.map(model => (
-                  <Model model={model} key={model.id} />
-                ));
-              }
-            } else {
-              Router.push(`/models`);
-              return null;
-            }
-          }}
-        </Query>
-      )}
-
-      {!onlineStatus && (
-        <Card heading="Internet Offline">
-          <p>Unable to connect to the internet. Please try again</p>
-        </Card>
-      )}
+      <Card heading="404 Model Not Found.">
+        <p>
+          Sorry. We seem to have lost this model somewhere in the interwebs. I
+          don't know what happened to it! Some gremlin somewhere must have
+          snatched it on me, that or I just never built this model to begin
+          with. Hmmmmm.
+        </p>
+        <hr />
+        <Link href="/models">
+          <a>View All Models</a>
+        </Link>
+      </Card>
     </Main>
   );
 };

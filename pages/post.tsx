@@ -1,7 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import React, { SFC } from 'react';
-import Router from 'next/router';
-import { Query } from 'react-apollo';
+import { useQuery } from 'react-apollo';
+import Link from 'next/link';
 import Card from '../components/Card';
 import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
@@ -18,41 +18,66 @@ interface PostPageTypes {
   };
 }
 
-const PostPage: SFC<PostPageTypes> = ({ query }) => (
-  <Main>
-    <Query<iData>
-      query={ARTICLES_QUERY}
-      variables={{ article_slug: query.slug }}
-    >
-      {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>;
-        if (error) {
-          console.log(error.message);
-          return (
-            <Card>
-              <h3>Unable to fetch archive</h3>
-              <p>{error.message}</p>
-            </Card>
-          );
-        }
+const PostPage: SFC<PostPageTypes> = ({ query }) => {
+  const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
+    variables: {
+      article_slug: query.slug,
+    },
+  });
 
-        // verify that we actually received an article, an empty array signifies no result.
-        if (data !== undefined) {
-          if (data.articles && data.articles.length > 0) {
-            const article = data.articles[0];
-            return (
+  if (loading)
+    return (
+      <Main>
+        <p>Loading...</p>
+      </Main>
+    );
+  if (error) {
+    console.error(`Fetch Error: ${error.message}`);
+
+    return (
+      <Main>
+        <Card heading="Unable to load data">
+          <h2>{error.message}</h2>
+          <p>
+            Sorry. Something happened and we can't seem to load data right now.
+            Possibly you're offline and if not please let us know.
+          </p>
+        </Card>
+      </Main>
+    );
+  }
+
+  if (data !== undefined) {
+    if (data.articles.length >= 1) {
+      return (
+        <Main>
+          {data !== undefined &&
+            data.articles.map(article => (
               <FullArticle article={article}>
                 <ReactMarkdown source={article.content} />
               </FullArticle>
-            );
-          }
-        }
+            ))}
+        </Main>
+      );
+    }
+  }
 
-        // default to redirect to articles page
-        Router.push(`/articles`);
-        return null;
-      }}
-    </Query>
-  </Main>
-);
+  return (
+    <Main>
+      <Card heading="404 Article Not Found">
+        <p>
+          Sorry. We seem to have lost this article somewhere in the interwebs. I
+          don't know what happened to it! Some gremlin somewhere must have
+          snatched it on me, that or I just never wrote this one to begin with.
+          Hmmmmm.
+        </p>
+        <hr />
+        <Link href="/articles">
+          <a>View All Articles</a>
+        </Link>
+      </Card>
+    </Main>
+  );
+};
+
 export default withLayout(PostPage, title, description);
