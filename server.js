@@ -1,7 +1,7 @@
 const express = require(`express`);
 const next = require(`next`);
 const { join } = require(`path`);
-const sitemapAndRobots = require(`./lib/sitemapAndRobots`);
+const sitemap = require(`./lib/genSitemap`);
 const mailer = require(`./utils/mailer`);
 const bodyParser = require(`body-parser`);
 
@@ -17,9 +17,6 @@ app
 
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
-
-    // Sitemap and Robots
-    sitemapAndRobots({ server });
 
     // Contact Form Submissions
     server.post(`/api/contact`, (req, res) => {
@@ -59,6 +56,23 @@ app
     // Redirect admin to the backend
     server.get(`/admin`, (req, res) => {
       res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
+    });
+
+    // Sitemap
+    server.get(`/sitemap.xml`, (req, res) => {
+      try {
+        const xml = sitemap.toXML();
+        res.header('Content-Type', 'application/xml');
+        res.send(xml);
+      } catch (e) {
+        console.error(e);
+        res.status(500).end();
+      }
+    });
+
+    // Robots
+    server.get(`/robots.txt`, (req, res) => {
+      res.sendFile(join(__dirname, `../static`, `robots.txt`));
     });
 
     // All others
