@@ -35,7 +35,7 @@
     "express": "^4.17.1",
     "formik": "^1.5.8",
     "fs": "0.0.1-security",
-    "graphql": "^14.4.2",
+    "graphql": "^14.5.0",
     "graphql-tag": "^2.10.1",
     "highlight.js": "^9.15.9",
     "logrocket": "^1.0.3",
