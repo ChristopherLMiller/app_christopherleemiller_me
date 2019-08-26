@@ -1,4 +1,4 @@
-import DefaultApp, { AppProps, Container, AppContext } from 'next/app';
+import DefaultApp, { AppProps, AppContext } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -73,39 +73,37 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
     const { Component, apollo, pageProps } = this.props;
 
     return (
-      <Container>
-        <ApolloProvider client={apollo}>
-          <ApolloHooksProvider client={apollo}>
-            <DefaultSeo
-              title="ChristopherLeeMiller.me"
-              description="Website all about me and my services"
-              canonical={process.env.SITE_URL}
-              openGraph={{
-                type: `website`,
-                locale: `en_IE`,
-                url: process.env.SITE_URL,
-                title: `ChristopherLeeMiller.me`,
-                description: `Website all about me and my services`,
-                images: [
-                  {
-                    url: SITE_DEFAULT_IMAGE,
-                    width: 300,
-                    height: 300,
-                  },
-                ],
-                site_name: `ChristopherLeeMiller.me`,
-              }}
-              twitter={{
-                handle: `@ChrisLMiller_me`,
-                cardType: `summary_large_image`,
-              }}
-            />
-            <Page>
-              <Component {...pageProps} />
-            </Page>
-          </ApolloHooksProvider>
-        </ApolloProvider>
-      </Container>
+      <ApolloProvider client={apollo}>
+        <ApolloHooksProvider client={apollo}>
+          <DefaultSeo
+            title="ChristopherLeeMiller.me"
+            description="Website all about me and my services"
+            canonical={process.env.SITE_URL}
+            openGraph={{
+              type: `website`,
+              locale: `en_IE`,
+              url: process.env.SITE_URL,
+              title: `ChristopherLeeMiller.me`,
+              description: `Website all about me and my services`,
+              images: [
+                {
+                  url: SITE_DEFAULT_IMAGE,
+                  width: 300,
+                  height: 300,
+                },
+              ],
+              site_name: `ChristopherLeeMiller.me`,
+            }}
+            twitter={{
+              handle: `@ChrisLMiller_me`,
+              cardType: `summary_large_image`,
+            }}
+          />
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </ApolloHooksProvider>
+      </ApolloProvider>
     );
   }
 }

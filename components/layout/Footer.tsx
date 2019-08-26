@@ -38,7 +38,7 @@ const Separator = styled.span`
 const Footer = () => (
   <StyledFooter initialPose="closed" pose="open">
     <SiteInfo>
-      <Link href="/privacy-policy" prefetch>
+      <Link href="/privacy-policy">
         <a>Privacy Policy</a>
       </Link>
       <Separator />

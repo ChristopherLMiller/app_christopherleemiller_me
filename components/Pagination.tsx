@@ -55,7 +55,6 @@ const Pagination: SFC<PaginationTypes> = ({ page, content_type }) => {
     <Center>
       <PaginationStyles>
         <Link
-          prefetch
           href={{
             pathname: `${content_type}`,
             query: { page: page - 1 },
@@ -72,7 +71,6 @@ const Pagination: SFC<PaginationTypes> = ({ page, content_type }) => {
           {count} {content_type} Total
         </p>
         <Link
-          prefetch
           href={{
             pathname: `${content_type}`,
             query: { page: page + 1 },

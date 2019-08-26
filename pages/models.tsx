@@ -117,18 +117,26 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
             <StyledSidebarItem>
               <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
               <Select
-                query={ALL_MANUFACTURERS_QUERY}
+                graphqlQuery={ALL_MANUFACTURERS_QUERY}
                 slug="company"
                 field="company"
               />
             </StyledSidebarItem>
             <StyledSidebarItem>
               <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
-              <Select query={ALL_SCALES_QUERY} slug="scale" field="scale" />
+              <Select
+                graphqlQuery={ALL_SCALES_QUERY}
+                slug="scale"
+                field="scale"
+              />
             </StyledSidebarItem>
             <StyledSidebarItem>
               <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
-              <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
+              <Select
+                graphqlQuery={ALL_MODELS_TAGS_QUERY}
+                slug="tag"
+                field="title"
+              />
             </StyledSidebarItem>
           </Sidebar>
           <StyledModelListings
@@ -159,18 +167,18 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
           <StyledSidebarItem>
             <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
             <Select
-              query={ALL_MANUFACTURERS_QUERY}
+              graphqlQuery={ALL_MANUFACTURERS_QUERY}
               slug="company"
               field="company"
             />
           </StyledSidebarItem>
           <StyledSidebarItem>
             <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
-            <Select query={ALL_SCALES_QUERY} slug="scale" field="scale" />
+            <Select graphqlQuery={ALL_SCALES_QUERY} slug="scale" field="scale" />
           </StyledSidebarItem>
           <StyledSidebarItem>
             <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
-            <Select query={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
+            <Select graphqlQuery={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
           </StyledSidebarItem>
         </Sidebar>
         <Card heading="No results found">

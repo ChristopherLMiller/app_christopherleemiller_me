@@ -56,47 +56,47 @@ const NavItem = styled(PosedNavItem)`
 const Nav = () => (
   <NavStyles pose="open">
     <NavItem>
-      <Link href="/" prefetch>
+      <Link href="/">
         <a>Home</a>
       </Link>
     </NavItem>
 
     <NavItem>
-      <Link href="/articles" prefetch>
+      <Link href="/articles">
         <a>Articles</a>
       </Link>
     </NavItem>
 
     <NavItem>
-      <Link href="/about" prefetch>
+      <Link href="/about">
         <a>About</a>
       </Link>
     </NavItem>
 
     <NavItem>
-      <Link href="/services" prefetch>
+      <Link href="/services">
         <a>Services</a>
       </Link>
     </NavItem>
 
     <NavItem>
-      <Link href="/projects" prefetch>
+      <Link href="/projects">
         <a>Projects</a>
       </Link>
     </NavItem>
     <NavItem>
-      <Link href="/models" prefetch>
+      <Link href="/models">
         <a>Models</a>
       </Link>
     </NavItem>
     <NavItem>
-      <Link href="/galleries" prefetch>
+      <Link href="/galleries">
         <a>Galleries</a>
       </Link>
     </NavItem>
 
     <NavItem>
-      <Link href="/contact-me" prefetch>
+      <Link href="/contact-me">
         <a>Contact Me</a>
       </Link>
     </NavItem>

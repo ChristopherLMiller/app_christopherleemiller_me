@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import posed from 'react-pose';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -31,18 +30,16 @@ const SocialIcon: SFC<SocialIconProps> = ({
   alt,
 }) => (
   <li>
-    <Link href={url}>
-      <a title={alt} aria-label={alt}>
-        <SocialIconPosed className="fa-stack fa-2x">
-          <FontAwesomeIcon
-            icon={faCircle}
-            className="fa-stack-2x"
-            color="#982929"
-          />
-          <FontAwesomeIcon icon={icon} color={color} className="fa-stack-1x" />
-        </SocialIconPosed>
-      </a>
-    </Link>
+    <a title={alt} href={url} aria-label={alt}>
+      <SocialIconPosed className="fa-stack fa-2x">
+        <FontAwesomeIcon
+          icon={faCircle}
+          className="fa-stack-2x"
+          color="#982929"
+        />
+        <FontAwesomeIcon icon={icon} color={color} className="fa-stack-1x" />
+      </SocialIconPosed>
+    </a>
   </li>
 );
 
