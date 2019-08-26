@@ -45,7 +45,9 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
     return (
       <Main>
         <Card heading="Unable to load data">
+          <hr />
           <h2>{error.message}</h2>
+          <hr />
           <p>
             Sorry. Something happened and we can't seem to load data right now.
             Possibly you're offline and if not please let us know.

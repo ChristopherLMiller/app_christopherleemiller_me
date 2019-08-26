@@ -2,6 +2,7 @@ import React, { SFC } from 'react';
 import Router, { withRouter, SingletonRouter } from 'next/router';
 import { useQuery } from 'react-apollo';
 import styled from 'styled-components';
+import { DocumentNode } from 'graphql';
 import { urlBuilder } from '../../utils/url';
 
 const StyledSelect = styled.select`
@@ -28,7 +29,7 @@ type Items = Item[];
 
 interface ISelectBox {
   items?: Items;
-  query?: object;
+  graphqlQuery?: DocumentNode;
   slug: string;
   field?: string;
   router: SingletonRouter;
@@ -36,7 +37,7 @@ interface ISelectBox {
 
 const SelectBox: SFC<ISelectBox> = ({
   items,
-  query,
+  graphqlQuery,
   slug,
   field = `title`,
   router,
@@ -65,8 +66,8 @@ const SelectBox: SFC<ISelectBox> = ({
     );
   }
 
-  if (query) {
-    const { loading, data, error } = useQuery<Data>(query);
+  if (graphqlQuery) {
+    const { loading, data, error } = useQuery<Data>(graphqlQuery);
 
     if (loading)
       return (
