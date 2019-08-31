@@ -50,7 +50,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.9.0",
     "react-apollo": "^3.0.1",
-    "react-async": "^7.0.6",
+    "react-async": "^8.0.0",
     "react-dom": "^16.9.0",
     "react-ga": "^2.6.0",
     "react-image-gallery": "^0.9.1",
