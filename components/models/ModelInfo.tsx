@@ -1,11 +1,10 @@
 import { SFC } from 'react';
-import { BuildTime } from './BuildTime';
+import { BuildTime } from './elements/BuildTime';
 import { ModelTypes } from './Types';
 import {
   StyledModelListingBlock,
   StyledModelListingColumn,
   StyledModelListingInfo,
-  StyledModelListingParagraph,
 } from '../../styles/Models';
 
 const ModelInfo: SFC<ModelTypes> = ({ model }) => {
@@ -15,27 +14,17 @@ const ModelInfo: SFC<ModelTypes> = ({ model }) => {
     <StyledModelListingInfo>
       <StyledModelListingBlock>
         <StyledModelListingColumn>
-          <StyledModelListingParagraph>
-            Brand: {model.manufacturer.company}
-          </StyledModelListingParagraph>
-          <StyledModelListingParagraph>
-            Kit No: {model.kit_number}
-          </StyledModelListingParagraph>
-          <StyledModelListingParagraph>
-            Scale: {model.scale.scale}
-          </StyledModelListingParagraph>
-          <StyledModelListingParagraph>
-            Released: {model.year_released}
-          </StyledModelListingParagraph>
+          <p>Brand: {model.manufacturer.company}</p>
+          <p>Kit No: {model.kit_number}</p>
+          <p>Scale: {model.scale.scale}</p>
+          <p>Released: {model.year_released}</p>
         </StyledModelListingColumn>
         <StyledModelListingColumn>
-          <StyledModelListingParagraph>
-            Completed: {completed}
-          </StyledModelListingParagraph>
-          <StyledModelListingParagraph>
+          <p>Completed: {completed}</p>
+          <p>
             Build Time:{` `}
             {model.clockify_id && <BuildTime id={model.clockify_id} />}
-          </StyledModelListingParagraph>
+          </p>
         </StyledModelListingColumn>
       </StyledModelListingBlock>
     </StyledModelListingInfo>

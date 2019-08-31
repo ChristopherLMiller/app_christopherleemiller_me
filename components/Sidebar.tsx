@@ -1,6 +1,6 @@
 import { SFC } from 'react';
 import styled from 'styled-components';
-import { Props } from '../styles/Themes';
+import { Title } from './elements/Title';
 
 interface SidebarTypes {
   title: string;
@@ -13,47 +13,40 @@ type SidebarProps = {
 };
 
 const StyledSidebar = styled.div<SidebarProps>`
-  margin: 0 auto;
   margin-bottom: 50px;
-  box-shadow: var(--box-shadow);
-`;
-
-const StyledSidebarHeader = styled.h4`
-  background: var(--main-color);
-  margin: 0;
-  padding: 20px;
-  font-size: 1.5em;
 `;
 
 const StyledSidebarContent = styled.div`
-  background: var(--background-dark);
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  background: var(--background-light);
+  padding: 20px;
+  font-size: var(--font-size-responsive);
+  color: var(--text-color);
+  font-weight: 300;
 
   h3 {
     color: var(--main-color);
-    font-size: 1.5em;
   }
   p {
     margin: 0;
-    font-size: 1.5em;
   }
 
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
-    grid-template-columns: repeat(2, 1fr);
+  ul {
+    margin: 0;
+    list-style-type: none;
+    padding-left: 0;
   }
 
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    grid-template-columns: repeat(3, 1fr);
+  a {
+    color: var(--main-color);
   }
-  @media (min-width: ${(props: Props) => props.theme.sizes.extra_large}) {
-    grid-template-columns: repeat(5, 1fr);
+  a:hover {
+    text-decoration: underline;
   }
 `;
 
 const Sidebar: SFC<SidebarTypes> = ({ title, children }) => (
   <StyledSidebar initialPose="invisible" pose="visible">
-    {title && <StyledSidebarHeader>{title}</StyledSidebarHeader>}
+    {title && <Title>{title}</Title>}
     <StyledSidebarContent>{children}</StyledSidebarContent>
   </StyledSidebar>
 );

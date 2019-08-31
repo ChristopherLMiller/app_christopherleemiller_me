@@ -1,41 +1,17 @@
 import React, { SFC, useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useQuery } from 'react-apollo';
 import { withLayout } from '../components/layout/Layout';
 import Card from '../components/Card';
-import {
-  MODELS_QUERY,
-  ALL_MANUFACTURERS_QUERY,
-  ALL_SCALES_QUERY,
-  ALL_MODELS_TAGS_QUERY,
-} from '../utils/query';
+import { MODELS_QUERY } from '../utils/query';
 import { PER_PAGE } from '../config';
 import { StyledModelListings, StyledModelPage } from '../styles/Models';
-import { Sidebar } from '../components/Sidebar';
-import { Select } from '../components/inputs/Select';
-import { modelsSidebarCompletedFilter, modelsSidebarSort } from '../utils/json';
+import { ModelsFilters } from '../components/models/elements/Filters';
 import { Main } from '../styles/Generics';
-
 import { iData } from '../components/models/Types';
 import { ModelListing } from '../components/models/ModelListing';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
-
-const StyledSidebarItem = styled.div`
-  padding: 10px;
-`;
-
-const SidebarDropdownHeading = styled.h5`
-  margin: 0;
-  color: var(--background-darker);
-  text-align: center;
-  font-size: 1.5em;
-  font-family: var(--font-family);
-  text-transform: uppercase;
-  text-decoration: underline;
-  padding: 20px 0 0 0;
-`;
 
 interface ModelsPageTypes {
   query: {
@@ -80,7 +56,10 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   if (loading)
     return (
       <Main>
-        <p>Loading...</p>
+        <StyledModelPage>
+          <ModelsFilters />
+          <p>Loading...</p>
+        </StyledModelPage>
       </Main>
     );
   if (error) {
@@ -88,15 +67,17 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
 
     return (
       <Main>
-        <Card heading="Unable to load data">
-          <hr />
-          <h2>{error.message}</h2>
-          <hr />
-          <p>
-            Sorry. Something happened and we can't seem to load data right now.
-            Possibly you're offline and if not please let us know.
-          </p>
-        </Card>
+        <StyledModelPage>
+          <Card heading="Unable to load data">
+            <hr />
+            <h2>{error.message}</h2>
+            <hr />
+            <p>
+              Sorry. Something happened and we can't seem to load data right
+              now. Possibly you're offline and if not please let us know.
+            </p>
+          </Card>
+        </StyledModelPage>
       </Main>
     );
   }
@@ -105,40 +86,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     return (
       <Main>
         <StyledModelPage>
-          <Sidebar title="Filters">
-            <StyledSidebarItem>
-              <SidebarDropdownHeading>Sort By</SidebarDropdownHeading>
-              <Select items={modelsSidebarSort} slug="sort" />
-            </StyledSidebarItem>
-            <StyledSidebarItem>
-              <SidebarDropdownHeading>Completed</SidebarDropdownHeading>
-              <Select items={modelsSidebarCompletedFilter} slug="completed" />
-            </StyledSidebarItem>
-            <StyledSidebarItem>
-              <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
-              <Select
-                graphqlQuery={ALL_MANUFACTURERS_QUERY}
-                slug="company"
-                field="company"
-              />
-            </StyledSidebarItem>
-            <StyledSidebarItem>
-              <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
-              <Select
-                graphqlQuery={ALL_SCALES_QUERY}
-                slug="scale"
-                field="scale"
-              />
-            </StyledSidebarItem>
-            <StyledSidebarItem>
-              <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
-              <Select
-                graphqlQuery={ALL_MODELS_TAGS_QUERY}
-                slug="tag"
-                field="title"
-              />
-            </StyledSidebarItem>
-          </Sidebar>
+          <ModelsFilters />
           <StyledModelListings
             pose={isOpen ? `visible` : `invisible`}
             initialPose="invisible"
@@ -155,32 +103,7 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
   return (
     <Main>
       <StyledModelPage>
-        <Sidebar title="Filters">
-          <StyledSidebarItem>
-            <SidebarDropdownHeading>Sort By</SidebarDropdownHeading>
-            <Select items={modelsSidebarSort} slug="sort" />
-          </StyledSidebarItem>
-          <StyledSidebarItem>
-            <SidebarDropdownHeading>Completed</SidebarDropdownHeading>
-            <Select items={modelsSidebarCompletedFilter} slug="completed" />
-          </StyledSidebarItem>
-          <StyledSidebarItem>
-            <SidebarDropdownHeading>Brand</SidebarDropdownHeading>
-            <Select
-              graphqlQuery={ALL_MANUFACTURERS_QUERY}
-              slug="company"
-              field="company"
-            />
-          </StyledSidebarItem>
-          <StyledSidebarItem>
-            <SidebarDropdownHeading>Scale</SidebarDropdownHeading>
-            <Select graphqlQuery={ALL_SCALES_QUERY} slug="scale" field="scale" />
-          </StyledSidebarItem>
-          <StyledSidebarItem>
-            <SidebarDropdownHeading>Tags</SidebarDropdownHeading>
-            <Select graphqlQuery={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
-          </StyledSidebarItem>
-        </Sidebar>
+        <ModelsFilters />
         <Card heading="No results found">
           <p>
             Nothing was found matching your parameters. Please broaden results

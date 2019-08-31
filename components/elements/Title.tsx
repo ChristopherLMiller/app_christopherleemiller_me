@@ -2,11 +2,12 @@ import styled from 'styled-components';
 
 const Title = styled.h2`
   margin: 0;
-  padding: 20px;
+  padding: var(--title-padding);
+  font-size: var(--title-font-size);
   background: var(--main-color);
   color: var(--text-color-light);
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: var(--title-letter-spacing);
   text-align: center;
 `;
 

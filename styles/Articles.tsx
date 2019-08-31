@@ -4,7 +4,7 @@ import { Props } from './Themes';
 const StyledArticle = styled.article`
   background: var(--background-light);
   color: black;
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   max-width: ${(props: Props) => props.theme.max_width};
   margin: 0 auto 50px auto;
   transition-delay: 2s;

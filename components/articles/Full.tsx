@@ -7,8 +7,8 @@ import { ArticleTypes } from './Types';
 import { ImageURL } from '../../utils/functions';
 import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
-import { ArticleBody } from './elements/Body';
 import { CommentThread } from '../CommentThread';
+import { StyledContentBlock } from '../elements/ContentBlock';
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,
@@ -57,8 +57,7 @@ const FullArticle: SFC<ArticleTypes> = ({
       />
       <StyledArticle>
         {header && <ArticleHead article={article} />}
-        <ArticleBody>{children}</ArticleBody>
-
+        <StyledContentBlock>{children}</StyledContentBlock>
         {commentsEnabled && <CommentThread item={article} slug="post" />}
       </StyledArticle>
     </Fragment>

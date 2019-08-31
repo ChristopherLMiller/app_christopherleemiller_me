@@ -14,6 +14,7 @@ const StyledMobileNav = styled.div`
   background: var(--text-color);
   border-bottom: 2px solid var(--background-light);
   position: fixed;
+  z-index: 9999;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: none;

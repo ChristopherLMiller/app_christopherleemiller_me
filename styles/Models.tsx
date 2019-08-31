@@ -53,24 +53,6 @@ const StyledModelListingBlock = styled.div`
   font-size: 1.25em;
 `;
 
-const StyledModelListingParagraph = styled.p`
-  margin: 0;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  font-family: 'Permanent Marker';
-  padding: 0;
-  font-style: italic;
-  color: var(--text-color);
-  font-size: 1em;
-
-  a {
-    color: var(--main-color);
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-`;
-
 const StyledModelListingColumn = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -80,7 +62,6 @@ export {
   StyledModelListings,
   StyledModelListing,
   StyledModelListingInfo,
-  StyledModelListingParagraph,
   StyledModelListingBlock,
   StyledModelListingColumn,
   StyledModelPage,
