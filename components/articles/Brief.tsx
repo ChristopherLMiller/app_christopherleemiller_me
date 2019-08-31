@@ -4,16 +4,16 @@ import { ArticleFooter } from './elements/Footer';
 import { ArticleHead } from './elements/Head';
 import { CommentCount } from '../CommentCount';
 import { StyledArticle } from '../../styles/Articles';
-import { ArticleBody } from './elements/Body';
+import { StyledContentBlock } from '../elements/ContentBlock';
 import { Button } from '../Buttons';
 
 const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => (
   <StyledArticle>
     <ArticleHead article={article} />
-    <ArticleBody>
+    <StyledContentBlock>
       {children}
       <CommentCount article={article} slug="post" />
-    </ArticleBody>
+    </StyledContentBlock>
     <Button
       as={`/post/${article.slug}`}
       href={`/post?slug=${article.slug}`}

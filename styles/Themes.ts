@@ -62,11 +62,16 @@ export const GlobalStyles = createGlobalStyle`
     --main-color-opposite: ${theme.colors.red_opposite};
     --main-color-transparent: ${theme.colors.red_transparent};
     --text-color-light: ${theme.colors.white};
-    --font-family: Roboto, sans-serif;
+    --font-main: Roboto, sans-serif;
     --font-monospace: monospace;
     --font-marker: 'Permanent Marker';
     --font-alt: Oswald, sans-serif;
-    --box-shadow: 0px 0px 22px rgba(0,0,0,0.4),0px 0px 4px rgba(0,0,0,0.25)
+    --title-margin: 0;
+    --title-padding: 20px;
+    --title-font-size: 2.25rem;
+    --title-letter-spacing: 3px;
+    --box-shadow: 0px 0px 22px rgba(0,0,0,0.4),0px 0px 4px rgba(0,0,0,0.25);
+    --font-size-responsive: calc(1.5rem + ((1vw - 0em) * 0.4));
   }
 
   html {
@@ -77,7 +82,7 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    font-family: var(--font-family);
+    font-family: var(--font-main);
     padding: 0;
     margin: 0;
     font-size: 1.5rem;

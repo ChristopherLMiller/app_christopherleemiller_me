@@ -25,7 +25,7 @@ const StyledFooter = styled(FooterPopped)`
 `;
 
 const SiteInfo = styled.div`
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   color: var(--text-color-light);
   text-align: right;
 `;
@@ -43,6 +43,8 @@ const Footer = () => (
       </Link>
       <Separator />
       <span>Copyright © {getYear(new Date())}</span>
+      <Separator />
+      <span>v{process.env.npm_package_version}</span>
     </SiteInfo>
     <Paper translate="5%" />
   </StyledFooter>

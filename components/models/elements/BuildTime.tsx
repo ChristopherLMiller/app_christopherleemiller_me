@@ -32,6 +32,11 @@ function convertTime(time: String): string {
 }
 
 const BuildTime: SFC<iBuildTime> = ({ id }) => {
+  // immediately return if id is null
+  if (id === null) {
+    return <Fragment>N/A</Fragment>
+  }
+
   const headers = {
     Accept: `application/json`,
     'Content-Type': `application/json`,
@@ -47,7 +52,7 @@ const BuildTime: SFC<iBuildTime> = ({ id }) => {
   if (isLoading) return <Fragment>---</Fragment>;
   if (error) {
     console.log(error.message);
-    return <Fragment>Error</Fragment>;
+    return <Fragment>N/A</Fragment>;
   }
   if (data) return <Fragment>{convertTime(data.duration)}</Fragment>;
 

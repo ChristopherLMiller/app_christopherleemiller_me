@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { Props } from '../../../styles/Themes';
+import { Props } from '../../styles/Themes';
 
-const ArticleBody = styled.div`
+const StyledContentBlock = styled.div`
   padding: 40px 20px;
   font-size: 1.5em;
   letter-spacing: 1px;
   font-weight: 300;
   color: var(--background-darker);
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    font-size: calc(1.5rem + ((1vw - 0em) * 0.4));
+    font-size: var(--font-size-responsive);
   }
 
   ol {
@@ -164,4 +164,4 @@ const ArticleBody = styled.div`
   }
 `;
 
-export { ArticleBody };
+export { StyledContentBlock };

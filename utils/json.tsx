@@ -1,4 +1,4 @@
-export const modelsSidebarCompletedFilter = [
+export const modelsCompletedFilter = [
   {
     id: `2`,
     slug: ``,
@@ -16,7 +16,7 @@ export const modelsSidebarCompletedFilter = [
   },
 ];
 
-export const modelsSidebarSort = [
+export const modelsSort = [
   {
     id: `0`,
     slug: `title:ASC`,

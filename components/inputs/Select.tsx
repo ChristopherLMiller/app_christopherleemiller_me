@@ -6,7 +6,7 @@ import { DocumentNode } from 'graphql';
 import { urlBuilder } from '../../utils/url';
 
 const StyledSelect = styled.select`
-  font-family: var(--font-family);
+  font-family: var(--font-main);
   padding: 5px;
   font-size: 1.25em;
   width: 100%;
@@ -47,13 +47,12 @@ const SelectBox: SFC<ISelectBox> = ({
     return (
       <StyledSelect
         onChange={event => {
-          Router.push(
-            `${router.pathname}?${urlBuilder(
-              router.query,
-              slug,
-              event.target.value
-            )}`
-          );
+          const href = `${router.pathname}?${urlBuilder(
+            router.query,
+            slug,
+            event.target.value
+          )}`;
+          Router.push(href, href, { shallow: false });
         }}
         value={router.query[slug]}
       >

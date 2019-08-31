@@ -23,7 +23,15 @@ const StyledPolaroid = styled(PolaroidHover)`
 const PolaroidCaption = styled.p`
   font-family: var(--font-marker);
   color: var(--text-color);
-  font-size: 1.5em;
+  font-size: 2rem;
+  margin: 15px 0;
+`;
+
+const PolaroidContent = styled.div`
+  font-family: var(--font-marker);
+  color: var(--background-darker);
+  font-size: 2rem;
+  margin: 15px 0;
 `;
 
 interface iPolaroid {
@@ -46,7 +54,7 @@ const Polaroid: SFC<iPolaroid> = ({ image, alt, caption, link, children }) => {
         <StyledPolaroid>
           <FeaturedImage image={image} alt={alt} />
           {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
-          {children}
+          <PolaroidContent>{children}</PolaroidContent>
         </StyledPolaroid>
       </Link>
     );
@@ -56,7 +64,7 @@ const Polaroid: SFC<iPolaroid> = ({ image, alt, caption, link, children }) => {
     <StyledPolaroid>
       <FeaturedImage image={image} alt={alt} />
       {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
-      {children}
+      <PolaroidContent>{children}</PolaroidContent>
     </StyledPolaroid>
   );
 };
