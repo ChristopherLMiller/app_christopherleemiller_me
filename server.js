@@ -62,7 +62,7 @@ app
     server.get(`/sitemap.xml`, (req, res) => {
       try {
         const xml = sitemap.toXML();
-        res.header('Content-Type', 'application/xml');
+        res.header(`Content-Type`, `application/xml`);
         res.send(xml);
       } catch (e) {
         console.error(e);
