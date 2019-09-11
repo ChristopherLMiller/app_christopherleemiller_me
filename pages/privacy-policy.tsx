@@ -1,59 +1,40 @@
+import React, { Fragment } from 'react';
+import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import Card from '../components/Card';
-import { FullArticle } from '../components/articles/Full';
+import { StyledContentBlock } from '../components/elements/ContentBlock';
 import { withLayout } from '../components/layout/Layout';
-import { Main } from '../styles/Generics';
-import { ARTICLES_QUERY } from '../utils/query';
-import { iData } from '../components/articles/Types';
+import { SITE_TITLE, SEPARATOR } from '../config';
+import { StyledArticle } from '../styles/Articles';
+
+const PrivacyPolicyMarkdown = require(`../data/privacy-policy.md`);
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
 
-const PrivacyPolicyPage = () => {
-  const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
-    variables: { article_slug: `privacy-policy`, published: false, limit: 1 },
-  });
-
-  if (loading)
-    return (
-      <Main>
-        <p>Loading...</p>
-      </Main>
-    );
-  if (error) {
-    console.error(`Fetch Error: ${error.message}`);
-
-    return (
-      <Main>
-        <Card heading="Unable to load data">
-          <h2>{error.message}</h2>
-          <p>
-            Sorry. Something happened and we can't seem to load data right now.
-            Possibly you're offline and if not please let us know.
-          </p>
-        </Card>
-      </Main>
-    );
-  }
-
-  return (
-    <Main>
-      {data !== undefined &&
-        data.articles.map(article => (
-          <FullArticle
-            article={article}
-            commentsEnabled={false}
-            header={false}
-            key={article.id}
-          >
-            <ReactMarkdown source={article.content} />
-          </FullArticle>
-        ))}
-    </Main>
-  );
-};
+const PrivacyPolicyPage = () => (
+  <Fragment>
+    <NextSeo
+      title={`${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}Privacy Policy`}
+      description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."
+      openGraph={{
+        title: `${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}Privacy Policy`,
+        description: `This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website.`,
+        url: `${process.env.SITE_URL}/post/privacy-policy`,
+        type: `article`,
+        article: {
+          authors: [`Chris Miller`],
+          modifiedTime: `2019-01-01`,
+          publishedTime: `2019-01-01`,
+        },
+      }}
+    />
+    <StyledArticle>
+      <StyledContentBlock>
+        <ReactMarkdown>{PrivacyPolicyMarkdown.default}</ReactMarkdown>
+      </StyledContentBlock>
+    </StyledArticle>
+  </Fragment>
+);
 
 export default withLayout(
   PrivacyPolicyPage,
