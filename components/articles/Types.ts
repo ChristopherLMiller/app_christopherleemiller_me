@@ -35,7 +35,6 @@ export interface ArticleTypes {
     featured_image: {
       public_id: string;
     };
-    content_brief: string;
     content: string;
     title: string;
     created_at: string;
