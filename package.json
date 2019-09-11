@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "formik": "^1.5.8",
     "fs": "0.0.1-security",
     "graphql": "^14.5.4",
@@ -59,6 +60,7 @@
     "react-pose": "^4.0.8",
     "sitemap": "^4.1.1",
     "styled-components": "^4.3.2",
+    "uid-safe": "^2.1.5",
     "webpack": "^4.39.3",
     "yup": "^0.27.0"
   },
