@@ -28,7 +28,7 @@
     "apollo-client": "^2.6.4",
     "body-parser": "^1.19.0",
     "date-fns": "^2.1.0",
-    "disqus-react": "^1.0.6",
+    "disqus-react": "^1.0.7",
     "dotenv": "^8.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
