@@ -34,6 +34,7 @@ const withLayout = <P extends object>(
               openGraph={{
                 title,
                 description,
+                type: 'website',
                 images: [
                   {
                     alt: title,

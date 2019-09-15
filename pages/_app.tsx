@@ -82,15 +82,7 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
               appId: process.env.FB_APP_ID,
             }}
             openGraph={{
-              type: `website`,
               locale: `en_IE`,
-              images: [
-                {
-                  url: SITE_DEFAULT_IMAGE,
-                  width: 300,
-                  height: 300,
-                },
-              ],
               site_name: `ChristopherLeeMiller.me`,
             }}
             twitter={{
