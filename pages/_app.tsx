@@ -11,7 +11,7 @@ import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
-import { SITE_DEFAULT_IMAGE, SEPARATOR } from '../config';
+import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 
 interface IApolloClient {
