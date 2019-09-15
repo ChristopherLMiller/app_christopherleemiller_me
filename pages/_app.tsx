@@ -84,7 +84,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
             openGraph={{
               type: `website`,
               locale: `en_IE`,
-              url: process.env.SITE_URL,
               images: [
                 {
                   url: SITE_DEFAULT_IMAGE,
