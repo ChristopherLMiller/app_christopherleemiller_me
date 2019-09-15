@@ -1,6 +1,6 @@
 import React, { SFC, useState, useEffect } from 'react';
 import { useQuery } from 'react-apollo';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { MODELS_QUERY } from '../utils/query';
 import { PER_PAGE } from '../config';
@@ -119,6 +119,7 @@ export default withLayout(
   ModelsPage,
   title,
   description,
+  true,
   `/models`,
   `clm_me/stash`
 );

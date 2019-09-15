@@ -1,13 +1,14 @@
 import { NextSeo } from 'next-seo';
 import React, { Fragment } from 'react';
-import Footer from '../layout/Footer';
-import Header from '../layout/Header';
-import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE } from '../../config';
+import Footer from './Footer';
+import Header from './Header';
+import { SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions';
 
 interface withLayoutProps {
   title: string;
   description: string;
+  seo: string;
   path?: string;
   image?: string;
 }
@@ -16,6 +17,7 @@ const withLayout = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
   title: string,
   description: string,
+  seo: boolean,
   path?: string,
   image?: string
 ) => {
@@ -24,22 +26,24 @@ const withLayout = <P extends object>(
       return (
         <Fragment>
           <Header title={title} description={description} />
-          <NextSeo
-            canonical={`${process.env.SITE_URL}${path}`}
-            description={description}
-            openGraph={{
-              description,
-              images: [
-                {
-                  alt: title,
-                  url: image ? `${ImageURL(image)}.jpg` : SITE_DEFAULT_IMAGE,
-                },
-              ],
-              title: `${SITE_TITLE}${SEPARATOR}${title}`,
-              url: `${process.env.SITE_URL}${path}`,
-            }}
-            title={`${SITE_TITLE}${SEPARATOR}${title}`}
-          />
+          {seo && (
+            <NextSeo
+              title={title}
+              canonical={`${process.env.SITE_URL}${path}`}
+              description={description}
+              openGraph={{
+                title,
+                description,
+                images: [
+                  {
+                    alt: title,
+                    url: image ? `${ImageURL(image)}.jpg` : SITE_DEFAULT_IMAGE,
+                  },
+                ],
+                url: `${process.env.SITE_URL}${path}`,
+              }}
+            />
+          )}
           <WrappedComponent {...(this.props as P)} />
           <Footer />
         </Fragment>

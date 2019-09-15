@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 import { StyledContentBlock } from '../components/elements/ContentBlock';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { SITE_TITLE, SEPARATOR } from '../config';
 import { StyledArticle } from '../styles/Articles';
 
@@ -40,5 +40,6 @@ export default withLayout(
   PrivacyPolicyPage,
   title,
   description,
+  true,
   `/privacy-policy`
 );

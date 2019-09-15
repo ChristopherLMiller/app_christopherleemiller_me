@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import useOnlineStatus from '@rehooks/online-status';
 import React, { SFC } from 'react';
 import { useQuery } from 'react-apollo';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
 import { Model } from '../components/models/Model';
@@ -19,14 +18,11 @@ interface ModelPageTypes {
 }
 
 const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
-  const onlineStatus = useOnlineStatus();
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {
       model_slug: query.slug,
     },
   });
-
-  console.log(onlineStatus);
 
   if (loading)
     return (
@@ -79,4 +75,4 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
     </Main>
   );
 };
-export default withLayout(ModelPage, title, description);
+export default withLayout(ModelPage, title, description, false);

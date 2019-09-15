@@ -7,6 +7,7 @@ declare global {
       CLOCKIFY_WORKSPACE_ID: string;
       LOGROCKET: string;
       SITE_URL: string;
+      FB_APP_ID: string;
       SENTRY_PUBLIC_DSN: string;
     }
   }

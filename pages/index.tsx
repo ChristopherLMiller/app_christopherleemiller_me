@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 
 const title = `Home`;
@@ -26,4 +26,4 @@ const IndexPage = () => (
   </Main>
 );
 
-export default withLayout(IndexPage, title, description, `/`);
+export default withLayout(IndexPage, title, description, true, `/`);

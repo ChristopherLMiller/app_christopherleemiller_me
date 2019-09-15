@@ -58,10 +58,9 @@ interface CardProps {
   children: object;
   heading?: string;
   subHeading?: string;
-  dark?: boolean;
 }
 
-const Card: SFC<CardProps> = ({ heading, subHeading, dark, children }) => (
+const Card: SFC<CardProps> = ({ heading, subHeading, children }) => (
   <StyledCard initialPose="exit" pose="enter">
     {(heading || subHeading) && (
       <CardHeading>
@@ -71,7 +70,6 @@ const Card: SFC<CardProps> = ({ heading, subHeading, dark, children }) => (
         )}
       </CardHeading>
     )}
-    {console.log(dark)}
 
     <CardBody>{children}</CardBody>
   </StyledCard>

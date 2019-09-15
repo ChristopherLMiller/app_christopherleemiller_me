@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 
 const title = `Galleries`;
@@ -13,4 +13,10 @@ const GalleriesPage = () => (
   </Main>
 );
 
-export default withLayout(GalleriesPage, title, description, `/galleries`);
+export default withLayout(
+  GalleriesPage,
+  title,
+  description,
+  true,
+  `/galleries`
+);

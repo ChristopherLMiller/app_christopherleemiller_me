@@ -3,7 +3,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import posed from 'react-pose';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
 import { Main } from '../styles/Generics';
@@ -149,7 +149,7 @@ const ContactPage = () => (
           )}
         </Formik>
       </Card>
-      <Card heading="Other Methods" dark>
+      <Card heading="Other Methods">
         <SocialLinks />
         <h3>Email</h3>
         <p>
@@ -164,4 +164,4 @@ const ContactPage = () => (
   </Main>
 );
 
-export default withLayout(ContactPage, title, description, `/contact-me`);
+export default withLayout(ContactPage, title, description, true, `/contact-me`);

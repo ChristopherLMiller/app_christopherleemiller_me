@@ -4,7 +4,7 @@ import { useQuery } from 'react-apollo';
 import { BriefArticle } from '../components/articles/Brief';
 import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
@@ -70,4 +70,4 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
   );
 };
 
-export default withLayout(ArticlesPage, title, description, `/articles`);
+export default withLayout(ArticlesPage, title, description, true, `/articles`);

@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 
 const title = `About Me`;
@@ -18,4 +18,4 @@ const AboutPage = () => (
   </Main>
 );
 
-export default withLayout(AboutPage, title, description, `/about`);
+export default withLayout(AboutPage, title, description, true, `/about`);

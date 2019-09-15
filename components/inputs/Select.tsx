@@ -42,7 +42,6 @@ const SelectBox: SFC<ISelectBox> = ({
   field = `title`,
   router,
 }) => {
-  console.log(router.pathname);
   if (items) {
     return (
       <StyledSelect

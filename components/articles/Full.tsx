@@ -5,7 +5,7 @@ import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
 import { ImageURL } from '../../utils/functions';
-import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
+import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
 import { CommentThread } from '../CommentThread';
 import { StyledContentBlock } from '../elements/ContentBlock';
@@ -32,13 +32,16 @@ const FullArticle: SFC<ArticleTypes> = ({
     ? article.featured_image.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
+  const tags = article.tags.map(tag => tag.title);
+
   return (
     <Fragment>
       <NextSeo
-        title={`${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}${article.title}`}
+        canonical={`${process.env.SITE_URL}/post/${article.slug}`}
+        title={`Post${SEPARATOR}${article.title}`}
         description={article.seo_description}
         openGraph={{
-          title: `${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}${article.title}`,
+          title: `Post${SEPARATOR}${article.title}`,
           description: article.seo_description,
           url: `${process.env.SITE_URL}/post/${article.slug}`,
           type: `article`,
@@ -46,6 +49,7 @@ const FullArticle: SFC<ArticleTypes> = ({
             authors: [article.user.username],
             modifiedTime: article.updated_at,
             publishedTime: article.created_at,
+            tags: tags.length > 0 ? tags : undefined,
           },
           images: [
             {
