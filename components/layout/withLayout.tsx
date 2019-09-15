@@ -29,7 +29,7 @@ const withLayout = <P extends object>(
           {seo && (
             <NextSeo
               title={title}
-              canonical={`${process.env.SITE_URL}${path}`}
+              canonical={path ? `${process.env.SITE_URL}${path}` : undefined}
               description={description}
               openGraph={{
                 title,
