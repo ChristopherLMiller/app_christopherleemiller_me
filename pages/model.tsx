@@ -22,6 +22,7 @@ const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
     variables: {
       model_slug: query.slug,
     },
+    ssr: true,
   });
 
   if (loading)
