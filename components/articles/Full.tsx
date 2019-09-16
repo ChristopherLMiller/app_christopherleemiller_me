@@ -1,5 +1,5 @@
 import hljs from 'highlight.js';
-import { NextSeo } from 'next-seo';
+import { NextSeo, BlogJsonLd } from 'next-seo';
 import { SFC, useEffect, Fragment } from 'react';
 import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
@@ -58,6 +58,15 @@ const FullArticle: SFC<ArticleTypes> = ({
             },
           ],
         }}
+      />
+      <BlogJsonLd
+        url={`${process.env.SITE_URL}/post/${article.slug}`}
+        title={article.title}
+        images={[`${ImageURL(image)}.jpg`]}
+        datePublished={article.created_at}
+        dateModified={article.updated_at}
+        authorName={article.user.username}
+        description={article.seo_description}
       />
       <StyledArticle>
         {header && <ArticleHead article={article} />}
