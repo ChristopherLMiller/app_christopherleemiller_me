@@ -1,6 +1,6 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
-import { NextSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 import { ModelTypes } from './Types';
 import { Props } from '../../styles/Themes';
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
@@ -48,6 +48,17 @@ const Model: SFC<ModelTypes> = ({ model }) => {
             },
           ],
         }}
+      />
+      <ArticleJsonLd
+        url={`${process.env.SITE_URL}/model/${model.slug}`}
+        title={model.title}
+        images={[`${ImageURL(image)}.jpg`]}
+        datePublished={model.created_at}
+        dateModified={model.updated_at}
+        authorName="Chris Miller"
+        description={model.seo_description}
+        publisherLogo={`${ImageURL(image)}.jpg`}
+        publisherName="Chris Miller"
       />
       <StyledModelPage>
         <Body model={model} />
