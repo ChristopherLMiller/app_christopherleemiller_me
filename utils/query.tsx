@@ -116,6 +116,49 @@ export const MODELS_QUERY = gql`
     }
   }
 `;
+export const MODELS_QUERY_BRIEF = gql`
+  query MODELS_QUERY(
+    $start: Int = 0
+    $limit: Int = 20
+    $model_slug: String
+    $scale: String
+    $manufacturer: String
+    $tag: String
+    $completed: String
+    $sort: String = "updated_at:DESC"
+    $published: Boolean = true
+  ) {
+    models(
+      start: $start
+      limit: $limit
+      sort: $sort
+      where: {
+        slug: $model_slug
+        scale: { slug: $scale }
+        manufacturer: { slug: $manufacturer }
+        tags: { slug: $tag }
+        completed: $completed
+        published: $published
+      }
+    ) {
+      id
+      title
+      slug
+      featured_image {
+        public_id
+      }
+      completed
+      kit_number
+      year_released
+      scale {
+        scale
+      }
+      manufacturer {
+        company
+      }
+    }
+  }
+`;
 
 export const ALL_MANUFACTURERS_QUERY = gql`
   query ALL_MANUFACTURERS_QUERY {
