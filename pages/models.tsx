@@ -3,7 +3,7 @@ import { useQuery } from 'react-apollo';
 import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { MODELS_QUERY_BRIEF } from '../utils/query';
-import { PER_PAGE } from '../config';
+import { MODELS_PER_PAGE } from '../config';
 import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { ModelsFilters } from '../components/models/elements/Filters';
 import { Main } from '../styles/Generics';
@@ -43,8 +43,8 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
 
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
-      start: page * PER_PAGE - PER_PAGE,
-      limit: 100,
+      start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
+      limit: MODELS_PER_PAGE,
       scale: query.scale,
       manufacturer: query.company,
       tag: query.tag,
