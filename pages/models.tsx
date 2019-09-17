@@ -43,13 +43,21 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
 
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
+      where: {
+        scale: {
+          slug_contains: query.scale || null,
+        },
+        manufacturer: {
+          slug_contains: query.company || null,
+        },
+        tag: {
+          slug_contains: query.tag || null,
+        },
+        completed: completed || null,
+      },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,
-      scale: query.scale,
-      manufacturer: query.company,
-      tag: query.tag,
       sort: query.sort,
-      completed,
     },
   });
 

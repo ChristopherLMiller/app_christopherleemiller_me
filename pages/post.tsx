@@ -21,7 +21,9 @@ interface PostPageTypes {
 const PostPage: SFC<PostPageTypes> = ({ query }) => {
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
-      article_slug: query.slug,
+      where: {
+        slug_contains: query.slug,
+      },
     },
   });
 

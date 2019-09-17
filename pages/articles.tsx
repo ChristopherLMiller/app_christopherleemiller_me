@@ -28,8 +28,14 @@ const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
     variables: {
       start: page * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
-      category: query.category,
-      tag: query.tag,
+      where: {
+        categories: {
+          slug_contains: query.category || null,
+        },
+        tags: {
+          slug_contains: query.tag || null,
+        },
+      },
     },
   });
 

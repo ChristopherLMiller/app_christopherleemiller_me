@@ -20,7 +20,9 @@ interface ModelPageTypes {
 const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {
-      model_slug: query.slug,
+      where: {
+        slug_contains: query.slug,
+      },
     },
     ssr: true,
   });
