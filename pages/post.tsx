@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Card from '../components/Card';
 import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
 
@@ -21,7 +21,9 @@ interface PostPageTypes {
 const PostPage: SFC<PostPageTypes> = ({ query }) => {
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
-      article_slug: query.slug,
+      where: {
+        slug_contains: query.slug,
+      },
     },
   });
 
@@ -80,4 +82,4 @@ const PostPage: SFC<PostPageTypes> = ({ query }) => {
   );
 };
 
-export default withLayout(PostPage, title, description);
+export default withLayout(PostPage, title, description, false);

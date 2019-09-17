@@ -11,7 +11,7 @@ import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
-import { SITE_DEFAULT_IMAGE } from '../config';
+import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 
 interface IApolloClient {
@@ -64,6 +64,7 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
     }
+
     // this exposes the query to the user
     pageProps.query = ctx.query;
     return { pageProps };
@@ -76,22 +77,12 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
           <DefaultSeo
-            title="ChristopherLeeMiller.me"
-            description="Website all about me and my services"
-            canonical={process.env.SITE_URL}
+            titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
+            facebook={{
+              appId: process.env.FB_APP_ID,
+            }}
             openGraph={{
-              type: `website`,
               locale: `en_IE`,
-              url: process.env.SITE_URL,
-              title: `ChristopherLeeMiller.me`,
-              description: `Website all about me and my services`,
-              images: [
-                {
-                  url: SITE_DEFAULT_IMAGE,
-                  width: 300,
-                  height: 300,
-                },
-              ],
               site_name: `ChristopherLeeMiller.me`,
             }}
             twitter={{

@@ -1,9 +1,9 @@
 import { SFC, Fragment } from 'react';
 import styled from 'styled-components';
-import { NextSeo } from 'next-seo';
+import { NextSeo, ArticleJsonLd } from 'next-seo';
 import { ModelTypes } from './Types';
 import { Props } from '../../styles/Themes';
-import { SEPARATOR, SITE_TITLE, SITE_DEFAULT_IMAGE_FILE } from '../../config';
+import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
 import { ImageURL } from '../../utils/functions';
 
 import { Body } from './elements/Body';
@@ -24,19 +24,22 @@ const Model: SFC<ModelTypes> = ({ model }) => {
     ? model.featured_image.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
+  const tags = model.tags.map(tag => tag.slug);
+
   return (
     <Fragment>
       <NextSeo
-        title={`${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.title}`}
-        description={model.seo_description}
+        title={`Model${SEPARATOR}${model.seo_title}`}
+        canonical={`${process.env.SITE_URL}/model/${model.slug}`}
         openGraph={{
-          title: `${SITE_TITLE}${SEPARATOR}Model${SEPARATOR}${model.seo_title}`,
+          title: `Model${SEPARATOR}${model.seo_title}`,
           description: model.seo_description,
           url: `${process.env.SITE_URL}/model/${model.slug}`,
           type: `article`,
           article: {
             modifiedTime: model.updated_at,
             publishedTime: model.created_at,
+            tags: tags.length > 0 ? tags : undefined,
           },
           images: [
             {
@@ -45,6 +48,17 @@ const Model: SFC<ModelTypes> = ({ model }) => {
             },
           ],
         }}
+      />
+      <ArticleJsonLd
+        url={`${process.env.SITE_URL}/model/${model.slug}`}
+        title={model.title}
+        images={[`${ImageURL(image)}.jpg`]}
+        datePublished={model.created_at}
+        dateModified={model.updated_at}
+        authorName="Chris Miller"
+        description={model.seo_description}
+        publisherLogo={`${ImageURL(image)}.jpg`}
+        publisherName="Chris Miller"
       />
       <StyledModelPage>
         <Body model={model} />

@@ -4,6 +4,8 @@ const { join } = require(`path`);
 const sitemap = require(`./lib/genSitemap`);
 const mailer = require(`./utils/mailer`);
 const bodyParser = require(`body-parser`);
+const uid = require(`uid-safe`);
+const session = require(`express-session`);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
@@ -15,6 +17,17 @@ app
   .then(() => {
     const server = express();
 
+    // prepare session for authentication
+    const sessionConfig = {
+      secret: uid.sync(18),
+      cookie: {
+        maxAge: 86400 * 1000, // 24 hours
+      },
+      resave: false,
+      saveUninitialized: true,
+    };
+
+    server.use(session(sessionConfig));
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
 

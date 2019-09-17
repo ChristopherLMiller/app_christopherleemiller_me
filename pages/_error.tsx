@@ -1,6 +1,6 @@
 import { SFC } from 'react';
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 
 const title = `Error`;
@@ -18,4 +18,4 @@ const ErrorPage: SFC<ErrorPageTypes> = ({ props }) => (
   </Main>
 );
 
-export default withLayout(ErrorPage, title, description, `/404`);
+export default withLayout(ErrorPage, title, description, true, `/404`);

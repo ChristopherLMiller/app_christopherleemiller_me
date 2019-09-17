@@ -4,21 +4,13 @@ export const ARTICLES_QUERY = gql`
   query ARTICLES_QUERY(
     $start: Int = 0
     $limit: Int = 20
-    $article_slug: String
-    $category: String
-    $tag: String
-    $published: Boolean = true
+    $where: JSON
   ) {
     articles(
       limit: $limit
       start: $start
       sort: "created_at:DESC"
-      where: {
-        slug: $article_slug
-        published: $published
-        categories: { slug: $category }
-        tags: { slug: $tag }
-      }
+      where: $where
     ) {
       id
       slug
@@ -53,27 +45,10 @@ export const MODELS_QUERY = gql`
   query MODELS_QUERY(
     $start: Int = 0
     $limit: Int = 20
-    $model_slug: String
-    $scale: String
-    $manufacturer: String
-    $tag: String
-    $completed: String
     $sort: String = "updated_at:DESC"
-    $published: Boolean = true
+    $where: JSON
   ) {
-    models(
-      start: $start
-      limit: $limit
-      sort: $sort
-      where: {
-        slug: $model_slug
-        scale: { slug: $scale }
-        manufacturer: { slug: $manufacturer }
-        tags: { slug: $tag }
-        completed: $completed
-        published: $published
-      }
-    ) {
+    models(start: $start, limit: $limit, sort: $sort, where: $where) {
       id
       created_at
       updated_at
@@ -102,7 +77,7 @@ export const MODELS_QUERY = gql`
         title
         slug
       }
-      images(sort: "updated_at:DESC") {
+      images(sort: "created_at:DESC") {
         id
         title
         description
@@ -113,6 +88,37 @@ export const MODELS_QUERY = gql`
       }
       clockify_id
       scalemates_link
+    }
+  }
+`;
+export const MODELS_QUERY_BRIEF = gql`
+  query MODELS_QUERY(
+    $start: Int = 0
+    $limit: Int = 20
+    $sort: String = "updated_at:DESC"
+    $where: JSON
+  ) {
+    models(
+      start: $start
+      limit: $limit
+      sort: $sort
+      where: $where
+    ) {
+      id
+      title
+      slug
+      featured_image {
+        public_id
+      }
+      completed
+      kit_number
+      year_released
+      scale {
+        scale
+      }
+      manufacturer {
+        company
+      }
     }
   }
 `;
@@ -147,9 +153,6 @@ export const ALL_MODELS_TAGS_QUERY = gql`
       id
       title
       slug
-      models {
-        id
-      }
     }
   }
 `;

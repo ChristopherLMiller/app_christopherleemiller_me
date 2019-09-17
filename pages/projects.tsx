@@ -1,5 +1,5 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 
 const title = `Projects`;
@@ -16,4 +16,4 @@ const ProjectsPage = () => (
   </Main>
 );
 
-export default withLayout(ProjectsPage, title, description, `/projects`);
+export default withLayout(ProjectsPage, title, description, true, `/projects`);

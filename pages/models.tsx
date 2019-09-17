@@ -1,9 +1,9 @@
 import React, { SFC, useState, useEffect } from 'react';
 import { useQuery } from 'react-apollo';
-import { withLayout } from '../components/layout/Layout';
+import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
-import { MODELS_QUERY } from '../utils/query';
-import { PER_PAGE } from '../config';
+import { MODELS_QUERY_BRIEF } from '../utils/query';
+import { MODELS_PER_PAGE } from '../config';
 import { StyledModelListings, StyledModelPage } from '../styles/Models';
 import { ModelsFilters } from '../components/models/elements/Filters';
 import { Main } from '../styles/Generics';
@@ -41,15 +41,23 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     }, 1000);
   });
 
-  const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
+  const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
-      start: page * PER_PAGE - PER_PAGE,
-      limit: 100,
-      scale: query.scale,
-      manufacturer: query.company,
-      tag: query.tag,
+      where: {
+        scale: {
+          slug_contains: query.scale || null,
+        },
+        manufacturer: {
+          slug_contains: query.company || null,
+        },
+        tag: {
+          slug_contains: query.tag || null,
+        },
+        completed: completed || null,
+      },
+      start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
+      limit: MODELS_PER_PAGE,
       sort: query.sort,
-      completed,
     },
   });
 
@@ -119,6 +127,7 @@ export default withLayout(
   ModelsPage,
   title,
   description,
+  true,
   `/models`,
   `clm_me/stash`
 );
