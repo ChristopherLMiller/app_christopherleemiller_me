@@ -1,7 +1,12 @@
-import Document, { Head, Main, NextScript, DocumentProps } from 'next/document';
+import Document, {
+  Head,
+  Main,
+  NextScript,
+  DocumentProps,
+  DocumentContext,
+} from 'next/document';
 
 import { ServerStyleSheet } from 'styled-components';
-import { DocumentContext } from 'next-server/dist/lib/utils';
 
 interface IDocument {
   styleTags: string;
