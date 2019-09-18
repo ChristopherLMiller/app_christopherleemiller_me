@@ -9,6 +9,7 @@ const Meta = () => (
     <link rel="manifest" href="/static/manifest.json" />
     <link rel="shortcut icon" href="/static/logo.png" />
     <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
+
     <link
       rel="stylesheet"
       type="text/css"

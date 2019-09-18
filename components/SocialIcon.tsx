@@ -3,6 +3,7 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SFC } from 'react';
+import styled from 'styled-components';
 
 const SocialIconPosed = posed.span({
   hoverable: true,
@@ -16,6 +17,25 @@ const SocialIconPosed = posed.span({
     },
   },
 });
+
+const SocialIconStyled = styled(SocialIconPosed)`
+  font-size: 2.5rem;
+  line-height: 1rem;
+  display: inline-block;
+  height: 2em;
+  position: relative;
+  vertical-align: middle;
+  width: 2.5em;
+
+  svg {
+    position: absolute;
+  }
+  svg:last-child {
+    height: 4rem;
+    width: 6rem;
+    margin-top: 10px;
+  }
+`;
 
 interface SocialIconProps {
   url: string;
@@ -31,14 +51,10 @@ const SocialIcon: SFC<SocialIconProps> = ({
 }) => (
   <li>
     <a title={alt} href={url} aria-label={alt}>
-      <SocialIconPosed className="fa-stack fa-2x">
-        <FontAwesomeIcon
-          icon={faCircle}
-          className="fa-stack-2x"
-          color="#982929"
-        />
-        <FontAwesomeIcon icon={icon} color={color} className="fa-stack-1x" />
-      </SocialIconPosed>
+      <SocialIconStyled>
+        <FontAwesomeIcon icon={faCircle} color="#982929" />
+        <FontAwesomeIcon icon={icon} color={color} />
+      </SocialIconStyled>
     </a>
   </li>
 );
