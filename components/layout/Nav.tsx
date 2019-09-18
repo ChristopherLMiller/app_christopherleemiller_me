@@ -30,7 +30,7 @@ const NavItem = styled(PosedNavItem)`
   font-family: var(--font-monospace);
   font-size: 1.75em;
   list-style-type: none;
-  line-height: 2.5em;
+  line-height: 2em;
 
   :after {
     content: '\\A';
@@ -50,7 +50,7 @@ const NavItem = styled(PosedNavItem)`
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: 1.4em;
-    line-height: 2em;
+    line-height: 2.5em;
   }
 `;
 const Nav = () => (

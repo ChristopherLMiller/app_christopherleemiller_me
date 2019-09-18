@@ -14,6 +14,7 @@ const SocialLinksBar = styled.ul`
   justify-content: space-around;
   margin: 0;
   padding: 20px 0;
+  padding-bottom: 50px;
 `;
 const SocialLinks = () => (
   <SocialLinksBar>
