@@ -1,5 +1,6 @@
 import React, { SFC, useState, useEffect } from 'react';
 import { useQuery } from 'react-apollo';
+import { useRouter } from 'next/router';
 import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { MODELS_QUERY_BRIEF } from '../utils/query';
@@ -13,24 +14,22 @@ import { ModelListing } from '../components/models/ModelListing';
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-interface ModelsPageTypes {
-  query: {
-    page: string;
-    scale: string;
-    company: string;
-    completed: string;
-    tag: string;
-    sort: string;
-  };
-}
+const ModelsPage: SFC = () => {
+  const router = useRouter();
 
-const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
-  const page = parseFloat(query.page) || 1;
-  let completed;
+  // grab query arguments we care about
+  const { scale, company, tag, sort } = router.query;
+  let completed = router.query.completed;
 
-  if (query.completed == `yes`) {
+  // get the current page or default to 1
+  let page = 1;
+  if (router.query.page != undefined) {
+    page = parseFloat(router.query.page.toString());
+  }
+
+  if (completed == `yes`) {
     completed = `true`;
-  } else if (query.completed == `no`) {
+  } else if (completed == `no`) {
     completed = `false`;
   }
 
@@ -45,19 +44,19 @@ const ModelsPage: SFC<ModelsPageTypes> = ({ query }) => {
     variables: {
       where: {
         scale: {
-          slug_contains: query.scale || null,
+          slug_contains: scale || null,
         },
         manufacturer: {
-          slug_contains: query.company || null,
+          slug_contains: company || null,
         },
         tag: {
-          slug_contains: query.tag || null,
+          slug_contains: tag || null,
         },
         completed: completed || null,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,
-      sort: query.sort,
+      sort: sort,
     },
   });
 

@@ -2,6 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import React, { SFC } from 'react';
 import { useQuery } from 'react-apollo';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Card from '../components/Card';
 import { FullArticle } from '../components/articles/Full';
 import { ARTICLES_QUERY } from '../utils/query';
@@ -12,17 +13,12 @@ import { iData } from '../components/articles/Types';
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-interface PostPageTypes {
-  query: {
-    slug: string;
-  };
-}
-
-const PostPage: SFC<PostPageTypes> = ({ query }) => {
+const PostPage: SFC = () => {
+  const router = useRouter();
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
       where: {
-        slug_contains: query.slug,
+        slug_contains: router.query.slug,
       },
     },
   });

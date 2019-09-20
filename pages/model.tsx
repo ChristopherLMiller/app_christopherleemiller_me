@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { SFC } from 'react';
 import { useQuery } from 'react-apollo';
+import { useRouter } from 'next/router';
 import { withLayout } from '../components/layout/withLayout';
 import { MODELS_QUERY } from '../utils/query';
 import Card from '../components/Card';
@@ -11,17 +12,12 @@ import { iData } from '../components/models/Types';
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-interface ModelPageTypes {
-  query: {
-    slug: string;
-  };
-}
-
-const ModelPage: SFC<ModelPageTypes> = ({ query }) => {
+const ModelPage: SFC = () => {
+  const router = useRouter();
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {
       where: {
-        slug_contains: query.slug,
+        slug_contains: router.query.slug,
       },
     },
     ssr: true,

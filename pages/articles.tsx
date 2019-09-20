@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import React, { SFC } from 'react';
 import { useQuery } from 'react-apollo';
+import { useRouter } from 'next/router';
 import { BriefArticle } from '../components/articles/Brief';
 import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
@@ -13,27 +14,30 @@ import { PER_PAGE } from '../config';
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-interface ArticlesPageTypes {
-  query: {
-    page: string;
-    category: string;
-    tag: string;
-  };
-}
+const ArticlesPage: SFC = () => {
+  // get the router instance
+  const router = useRouter();
 
-const ArticlesPage: SFC<ArticlesPageTypes> = ({ query }) => {
+  const { category, tag } = router.query;
+
+  // get the current page or default to 1
+  let page = 1;
+  if (router.query.page != undefined) {
+    page = parseFloat(router.query.page.toString());
+  }
+
   // set a default value for page if non provided
-  const page = parseFloat(query.page) || 1;
+  // const page = parseFloat(router.query.page) || 1;
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
       start: page * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
       where: {
         categories: {
-          slug_contains: query.category || null,
+          slug_contains: category || null,
         },
         tags: {
-          slug_contains: query.tag || null,
+          slug_contains: tag || null,
         },
       },
     },

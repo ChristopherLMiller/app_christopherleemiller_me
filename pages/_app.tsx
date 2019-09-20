@@ -1,4 +1,4 @@
-import DefaultApp, { AppProps, AppContext } from 'next/app';
+import DefaultApp, { AppProps } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -44,9 +44,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
       });
     });
     Sentry.captureException(error);
-
-    // This is needed to render errors correctly in development/production
-    // super.componentDidCatch(error, errorInfo);
   }
 
   componentDidMount() {
@@ -57,17 +54,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
 
   componentWillUnmount() {
     Router.events.off(`routeChangeComplete`, logPageView);
-  }
-
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps = {} as any;
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    // this exposes the query to the user
-    pageProps.query = ctx.query;
-    return { pageProps };
   }
 
   render() {
