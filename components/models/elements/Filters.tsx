@@ -5,7 +5,7 @@ import {
   ALL_MODELS_TAGS_QUERY,
 } from '../../../utils/query';
 import { Select } from '../../inputs/Select';
-import { modelsCompletedFilter, modelsSort } from '../../../utils/json';
+import { modelsCompletedFilter, modelsSort } from '../../../data/json';
 import { Title } from '../../elements/Title';
 import { Props } from '../../../styles/Themes';
 
