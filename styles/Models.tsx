@@ -4,15 +4,7 @@ import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div``;
 
-const ModelListingsEnter = posed.div({
-  visible: {
-    delayChildren: 200,
-    staggerChildren: 100,
-  },
-  invisible: {},
-});
-
-const StyledModelListings = styled(ModelListingsEnter)`
+const StyledModelListings = styled.div`
   transition-delay: 1s;
   transition: all 0.25s;
   display: grid;

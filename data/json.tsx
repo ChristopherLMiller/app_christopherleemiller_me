@@ -1,17 +1,17 @@
 export const modelsCompletedFilter = [
   {
     id: `2`,
-    slug: ``,
+    slug: `all`,
     title: `All`,
   },
   {
     id: `1`,
-    slug: `yes`,
+    slug: `true`,
     title: `Yes`,
   },
   {
     id: `0`,
-    slug: `no`,
+    slug: `false`,
     title: `No`,
   },
 ];

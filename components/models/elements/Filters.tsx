@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import {
-  ALL_MANUFACTURERS_QUERY,
-  ALL_SCALES_QUERY,
-  ALL_MODELS_TAGS_QUERY,
-} from '../../../utils/query';
-import { Select } from '../../inputs/Select';
 import { modelsCompletedFilter, modelsSort } from '../../../data/json';
 import { Title } from '../../elements/Title';
 import { Props } from '../../../styles/Themes';
+import { SortSelect } from './inputs/SortSelect';
+import { CompletedSelect } from './inputs/CompletedSelect';
+import { TagSelect } from './inputs/TagSelect';
+import { ScaleSelect } from './inputs/ScaleSelect';
+import { CompanySelect } from './inputs/CompanySelect';
+
 
 const Filter = styled.div``;
 
@@ -15,6 +15,7 @@ const FilterContents = styled.div`
   background: var(--background-dark);
   display: flex;
   flex-direction: column;
+  margin-bottom: 50px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     display: grid;
@@ -49,36 +50,33 @@ const FilterProperty = styled.div`
   font-size: var(--font-size-responsive);
 `;
 
-const ModelsFilters = () => (
-  <Filter>
-    <Title>Filters</Title>
-    <FilterContents>
-      <FilterItem>
-        <FilterProperty>Sort By</FilterProperty>
-        <Select items={modelsSort} slug="sort" />
-      </FilterItem>
-      <FilterItem>
-        <FilterProperty>Completed</FilterProperty>
-        <Select items={modelsCompletedFilter} slug="completed" />
-      </FilterItem>
-      <FilterItem>
-        <FilterProperty>Brand</FilterProperty>
-        <Select
-          graphqlQuery={ALL_MANUFACTURERS_QUERY}
-          slug="company"
-          field="company"
-        />
-      </FilterItem>
-      <FilterItem>
-        <FilterProperty>Scale</FilterProperty>
-        <Select graphqlQuery={ALL_SCALES_QUERY} slug="scale" field="scale" />
-      </FilterItem>
-      <FilterItem>
-        <FilterProperty>Tags</FilterProperty>
-        <Select graphqlQuery={ALL_MODELS_TAGS_QUERY} slug="tag" field="title" />
-      </FilterItem>
-    </FilterContents>
-  </Filter>
-);
-
+const ModelsFilters = () => {
+  return (
+    <Filter>
+      <Title>Filters</Title>
+      <FilterContents>
+        <FilterItem>
+          <FilterProperty>Sort By</FilterProperty>
+          <SortSelect items={modelsSort} />
+        </FilterItem>
+        <FilterItem>
+          <FilterProperty>Completed</FilterProperty>
+          <CompletedSelect items={modelsCompletedFilter} />
+        </FilterItem>
+        <FilterItem>
+          <FilterProperty>Brand</FilterProperty>
+          <CompanySelect field="company" />
+        </FilterItem>
+        <FilterItem>
+          <FilterProperty>Scale</FilterProperty>
+          <ScaleSelect field="scale" />
+        </FilterItem>
+        <FilterItem>
+          <FilterProperty>Tags</FilterProperty>
+          <TagSelect field='title' />
+        </FilterItem>
+      </FilterContents>
+    </Filter>
+  );
+};
 export { ModelsFilters };
