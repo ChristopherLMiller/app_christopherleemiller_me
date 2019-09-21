@@ -1,4 +1,4 @@
-import DefaultApp, { AppProps } from 'next/app';
+import App, { AppProps } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -17,7 +17,7 @@ import { initGA, logPageView } from '../utils/analytics';
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
 }
-class MyApp extends DefaultApp<AppProps & IApolloClient> {
+class MyApp extends App<AppProps & IApolloClient> {
   constructor(props: AppProps & IApolloClient) {
     super(props);
     Sentry.init({
