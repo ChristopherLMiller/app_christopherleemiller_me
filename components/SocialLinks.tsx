@@ -6,6 +6,7 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { SocialIcon } from './SocialIcon';
+import { Props } from '../styles/Themes';
 
 const SocialLinksBar = styled.ul`
   list-style-type: none;
@@ -15,6 +16,10 @@ const SocialLinksBar = styled.ul`
   margin: 0;
   padding: 20px 0;
   padding-bottom: 50px;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    padding-bottom: 0px;
+  }
 `;
 const SocialLinks = () => (
   <SocialLinksBar>
