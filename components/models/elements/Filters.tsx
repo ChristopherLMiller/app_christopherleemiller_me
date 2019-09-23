@@ -39,15 +39,30 @@ const FilterContents = styled.div`
 `;
 
 const FilterItem = styled.div`
-  padding: 10px 20px;
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: 33% auto;
+  align-items: center;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+    padding: 10px 20px;
+    display: block;
+  }
 `;
 
 const FilterProperty = styled.div`
   text-transform: uppercase;
-  text-decoration: underline;
-  text-align: center;
+  text-decoration: none;
+  text-align: right;
+  padding-right: 5px;
   color: var(--text-color);
   font-size: var(--font-size-responsive);
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+    text-align: center;
+    padding-right: 0;
+    text-decoration: underline;
+  }
 `;
 
 const ModelsFilters = () => {
