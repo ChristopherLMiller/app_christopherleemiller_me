@@ -61,7 +61,7 @@
     "sitemap": "^4.1.1",
     "styled-components": "^4.3.2",
     "uid-safe": "^2.1.5",
-    "webpack": "^4.40.2",
+    "webpack": "^4.41.0",
     "yup": "^0.27.0"
   },
   "devDependencies": {
