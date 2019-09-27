@@ -68,7 +68,7 @@
     "@babel/cli": "^7.6.2",
     "@apollo/react-components": "3.1.1",
     "@babel/core": "^7.6.2",
-    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@types/node": "^12.7.5",
     "@types/react-image-gallery": "^0.8.4",
     "@types/yup": "^0.26.24",
