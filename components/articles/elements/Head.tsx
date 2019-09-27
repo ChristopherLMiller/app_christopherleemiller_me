@@ -17,7 +17,7 @@ const StyledArticleHeaderInfo = styled.div`
 `;
 
 const StyledHeading = styled.h2`
-  font-size: 2em;
+  font-size: 3rem;
   margin: 5px 0;
   font-weight: 200;
 `;

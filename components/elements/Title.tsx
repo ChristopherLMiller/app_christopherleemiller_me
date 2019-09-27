@@ -9,6 +9,7 @@ const Title = styled.h2`
   text-transform: uppercase;
   letter-spacing: var(--title-letter-spacing);
   text-align: center;
+  position: relative;
 `;
 
 export { Title };

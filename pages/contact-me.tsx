@@ -32,7 +32,7 @@ const StyledContactForm = styled.div`
   input,
   textarea {
     width: 100%;
-    font-size: 0.75em;
+    font-size: var(--font-size-responsive);
     padding: 5px;
     display: block;
     font-family: var(--font-main);
@@ -42,7 +42,6 @@ const StyledContactForm = styled.div`
 
 const StyledContactFormFieldset = styled.fieldset`
   border: none;
-  font-size: 1.5em;
 `;
 
 const StyledContactFormLabel = styled.label`
@@ -54,7 +53,6 @@ const StyledContactFormFullWidth = styled.fieldset`
   grid-column-start: 1;
   grid-column-end: 3;
   border: none;
-  font-size: 1.5em;
 `;
 
 const StyledContactFormErrorMessage = styled.div`

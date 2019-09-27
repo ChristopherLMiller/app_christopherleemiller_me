@@ -5,7 +5,7 @@ import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext
 const StyledSelect = styled.select`
   font-family: var(--font-main);
   padding: 5px;
-  font-size: 1.25em;
+  font-size: 1.75rem;
   width: 100%;
   outline: var(--main-color-transparent);
   border: 1px solid var(--main-color-transparent);

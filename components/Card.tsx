@@ -29,19 +29,19 @@ const CardHeading = styled.div`
 
 const CardHeadingHeading = styled.h2`
   margin: 0;
-  font-size: 2.5em;
+  font-size: 4rem;
   font-weight: 300;
 `;
 const CardHeadingSubHeading = styled.h3`
   margin: 0;
-  font-size: 1em;
+  font-size: 2rem;
   font-weight: 300;
 `;
 
 const CardBody = styled.div`
   background: var(--background-light);
   padding: 40px;
-  font-size: 1.25em;
+  font-size: var(--font-size-responsive);
   letter-spacing: 1px;
   text-align: center;
 

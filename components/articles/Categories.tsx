@@ -5,7 +5,7 @@ import { CategoriesType } from './Types';
 
 const CategoriesWrapper = styled.span`
   font-family: var(--font-monospace);
-  font-size: 1.25em;
+  font-size: 1.75rem;
 `;
 const CategoriesLink = styled.span`
   text-transform: uppercase;

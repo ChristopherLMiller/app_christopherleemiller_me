@@ -86,7 +86,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
-    line-height: 1.15;
+    line-height: 1.25;
     min-height: 100vh;
   }
 

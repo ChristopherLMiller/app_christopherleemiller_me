@@ -28,7 +28,7 @@ const PosedNavItem = posed.li({
 
 const NavItem = styled(PosedNavItem)`
   font-family: var(--font-monospace);
-  font-size: 1.75em;
+  font-size: 2.5rem;
   list-style-type: none;
   line-height: 2em;
 
@@ -49,7 +49,7 @@ const NavItem = styled(PosedNavItem)`
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    font-size: 1.4em;
+    font-size: 2rem;
     line-height: 2.5em;
   }
 `;

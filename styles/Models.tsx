@@ -42,7 +42,7 @@ const StyledModelListingInfo = styled.div`
 
 const StyledModelListingBlock = styled.div`
   padding: 15px 0;
-  font-size: 1.25em;
+  font-size: 1.25rem;
 `;
 
 const StyledModelListingColumn = styled.div`

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { useState } from 'react';
+import posed from 'react-pose';
 import { modelsCompletedFilter, modelsSort } from '../../../data/json';
 import { Title } from '../../elements/Title';
 import { Props } from '../../../styles/Themes';
@@ -8,10 +10,18 @@ import { TagSelect } from './inputs/TagSelect';
 import { ScaleSelect } from './inputs/ScaleSelect';
 import { CompanySelect } from './inputs/CompanySelect';
 
-
 const Filter = styled.div``;
 
-const FilterContents = styled.div`
+const FilterContentsPosed = posed.div({
+  open: {
+
+  },
+  closed: {
+    display: `none`,
+  },
+});
+
+const FilterContents = styled(FilterContentsPosed)`
   background: var(--background-dark);
   display: flex;
   flex-direction: column;
@@ -41,7 +51,7 @@ const FilterContents = styled.div`
 const FilterItem = styled.div`
   padding: 0 10px;
   display: grid;
-  grid-template-columns: 33% auto;
+  grid-template-columns: auto 60%;
   align-items: center;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
@@ -57,6 +67,7 @@ const FilterProperty = styled.div`
   padding-right: 5px;
   color: var(--text-color);
   font-size: var(--font-size-responsive);
+  overflow: hidden;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     text-align: center;
@@ -65,11 +76,35 @@ const FilterProperty = styled.div`
   }
 `;
 
+const ToggleButton = styled.button`
+  color: var(--text-color-light);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  position: absolute;
+  right: 35px;
+  outline: 2px solid white;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
+    display: none;
+  }
+`;
+
 const ModelsFilters = () => {
+  const [isOpen, setOpen] = useState(`open`);
+  console.log(isOpen);
+
   return (
     <Filter>
-      <Title>Filters</Title>
-      <FilterContents>
+      <Title>
+        Filters
+        <ToggleButton
+          onClick={() => setOpen(isOpen === `open` ? `closed` : `open`)}
+        >
+          {isOpen ? `-` : `+`}
+        </ToggleButton>
+      </Title>
+      <FilterContents initialPose="open" pose={isOpen}>
         <FilterItem>
           <FilterProperty>Sort By</FilterProperty>
           <SortSelect items={modelsSort} />
@@ -88,7 +123,7 @@ const ModelsFilters = () => {
         </FilterItem>
         <FilterItem>
           <FilterProperty>Tags</FilterProperty>
-          <TagSelect field='title' />
+          <TagSelect field="title" />
         </FilterItem>
       </FilterContents>
     </Filter>
