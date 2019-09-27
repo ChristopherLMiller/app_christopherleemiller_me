@@ -17,11 +17,12 @@ const StyledCard = styled(CardPopTransition)`
   font-weight: 300;
   max-width: 1000px;
   margin: 0 auto;
+  margin-bottom: 50px;
 `;
 
 const CardHeading = styled.div`
   background: var(--main-color);
-  padding: 20px;
+  padding: 3% 5%;
   color: var(--text-color-light);
   font-family: var(--font-main);
   text-align: center;
@@ -38,9 +39,13 @@ const CardHeadingSubHeading = styled.h3`
   font-weight: 300;
 `;
 
+interface iCardBody {
+  padding?: boolean;
+}
+
 const CardBody = styled.div`
   background: var(--background-light);
-  padding: 40px;
+  padding: ${(props: iCardBody) => (props.padding ? `3% 5%` : `0`)};
   font-size: var(--font-size-responsive);
   letter-spacing: 1px;
   text-align: center;
@@ -52,15 +57,25 @@ const CardBody = styled.div`
       text-decoration: underline;
     }
   }
+
+  p {
+    word-break: break-all;
+  }
 `;
 
 interface CardProps {
   children: object;
   heading?: string;
   subHeading?: string;
+  padding?: boolean;
 }
 
-const Card: SFC<CardProps> = ({ heading, subHeading, children }) => (
+const Card: SFC<CardProps> = ({
+  heading,
+  subHeading,
+  children,
+  padding = true,
+}) => (
   <StyledCard initialPose="exit" pose="enter">
     {(heading || subHeading) && (
       <CardHeading>
@@ -71,7 +86,7 @@ const Card: SFC<CardProps> = ({ heading, subHeading, children }) => (
       </CardHeading>
     )}
 
-    <CardBody>{children}</CardBody>
+    <CardBody padding={padding}>{children}</CardBody>
   </StyledCard>
 );
 
