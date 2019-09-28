@@ -59,7 +59,7 @@ const CardBody = styled.div`
   }
 
   p {
-    word-break: break-all;
+    word-break: break-word;
   }
 `;
 
