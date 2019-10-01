@@ -138,6 +138,7 @@ const ContactPage = () => {
                   },
                   body: JSON.stringify(values),
                 }).then(res => {
+                  console.log(res);
                   addToast(`Your message has been sent.`, {
                     appearance: `info`,
                   });
