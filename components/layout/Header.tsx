@@ -53,7 +53,7 @@ const StyledHeaderTitle = styled.h1`
 `;
 
 const StyledHeaderDescription = styled.p`
-  font-size: 1.25em;
+  font-size: 2rem;
   font-weight: 100;
   margin: 0;
   margin-bottom: 5px;

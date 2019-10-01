@@ -6,6 +6,7 @@ const mailer = require(`./utils/mailer`);
 const bodyParser = require(`body-parser`);
 const uid = require(`uid-safe`);
 const session = require(`express-session`);
+const mjml2html = require(`mjml`);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
@@ -35,14 +36,44 @@ app
     server.post(`/api/contact`, (req, res) => {
       const { email, name, message } = req.body;
 
-      mailer({ email, name, message })
+      const markup = mjml2html(`<mjml>
+        <mj-body>
+          <!-- Image Header -->
+          <mj-hero background-color="#ECECEC">
+            <mj-image src="https://www.christopherleemiller.me/static/logo_144.png" width="144px"></mj-image>
+          </mj-hero>
+
+          <!-- Content -->
+          <mj-section background-color="#ECECEC">
+            <mj-column>
+            <mj-text font-family="helvetica" font-size="30px" text-transform="uppercase" align="center">Contact Form Submission</mj-text>
+            <mj-text font-size="20px">Name: ${name}</mj-text>
+            <mj-text font-size="20px">Email: ${email}</mj-text>
+            <mj-text font-size="20px">Message: ${message}</mj-text>
+              </mj-column>
+          </mj-section>
+        </mj-body>
+      </mjml>`);
+
+      mailer({
+        email,
+        name,
+        subject: `Contact Form Submission`,
+        html: markup.html,
+      })
         .then(() => {
           console.log(`Mailed Successfully`);
-          res.send(`success`);
+          res.send({
+            status: `ok`,
+            message: `Mailed Successfully`,
+          });
         })
         .catch(error => {
           console.log(`mail failed`, error);
-          res.send(`bad`);
+          res.send({
+            status: `err`,
+            message: error,
+          });
         });
     });
 

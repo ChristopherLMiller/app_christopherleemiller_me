@@ -1,4 +1,4 @@
-import DefaultApp, { AppProps, AppContext } from 'next/app';
+import App, { AppProps } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -8,6 +8,7 @@ import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
 import { Event } from '@sentry/types';
 import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
+import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
@@ -17,7 +18,7 @@ import { initGA, logPageView } from '../utils/analytics';
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
 }
-class MyApp extends DefaultApp<AppProps & IApolloClient> {
+class MyApp extends App<AppProps & IApolloClient> {
   constructor(props: AppProps & IApolloClient) {
     super(props);
     Sentry.init({
@@ -44,9 +45,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
       });
     });
     Sentry.captureException(error);
-
-    // This is needed to render errors correctly in development/production
-    // super.componentDidCatch(error, errorInfo);
   }
 
   componentDidMount() {
@@ -57,17 +55,6 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
 
   componentWillUnmount() {
     Router.events.off(`routeChangeComplete`, logPageView);
-  }
-
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps = {} as any;
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    // this exposes the query to the user
-    pageProps.query = ctx.query;
-    return { pageProps };
   }
 
   render() {
@@ -90,9 +77,11 @@ class MyApp extends DefaultApp<AppProps & IApolloClient> {
               cardType: `summary_large_image`,
             }}
           />
-          <Page>
-            <Component {...pageProps} />
-          </Page>
+          <ToastProvider>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </ToastProvider>
         </ApolloHooksProvider>
       </ApolloProvider>
     );

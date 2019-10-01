@@ -9,6 +9,8 @@ declare global {
       SITE_URL: string;
       FB_APP_ID: string;
       SENTRY_PUBLIC_DSN: string;
+      EMAIL_ADDRESS: string;
+      EMAIL_PASSWORD: string;
     }
   }
 }

@@ -71,7 +71,7 @@ export const GlobalStyles = createGlobalStyle`
     --title-font-size: 2.25rem;
     --title-letter-spacing: 3px;
     --box-shadow: 0px 0px 22px rgba(0,0,0,0.4),0px 0px 4px rgba(0,0,0,0.25);
-    --font-size-responsive: calc(1.5rem + ((1vw - 0em) * 0.4));
+    --font-size-responsive: calc(2rem + ((1vw - 0.5em) * 0.4));
   }
 
   html {
@@ -86,7 +86,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
-    line-height: 1.15;
+    line-height: 1.25;
     min-height: 100vh;
   }
 

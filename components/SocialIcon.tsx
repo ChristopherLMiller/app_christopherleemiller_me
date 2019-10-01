@@ -21,8 +21,8 @@ const SocialIconPosed = posed.span({
 const SocialIconStyled = styled(SocialIconPosed)`
   font-size: 2.5rem;
   line-height: 1rem;
-  display: inline-block;
-  height: 2em;
+  display: flex;
+  height: 2.5em;
   position: relative;
   vertical-align: middle;
   width: 2.5em;
@@ -49,14 +49,14 @@ const SocialIcon: SFC<SocialIconProps> = ({
   color = `#FFFFFF`,
   alt,
 }) => (
-  <li>
+  <span>
     <a title={alt} href={url} aria-label={alt}>
       <SocialIconStyled>
         <FontAwesomeIcon icon={faCircle} color="#982929" />
         <FontAwesomeIcon icon={icon} color={color} />
       </SocialIconStyled>
     </a>
-  </li>
+  </span>
 );
 
 export { SocialIcon };

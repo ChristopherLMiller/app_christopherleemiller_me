@@ -28,7 +28,7 @@ const StyledMobileNavWrapper = styled.div`
 
 const StyledTitle = styled.h2`
   text-align: right;
-  font-size: 2em;
+  font-size: 2.75rem;
   margin: 0;
   padding: 0;
   vertical-align: top;
@@ -68,7 +68,7 @@ const StyledHamburger = styled.button`
   border: 2px solid var(--main-color);
   padding: 12px;
   position: absolute;
-  font-size: 1.5em;
+  font-size: 2rem;
   width: 110px;
 
   :focus,

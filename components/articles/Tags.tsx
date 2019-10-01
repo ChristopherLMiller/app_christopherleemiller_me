@@ -5,7 +5,7 @@ import { TagsType } from './Types';
 
 const TagsWrapper = styled.div`
   font-family: var(--font-monospace);
-  font-size: 1.25em;
+  font-size: 1.75rem;
 `;
 
 const TagsLink = styled.span`

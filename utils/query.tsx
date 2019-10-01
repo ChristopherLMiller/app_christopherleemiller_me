@@ -1,11 +1,7 @@
 import gql from 'graphql-tag';
 
 export const ARTICLES_QUERY = gql`
-  query ARTICLES_QUERY(
-    $start: Int = 0
-    $limit: Int = 20
-    $where: JSON
-  ) {
+  query ARTICLES_QUERY($start: Int = 0, $limit: Int = 20, $where: JSON) {
     articles(
       limit: $limit
       start: $start
@@ -98,15 +94,11 @@ export const MODELS_QUERY_BRIEF = gql`
     $sort: String = "updated_at:DESC"
     $where: JSON
   ) {
-    models(
-      start: $start
-      limit: $limit
-      sort: $sort
-      where: $where
-    ) {
+    models(start: $start, limit: $limit, sort: $sort, where: $where) {
       id
       title
       slug
+      clockify_id
       featured_image {
         public_id
       }

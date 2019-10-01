@@ -3,7 +3,7 @@ import { Props } from '../../styles/Themes';
 
 const StyledContentBlock = styled.div`
   padding: 40px 20px;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   letter-spacing: 1px;
   font-weight: 300;
   color: var(--background-darker);
@@ -37,32 +37,32 @@ const StyledContentBlock = styled.div`
     text-decoration: underline;
   }
   h1 {
-    font-size: 1.5em;
+    font-size: 1.5rem;
     margin: 10px 0;
     font-weight: bolder;
   }
   h2 {
-    font-size: 1.4em;
+    font-size: 1.4rem;
     margin: 10px 0;
     font-weight: bolder;
   }
   h3 {
-    font-size: 1.3em;
+    font-size: 1.3rem;
     margin: 10px 0;
     font-weight: bolder;
   }
   h4 {
-    font-size: 1.25em;
+    font-size: 1.25rem;
     margin: 10px 0;
     font-weight: bolder;
   }
   h5 {
-    font-size: 1.15em;
+    font-size: 1.15rem;
     margin: 10px 0;
     font-weight: bolder;
   }
   h6 {
-    font-size: 1.1em;
+    font-size: 1.1rem;
     margin: 10px 0;
     font-weight: bolder;
   }

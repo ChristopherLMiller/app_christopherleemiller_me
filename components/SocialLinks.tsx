@@ -6,15 +6,19 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { SocialIcon } from './SocialIcon';
+import { Props } from '../styles/Themes';
 
-const SocialLinksBar = styled.ul`
-  list-style-type: none;
-  padding-left: 0;
-  display: flex;
-  justify-content: space-around;
+const SocialLinksBar = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
   margin: 0;
   padding: 20px 0;
   padding-bottom: 50px;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    padding-bottom: 0px;
+  }
 `;
 const SocialLinks = () => (
   <SocialLinksBar>
