@@ -3,6 +3,7 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import posed from 'react-pose';
+import { useToasts } from 'react-toast-notifications';
 import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
@@ -16,7 +17,7 @@ const description = `How to reach me with any comments, questions, and concerns 
 const ContactSchema = Yup.object().shape({
   email: Yup.string()
     .email(`I need a valid email to reach you`)
-    .required(`How can I contact you?`),
+    .required(`Best Contact Email??`),
   name: Yup.string().required(`What's your name?`),
   message: Yup.string().required(`What do you need help with?`),
 });
@@ -39,7 +40,7 @@ const ContactGrid = styled.div`
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 350px;
   }
 `;
 
@@ -81,6 +82,13 @@ const StyledContactFormFullWidth = styled.fieldset`
 const StyledContactFormErrorMessage = styled.div`
   background: var(--main-color);
   color: var(--text-color-light);
+  font-size: 1.5rem;
+  line-height: 2rem;
+`;
+
+const ContactFormEmailList = styled.ul`
+  list-style-type: none;
+  padding-left: 0;
 `;
 
 const PosedButton = posed.button({
@@ -107,86 +115,99 @@ const StyledButton = styled(PosedButton)`
   border: none;
 `;
 
-const ContactPage = () => (
-  <Main>
-    <Card
-      heading="Send me a message"
-      subHeading="Got a question?  Looking for some work to be done?  I'd love to hear from you.  Send me a message and I'll reply as soon as possible."
-      padding={false}
-    >
-      <ContactGrid>
-        <ContactColumn>
-          <Formik
-            initialValues={{ email: ``, name: ``, message: `` }}
-            onSubmit={values => {
-              fetch(`/api/contact`, {
-                method: `post`,
-                headers: {
-                  Accept: `application/json`,
-                  'Content-Type': `application/json`,
-                },
-                body: JSON.stringify(values),
-              }).then(res => {
-                console.log(res);
-                alert(`Thank you`);
-              });
-            }}
-            validationSchema={ContactSchema}
-          >
-            {({ isSubmitting }) => (
-              <Form>
-                <StyledContactForm>
-                  <StyledContactFormFieldset>
-                    <StyledContactFormLabel htmlFor="name">
-                      Name:{` `}
-                    </StyledContactFormLabel>
-                    <Field type="text" name="name" />
-                    <StyledContactFormErrorMessage>
-                      <ErrorMessage name="name" component="span" />
-                    </StyledContactFormErrorMessage>
-                  </StyledContactFormFieldset>
-                  <StyledContactFormFieldset>
-                    <StyledContactFormLabel htmlFor="email">
-                      Email:{` `}
-                    </StyledContactFormLabel>
-                    <Field type="email" name="email" />
-                    <StyledContactFormErrorMessage>
-                      <ErrorMessage name="email" component="span" />
-                    </StyledContactFormErrorMessage>
-                  </StyledContactFormFieldset>
+const ContactPage = () => {
+  const { addToast } = useToasts();
 
-                  <StyledContactFormFullWidth>
-                    <StyledContactFormLabel htmlFor="message">
-                      Message:
-                    </StyledContactFormLabel>
-                    <Field component="textarea" name="message" rows="5" />
-                    <StyledContactFormErrorMessage>
-                      <ErrorMessage name="message" component="span" />
-                    </StyledContactFormErrorMessage>
-                  </StyledContactFormFullWidth>
-                </StyledContactForm>
-                <StyledButton type="submit" aria-disabled={isSubmitting}>
-                  Send It!
-                </StyledButton>
-              </Form>
-            )}
-          </Formik>
-        </ContactColumn>
-        <ContactColumn>
-          <h4>Or These Other Methods</h4>
-          <h3>Email</h3>
-          <p>
-            <a href="mailto:info@christopherleemiller.me">
-              info@christopherleemiller.me
-            </a>
-          </p>
-          <h3>Phone</h3>
-          <p>+1 (574) 370-2148</p>
-          <SocialLinks />
-        </ContactColumn>
-      </ContactGrid>
-    </Card>
-  </Main>
-);
+  return (
+    <Main>
+      <Card
+        heading="Send me a message"
+        subHeading="Got a question?  Looking for some work to be done?  I'd love to hear from you.  Send me a message and I'll reply as soon as possible."
+        padding={false}
+      >
+        <ContactGrid>
+          <ContactColumn>
+            <Formik
+              initialValues={{ email: ``, name: ``, message: `` }}
+              onSubmit={values => {
+                fetch(`/api/contact`, {
+                  method: `post`,
+                  headers: {
+                    Accept: `application/json`,
+                    'Content-Type': `application/json`,
+                  },
+                  body: JSON.stringify(values),
+                }).then(res => {
+                  console.log(res.message);
+                  addToast(`Your message has been sent.`, {
+                    appearance: `info`,
+                  });
+                });
+              }}
+              validationSchema={ContactSchema}
+            >
+              {({ isSubmitting }) => (
+                <Form>
+                  <StyledContactForm>
+                    <StyledContactFormFieldset>
+                      <StyledContactFormLabel htmlFor="name">
+                        Name:{` `}
+                      </StyledContactFormLabel>
+                      <Field type="text" name="name" />
+                      <StyledContactFormErrorMessage>
+                        <ErrorMessage name="name" component="span" />
+                      </StyledContactFormErrorMessage>
+                    </StyledContactFormFieldset>
+                    <StyledContactFormFieldset>
+                      <StyledContactFormLabel htmlFor="email">
+                        Email:{` `}
+                      </StyledContactFormLabel>
+                      <Field type="email" name="email" />
+                      <StyledContactFormErrorMessage>
+                        <ErrorMessage name="email" component="span" />
+                      </StyledContactFormErrorMessage>
+                    </StyledContactFormFieldset>
 
+                    <StyledContactFormFullWidth>
+                      <StyledContactFormLabel htmlFor="message">
+                        Message:
+                      </StyledContactFormLabel>
+                      <Field component="textarea" name="message" rows="5" />
+                      <StyledContactFormErrorMessage>
+                        <ErrorMessage name="message" component="span" />
+                      </StyledContactFormErrorMessage>
+                    </StyledContactFormFullWidth>
+                  </StyledContactForm>
+                  <StyledButton type="submit" aria-disabled={isSubmitting}>
+                    Send It!
+                  </StyledButton>
+                </Form>
+              )}
+            </Formik>
+          </ContactColumn>
+          <ContactColumn>
+            <h3>Alternate Ways</h3>
+            <h4>Email</h4>
+            <ContactFormEmailList>
+              <li>
+                <a href="mailto:info@christopherleemiller.me">Information</a>
+              </li>
+              <li>
+                <a href="mailto:support@christopherleemiller.me">Support</a>
+              </li>
+              <li>
+                <a href="mailto:social@christopherleemiller.me">Social Media</a>
+              </li>
+            </ContactFormEmailList>
+            <h4>Phone</h4>
+            <p>
+              <a href="tel:+15743702148">+1 (574) 370-2148</a>
+            </p>
+            <SocialLinks />
+          </ContactColumn>
+        </ContactGrid>
+      </Card>
+    </Main>
+  );
+};
 export default withLayout(ContactPage, title, description, true, `/contact-me`);

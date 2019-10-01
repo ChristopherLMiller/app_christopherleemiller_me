@@ -4,18 +4,18 @@ const transporter = nodemailer.createTransport({
   host: `smtp.zoho.com`,
   port: 465,
   auth: {
-    user: `info@christopherleemiller.me`,
-    pass: `mz%re@VK5wQA4Y5*`,
+    user: `admin@christopherleemiller.me`,
+    pass: `z62sZJZpqV@&s86a`,
   },
 });
 
-const send = ({ email, name, text }) => {
+const send = ({ email, name, subject, html }) => {
   const from = name && email ? `${name} <${email}>` : `${name || email}`;
   const message = {
-    from: `info@christopherleemiller.me`,
+    from: `admin@christopherleemiller.me`,
     to: `info@christopherleemiller.me`,
-    subject: `New message from ${from}`,
-    text,
+    subject,
+    html,
     replyTo: from,
   };
 

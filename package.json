@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.19.2-dev",
+  "version": "0.19.3-dev",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -41,6 +41,7 @@
     "highlight.js": "^9.15.10",
     "knex": "^0.19.4",
     "logrocket": "^1.0.3",
+    "mjml": "^4.5.1",
     "mysql": "^2.17.1",
     "next": "^9.0.6",
     "next-offline": "^4.0.5",
@@ -58,6 +59,7 @@
     "react-image-gallery": "^0.9.1",
     "react-markdown": "^4.2.2",
     "react-pose": "^4.0.8",
+    "react-toast-notifications": "^2.2.5",
     "sitemap": "^4.1.1",
     "styled-components": "^4.3.2",
     "uid-safe": "^2.1.5",

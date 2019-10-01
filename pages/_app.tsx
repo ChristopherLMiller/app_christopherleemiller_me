@@ -8,6 +8,7 @@ import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
 import { Event } from '@sentry/types';
 import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
+import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
@@ -76,9 +77,11 @@ class MyApp extends App<AppProps & IApolloClient> {
               cardType: `summary_large_image`,
             }}
           />
-          <Page>
-            <Component {...pageProps} />
-          </Page>
+          <ToastProvider>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </ToastProvider>
         </ApolloHooksProvider>
       </ApolloProvider>
     );
