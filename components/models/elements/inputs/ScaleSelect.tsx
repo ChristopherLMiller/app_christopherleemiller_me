@@ -56,7 +56,7 @@ const ScaleSelect: FC<iTagSelect> = ({ field }) => {
       onChange={event => setScaleContext(event.target.value)}
       value={scale}
     >
-      <option key="all" value="all">
+      <option key="all">
         All
       </option>
       {data !== undefined &&

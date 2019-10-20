@@ -56,7 +56,7 @@ const TagSelect: FC<iTagSelect> = ({ field }) => {
       onChange={event => setTagContext(event.target.value)}
       value={tags}
     >
-      <option key="all" value="all">
+      <option key="all">
         All
       </option>
       {data !== undefined &&

@@ -17,9 +17,13 @@ const ModelListings = () => {
     page = parseFloat(router.query.page.toString());
   }
 
-  const { completed, scale, tag, company, sort } = useContext(
+  let { completed, scale, tag, company, sort } = useContext(
     ModelsFilterContext
   );
+
+  if (tag === "all") tag = null;
+  if (company === "all") company = null;
+  if (scale === "all") scale = null;
 
   // load the GQL Data
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
@@ -34,7 +38,7 @@ const ModelListings = () => {
         tags: {
           slug_contains: tag || null,
         },
-        completed: completed || null,
+        completed: completed,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,

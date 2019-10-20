@@ -18,7 +18,7 @@ const ArticlesPage: SFC = () => {
   // get the router instance
   const router = useRouter();
 
-  const { category, tag } = router.query;
+  //const { category, tag } = router.query;
 
   // get the current page or default to 1
   let page = 1;
@@ -33,12 +33,8 @@ const ArticlesPage: SFC = () => {
       start: page * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
       where: {
-        categories: {
-          slug_contains: category || null,
-        },
-        tags: {
-          slug_contains: tag || null,
-        },
+        published: true,
+
       },
     },
   });

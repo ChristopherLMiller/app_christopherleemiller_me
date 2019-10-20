@@ -7,6 +7,12 @@ import { BuildTime } from './BuildTime';
 
 const StyledModelSidebar = styled.div``;
 
+const Splitter = styled.div`
+  color: var(--background-dark);
+  padding: 0 5px;
+  display: inline-block;
+`;
+
 const ModelSidebar: SFC<ModelTypes> = ({ model }) => (
   <StyledModelSidebar>
     <Sidebar title="Information">
@@ -26,12 +32,12 @@ const ModelSidebar: SFC<ModelTypes> = ({ model }) => (
       </ul>
     </Sidebar>
     <Sidebar title="Tags">
-      {model.tags.map(tag => (
+      {model.tags.map((tag, index) => (
         <span key={tag.id}>
+          {!!index && <Splitter>|</Splitter>}
           <Link href={`/models?tag=${tag.slug}`}>
             <a>{tag.title}</a>
           </Link>
-          {` | `}
         </span>
       ))}
     </Sidebar>
