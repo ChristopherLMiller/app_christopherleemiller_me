@@ -56,7 +56,7 @@ const CompanySelect: FC<iTagSelect> = ({ field }) => {
       onChange={event => setCompanyContext(event.target.value)}
       value={company}
     >
-      <option key="all" value="all">
+      <option key="all">
         All
       </option>
       {data !== undefined &&

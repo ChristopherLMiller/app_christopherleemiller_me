@@ -20,7 +20,7 @@ const ModelPage: SFC = () => {
         slug_contains: router.query.slug,
       },
     },
-    ssr: true,
+
   });
 
   if (loading)
