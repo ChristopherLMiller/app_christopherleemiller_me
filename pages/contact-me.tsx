@@ -102,17 +102,18 @@ const PosedButton = posed.button({
 });
 
 const StyledButton = styled(PosedButton)`
-  background: var(--main-color);
+  background: ${(props: any) => props.disabled ? 'var(--background-dark)' : 'var(--main-color)'};
   padding: 10px 30px;
   transition: all 0.25s;
   text-align: center;
   margin: 20px auto;
   max-width: 200px;
   letter-spacing: 2px;
-  cursor: pointer;
+  cursor: ${(props: any) => props.disabled ? 'progress' : 'pointer'};
   color: var(--text-color-light);
   font-size: 2rem;
   border: none;
+
 `;
 
 const ContactPage = () => {
@@ -129,20 +130,22 @@ const ContactPage = () => {
           <ContactColumn>
             <Formik
               initialValues={{ email: ``, name: ``, message: `` }}
-              onSubmit={values => {
-                fetch(`/api/contact`, {
-                  method: `post`,
+              onSubmit={(values) => {
+                // submit the fetch request
+                fetch('https://email.christopherleemiller.me/email/contact', {
+                  method: 'POST',
                   headers: {
-                    Accept: `application/json`,
-                    'Content-Type': `application/json`,
+                    'Content-Type': 'Application/JSON',
                   },
                   body: JSON.stringify(values),
                 }).then(res => {
-                  console.log(res);
-                  addToast(`Your message has been sent.`, {
-                    appearance: `info`,
-                  });
-                });
+                  if (res.ok) {
+                    addToast('Email Sent Successfully.  Thank you!', { appearance: 'info', autoDismiss: true });
+                  }
+                }).catch(error => {
+                  addToast('Unable to send the email.  Try again later.', { appearance: 'error' })
+                  console.log(error)
+                })
               }}
               validationSchema={ContactSchema}
             >
@@ -178,7 +181,7 @@ const ContactPage = () => {
                       </StyledContactFormErrorMessage>
                     </StyledContactFormFullWidth>
                   </StyledContactForm>
-                  <StyledButton type="submit" aria-disabled={isSubmitting}>
+                  <StyledButton type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
                     Send It!
                   </StyledButton>
                 </Form>
@@ -207,7 +210,7 @@ const ContactPage = () => {
           </ContactColumn>
         </ContactGrid>
       </Card>
-    </Main>
+    </Main >
   );
 };
 export default withLayout(ContactPage, title, description, true, `/contact-me`);
