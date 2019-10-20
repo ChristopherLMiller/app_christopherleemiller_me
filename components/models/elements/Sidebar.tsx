@@ -8,7 +8,7 @@ import { BuildTime } from './BuildTime';
 const StyledModelSidebar = styled.div``;
 
 const Splitter = styled.div`
-  color: var(--main-color);
+  color: var(--background-dark);
   padding: 0 5px;
   display: inline-block;
 `;

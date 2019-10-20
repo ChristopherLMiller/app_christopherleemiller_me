@@ -1,14 +1,14 @@
 import { SFC } from 'react';
 import ReactMarkdown from 'react-markdown';
-//import ImageGallery from 'react-image-gallery';
+import ImageGallery from 'react-image-gallery';
 import styled from 'styled-components';
 import { ModelTypes } from '../Types';
 import { Title } from '../../elements/Title';
 import { CommentThread } from '../../CommentThread';
-//import { StyledGallery } from '../gallery';
-//import { FeaturedImage } from '../../FeaturedImage';
+import { StyledGallery } from '../gallery';
+import { FeaturedImage } from '../../FeaturedImage';
 import { Props } from '../../../styles/Themes';
-//import { ImageURL } from '../../../utils/functions';
+import { ImageURL } from '../../../utils/functions';
 import { StyledContentBlock } from '../../elements/ContentBlock';
 
 const StyledContentArea = styled.div`
@@ -27,17 +27,34 @@ const ModelContentArea = styled.div`
 `;
 
 const Body: SFC<ModelTypes> = ({ model }) => {
-  /*const images = model.images.map(image => {
+  const images = model.images.map(image => {
     return {
       original: `${ImageURL(image.image.public_id, 1920)}`,
       thumbnail: `${ImageURL(image.image.public_id, 200)}`,
     };
-  });*/
+  });
 
   return (
     <StyledContentArea>
       <Title>{model.title}</Title>
-
+      {images.length > 0 && (
+        <StyledGallery>
+          <ImageGallery
+            items={images}
+            showPlayButton={false}
+            showFullscreenButton={false}
+            defaultImage={ImageURL()}
+            showBullets
+          />
+        </StyledGallery>
+      )}
+      {images.length == 0 && (
+        <FeaturedImage
+          image={model.featured_image}
+          width={1500}
+          alt={model.title}
+        />
+      )}
 
       <ModelContentArea>
         <Title>Build Log</Title>
