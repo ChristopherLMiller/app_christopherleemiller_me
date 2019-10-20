@@ -49,14 +49,14 @@ const SocialIcon: SFC<SocialIconProps> = ({
   color = `#FFFFFF`,
   alt,
 }) => (
-  <span>
-    <a title={alt} href={url} aria-label={alt}>
-      <SocialIconStyled>
-        <FontAwesomeIcon icon={faCircle} color="#982929" />
-        <FontAwesomeIcon icon={icon} color={color} />
-      </SocialIconStyled>
-    </a>
-  </span>
-);
+    <span>
+      <a title={alt} href={url} aria-label={alt}>
+        <SocialIconStyled>
+          <FontAwesomeIcon icon={faCircle} color="#712020" />
+          <FontAwesomeIcon icon={icon} color={color} />
+        </SocialIconStyled>
+      </a>
+    </span>
+  );
 
 export { SocialIcon };
