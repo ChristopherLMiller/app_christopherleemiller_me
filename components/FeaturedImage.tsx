@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SFC } from 'react';
-import { ImageURL } from '../utils/functions';
+import { ImageURL } from '../utils/functions/imageURL';
 
 interface IFeaturedImage {
   max_height?: number;

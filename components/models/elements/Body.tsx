@@ -8,7 +8,7 @@ import { CommentThread } from '../../CommentThread';
 import { StyledGallery } from '../gallery';
 import { FeaturedImage } from '../../FeaturedImage';
 import { Props } from '../../../styles/Themes';
-import { ImageURL } from '../../../utils/functions';
+import { ImageURL } from '../../../utils/functions/imageURL';
 import { StyledContentBlock } from '../../elements/ContentBlock';
 
 const StyledContentArea = styled.div`

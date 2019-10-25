@@ -1,19 +1,32 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
+import { canAccessPage } from '../utils/functions/AuthChecker';
+import { useRouter } from 'next/router';
 
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
 
-const ProjectsPage = () => (
-  <Main>
-    <Card>
-      <p>
-        Plans for this page include a list of the programming projects i've done
-        over the years, helped with etc.
+const ProjectsPage = () => {
+  if (canAccessPage({ isSecure: false })) {
+    return (
+      <Main>
+        <Card>
+          <p>
+            Plans for this page include a list of the programming projects i've done
+            over the years, helped with etc.
       </p>
-    </Card>
-  </Main>
-);
+        </Card>
+      </Main>
+    );
 
-export default withLayout(ProjectsPage, title, description, true, `/projects`);
+  } else {
+    const router = useRouter();
+    router.push('/unauthorized');
+    return null;
+  }
+}
+
+export default withLayout(ProjectsPage, {
+  title, description, useSEO: true, path: `/projects`
+});

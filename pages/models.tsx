@@ -18,10 +18,10 @@ const ModelsPage = () => (
 );
 
 export default withLayout(
-  ModelsPage,
+  ModelsPage, {
   title,
   description,
-  true,
-  `/models`,
-  `clm_me/stash`
-);
+  useSEO: true,
+  path: `/models`,
+  image: `clm_me/stash`
+});

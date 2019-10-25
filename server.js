@@ -2,8 +2,8 @@ const express = require(`express`);
 const next = require(`next`);
 const { join } = require(`path`);
 const sitemap = require(`./lib/genSitemap`);
-const mailer = require(`./utils/mailer`);
 const bodyParser = require(`body-parser`);
+const cookieParser = require(`cookie-parser`);
 const uid = require(`uid-safe`);
 const session = require(`express-session`);
 
@@ -30,6 +30,7 @@ app
     server.use(session(sessionConfig));
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
+    server.use(cookieParser());
 
     // Posts
     server.get(`/post/:slug`, (req, res) => {

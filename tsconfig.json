@@ -29,6 +29,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    "lib/hook/useAuth.js",
+    "components/layout/SessionRestore.tsx"
   ]
 }

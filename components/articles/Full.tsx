@@ -4,7 +4,7 @@ import { SFC, useEffect, Fragment } from 'react';
 import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
-import { ImageURL } from '../../utils/functions';
+import { ImageURL } from '../../utils/functions/imageURL';
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
 import { CommentThread } from '../CommentThread';

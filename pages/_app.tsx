@@ -1,4 +1,4 @@
-import App, { AppProps } from 'next/app';
+import App, { AppProps, AppContext } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -14,6 +14,7 @@ import Page from '../components/layout/Page';
 import withApollo from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
+import { ProvideAuth } from '../lib/hook/useAuth';
 
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
@@ -26,6 +27,31 @@ class MyApp extends App<AppProps & IApolloClient> {
       release: `${name}@${version}`,
     });
     LogRocket.init(process.env.LOGROCKET);
+  }
+
+  static async getInitialProps({ Component, ctx }: AppContext) {
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    if (ctx.req != undefined) {
+      const cookies = ctx.req.headers.cookie;
+      if (cookies != undefined) {
+        const cookiesArray = cookies.split(';');
+
+        cookiesArray.forEach(cookie => {
+          const keyPair = cookie.split('=');
+
+          if (keyPair[0].trim() === 'jwt') {
+            const jwt = keyPair[1].trim();
+            pageProps = { ...pageProps, jwt };
+          }
+        });
+      }
+    }
+
+    return { pageProps };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
@@ -61,27 +87,30 @@ class MyApp extends App<AppProps & IApolloClient> {
     const { Component, apollo, pageProps } = this.props;
 
     return (
+
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
-          <DefaultSeo
-            titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
-            facebook={{
-              appId: process.env.FB_APP_ID,
-            }}
-            openGraph={{
-              locale: `en_IE`,
-              site_name: `ChristopherLeeMiller.me`,
-            }}
-            twitter={{
-              handle: `@ChrisLMiller_me`,
-              cardType: `summary_large_image`,
-            }}
-          />
-          <ToastProvider>
-            <Page>
-              <Component {...pageProps} />
-            </Page>
-          </ToastProvider>
+          <ProvideAuth>
+            <DefaultSeo
+              titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
+              facebook={{
+                appId: process.env.FB_APP_ID,
+              }}
+              openGraph={{
+                locale: `en_IE`,
+                site_name: `ChristopherLeeMiller.me`,
+              }}
+              twitter={{
+                handle: `@ChrisLMiller_me`,
+                cardType: `summary_large_image`,
+              }}
+            />
+            <ToastProvider>
+              <Page>
+                <Component {...pageProps} />
+              </Page>
+            </ToastProvider>
+          </ProvideAuth>
         </ApolloHooksProvider>
       </ApolloProvider>
     );
