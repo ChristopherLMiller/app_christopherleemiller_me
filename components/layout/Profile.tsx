@@ -85,7 +85,7 @@ const Profile = () => {
 
   const auth = useAuth();
   const emailHash = 'default';
-  const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=monsterid`;
+  const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
 
   return (
     <ProfileContainer>
