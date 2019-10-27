@@ -9,6 +9,7 @@ import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
 import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
+import { getAuth } from '../utils/functions/AuthChecker';
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;
@@ -117,6 +118,7 @@ const StyledButton = styled(PosedButton)`
 `;
 
 const ContactPage = () => {
+  getAuth();
   const { addToast } = useToasts();
 
   return (
@@ -213,4 +215,4 @@ const ContactPage = () => {
     </Main >
   );
 };
-export default withLayout(ContactPage, title, description, true, `/contact-me`);
+export default withLayout(ContactPage, { title, description, useSEO: true, path: `/contact-me` });

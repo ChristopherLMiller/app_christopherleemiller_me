@@ -3,7 +3,9 @@ import React, { Fragment } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import { SITE_DEFAULT_IMAGE } from '../../config';
-import { ImageURL } from '../../utils/functions';
+import { ImageURL } from '../../utils/functions/imageURL';
+import { Profile } from './Profile';
+
 
 interface withLayoutProps {
   title: string;
@@ -15,37 +17,40 @@ interface withLayoutProps {
 
 const withLayout = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
-  title: string,
-  description: string,
-  seo: boolean,
-  path?: string,
-  image?: string
+  meta: {
+    title: string,
+    description: string,
+    useSEO: boolean,
+    path?: string,
+    image?: string,
+  }
 ) => {
   class HOC extends React.Component<P & withLayoutProps> {
     public render() {
       return (
         <Fragment>
-          <Header title={title} description={description} />
-          {seo && (
+          <Profile />
+          <Header title={meta.title} description={meta.description} />
+          {meta.useSEO && (
             <NextSeo
-              title={title}
-              canonical={path ? `${process.env.SITE_URL}${path}` : undefined}
-              description={description}
+              title={meta.title}
+              canonical={meta.path ? `${process.env.SITE_URL}${meta.path}` : undefined}
+              description={meta.description}
               openGraph={{
-                title,
-                description,
+                title: meta.title,
+                description: meta.description,
                 type: 'website',
                 images: [
                   {
-                    alt: title,
-                    url: image ? `${ImageURL(image)}.jpg` : SITE_DEFAULT_IMAGE,
+                    alt: meta.title,
+                    url: meta.image ? `${ImageURL(meta.image)}.jpg` : SITE_DEFAULT_IMAGE,
                   },
                 ],
-                url: `${process.env.SITE_URL}${path}`,
+                url: `${process.env.SITE_URL}${meta.path}`,
               }}
             />
           )}
-          <WrappedComponent {...(this.props as P)} />
+          <WrappedComponent {...(this.props as P)} />}
           <Footer />
         </Fragment>
       );

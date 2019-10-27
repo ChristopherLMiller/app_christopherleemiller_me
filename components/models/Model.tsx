@@ -4,7 +4,7 @@ import { NextSeo, ArticleJsonLd } from 'next-seo';
 import { ModelTypes } from './Types';
 import { Props } from '../../styles/Themes';
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
-import { ImageURL } from '../../utils/functions';
+import { ImageURL } from '../../utils/functions/imageURL';
 
 import { Body } from './elements/Body';
 import { ModelSidebar } from './elements/Sidebar';
@@ -21,7 +21,7 @@ const StyledModelPage = styled.div`
 
 const Model: SFC<ModelTypes> = ({ model }) => {
   const image = model.featured_image
-    ? model.featured_image.public_id
+    ? model.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
   const tags = model.tags.map(tag => tag.slug);

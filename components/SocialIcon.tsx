@@ -52,7 +52,7 @@ const SocialIcon: SFC<SocialIconProps> = ({
     <span>
       <a title={alt} href={url} aria-label={alt}>
         <SocialIconStyled>
-          <FontAwesomeIcon icon={faCircle} color="#712020" />
+          <FontAwesomeIcon icon={faCircle} color="#9D2929" />
           <FontAwesomeIcon icon={icon} color={color} />
         </SocialIconStyled>
       </a>

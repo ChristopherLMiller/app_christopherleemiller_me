@@ -8,11 +8,13 @@ import Card from '../components/Card';
 import { Model } from '../components/models/Model';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/models/Types';
+import { getAuth } from '../utils/functions/AuthChecker';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
 const ModelPage: SFC = () => {
+  getAuth();
   const router = useRouter();
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {
@@ -74,4 +76,4 @@ const ModelPage: SFC = () => {
     </Main>
   );
 };
-export default withLayout(ModelPage, title, description, false);
+export default withLayout(ModelPage, { title, description, useSEO: false });

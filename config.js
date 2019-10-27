@@ -1,5 +1,6 @@
 // Client side things only, don't put things here that shouldn't be public
-export const GRAPHQL_ENDPOINT = `https://strapi.christopherleemiller.me/graphql`;
+export const API_ENDPOINT = `https://strapi.christopherleemiller.me`;
+export const GRAPHQL_ENDPOINT = `${API_ENDPOINT}/graphql`;
 export const STRAPI_ENDPOINT = `https://strapi.christopherleemiller.me`;
 export const CLOUDINARY_URL = `https://res.cloudinary.com`;
 export const CLOUDINARY_CLOUD = `christopherleemiller`;

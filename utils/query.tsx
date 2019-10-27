@@ -13,7 +13,7 @@ export const ARTICLES_QUERY = gql`
       title
       published
       featured_image {
-        public_id
+        provider_metadata
       }
       created_at
       updated_at
@@ -53,7 +53,7 @@ export const MODELS_QUERY = gql`
       content
       review
       featured_image {
-        public_id
+        provider_metadata
       }
       seo_title
       seo_description
@@ -79,7 +79,7 @@ export const MODELS_QUERY = gql`
         description
         slug
         image {
-          public_id
+          provider_metadata
         }
       }
       clockify_id
@@ -100,7 +100,7 @@ export const MODELS_QUERY_BRIEF = gql`
       slug
       clockify_id
       featured_image {
-        public_id
+        provider_metadata
       }
       completed
       kit_number

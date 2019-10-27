@@ -8,7 +8,7 @@ import { CommentThread } from '../../CommentThread';
 import { StyledGallery } from '../gallery';
 import { FeaturedImage } from '../../FeaturedImage';
 import { Props } from '../../../styles/Themes';
-import { ImageURL } from '../../../utils/functions';
+import { ImageURL } from '../../../utils/functions/imageURL';
 import { StyledContentBlock } from '../../elements/ContentBlock';
 
 const StyledContentArea = styled.div`
@@ -29,8 +29,8 @@ const ModelContentArea = styled.div`
 const Body: SFC<ModelTypes> = ({ model }) => {
   const images = model.images.map(image => {
     return {
-      original: `${ImageURL(image.image.public_id, 1920)}`,
-      thumbnail: `${ImageURL(image.image.public_id, 200)}`,
+      original: `${ImageURL(image.image.provider_metadata !== null ? image.image.provider_metadata.public_id : 'default', 1920)}`,
+      thumbnail: `${ImageURL(image.image.provider_metadata.public_id || 'default', 200)}`,
     };
   });
 

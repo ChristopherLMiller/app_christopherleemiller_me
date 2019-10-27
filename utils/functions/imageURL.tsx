@@ -3,7 +3,7 @@ import {
   CLOUDINARY_CLOUD,
   CLOUDINARY_VERSION,
   SITE_DEFAULT_IMAGE_FILE,
-} from '../config';
+} from '../../config';
 
 export function ImageURL(
   file = `clm_me/assets/default`,

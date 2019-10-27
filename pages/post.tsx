@@ -9,11 +9,13 @@ import { ARTICLES_QUERY } from '../utils/query';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
+import { getAuth } from '../utils/functions/AuthChecker';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
 const PostPage: SFC = () => {
+  getAuth();
   const router = useRouter();
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
@@ -78,4 +80,4 @@ const PostPage: SFC = () => {
   );
 };
 
-export default withLayout(PostPage, title, description, false);
+export default withLayout(PostPage, { title, description, useSEO: false });

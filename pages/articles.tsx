@@ -10,11 +10,13 @@ import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
 import { PER_PAGE } from '../config';
+import { getAuth } from '../utils/functions/AuthChecker';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
 const ArticlesPage: SFC = () => {
+  getAuth();
   // get the router instance
   const router = useRouter();
 
@@ -76,4 +78,4 @@ const ArticlesPage: SFC = () => {
   );
 };
 
-export default withLayout(ArticlesPage, title, description, true, `/articles`);
+export default withLayout(ArticlesPage, { title, description, useSEO: true, path: `/articles` });
