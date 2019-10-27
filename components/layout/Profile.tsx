@@ -89,7 +89,7 @@ const Profile = () => {
 
   return (
     <ProfileContainer>
-      <ProfilePicture src={avatarURL} onClick={() => setOpen(!isOpen)} onMouseEnter={() => setOpen(true)} />
+      <ProfilePicture src={avatarURL} onClick={() => setOpen(!isOpen)} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setTimeout(() => setOpen(false), 5 * 1000)} />
       <ProfileInfo pose={isOpen ? `open` : `closed`} initialPose="closed">
         <ProfileName>Hi, {auth.isAuthenticated ? auth.user.username : 'Guest'}</ProfileName>
         {auth.isAuthenticated && <ProfileRole>{auth.user.role.name}</ProfileRole>}
