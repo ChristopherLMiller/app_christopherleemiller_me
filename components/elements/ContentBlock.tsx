@@ -41,6 +41,10 @@ const StyledContentBlock = styled.div`
     text-indent: 1.25em;
   }
 
+  p > img:first-child {
+    margin-left: -1.25em;
+  }
+
   p:first-of-type {
     margin-top: 0;
   }
