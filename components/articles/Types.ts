@@ -33,7 +33,9 @@ export interface ArticleTypes {
   article: {
     id: string;
     featured_image: {
-      public_id: string;
+      provider_metadata: {
+        public_id: string;
+      };
     };
     content: string;
     title: string;

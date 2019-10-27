@@ -29,7 +29,7 @@ const FullArticle: SFC<ArticleTypes> = ({
   });
 
   const image = article.featured_image
-    ? article.featured_image.public_id
+    ? article.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
   const tags = article.tags.map(tag => tag.title);
