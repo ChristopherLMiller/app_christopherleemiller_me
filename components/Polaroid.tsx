@@ -36,7 +36,9 @@ const PolaroidContent = styled.div`
 
 interface iPolaroid {
   image: {
-    public_id: string;
+    provider_metadata: {
+      public_id: string;
+    };
   };
   alt?: string;
   caption?: string;

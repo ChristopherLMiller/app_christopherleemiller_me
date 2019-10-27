@@ -21,7 +21,7 @@ const StyledModelPage = styled.div`
 
 const Model: SFC<ModelTypes> = ({ model }) => {
   const image = model.featured_image
-    ? model.featured_image.public_id
+    ? model.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
   const tags = model.tags.map(tag => tag.slug);

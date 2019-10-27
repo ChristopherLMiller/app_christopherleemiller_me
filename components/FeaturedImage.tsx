@@ -18,7 +18,9 @@ const StyledFeaturedImage = styled.img<IFeaturedImage>`
 
 interface FeaturedImageTypes {
   image: {
-    public_id: string;
+    provider_metadata: {
+      public_id: string;
+    };
   };
   width?: number;
   alt?: string;
@@ -32,10 +34,10 @@ const FeaturedImage: SFC<FeaturedImageTypes> = ({
   alt,
   border = false,
 }) => {
-  if (image) {
+  if (image && image.provider_metadata && image.provider_metadata.public_id) {
     return (
       <StyledFeaturedImage
-        src={ImageURL(image.public_id, width)}
+        src={ImageURL(image.provider_metadata.public_id, width)}
         alt={alt}
         border={border}
         max_height={max_height}
