@@ -6,11 +6,17 @@ const bodyParser = require(`body-parser`);
 const cookieParser = require(`cookie-parser`);
 const uid = require(`uid-safe`);
 const session = require(`express-session`);
+const mongoose = require('mongoose');
+const MongoStore = require('connect-mongo')(session);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`);
+mongoose.Promise = global.Promise;
+const db = mongoose.connection;
 
 app
   .prepare()
@@ -25,6 +31,7 @@ app
       },
       resave: false,
       saveUninitialized: true,
+      store: new MongoStore({ mongooseConnection: db })
     };
 
     server.use(session(sessionConfig));
@@ -33,27 +40,27 @@ app
     server.use(cookieParser());
 
     // Posts
-    server.get(`/post/:slug`, (req, res) => {
-      const actualPage = `/post`;
+    server.get(`/ post /: slug`, (req, res) => {
+      const actualPage = `/ post`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Models
-    server.get(`/model/:slug`, (req, res) => {
-      const actualPage = `/model`;
+    server.get(`/ model /: slug`, (req, res) => {
+      const actualPage = `/ model`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Service worker
-    server.get(`/service-worker.js`, (req, res) => {
-      const filePath = join(__dirname, `.next`, `/service-worker.js`);
+    server.get(`/ service - worker.js`, (req, res) => {
+      const filePath = join(__dirname, `.next`, ` / service - worker.js`);
       app.serveStatic(req, res, filePath);
     });
 
     // Redirect admin to the backend
-    server.get(`/admin`, (res) => {
+    server.get(`/ admin`, (res) => {
       res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
 
