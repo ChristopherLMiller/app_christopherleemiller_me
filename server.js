@@ -40,27 +40,27 @@ app
     server.use(cookieParser());
 
     // Posts
-    server.get(`/ post /: slug`, (req, res) => {
+    server.get(`/post/:slug`, (req, res) => {
       const actualPage = `/ post`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Models
-    server.get(`/ model /: slug`, (req, res) => {
+    server.get(`/model/:slug`, (req, res) => {
       const actualPage = `/ model`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Service worker
-    server.get(`/ service - worker.js`, (req, res) => {
+    server.get(`/service-worker.js`, (req, res) => {
       const filePath = join(__dirname, `.next`, ` / service - worker.js`);
       app.serveStatic(req, res, filePath);
     });
 
     // Redirect admin to the backend
-    server.get(`/ admin`, (res) => {
+    server.get(`/admin`, (res) => {
       res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
 
