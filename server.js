@@ -14,7 +14,10 @@ const dev = process.env.NODE_ENV !== `production`;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`);
+mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
@@ -39,29 +42,29 @@ app
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(cookieParser());
 
+    // Admin redirect
+    server.get('/admin', (req, res) => {
+      res.status(301).redirect('https://strapi.christopherleemiller.me/admin');
+    });
+
     // Posts
     server.get(`/post/:slug`, (req, res) => {
-      const actualPage = `/ post`;
+      const actualPage = `/post`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Models
     server.get(`/model/:slug`, (req, res) => {
-      const actualPage = `/ model`;
+      const actualPage = `/model`;
       const queryParams = { slug: req.params.slug };
       app.render(req, res, actualPage, queryParams);
     });
 
     // Service worker
     server.get(`/service-worker.js`, (req, res) => {
-      const filePath = join(__dirname, `.next`, ` / service - worker.js`);
+      const filePath = join(__dirname, `.next`, `/service-worker.js`);
       app.serveStatic(req, res, filePath);
-    });
-
-    // Redirect admin to the backend
-    server.get(`/admin`, (res) => {
-      res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
 
     // Sitemap

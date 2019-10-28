@@ -98,6 +98,7 @@ const Navigation = posed.div({
 
 const StyledNavigationWrapper = styled(Navigation)`
   transition: all 0.5s;
+  overflow-y: auto;
   transform: rotateX(-90deg);
   height: 0vh;
   opacity: 0;
