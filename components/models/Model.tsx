@@ -20,7 +20,7 @@ const StyledModelPage = styled.div`
 `;
 
 const Model: SFC<ModelTypes> = ({ model }) => {
-  const image = model.featured_image
+  const image = model.featured_image.provider_metadata
     ? model.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 

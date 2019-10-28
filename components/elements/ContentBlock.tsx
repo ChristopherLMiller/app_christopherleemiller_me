@@ -49,7 +49,7 @@ const StyledContentBlock = styled.div`
     margin-top: 0;
   }
   a {
-    color: var(--main-color)
+    color: var(--main-color);
     text-decoration: underline;
   }
   h3,h4,h5,h6 {

@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import { useState } from 'react';
 import posed from 'react-pose';
 import { useAuth } from '../../lib/hook/useAuth';
+import { Props } from '../../styles/Themes';
 
 const ProfileContainer = styled.div`
+  display: none;
   position: fixed;
   top: 20px;
   right: 20px;
@@ -12,6 +14,10 @@ const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
+    display: inherit;
+  }
 `;
 
 const ProfilePicture = styled.img`
@@ -23,6 +29,9 @@ const ProfileInfoPose = posed.div({
   open: {
     opacity: 1,
     height: 'auto',
+    beforeChildren: true,
+    staggerChildren: 100,
+    delayChildren: 500,
   },
   closed: {
     opacity: 0,
@@ -48,6 +57,8 @@ const ProfileInfo = styled(ProfileInfoPose)`
     transform: rotateZ(45deg);
     z-index: -1;
   }
+
+
 `;
 
 const ProfileName = styled.div`
@@ -94,7 +105,7 @@ const Profile = () => {
         <ProfileName>Hi, {auth.isAuthenticated ? auth.user.username : 'Guest'}</ProfileName>
         {auth.isAuthenticated && <ProfileRole>{auth.user.role.name}</ProfileRole>}
         <ProfileInfoList>
-          <ProfileInfoListItem>My Account</ProfileInfoListItem>
+          {auth.isAuthenticated && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
           {auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => auth.signout()}>Logout</a></ProfileInfoListItem>}
           {!auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => auth.signin('chris@christopherleemiller.me', 'D+eVasTv')}>Sign In</a></ProfileInfoListItem>}
         </ProfileInfoList>

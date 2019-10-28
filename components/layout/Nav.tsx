@@ -13,8 +13,8 @@ const PosedNav = posed.ul({
 
 const NavStyles = styled(PosedNav)`
   padding-left: 0;
+  position: relative;
 `;
-
 const PosedNavItem = posed.li({
   open: {
     opacity: 1,
@@ -27,6 +27,7 @@ const PosedNavItem = posed.li({
 });
 
 const NavItem = styled(PosedNavItem)`
+  position: relative;
   font-family: var(--font-monospace);
   font-size: 2.5rem;
   list-style-type: none;
@@ -53,54 +54,56 @@ const NavItem = styled(PosedNavItem)`
     line-height: 2.5em;
   }
 `;
-const Nav = () => (
-  <NavStyles pose="open">
-    <NavItem>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
-    </NavItem>
+const Nav = () => {
 
-    <NavItem>
-      <Link href="/articles">
-        <a>Articles</a>
-      </Link>
-    </NavItem>
+  return (
+    <NavStyles pose="open">
+      <NavItem>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </NavItem>
 
-    <NavItem>
-      <Link href="/about">
-        <a>About</a>
-      </Link>
-    </NavItem>
+      <NavItem>
+        <Link href="/articles">
+          <a>Articles</a>
+        </Link>
+      </NavItem>
 
-    <NavItem>
-      <Link href="/services">
-        <a>Services</a>
-      </Link>
-    </NavItem>
+      <NavItem>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </NavItem>
 
-    <NavItem>
-      <Link href="/projects">
-        <a>Projects</a>
-      </Link>
-    </NavItem>
-    <NavItem>
-      <Link href="/models">
-        <a>Models</a>
-      </Link>
-    </NavItem>
-    <NavItem>
-      <Link href="/galleries">
-        <a>Galleries</a>
-      </Link>
-    </NavItem>
+      <NavItem>
+        <Link href="/services">
+          <a>Services</a>
+        </Link>
+      </NavItem>
 
-    <NavItem>
-      <Link href="/contact-me">
-        <a>Contact Me</a>
-      </Link>
-    </NavItem>
-  </NavStyles>
-);
+      <NavItem>
+        <Link href="/projects">
+          <a>Projects</a>
+        </Link>
+      </NavItem>
+      <NavItem>
+        <Link href="/models">
+          <a>Models</a>
+        </Link>
+      </NavItem>
+      <NavItem>
+        <Link href="/galleries">
+          <a>Galleries</a>
+        </Link>
+      </NavItem>
 
+      <NavItem>
+        <Link href="/contact-me">
+          <a>Contact Me</a>
+        </Link>
+      </NavItem>
+    </NavStyles>
+  );
+}
 export default Nav;

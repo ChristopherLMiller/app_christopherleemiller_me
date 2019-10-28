@@ -30,7 +30,7 @@ const Body: SFC<ModelTypes> = ({ model }) => {
   const images = model.images.map(image => {
     return {
       original: `${ImageURL(image.image.provider_metadata !== null ? image.image.provider_metadata.public_id : 'default', 1920)}`,
-      thumbnail: `${ImageURL(image.image.provider_metadata.public_id || 'default', 200)}`,
+      thumbnail: `${ImageURL(image.image.provider_metadata !== null ? image.image.provider_metadata.public_id : 'default', 200)}`,
     };
   });
 
