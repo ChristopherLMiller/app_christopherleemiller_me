@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import posed from 'react-pose';
 import { useToasts } from 'react-toast-notifications';
 import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
@@ -10,6 +9,10 @@ import { SocialLinks } from '../components/SocialLinks';
 import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
 import { getAuth } from '../utils/functions/AuthChecker';
+import { Label } from '../components/inputs/Label';
+import { FieldSet } from '../components/inputs/FieldSet';
+import { Button } from '../components/inputs/Button';
+import { FormErrorMessage } from '../components/inputs/ErrorMessage';
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;
@@ -63,16 +66,6 @@ const StyledContactForm = styled.div`
   }
 `;
 
-const StyledContactFormFieldset = styled.fieldset`
-  border: none;
-  padding-left: 0;
-`;
-
-const StyledContactFormLabel = styled.label`
-  display: block;
-  text-align: left;
-`;
-
 const StyledContactFormFullWidth = styled.fieldset`
   grid-column-start: 1;
   grid-column-end: 3;
@@ -80,41 +73,9 @@ const StyledContactFormFullWidth = styled.fieldset`
   padding-left: 0;
 `;
 
-const StyledContactFormErrorMessage = styled.div`
-  background: var(--main-color);
-  color: var(--text-color-light);
-  font-size: 1.5rem;
-  line-height: 2rem;
-`;
-
 const ContactFormEmailList = styled.ul`
   list-style-type: none;
   padding-left: 0;
-`;
-
-const PosedButton = posed.button({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.1,
-  },
-});
-
-const StyledButton = styled(PosedButton)`
-  background: ${(props: any) => props.disabled ? 'var(--background-dark)' : 'var(--main-color)'};
-  padding: 10px 30px;
-  transition: all 0.25s;
-  text-align: center;
-  margin: 20px auto;
-  max-width: 200px;
-  letter-spacing: 2px;
-  cursor: ${(props: any) => props.disabled ? 'progress' : 'pointer'};
-  color: var(--text-color-light);
-  font-size: 2rem;
-  border: none;
-
 `;
 
 const ContactPage = () => {
@@ -154,38 +115,38 @@ const ContactPage = () => {
               {({ isSubmitting }) => (
                 <Form>
                   <StyledContactForm>
-                    <StyledContactFormFieldset>
-                      <StyledContactFormLabel htmlFor="name">
+                    <FieldSet>
+                      <Label htmlFor="name">
                         Name:{` `}
-                      </StyledContactFormLabel>
+                      </Label>
                       <Field type="text" name="name" />
-                      <StyledContactFormErrorMessage>
+                      <FormErrorMessage>
                         <ErrorMessage name="name" component="span" />
-                      </StyledContactFormErrorMessage>
-                    </StyledContactFormFieldset>
-                    <StyledContactFormFieldset>
-                      <StyledContactFormLabel htmlFor="email">
+                      </FormErrorMessage>
+                    </FieldSet>
+                    <FieldSet>
+                      <Label htmlFor="email">
                         Email:{` `}
-                      </StyledContactFormLabel>
+                      </Label>
                       <Field type="email" name="email" />
-                      <StyledContactFormErrorMessage>
+                      <FormErrorMessage>
                         <ErrorMessage name="email" component="span" />
-                      </StyledContactFormErrorMessage>
-                    </StyledContactFormFieldset>
+                      </FormErrorMessage>
+                    </FieldSet>
 
                     <StyledContactFormFullWidth>
-                      <StyledContactFormLabel htmlFor="message">
+                      <Label htmlFor="message">
                         Message:
-                      </StyledContactFormLabel>
+                      </Label>
                       <Field component="textarea" name="message" rows="5" />
-                      <StyledContactFormErrorMessage>
+                      <FormErrorMessage>
                         <ErrorMessage name="message" component="span" />
-                      </StyledContactFormErrorMessage>
+                      </FormErrorMessage>
                     </StyledContactFormFullWidth>
                   </StyledContactForm>
-                  <StyledButton type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+                  <Button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
                     Send It!
-                  </StyledButton>
+                  </Button>
                 </Form>
               )}
             </Formik>
