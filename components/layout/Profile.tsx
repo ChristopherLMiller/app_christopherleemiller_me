@@ -234,8 +234,16 @@ const Profile = () => {
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
 
-                // TODO: send the values to be able to reset password
-                console.log(values);
+                // try logging in
+                auth.requestPasswordReset(values.email).then((response: any) => {
+                  if (response.status === 200) {
+                    setModalOpen(false);
+                    addToast(response.message, { appearance: 'success' });
+                  } else {
+                    addToast(response.message, { appearance: "error" });
+                    setSubmitting(false);
+                  }
+                })
               }}
               validationSchema={ResetSchema}>
               {({ isSubmitting }) => (
