@@ -149,6 +149,13 @@ const MobileNav = () => {
         <StyledDescription>All About Me!</StyledDescription>
       </StyledMobileNavWrapper>
       <StyledNavigationWrapper pose={isOpen ? `open` : `closed`}>
+        <div>
+          <p><img src="default.png" /><span>CHRIS MILLER</span></p>
+          <p>ADMINISTRATOR</p>
+          <p>My Account</p>
+          <p>Login</p>
+          <hr />
+        </div>
         <Nav />
         <SocialLinks />
       </StyledNavigationWrapper>
