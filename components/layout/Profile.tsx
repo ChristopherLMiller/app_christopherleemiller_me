@@ -12,6 +12,8 @@ import { Button } from '../inputs/Button';
 import { FormErrorMessage } from '../inputs/ErrorMessage';
 import * as Yup from 'yup';
 
+import md5 from 'md5';
+
 
 const ProfileContainer = styled.div`
   display: none;
@@ -170,7 +172,7 @@ const Profile = () => {
 
   // Auth
   const auth = useAuth();
-  const emailHash = 'default';
+  const emailHash = auth.isAuthenticated ? md5(auth.user.email) : 'default';
   const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
 
   return (
