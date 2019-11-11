@@ -175,6 +175,7 @@ const Profile = () => {
   const emailHash = auth.isAuthenticated ? md5(auth.user.email) : 'default';
   const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
 
+
   return (
     <Fragment>
       <Modal
@@ -258,7 +259,7 @@ const Profile = () => {
                         <ErrorMessage name="email" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
-                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Request Password Reset</Button>
+                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Reset Password</Button>
                   </StyledForm>
                 </Form>
               )}
