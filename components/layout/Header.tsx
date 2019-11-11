@@ -33,7 +33,7 @@ const StyledHeader = styled(HeaderPopped)`
   color: var(--text-color-light);
   padding: 30px;
   margin-top: 76px;
-  min-height: 250px;
+  min-height: 215px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     margin-top: 0;

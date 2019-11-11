@@ -18,7 +18,7 @@ const StyledFooter = styled(FooterPopped)`
   padding: 30px 10px;
   position: relative;
   overflow-y: hidden;
-  min-height: 175px;
+  min-height: 215px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
