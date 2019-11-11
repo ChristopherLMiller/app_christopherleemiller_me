@@ -65,7 +65,7 @@
     "react-image-gallery": "^0.9.1",
     "react-markdown": "^4.2.2",
     "react-modal": "^3.11.1",
-    "react-pose": "^4.0.8",
+    "react-pose": "^4.0.9",
     "react-toast-notifications": "^2.2.5",
     "sitemap": "^4.1.1",
     "strapi-sdk-javascript": "^0.3.3",
