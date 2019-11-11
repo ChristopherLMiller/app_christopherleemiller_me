@@ -17,7 +17,6 @@ const StyledCard = styled(CardPopTransition)`
   font-weight: 300;
   max-width: 1000px;
   margin: 0 auto;
-  margin-bottom: 50px;
 `;
 
 const CardHeading = styled.div`
@@ -76,18 +75,18 @@ const Card: SFC<CardProps> = ({
   children,
   padding = true,
 }) => (
-  <StyledCard initialPose="exit" pose="enter">
-    {(heading || subHeading) && (
-      <CardHeading>
-        {heading && <CardHeadingHeading>{heading}</CardHeadingHeading>}
-        {subHeading && (
-          <CardHeadingSubHeading>{subHeading}</CardHeadingSubHeading>
-        )}
-      </CardHeading>
-    )}
+    <StyledCard initialPose="exit" pose="enter">
+      {(heading || subHeading) && (
+        <CardHeading>
+          {heading && <CardHeadingHeading>{heading}</CardHeadingHeading>}
+          {subHeading && (
+            <CardHeadingSubHeading>{subHeading}</CardHeadingSubHeading>
+          )}
+        </CardHeading>
+      )}
 
-    <CardBody padding={padding}>{children}</CardBody>
-  </StyledCard>
-);
+      <CardBody padding={padding}>{children}</CardBody>
+    </StyledCard>
+  );
 
 export default Card;
