@@ -31,10 +31,8 @@ const ServicesPage = () => {
     if (process.browser) {
       const router = useRouter();
       router.push('/unauthorized');
-      return null;
-    } else {
-      return null;
     }
+    return null
   }
 }
 export default withLayout(ServicesPage, { title, description, useSEO: true, path: `/services` });
