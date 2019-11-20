@@ -46,7 +46,7 @@ const CardBody = styled.div`
   background: var(--background-light);
   padding: ${(props: iCardBody) => (props.padding ? `3% 5%` : `0`)};
   font-size: var(--font-size-responsive);
-  letter-spacing: 1px;
+  letter-spacing: -1px;
   text-align: center;
 
   a {

@@ -4,7 +4,7 @@ import { Props } from '../../styles/Themes';
 const StyledContentBlock = styled.div`
   padding: 40px 20px;
   font-size: var(--font-size-responsive);
-  letter-spacing: 1px;
+  letter-spacing: -1px;
   font-weight: 300;
   color: var(--background-darker);
 
@@ -37,7 +37,7 @@ const StyledContentBlock = styled.div`
   }
   p {
     margin: 15px auto;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     text-indent: 1.25em;
   }
 

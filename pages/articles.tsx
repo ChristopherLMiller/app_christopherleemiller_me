@@ -15,6 +15,10 @@ import { getAuth } from '../utils/functions/AuthChecker';
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
+export const auth = {
+  isSecure: false
+};
+
 const ArticlesPage: SFC = () => {
   getAuth();
   // get the router instance

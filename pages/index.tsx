@@ -7,8 +7,12 @@ import { canAccessPage } from '../utils/functions/AuthChecker';
 const title = `Home`;
 const description = `Programmer.  Amateur Designer. Model Enthusiast.`;
 
+export const auth = {
+  isSecure: false
+};
+
 const IndexPage = () => {
-  canAccessPage({ isSecure: false });
+  canAccessPage(auth);
 
   return (
     <Main>

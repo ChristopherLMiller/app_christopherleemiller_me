@@ -50,7 +50,7 @@ const withLayout = <P extends object>(
               }}
             />
           )}
-          <WrappedComponent {...(this.props as P)} />}
+          <WrappedComponent {...(this.props as P)} />
           <Footer />
         </Fragment>
       );

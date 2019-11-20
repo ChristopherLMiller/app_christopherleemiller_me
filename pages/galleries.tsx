@@ -2,12 +2,18 @@ import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { getAuth } from '../utils/functions/AuthChecker';
+import { canAccessPage } from '../utils/functions/AuthChecker';
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
+
+export const auth = {
+  isSecure: true
+};
+
 const GalleriesPage = () => {
-  getAuth();
+  canAccessPage(auth);
+
   return (
     <Main>
       <Card>

@@ -7,8 +7,15 @@ import { useRouter } from 'next/router';
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
 
+export const auth = {
+  isSecure: true,
+  permitted: {
+    groups: ['Administrator']
+  }
+};
+
 const ProjectsPage = () => {
-  if (canAccessPage({ isSecure: false })) {
+  if (canAccessPage(auth)) {
     return (
       <Main>
         <Card>
@@ -19,10 +26,11 @@ const ProjectsPage = () => {
         </Card>
       </Main>
     );
-
   } else {
-    const router = useRouter();
-    router.push('/unauthorized');
+    if (process.browser) {
+      const router = useRouter();
+      router.push('/unauthorized');
+    }
     return null;
   }
 }
