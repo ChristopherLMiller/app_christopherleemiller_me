@@ -43,7 +43,7 @@ app
     server.use(cookieParser());
 
     // Admin redirect
-    server.get('/admin', (req, res) => {
+    server.get('/strapi', (req, res) => {
       res.status(301).redirect('https://strapi.christopherleemiller.me/admin');
     });
 
@@ -85,7 +85,9 @@ app
     });
 
     // All others
-    server.get(`*`, (req, res) => handle(req, res));
+    server.get(`*`, (req, res) => {
+      handle(req, res);
+    });
 
     server.listen(port, err => {
       if (err) throw err;

@@ -78,6 +78,10 @@ const ContactFormEmailList = styled.ul`
   padding-left: 0;
 `;
 
+export const auth = {
+  isSecure: false
+};
+
 const ContactPage = () => {
   getAuth();
   const { addToast } = useToasts();

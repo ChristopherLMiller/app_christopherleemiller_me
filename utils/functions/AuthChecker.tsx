@@ -19,14 +19,26 @@ export function getAuth() {
 
 interface iCanAccessPage {
   isSecure: boolean;
+  permitted?: {
+    groups: string[];
+  }
 }
-export function canAccessPage({ isSecure }: iCanAccessPage) {
+export function canAccessPage({ isSecure, permitted }: iCanAccessPage) {
   const auth = getAuth();
 
-  if (isSecure) {
-    if (auth.isAuthenticated)
-      return true;
-  }
 
-  return false;
+  // see if the page is secured or not
+  if (isSecure) {
+    // it's a secure page, are we authenticated?
+    if (auth.isAuthenticated) {
+      // See if ther permitted group list includes the users role
+      if (permitted && permitted.groups.includes(auth.user.role.name)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  } else {
+    return true;
+  }
 }

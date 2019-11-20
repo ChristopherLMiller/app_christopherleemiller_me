@@ -7,6 +7,10 @@ import { getAuth } from '../utils/functions/AuthChecker';
 const title = `About Me`;
 const description = `Where I came from and what I do now`;
 
+export const auth = {
+  isSecure: false
+};
+
 const AboutPage = () => {
   getAuth();
 
