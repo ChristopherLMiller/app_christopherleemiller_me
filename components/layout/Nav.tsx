@@ -26,6 +26,7 @@ const NavStyles = styled(PosedNav)`
   padding-left: 0;
   position: relative;
 `;
+
 const PosedNavItem = posed.li({
   open: {
     opacity: 1,
@@ -34,10 +35,11 @@ const PosedNavItem = posed.li({
   closed: {
     opacity: 0,
     x: `-100%`,
-  },
+  }
 });
 
 const NavItem = styled(PosedNavItem)`
+  display: ${(props: any) => props.display ? 'block' : 'none'};
   position: relative;
   font-family: var(--font-monospace);
   font-size: 2.5rem;
@@ -69,83 +71,65 @@ const Nav = () => {
 
   return (
     <NavStyles pose="open">
-      {canAccessPage(IndexAuth) &&
-        <NavItem>
-          <Link href="/">
-            <a>Home</a>
-          </Link>
-        </NavItem>
-      }
 
-      {canAccessPage(ArticlesAuth) &&
-        <NavItem>
-          <Link href="/articles">
-            <a>Articles</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(IndexAuth)} aria-hidden={!canAccessPage(IndexAuth)}>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(AboutAuth) &&
-        <NavItem>
-          <Link href="/about">
-            <a>About</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(ArticlesAuth)} aria-hidden={!canAccessPage(ArticlesAuth)}>
+        <Link href="/articles">
+          <a>Articles</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(ServicesAuth) &&
-        <NavItem>
-          <Link href="/services">
-            <a>Services</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(AboutAuth)} aria-hidden={!canAccessPage(AboutAuth)}>
+        <Link href="/about">
+          <a>About</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(ProjectsAuth) &&
-        <NavItem>
-          <Link href="/projects">
-            <a>Projects</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(ServicesAuth)} aria-hidden={!canAccessPage(ServicesAuth)}>
+        <Link href="/services">
+          <a>Services</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(ModelsAuth) &&
-        <NavItem>
-          <Link href="/models">
-            <a>Models</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(ProjectsAuth)} aria-hidden={!canAccessPage(ProjectsAuth)}>
+        <Link href="/projects">
+          <a>Projects</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(GalleryAuth) &&
-        <NavItem>
-          <Link href="/galleries">
-            <a>Galleries</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(ModelsAuth)} aria-hidden={!canAccessPage(ModelsAuth)}>
+        <Link href="/models">
+          <a>Models</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(ContactAuth) &&
-        <NavItem>
-          <Link href="/contact-me">
-            <a>Contact Me</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(GalleryAuth)} aria-hidden={!canAccessPage(GalleryAuth)}>
+        <Link href="/galleries">
+          <a>Galleries</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(AdminAuth) &&
-        <NavItem>
-          <Link href="/admin">
-            <a>Admin Panel</a>
-          </Link>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(ContactAuth)} aria-hidden={!canAccessPage(ContactAuth)}>
+        <Link href="/contact-me">
+          <a>Contact Me</a>
+        </Link>
+      </NavItem>
 
-      {canAccessPage(AdminAuth) &&
-        <NavItem>
-          <a href="https://strapi.christopherleemiller.me/admin">Strapi</a>
-        </NavItem>
-      }
+      <NavItem display={canAccessPage(AdminAuth)} aria-hidden={!canAccessPage(AdminAuth)}>
+        <Link href="/admin">
+          <a>Admin Panel</a>
+        </Link>
+      </NavItem>
+
+      <NavItem display={canAccessPage(AdminAuth)} aria-hidden={!canAccessPage(AdminAuth)}>
+        <a href="https://strapi.christopherleemiller.me/admin">Strapi</a>
+      </NavItem>
+
     </NavStyles>
   );
 }
