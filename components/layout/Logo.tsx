@@ -18,7 +18,7 @@ const StyledLogo = styled(LogoFilter)`
   display: none;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    width: 55%;
+    width: 45%;
     display: block;
   }
 `;
