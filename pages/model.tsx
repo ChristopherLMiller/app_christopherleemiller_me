@@ -73,7 +73,7 @@ const ModelPage: SFC = () => {
                   don't know what happened to it! Some gremlin somewhere must have
                   snatched it on me, that or I just never built this model to begin
                   with. Hmmmmm.
-        </p>
+                </p>
                 <hr />
                 <Link href="/models">
                   <a>View All Models</a>
