@@ -11,7 +11,7 @@ import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
-import withApollo from '../lib/withApollo';
+import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 import { ProvideAuth } from '../lib/hook/useAuth';
