@@ -2,6 +2,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import posed from 'react-pose';
 import { Props } from '../../styles/Themes';
+import { useRouter } from 'next/router';
 
 import { auth as ProjectsAuth } from '../../pages/projects';
 import { auth as IndexAuth } from '../../pages/index';
@@ -39,94 +40,125 @@ const PosedNavItem = posed.li({
 });
 
 const NavItem = styled(PosedNavItem)`
-  display: ${(props: any) => props.display ? 'block' : 'none'};
+  display: ${(props: any) => props.display || 'none'};
   position: relative;
   font-family: var(--font-monospace);
   font-size: 2.5rem;
   list-style-type: none;
   line-height: 2em;
+  background: ${(props: any) => props.isActive ? 'rgba(101, 26, 26, 0.6)' : 'none'};
 
-  :after {
-    content: '\\A';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: -100%;
-    z-index: -1;
-    background: var(--main-color);
-    opacity: 0;
-    transition: all 0.25s;
-  }
-  :hover:after {
-    opacity: 0.7;
-    left: -15%;
-  }
+  : after {
+  content: '\\A';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: -100%;
+  z-index: -1;
+  background: var(--main-color);
+  opacity: 0;
+  transition: all 0.25s;
+}
+  : hover: after {
+  opacity: 0.7;
+  left: 0%;
+}
 
-  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    font-size: 2rem;
-    line-height: 2.5em;
-  }
+@media(min - width: ${(props: Props) => props.theme.sizes.small}) {
+  font - size: 2rem;
+  line - height: 2.5em;
+}
 `;
 const Nav = () => {
+  const router = useRouter();
+
+  console.log(router.pathname);
 
   return (
     <NavStyles pose="open">
 
-      <NavItem display={canAccessPage(IndexAuth)} aria-hidden={!canAccessPage(IndexAuth)}>
+      <NavItem
+        display={canAccessPage(IndexAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(IndexAuth)}
+        isActive={(router.pathname === '/')}>
         <Link href="/">
           <a>Home</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(ArticlesAuth)} aria-hidden={!canAccessPage(ArticlesAuth)}>
+      <NavItem
+        display={canAccessPage(ArticlesAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(ArticlesAuth)}
+        isActive={(router.pathname === '/articles' || router.pathname === '/post')}>
         <Link href="/articles">
           <a>Articles</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(AboutAuth)} aria-hidden={!canAccessPage(AboutAuth)}>
+      <NavItem
+        display={canAccessPage(AboutAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(AboutAuth)}
+        isActive={(router.pathname === '/about')}>
         <Link href="/about">
           <a>About</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(ServicesAuth)} aria-hidden={!canAccessPage(ServicesAuth)}>
+      <NavItem
+        display={canAccessPage(ServicesAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(ServicesAuth)}
+        isActive={(router.pathname === '/services')}>
         <Link href="/services">
           <a>Services</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(ProjectsAuth)} aria-hidden={!canAccessPage(ProjectsAuth)}>
+      <NavItem
+        display={canAccessPage(ProjectsAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(ProjectsAuth)}
+        isActive={(router.pathname === '/projects')}>
         <Link href="/projects">
           <a>Projects</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(ModelsAuth)} aria-hidden={!canAccessPage(ModelsAuth)}>
+      <NavItem
+        display={canAccessPage(ModelsAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(ModelsAuth)}
+        isActive={(router.pathname === '/models' || router.pathname === '/model')}>
         <Link href="/models">
           <a>Models</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(GalleryAuth)} aria-hidden={!canAccessPage(GalleryAuth)}>
+      <NavItem
+        display={canAccessPage(GalleryAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(GalleryAuth)}
+        isActive={(router.pathname === '/galleries')}>
         <Link href="/galleries">
           <a>Galleries</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(ContactAuth)} aria-hidden={!canAccessPage(ContactAuth)}>
+      <NavItem
+        display={canAccessPage(ContactAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(ContactAuth)}
+        isActive={(router.pathname === '/contact-me')}>
         <Link href="/contact-me">
           <a>Contact Me</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(AdminAuth)} aria-hidden={!canAccessPage(AdminAuth)}>
+      <NavItem
+        display={canAccessPage(AdminAuth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(AdminAuth)}
+        isActive={(router.pathname === '/admin')}>
         <Link href="/admin">
           <a>Admin Panel</a>
         </Link>
       </NavItem>
 
-      <NavItem display={canAccessPage(AdminAuth)} aria-hidden={!canAccessPage(AdminAuth)}>
+      <NavItem display={canAccessPage(AdminAuth) ? 'block' : 'none'} aria-hidden={!canAccessPage(AdminAuth)}>
         <a href="https://strapi.christopherleemiller.me/admin">Strapi</a>
       </NavItem>
 
