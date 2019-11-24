@@ -92,7 +92,6 @@ const ToggleButton = styled.button`
 
 const ModelsFilters = () => {
   const [isOpen, setOpen] = useState(`open`);
-  console.log(isOpen);
 
   return (
     <Filter>

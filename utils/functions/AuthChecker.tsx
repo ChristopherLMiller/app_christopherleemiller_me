@@ -17,7 +17,7 @@ export function getAuth() {
   return auth;
 }
 
-interface iCanAccessPage {
+export interface iCanAccessPage {
   isSecure: boolean;
   permitted?: {
     groups: string[];
