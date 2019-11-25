@@ -43,15 +43,6 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     }
   }
 
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   // Error Catching
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     Sentry.configureScope(scope => {

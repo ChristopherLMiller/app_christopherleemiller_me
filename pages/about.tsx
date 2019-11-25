@@ -18,4 +18,8 @@ const AboutPage = () => (
   </Main>
 );
 
+AboutPage.getInitialProps = async ({ req }: any) => {
+  console.log('calling get initial props');
+  console.log(req);
+}
 export default withLayout(AboutPage, { title, description, useSEO: true, path: `/about` });
