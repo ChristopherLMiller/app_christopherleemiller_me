@@ -92,7 +92,7 @@
     "@types/next-seo": "^1.10.0",
     "@types/node": "^12.11.7",
     "@types/nprogress": "0.2.0",
-    "@types/react-image-gallery": "^0.8.4",
+    "@types/react-image-gallery": "^0.9.2",
     "@types/react-modal": "^3.10.0",
     "@types/styled-components": "^4.1.19",
     "@types/yup": "^0.26.24",
