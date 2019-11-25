@@ -11,6 +11,7 @@ import { FormErrorMessage } from '../components/inputs/ErrorMessage';
 import { Button } from '../components/inputs/Button';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
+import { useAuth } from '../lib/hook/useAuth';
 
 const title = `Reset Password`;
 const description = `Reset your password here!`;
@@ -38,6 +39,7 @@ const ResetPasswordPage = () => {
   const { addToast } = useToasts();
   canAccessPage({ isSecure: false });
   const router = useRouter();
+  const auth = useAuth();
 
   if (router.query && router.query.code) {
     return (
