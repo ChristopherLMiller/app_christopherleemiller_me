@@ -8,7 +8,6 @@ import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
 import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
-import { getAuth } from '../utils/functions/AuthChecker';
 import { Label } from '../components/inputs/Label';
 import { FieldSet } from '../components/inputs/FieldSet';
 import { Button } from '../components/inputs/Button';
@@ -78,12 +77,7 @@ const ContactFormEmailList = styled.ul`
   padding-left: 0;
 `;
 
-export const auth = {
-  isSecure: false
-};
-
 const ContactPage = () => {
-  getAuth();
   const { addToast } = useToasts();
 
   return (

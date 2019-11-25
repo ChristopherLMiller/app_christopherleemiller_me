@@ -1,7 +1,6 @@
 import { SFC } from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
-//import { Props } from '../../../styles/Themes';
 import Link from 'next/link';
 import { canAccessPage, iCanAccessPage } from '../../../utils/functions/AuthChecker';
 import { useRouter } from 'next/router';
@@ -49,7 +48,7 @@ const StyledNavItem = styled(PosedNavItem)`
 `;
 
 interface iNavItem {
-  auth: iCanAccessPage;
+  auth?: iCanAccessPage | undefined;
   isActivePaths: string[];
   href: string;
   title: string
@@ -58,16 +57,29 @@ interface iNavItem {
 const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
   const router = useRouter();
 
-  return (
-    <StyledNavItem
-      display={canAccessPage(auth) ? 'block' : 'none'}
-      aria-hidden={!canAccessPage(auth)}
-      isActive={(isActivePaths.includes(router.pathname))}>
-      <Link href={href}>
-        <a>{title}</a>
-      </Link>
-    </StyledNavItem>
-  )
+  if (auth) {
+    return (
+      <StyledNavItem
+        display={canAccessPage(auth) ? 'block' : 'none'}
+        aria-hidden={!canAccessPage(auth)}
+        isActive={(isActivePaths.includes(router.pathname))}>
+        <Link href={href}>
+          <a>{title}</a>
+        </Link>
+      </StyledNavItem>
+    )
+  } else {
+    return (
+      <StyledNavItem
+        display={'block'}
+        aria-hidden={false}
+        isActive={(isActivePaths.includes(router.pathname))}>
+        <Link href={href}>
+          <a>{title}</a>
+        </Link>
+      </StyledNavItem>
+    )
+  }
 }
 
 export { NavItem }

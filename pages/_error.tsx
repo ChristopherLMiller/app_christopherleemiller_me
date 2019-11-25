@@ -2,7 +2,6 @@ import { SFC } from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { getAuth } from '../utils/functions/AuthChecker';
 
 const title = `Error`;
 const description = `Uh-Oh! We broke something!`;
@@ -11,7 +10,6 @@ interface ErrorPageTypes {
   props: object;
 }
 const ErrorPage: SFC<ErrorPageTypes> = ({ props }) => {
-  getAuth()
 
   return (
     <Main>

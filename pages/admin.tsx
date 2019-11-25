@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 const title = `Admin`;
 const description = `Admin Control Panel`;
 
-export const auth = {
+export const adminAuth = {
   isSecure: true,
   permitted: {
     groups: ['Administrator']
@@ -16,7 +16,7 @@ export const auth = {
 };
 
 const AdminPage = () => {
-  if (canAccessPage(auth)) {
+  if (canAccessPage(adminAuth)) {
 
     return (
       <Main>

@@ -8,7 +8,7 @@ const title = `Services`;
 const description = `Services that I offer`;
 
 
-export const auth = {
+export const servicesAuth = {
   isSecure: true,
   permitted: {
     groups: ['Administrator']
@@ -16,7 +16,7 @@ export const auth = {
 };
 
 const ServicesPage = () => {
-  if (canAccessPage(auth)) {
+  if (canAccessPage(servicesAuth)) {
     return (
       <Main>
         <Card>

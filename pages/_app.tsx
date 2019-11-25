@@ -19,14 +19,28 @@ import { ProvideAuth } from '../lib/hook/useAuth';
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
 }
-class MyApp extends App<AppProps & IApolloClient> {
+
+interface AppState {
+  user: object | null;
+}
+
+class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   constructor(props: AppProps & IApolloClient) {
     super(props);
+
+    // Setup sentry for error tracking
     Sentry.init({
       dsn: process.env.SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
+
+    // Setup LogRocket for error monitoring
     LogRocket.init(process.env.LOGROCKET);
+
+    // Setup state
+    this.state = {
+      user: null
+    }
   }
 
   static async getInitialProps({ Component, ctx }: AppContext) {
@@ -35,25 +49,10 @@ class MyApp extends App<AppProps & IApolloClient> {
       pageProps = await Component.getInitialProps(ctx);
     }
 
-    if (ctx.req != undefined) {
-      const cookies = ctx.req.headers.cookie;
-      if (cookies != undefined) {
-        const cookiesArray = cookies.split(';');
-
-        cookiesArray.forEach(cookie => {
-          const keyPair = cookie.split('=');
-
-          if (keyPair[0].trim() === 'jwt') {
-            const jwt = keyPair[1].trim();
-            pageProps = { ...pageProps, jwt };
-          }
-        });
-      }
-    }
-
     return { pageProps };
   }
 
+  // Error Catching
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     Sentry.configureScope(scope => {
       scope.setExtras(errorInfo);
@@ -74,9 +73,17 @@ class MyApp extends App<AppProps & IApolloClient> {
   }
 
   componentDidMount() {
+    // Initialize Google Analytics and log page changes
     initGA();
-    logPageView();
     Router.events.on(`routeChangeComplete`, logPageView);
+
+    // get the user from localstorage if it exists
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.setState({
+        user: JSON.parse(user)
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -89,7 +96,7 @@ class MyApp extends App<AppProps & IApolloClient> {
     return (
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
-          <ProvideAuth>
+          <ProvideAuth user={this.state.user}>
             <DefaultSeo
               titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
               facebook={{

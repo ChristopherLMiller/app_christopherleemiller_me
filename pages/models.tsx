@@ -8,10 +8,6 @@ import { Main } from '../styles/Generics';
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-export const auth = {
-  isSecure: false
-};
-
 const ModelsPage = () => (
   <Main>
     <ModelsFilterContextProvider>
