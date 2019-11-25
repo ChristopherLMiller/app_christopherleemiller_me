@@ -87,7 +87,6 @@ class MyApp extends App<AppProps & IApolloClient> {
     const { Component, apollo, pageProps } = this.props;
 
     return (
-
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
           <ProvideAuth>
