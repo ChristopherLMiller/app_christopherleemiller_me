@@ -49,7 +49,7 @@ const StyledNavItem = styled(PosedNavItem)`
 
 interface iNavItem {
   auth?: iCanAccessPage | undefined;
-  isActivePaths: string[];
+  isActivePaths?: string[];
   href: string;
   title: string
 }
@@ -65,7 +65,7 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
       <StyledNavItem
         display={canAccessPage(auth) ? 'block' : 'none'}
         aria-hidden={!canAccessPage(auth)}
-        isActive={(isActivePaths.includes(router.pathname))}>
+        isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ''}>
         {isHrefLocal && <Link href={href}>
           <a>{title}</a>
         </Link>}
@@ -77,7 +77,7 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
       <StyledNavItem
         display={'block'}
         aria-hidden={false}
-        isActive={(isActivePaths.includes(router.pathname))}>
+        isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ''}>
         {isHrefLocal && <Link href={href}>
           <a>{title}</a>
         </Link>}
