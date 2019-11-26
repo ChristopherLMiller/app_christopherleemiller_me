@@ -1,4 +1,4 @@
-import App, { AppProps, AppContext } from 'next/app';
+import App, { AppProps } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';

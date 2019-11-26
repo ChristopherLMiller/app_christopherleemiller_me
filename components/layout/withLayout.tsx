@@ -16,7 +16,7 @@ interface withLayoutProps {
 }
 
 const withLayout = <P extends object>(
-  WrappedComponent: React.ComponentType<P>,
+  WrappedComponent: any,
   meta: {
     title: string,
     description: string,
@@ -26,6 +26,9 @@ const withLayout = <P extends object>(
   }
 ) => {
   class HOC extends React.Component<P & withLayoutProps> {
+    static getInitialProps = WrappedComponent.getInitialProps;
+
+
     public render() {
       return (
         <Fragment>
