@@ -57,15 +57,19 @@ interface iNavItem {
 const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
   const router = useRouter();
 
+  // check if the href is full or not, this matters for linking
+  const isHrefLocal = href.includes('http') ? false : true;
+
   if (auth) {
     return (
       <StyledNavItem
         display={canAccessPage(auth) ? 'block' : 'none'}
         aria-hidden={!canAccessPage(auth)}
         isActive={(isActivePaths.includes(router.pathname))}>
-        <Link href={href}>
+        {isHrefLocal && <Link href={href}>
           <a>{title}</a>
-        </Link>
+        </Link>}
+        {!isHrefLocal && <a href={href}>{title}</a>}
       </StyledNavItem>
     )
   } else {
@@ -74,9 +78,10 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
         display={'block'}
         aria-hidden={false}
         isActive={(isActivePaths.includes(router.pathname))}>
-        <Link href={href}>
+        {isHrefLocal && <Link href={href}>
           <a>{title}</a>
-        </Link>
+        </Link>}
+        {!isHrefLocal && <a href={href}>{title}</a>}
       </StyledNavItem>
     )
   }
