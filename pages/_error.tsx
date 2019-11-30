@@ -1,7 +1,7 @@
-import { SFC } from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
+import { FC } from 'react';
 
 const title = `Error`;
 const description = `Uh-Oh! We broke something!`;
@@ -9,7 +9,7 @@ const description = `Uh-Oh! We broke something!`;
 interface ErrorPageTypes {
   props: object;
 }
-const ErrorPage: SFC<ErrorPageTypes> = ({ props }) => {
+const ErrorPage: FC<ErrorPageTypes> = ({ props }) => {
 
   return (
     <Main>

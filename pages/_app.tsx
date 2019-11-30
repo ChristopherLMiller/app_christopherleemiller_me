@@ -81,6 +81,16 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     Router.events.off(`routeChangeComplete`, logPageView);
   }
 
+  static async getInitialProps({ Component, ctx }: any) {
+    let pageProps = {} as any;
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   render() {
     const { Component, apollo, pageProps } = this.props;
 

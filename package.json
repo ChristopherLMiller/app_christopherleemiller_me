@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.22.8-dev",
+  "version": "0.22.9-dev",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -70,6 +70,7 @@
     "react-markdown": "^4.2.2",
     "react-modal": "^3.11.1",
     "react-pose": "^4.0.9",
+    "react-snowstorm": "0.0.3",
     "react-toast-notifications": "^2.2.5",
     "sitemap": "^4.1.1",
     "strapi-sdk-javascript": "^0.3.3",

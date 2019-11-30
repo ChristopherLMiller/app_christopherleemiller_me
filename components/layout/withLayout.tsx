@@ -6,7 +6,6 @@ import { SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions/imageURL';
 import { Profile } from './Profile';
 
-
 interface withLayoutProps {
   title: string;
   description: string;
@@ -26,8 +25,14 @@ const withLayout = <P extends object>(
   }
 ) => {
   class HOC extends React.Component<P & withLayoutProps> {
-    static getInitialProps = WrappedComponent.getInitialProps;
+    static getInitialProps = async (ctx: any) => {
+      let pageProps = {};
 
+      if (WrappedComponent.getInitialProps)
+        return await WrappedComponent.getInitialProps(ctx);
+
+      return { pageProps };
+    }
 
     public render() {
       return (
