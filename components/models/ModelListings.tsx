@@ -24,12 +24,13 @@ const ModelListings = () => {
   if (tag === "all") tag = null;
   if (company === "all") company = null;
   if (scale === "all") scale = null;
+  if (completed === "all") completed = null;
 
   // load the GQL Data
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
       where: {
-        scale: {
+        /*scale: {
           slug_contains: scale || null,
         },
         manufacturer: {
@@ -38,7 +39,8 @@ const ModelListings = () => {
         tags: {
           slug_contains: tag || null,
         },
-        completed: completed,
+        completed: completed,*/
+        published: true,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,

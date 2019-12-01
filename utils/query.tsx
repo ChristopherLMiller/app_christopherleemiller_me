@@ -1,7 +1,8 @@
 import gql from 'graphql-tag';
+import { MODELS_PER_PAGE, PER_PAGE } from '../config';
 
 export const ARTICLES_QUERY = gql`
-  query ARTICLES_QUERY($start: Int = 0, $limit: Int = 20, $where: JSON) {
+  query ARTICLES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
     articles(
       limit: $limit
       start: $start
@@ -40,7 +41,7 @@ export const ARTICLES_QUERY = gql`
 export const MODELS_QUERY = gql`
   query MODELS_QUERY(
     $start: Int = 0
-    $limit: Int = 20
+    $limit: Int = ${MODELS_PER_PAGE}
     $sort: String = "updated_at:DESC"
     $where: JSON
   ) {
@@ -90,7 +91,7 @@ export const MODELS_QUERY = gql`
 export const MODELS_QUERY_BRIEF = gql`
   query MODELS_QUERY(
     $start: Int = 0
-    $limit: Int = 20
+    $limit: Int = ${MODELS_PER_PAGE}
     $sort: String = "updated_at:DESC"
     $where: JSON
   ) {
