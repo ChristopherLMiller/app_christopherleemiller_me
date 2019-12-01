@@ -1,4 +1,4 @@
-import App, { AppProps, AppContext } from 'next/app';
+import App, { AppProps } from 'next/app';
 import React from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
@@ -11,7 +11,7 @@ import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
 import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
-import withApollo from '../lib/withApollo';
+import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 import { ProvideAuth } from '../lib/hook/useAuth';
@@ -19,41 +19,31 @@ import { ProvideAuth } from '../lib/hook/useAuth';
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
 }
-class MyApp extends App<AppProps & IApolloClient> {
+
+interface AppState {
+  user: object | null;
+}
+
+class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   constructor(props: AppProps & IApolloClient) {
     super(props);
+
+    // Setup sentry for error tracking
     Sentry.init({
       dsn: process.env.SENTRY_PUBLIC_DSN,
       release: `${name}@${version}`,
     });
+
+    // Setup LogRocket for error monitoring
     LogRocket.init(process.env.LOGROCKET);
+
+    // Setup state
+    this.state = {
+      user: null
+    }
   }
 
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    if (ctx.req != undefined) {
-      const cookies = ctx.req.headers.cookie;
-      if (cookies != undefined) {
-        const cookiesArray = cookies.split(';');
-
-        cookiesArray.forEach(cookie => {
-          const keyPair = cookie.split('=');
-
-          if (keyPair[0].trim() === 'jwt') {
-            const jwt = keyPair[1].trim();
-            pageProps = { ...pageProps, jwt };
-          }
-        });
-      }
-    }
-
-    return { pageProps };
-  }
-
+  // Error Catching
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     Sentry.configureScope(scope => {
       scope.setExtras(errorInfo);
@@ -74,23 +64,40 @@ class MyApp extends App<AppProps & IApolloClient> {
   }
 
   componentDidMount() {
+    // Initialize Google Analytics and log page changes
     initGA();
-    logPageView();
     Router.events.on(`routeChangeComplete`, logPageView);
+
+    // get the user from localstorage if it exists
+    const user = localStorage.getItem('user');
+    if (user) {
+      this.setState({
+        user: JSON.parse(user)
+      });
+    }
   }
 
   componentWillUnmount() {
     Router.events.off(`routeChangeComplete`, logPageView);
   }
 
+  static async getInitialProps({ Component, ctx }: any) {
+    let pageProps = {} as any;
+
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+
+    return { pageProps };
+  }
+
   render() {
     const { Component, apollo, pageProps } = this.props;
 
     return (
-
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
-          <ProvideAuth>
+          <ProvideAuth user={this.state.user}>
             <DefaultSeo
               titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
               facebook={{

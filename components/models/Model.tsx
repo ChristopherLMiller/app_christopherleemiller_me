@@ -12,6 +12,7 @@ import { ModelSidebar } from './elements/Sidebar';
 const StyledModelPage = styled.div`
   display: flex;
   flex-direction: column;
+  grid-gap: 25px;
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     display: grid;

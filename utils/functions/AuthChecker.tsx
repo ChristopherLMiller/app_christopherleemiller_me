@@ -1,31 +1,13 @@
 import { useAuth } from "../../lib/hook/useAuth";
-import Cookies from 'js-cookie';
 
-export function getAuth() {
-  const auth = useAuth();
-
-  // see if we are authenticated via context first
-  if (!auth.isAuthenticated) {
-    // Nope?  Ok how about a cookie?
-    const jwt = Cookies.get('jwt');
-
-    // if the cookie is undefined there wasn't a session
-    if (jwt !== undefined) {
-      auth.refetchUser(jwt);
-    }
-  }
-  return auth;
-}
-
-interface iCanAccessPage {
+export interface iCanAccessPage {
   isSecure: boolean;
   permitted?: {
     groups: string[];
   }
 }
 export function canAccessPage({ isSecure, permitted }: iCanAccessPage) {
-  const auth = getAuth();
-
+  const auth = useAuth();
 
   // see if the page is secured or not
   if (isSecure) {

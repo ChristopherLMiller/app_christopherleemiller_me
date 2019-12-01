@@ -1,13 +1,13 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessPage } from '../utils/functions/AuthChecker';
 import { useRouter } from 'next/router';
+import { canAccessPage } from '../utils/functions/AuthChecker';
 
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
 
-export const auth = {
+export const projectsAuth = {
   isSecure: true,
   permitted: {
     groups: ['Administrator']
@@ -15,7 +15,7 @@ export const auth = {
 };
 
 const ProjectsPage = () => {
-  if (canAccessPage(auth)) {
+  if (canAccessPage(projectsAuth)) {
     return (
       <Main>
         <Card>
