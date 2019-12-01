@@ -1,3 +1,4 @@
+import Router from 'next/router';
 import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
@@ -28,6 +29,15 @@ const AdminPage = () => {
 AdminPage.getInitialProps = async (ctx: any) => {
   console.log('checking auth in admin page');
   console.log(ctx);
+
+  if (ctx.res) {
+    ctx.res.writeHead(302, {
+      location: '/',
+    });
+    ctx.res.end();
+  } else {
+    Router.push('/');
+  }
 
   return true;
 }
