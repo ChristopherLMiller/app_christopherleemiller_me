@@ -2,7 +2,7 @@ import { SFC } from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { canAccessPage, iCanAccessPage } from '../../../utils/functions/AuthChecker';
+import { canAccessPage, iCanAccessPage } from '../../../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 const PosedNavItem = posed.li({
