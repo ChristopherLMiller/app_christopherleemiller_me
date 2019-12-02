@@ -43,7 +43,6 @@ const Body: SFC<ModelTypes> = ({ model }) => {
             items={images}
             showPlayButton={false}
             showFullscreenButton={false}
-            defaultImage={ImageURL()}
             showBullets
           />
         </StyledGallery>
