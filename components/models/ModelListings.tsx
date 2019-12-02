@@ -8,18 +8,23 @@ import { MODELS_QUERY_BRIEF } from '../../utils/query';
 import { MODELS_PER_PAGE } from '../../config';
 import { ModelsFilterContext } from '../../lib/context/ModelFiltersContext';
 import { StyledModelListings } from '../../styles/Models';
+import { hasPermission } from '../../utils/functions/Auth';
 
 const ModelListings = () => {
   const router = useRouter();
+
   // get the current page or default to 1
   let page = 1;
   if (router.query.page != undefined) {
     page = parseFloat(router.query.page.toString());
   }
 
+  // grab the filter parameters from the context
   let { completed, scale, tag, company, sort } = useContext(
     ModelsFilterContext
   );
+
+  let published = hasPermission({ groups: ["Administrator", "Mod"] }) ? null : true;
 
   if (tag === "all") tag = null;
   if (company === "all") company = null;
@@ -30,7 +35,7 @@ const ModelListings = () => {
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
       where: {
-        /*scale: {
+        scale: {
           slug_contains: scale || null,
         },
         manufacturer: {
@@ -39,8 +44,8 @@ const ModelListings = () => {
         tags: {
           slug_contains: tag || null,
         },
-        completed: completed,*/
-        published: true,
+        completed: completed || null,
+        published: published,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,

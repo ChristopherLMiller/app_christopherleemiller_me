@@ -1,7 +1,7 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessPage } from '../utils/functions/AuthChecker';
+import { canAccessPage } from '../utils/functions/Auth';
 import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';

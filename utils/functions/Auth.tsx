@@ -24,3 +24,32 @@ export function canAccessPage({ isSecure, permitted }: iCanAccessPage) {
     return true;
   }
 }
+
+type hasPermissionType = {
+  groups: string[]
+}
+
+export function hasPermission(groups: hasPermissionType) {
+  const auth = useAuth();
+
+  if (auth.isAuthenticated) {
+    console.log(getRoleByName());
+    if (groups.groups.includes(getRoleByName())) {
+      return true;
+    }
+  }
+
+  // implicit return false to prevent edge cases
+  return false;
+}
+
+export function getRoleByName() {
+  const auth = useAuth();
+
+  if (auth.isAuthenticated) {
+    return auth.user.role.name;
+  }
+
+  // implicit return of guest
+  return 'Guest';
+}

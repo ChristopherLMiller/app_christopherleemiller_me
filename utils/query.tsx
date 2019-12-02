@@ -59,6 +59,7 @@ export const MODELS_QUERY = gql`
       seo_title
       seo_description
       completed
+      published
       kit_number
       year_released
       scale {
@@ -89,7 +90,7 @@ export const MODELS_QUERY = gql`
   }
 `;
 export const MODELS_QUERY_BRIEF = gql`
-  query MODELS_QUERY(
+  query MODELS_QUERY_BRIEF(
     $start: Int = 0
     $limit: Int = ${MODELS_PER_PAGE}
     $sort: String = "updated_at:DESC"
@@ -104,6 +105,7 @@ export const MODELS_QUERY_BRIEF = gql`
         provider_metadata
       }
       completed
+      published
       kit_number
       year_released
       scale {
