@@ -12,6 +12,7 @@ import { Button } from '../inputs/Button';
 import { FormErrorMessage } from '../inputs/ErrorMessage';
 import * as Yup from 'yup';
 import md5 from 'md5';
+import { isAuthenticated, getUserEmail, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
 
 
 const ProfileContainer = styled.div`
@@ -171,7 +172,7 @@ const Profile = () => {
 
   // Auth
   const auth = useAuth();
-  const emailHash = auth.isAuthenticated ? md5(auth.user.email) : 'default';
+  const emailHash = md5(getUserEmail() || 'default');
   const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
 
   return (
@@ -268,12 +269,12 @@ const Profile = () => {
       <ProfileContainer>
         <ProfilePicture src={avatarURL} onClick={() => setOpen(!isOpen)} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setTimeout(() => setOpen(false), 5 * 1000)} />
         <ProfileInfo pose={isOpen ? `open` : `closed`} initialPose="closed">
-          <ProfileName>Hi, {auth.isAuthenticated && auth.user.username ? auth.user.username : 'Guest'}</ProfileName>
-          {auth.isAuthenticated && <ProfileRole>{auth.user.role.name}</ProfileRole>}
+          <ProfileName>Hi, {getUserName() || 'Guest'}</ProfileName>
+          {isAuthenticated() && <ProfileRole>{getUserRoleByName()}</ProfileRole>}
           <ProfileInfoList>
-            {auth.isAuthenticated && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
-            {auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => auth.signout()}>Logout</a></ProfileInfoListItem>}
-            {!auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
+            {isAuthenticated() && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
+            {isAuthenticated() && <ProfileInfoListItem><a onClick={() => auth.signout()}>Logout</a></ProfileInfoListItem>}
+            {!isAuthenticated() && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
           </ProfileInfoList>
         </ProfileInfo>
       </ProfileContainer>
