@@ -22,6 +22,7 @@ const StyledLogo = styled(LogoFilter)`
     display: block;
   }
 `;
+
 const Logo = () => (
   <StyledLogo
     src="https://res.cloudinary.com/christopherleemiller/image/upload/c_scale,w_300/v1544466783/clm_me/assets/logo.png"
