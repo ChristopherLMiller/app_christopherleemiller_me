@@ -2,5 +2,5 @@ import styled from 'styled-components';
 
 export const FieldSet = styled.fieldset`
   border: none;
-  padding-left: 0;
+  padding: 10px 0;
 `;
