@@ -16,6 +16,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { FieldSet } from '../inputs/FieldSet';
 import { Label } from '../inputs/Label';
 import { FormErrorMessage } from '../inputs/ErrorMessage';
+import { isAuthenticated, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -398,14 +399,14 @@ const MobileNav = () => {
               <Avatar />
             </ProfileImage>
             <ProfileInfo>
-              <ProfileName>{auth.isAuthenticated && auth.user.username ? auth.user.username : 'Guest'}</ProfileName>
-              <ProfileRole>{auth.isAuthenticated && auth.user.role.name ? auth.user.role.name : 'Guest user'}</ProfileRole>
+              <ProfileName>{getUserName() || 'Guest'}</ProfileName>
+              <ProfileRole>{getUserRoleByName() || 'Guest user'}</ProfileRole>
             </ProfileInfo>
           </ProfileContainer>
           <ProfileLinks>
-            {auth.isAuthenticated && <ListItem>My Account</ListItem>}
-            {auth.isAuthenticated && <ListItem onClick={() => auth.signout()}>Logout</ListItem>}
-            {!auth.isAuthenticated && <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>}
+            {isAuthenticated() && <ListItem>My Account</ListItem>}
+            {isAuthenticated() && <ListItem onClick={() => auth.signout()}>Logout</ListItem>}
+            {!isAuthenticated() && <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>}
           </ProfileLinks>
         </AccountWrapper>
         <NavHr />

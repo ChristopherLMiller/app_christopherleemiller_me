@@ -95,6 +95,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     const { Component, apollo, pageProps } = this.props;
 
     return (
+
       <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
           <ProvideAuth user={this.state.user}>
@@ -114,7 +115,9 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
             />
             <ToastProvider>
               <Page>
-                <Component {...pageProps} />
+                <React.StrictMode>
+                  <Component {...pageProps} />
+                </React.StrictMode>
               </Page>
             </ToastProvider>
           </ProvideAuth>

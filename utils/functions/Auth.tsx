@@ -33,8 +33,7 @@ export function hasPermission(groups: hasPermissionType) {
   const auth = useAuth();
 
   if (auth.isAuthenticated) {
-    console.log(getRoleByName());
-    if (groups.groups.includes(getRoleByName())) {
+    if (groups.groups.includes(getUserRoleByName())) {
       return true;
     }
   }
@@ -43,13 +42,30 @@ export function hasPermission(groups: hasPermissionType) {
   return false;
 }
 
-export function getRoleByName() {
+export function getUserRoleByName() {
   const auth = useAuth();
+  return auth.isAuthenticated ? auth.user.role.name : null;
+}
 
-  if (auth.isAuthenticated) {
-    return auth.user.role.name;
-  }
+export function getUserRoleByID() {
+  const auth = useAuth();
+  return auth.isAuthenticated ? auth.user.role.id : 0;
+}
 
-  // implicit return of guest
-  return 'Guest';
+// function to return if user is authenticated or not
+export function isAuthenticated() {
+  const auth = useAuth();
+  return auth.isAuthenticated;
+}
+
+// function to get the email of the authenticated user
+export function getUserEmail() {
+  const auth = useAuth();
+  return auth.isAuthenticated ? auth.user.email : null;
+}
+
+// function to get the name of the authenticated user
+export function getUserName() {
+  const auth = useAuth();
+  return auth.isAuthenticated ? auth.user.username : null;
 }
