@@ -5,4 +5,8 @@ export const FormErrorMessage = styled.div`
   color: var(--text-color-light);
   font-size: 1.5rem;
   line-height: 2rem;
+
+  div {
+    padding: 5px 10px;
+  }
 `;

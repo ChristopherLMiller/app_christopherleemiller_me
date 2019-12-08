@@ -108,6 +108,7 @@ Modal.setAppElement('#__next');
 const ModalStyles = {
   overlay: {
     background: '#131313bf',
+    zIndex: 9999,
   },
   content: {
     top: '20%',
@@ -190,9 +191,9 @@ const Profile = () => {
           <ModalLayoutColumn>
             <ModalLayoutHeader>Login</ModalLayoutHeader>
             <Formik
-              initialValues={{ identifier: '', password: '' }}
-              onSubmit={(values, { setSubmitting }) => {
-                setSubmitting(true);
+              initialValues={{ identifier: '', password: '', general: '' }}
+              onSubmit={(values, actions) => {
+                actions.setSubmitting(true);
 
                 // try logging in
                 auth.signin(values.identifier, values.password).then((response: any) => {
@@ -200,8 +201,9 @@ const Profile = () => {
                     setModalOpen(false);
                     addToast(`Woohoo! You're in!`, { appearance: 'success' });
                   } else {
-                    addToast(response.message, { appearance: "error" });
-                    setSubmitting(false);
+                    actions.setFieldError('general', response.message);
+                    //addToast(response.message, { appearance: "error" });
+                    actions.setSubmitting(false);
                   }
                 })
               }}
@@ -223,6 +225,9 @@ const Profile = () => {
                         <ErrorMessage name="password" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
+                    <FormErrorMessage>
+                      <ErrorMessage name="general" component="div" />
+                    </FormErrorMessage>
                     <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Sign In</Button>
                   </StyledForm>
                 </Form>
@@ -237,14 +242,9 @@ const Profile = () => {
                 setSubmitting(true);
 
                 // try logging in
-                auth.requestPasswordReset(values.email).then((response: any) => {
-                  if (response.status === 200) {
-                    setModalOpen(false);
-                    addToast(response.message, { appearance: 'success' });
-                  } else {
-                    addToast(response.message, { appearance: "error" });
-                    setSubmitting(false);
-                  }
+                auth.requestPasswordReset(values.email).then(() => {
+                  setModalOpen(false);
+                  addToast('If an account with this email exists you will receive an email shortly to reset your password.', { appearance: 'success' });
                 })
               }}
               validationSchema={ResetSchema}>
