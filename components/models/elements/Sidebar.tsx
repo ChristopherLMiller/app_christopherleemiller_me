@@ -17,17 +17,17 @@ const ModelSidebar: SFC<ModelTypes> = ({ model }) => (
   <StyledModelSidebar>
     <Sidebar title="Information">
       <ul>
-        <li>Brand: {model.manufacturer.company}</li>
-        <li>Kit Number: {model.kit_number}</li>
-        <li>Scale: {model.scale.scale}</li>
-        <li>Released: {model.year_released}</li>
-        <li>Completed: {model.completed ? `Yes` : `No`}</li>
+        <li>Brand: {model?.manufacturer?.company}</li>
+        <li>Kit Number: {model?.kit_number}</li>
+        <li>Scale: {model?.scale?.scale}</li>
+        <li>Released: {model?.year_released}</li>
+        <li>Completed: {model?.completed ? `Yes` : `No`}</li>
         <li>
-          Scalemates: <a href={model.scalemates_link}>Link</a>
+          Scalemates: <a href={model?.scalemates_link}>Link</a>
         </li>
         <li>
           Build Time:{` `}
-          {model.clockify_id && <BuildTime id={model.clockify_id} />}
+          {model?.clockify_id && <BuildTime id={model?.clockify_id} />}
         </li>
       </ul>
     </Sidebar>
