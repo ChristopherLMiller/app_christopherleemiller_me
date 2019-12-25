@@ -38,7 +38,7 @@ const Pagination: SFC<PaginationTypes> = ({ page, content_type }) => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `${STRAPI_ENDPOINT}/${content_type}/count?published=true`,
+        `${STRAPI_ENDPOINT}/${content_type}/count?status=PUBLISHED`,
         {
           headers: {
             'Content-Type': `application/json`,

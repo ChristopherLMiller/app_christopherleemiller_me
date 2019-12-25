@@ -33,7 +33,7 @@ const ArticlesPage: SFC = () => {
       start: page * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
       where: {
-        published: true,
+        status_contains: "PUBLISHED",
 
       },
     },
