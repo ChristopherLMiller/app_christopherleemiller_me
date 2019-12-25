@@ -61,6 +61,13 @@ app
       app.render(req, res, actualPage, queryParams);
     });
 
+    // Admin panel
+    /*server.get(`/admin/articles/edit/:id`, (req, res) => {
+      const actualPage = '/admin/articles/edit';
+      const queryParams = { id: req.params.id };
+      app.render(req, res, actualPage, queryParams);
+    })*/
+
     // Service worker
     server.get(`/service-worker.js`, (req, res) => {
       const filePath = join(__dirname, `.next`, `/service-worker.js`);

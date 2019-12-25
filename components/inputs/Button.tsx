@@ -16,12 +16,11 @@ export const Button = styled(PosedButton)`
   padding: 10px 30px;
   transition: all 0.25s;
   text-align: center;
-  margin: 20px auto;
+  margin: 20px 5px;
   max-width: 200px;
-  letter-spacing: 2px;
+  letter-spacing: -1px;
   cursor: ${(props: any) => props.disabled ? 'progress' : 'pointer'};
   color: var(--text-color-light);
   font-size: 2rem;
   border: none;
-
 `;

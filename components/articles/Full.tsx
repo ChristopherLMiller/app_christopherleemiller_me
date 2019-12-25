@@ -1,6 +1,6 @@
 import hljs from 'highlight.js';
 import { NextSeo, BlogJsonLd } from 'next-seo';
-import { SFC, useEffect, Fragment } from 'react';
+import { SFC, useEffect, Fragment, useState } from 'react';
 import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
@@ -9,6 +9,15 @@ import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from '../../config';
 import { StyledArticle } from '../../styles/Articles';
 import { CommentThread } from '../CommentThread';
 import { StyledContentBlock } from '../elements/ContentBlock';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { hasPermission, isOwner, roles } from '../../utils/functions/Auth';
+import { Button } from '../inputs/Button';
+import { ModalBox } from '../elements/Modal';
+
+const ArticleOptions = styled.div``;
+
+const ArticleOptionsItem = styled.span``;
 
 const FullArticle: SFC<ArticleTypes> = ({
   article,
@@ -33,6 +42,9 @@ const FullArticle: SFC<ArticleTypes> = ({
     : SITE_DEFAULT_IMAGE_FILE;
 
   const tags = article.tags.map(tag => tag.title);
+
+  // state for the modal box to confirm deletion
+  const [isModalOpen, setModalOpen] = useState(false);
 
   return (
     <Fragment>
@@ -70,9 +82,18 @@ const FullArticle: SFC<ArticleTypes> = ({
       />
       <StyledArticle>
         {header && <ArticleHead article={article} />}
-        <StyledContentBlock>{children}</StyledContentBlock>
+        <StyledContentBlock>
+          {children}
+          {(hasPermission({ groups: [roles.admin] }) || isOwner(article.user.id)) && <ArticleOptions>
+            <ArticleOptionsItem><Link href={`/admin/articles/edit/${article.id}`} as={`/admin/articles/edit/${article.id}`}><Button>Edit Article</Button></Link></ArticleOptionsItem>
+            <ArticleOptionsItem><Button onClick={() => setModalOpen(true)}>Delete Article</Button></ArticleOptionsItem>
+          </ArticleOptions>}
+        </StyledContentBlock>
         {commentsEnabled && <CommentThread item={article} slug="post" />}
       </StyledArticle>
+      <ModalBox title="Confirm Deletion" isOpen={isModalOpen} onRequestClose={() => setModalOpen(false)}>
+        <p>Are you sure you want to delete this article?</p>
+      </ModalBox>
     </Fragment>
   );
 };

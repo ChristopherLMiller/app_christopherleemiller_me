@@ -13,6 +13,7 @@ import { FormErrorMessage } from '../inputs/ErrorMessage';
 import * as Yup from 'yup';
 import md5 from 'md5';
 import { isAuthenticated, getUserEmail, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
+import { useRouter } from 'next/router';
 
 
 const ProfileContainer = styled.div`
@@ -176,6 +177,8 @@ const Profile = () => {
   const emailHash = md5(getUserEmail() || 'default');
   const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
 
+  const router = useRouter();
+
   return (
     <Fragment>
       <Modal
@@ -273,7 +276,7 @@ const Profile = () => {
           {isAuthenticated() && <ProfileRole>{getUserRoleByName()}</ProfileRole>}
           <ProfileInfoList>
             {isAuthenticated() && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
-            {isAuthenticated() && <ProfileInfoListItem><a onClick={() => auth.signout()}>Logout</a></ProfileInfoListItem>}
+            {isAuthenticated() && <ProfileInfoListItem><a onClick={() => { auth.signout(); router.push('/'); }}>Logout</a></ProfileInfoListItem>}
             {!isAuthenticated() && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
           </ProfileInfoList>
         </ProfileInfo>

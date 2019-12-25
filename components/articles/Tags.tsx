@@ -24,7 +24,7 @@ const Tags: SFC<TagsType> = ({ tags }) => (
     {tags.map((tag, index) => (
       <TagsLink key={tag.id}>
         {!!index && <Splitter>|</Splitter>}
-        <Link href={`/tag?slug=${tag.slug}`} as={`/tag/${tag.slug}`}>
+        <Link href={`/articles?tag=${tag.slug}`} as={`/articles?tag=${tag.slug}`}>
           <a>{tag.title}</a>
         </Link>
       </TagsLink>

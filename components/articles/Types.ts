@@ -38,6 +38,8 @@ export interface ArticleTypes {
       };
     };
     content: string;
+    visibility: string;
+    status: string;
     title: string;
     created_at: string;
     updated_at: string;

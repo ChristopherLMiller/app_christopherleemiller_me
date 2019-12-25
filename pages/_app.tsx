@@ -15,6 +15,7 @@ import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 import { ProvideAuth } from '../lib/hook/useAuth';
+import cookie from 'react-cookies';
 
 interface IApolloClient {
   apollo: ApolloClient<NormalizedCacheObject>;
@@ -69,10 +70,10 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     Router.events.on(`routeChangeComplete`, logPageView);
 
     // get the user from localstorage if it exists
-    const user = localStorage.getItem('user');
+    const user = cookie.load('user');
     if (user) {
       this.setState({
-        user: JSON.parse(user)
+        user: user
       });
     }
   }

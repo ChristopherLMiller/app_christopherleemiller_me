@@ -23,7 +23,7 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
       as={`/model/${model.slug}`}
       href={`/model?slug=${model.slug}`}
     >
-      {model.title} {!model.published && '*unpublished*'}
+      {model.title} {(model.status === 'DRAFT' || model.status === 'UNPUBLISHED') && `*${model.status}*`}
     </ListingTitle>
     <Polaroid
       image={model.featured_image}

@@ -1,8 +1,8 @@
 import Router from 'next/router';
 import React from 'react';
-import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
+import Card from '../../../components/Card';
+import { withLayout } from '../../../components/layout/withLayout';
+import { Main } from '../../../styles/Generics';
 
 const title = `Admin`;
 const description = `Admin Control Panel`;
@@ -27,9 +27,6 @@ const AdminPage = () => {
 }
 
 AdminPage.getInitialProps = async (ctx: any) => {
-  console.log('checking auth in admin page');
-  console.log(ctx);
-
   if (ctx.res) {
     ctx.res.writeHead(302, {
       location: '/',
@@ -43,5 +40,5 @@ AdminPage.getInitialProps = async (ctx: any) => {
 }
 
 export default withLayout(AdminPage, {
-  title, description, useSEO: true, path: `/admin`
+  title, description, useSEO: false, path: `/admin`
 });
