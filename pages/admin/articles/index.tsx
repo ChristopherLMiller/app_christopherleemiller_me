@@ -47,7 +47,8 @@ const AdminArticleIndexPage = () => {
               <th>Slug</th>
               <th>Created</th>
               <th>Updated</th>
-              <th>Published</th>
+              <th>Visibility</th>
+              <th>Status</th>
               <th colSpan={2}>Actions</th>
             </tr>
           </thead>
@@ -58,7 +59,8 @@ const AdminArticleIndexPage = () => {
                 <td>{article.slug}</td>
                 <td>{format(new Date(article.created_at), 'MM/dd/yyyy')}</td>
                 <td>{format(new Date(article.updated_at), 'MM/dd/yyyy')}</td>
-                <td>{article.published ? 'True' : 'False'}</td>
+                <td>{article.visibility}</td>
+                <td>{article.status.toLowerCase()}</td>
                 <td><StyledButton><Link href={`/admin/articles/edit/${article.id}`} as={`/admin/articles/edit/${article.id}`} ><a>Edit</a></Link></StyledButton></td>
                 <td><a>Delete</a></td>
               </tr>
