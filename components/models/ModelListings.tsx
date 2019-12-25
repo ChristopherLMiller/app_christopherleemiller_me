@@ -8,7 +8,7 @@ import { MODELS_QUERY_BRIEF } from '../../utils/query';
 import { MODELS_PER_PAGE } from '../../config';
 import { ModelsFilterContext } from '../../lib/context/ModelFiltersContext';
 import { StyledModelListings } from '../../styles/Models';
-import { hasPermission } from '../../utils/functions/Auth';
+import { hasPermission, roles } from '../../utils/functions/Auth';
 
 const ModelListings = () => {
   const router = useRouter();
@@ -24,7 +24,7 @@ const ModelListings = () => {
     ModelsFilterContext
   );
 
-  let published = hasPermission({ groups: ["Administrator", "Mod"] }) ? null : true;
+  let status = hasPermission({ groups: [roles.admin, roles.mod] }) ? null : 'PUBLISHED';
 
   if (tag === "all") tag = null;
   if (company === "all") company = null;
@@ -45,7 +45,7 @@ const ModelListings = () => {
           slug_contains: tag || null,
         },
         completed: completed || null,
-        published: published,
+        status: status,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,
       limit: MODELS_PER_PAGE,

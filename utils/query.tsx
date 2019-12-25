@@ -61,7 +61,8 @@ export const MODELS_QUERY = gql`
       seo_title
       seo_description
       completed
-      published
+      visibility
+      status
       kit_number
       year_released
       scale {
@@ -107,7 +108,8 @@ export const MODELS_QUERY_BRIEF = gql`
         provider_metadata
       }
       completed
-      published
+      visibility
+      status
       kit_number
       year_released
       scale {
