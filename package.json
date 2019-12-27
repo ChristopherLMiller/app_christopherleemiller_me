@@ -95,7 +95,7 @@
     "@types/md5": "^2.1.33",
     "@types/next": "^9.0.0",
     "@types/next-seo": "^1.10.0",
-    "@types/node": "^12.11.7",
+    "@types/node": "^13.1.0",
     "@types/nprogress": "0.2.0",
     "@types/react-cache": "^2.0.1",
     "@types/react-cookies": "^0.1.0",
