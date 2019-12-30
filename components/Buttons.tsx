@@ -13,7 +13,7 @@ const PosedButton = posed.p({
   },
 });
 
-const StyledButton = styled(PosedButton)`
+export const StyledButton = styled(PosedButton)`
   background: var(--main-color);
   padding: 10px;
   transition: all 0.25s;

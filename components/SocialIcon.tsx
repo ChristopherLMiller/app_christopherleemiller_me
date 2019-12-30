@@ -18,7 +18,7 @@ const SocialIconPosed = posed.span({
   },
 });
 
-const SocialIconStyled = styled(SocialIconPosed)`
+export const SocialIconStyled = styled(SocialIconPosed)`
   font-size: 2.5rem;
   line-height: 1rem;
   display: flex;

@@ -49,7 +49,8 @@ export interface ModelTypes {
     seo_title: string;
     seo_description: string;
     completed: Boolean;
-    published: Boolean;
+    visibility: string;
+    status: string;
     kit_number: string;
     year_released: number;
     scale: {

@@ -67,22 +67,19 @@ app
       app.serveStatic(req, res, filePath);
     });
 
-    // Sitemap
+/*    // Sitemap
     server.get(`/sitemap.xml`, (res) => {
-      try {
-        const xml = sitemap.toXML();
-        res.header(`Content-Type`, `application/xml`);
-        res.send(xml);
-      } catch (e) {
-        console.error(e);
-        res.status(500).end();
-      }
+      const xml = sitemap.toXML();
+      res.header(`Content-Type`, `application/xml`);
+      res.send(xml);
+      console.error(e);
     });
 
     // Robots
     server.get(`/robots.txt`, (res) => {
       res.sendFile(join(__dirname, `../static`, `robots.txt`));
     });
+*/
 
     // All others
     server.get(`*`, (req, res) => {

@@ -7,7 +7,7 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
 import { Event } from '@sentry/types';
-import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
@@ -15,9 +15,10 @@ import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
 import { ProvideAuth } from '../lib/hook/useAuth';
+import cookie from 'react-cookies';
 
 interface IApolloClient {
-  apollo: ApolloClient<NormalizedCacheObject>;
+  apollo: ApolloClient<any>;
 }
 
 interface AppState {
@@ -69,10 +70,10 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     Router.events.on(`routeChangeComplete`, logPageView);
 
     // get the user from localstorage if it exists
-    const user = localStorage.getItem('user');
+    const user = cookie.load('user');
     if (user) {
       this.setState({
-        user: JSON.parse(user)
+        user: user
       });
     }
   }

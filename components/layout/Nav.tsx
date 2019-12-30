@@ -5,7 +5,7 @@ import { NavItem } from './elements/NavItem';
 import { galleriesAuth } from '../../pages/galleries';
 import { servicesAuth } from '../../pages/services';
 import { projectsAuth } from '../../pages/projects';
-import { adminAuth } from '../../pages/admin';
+import { adminAuth } from '../../pages/admin/index';
 
 const PosedNav = posed.ul({
   open: {

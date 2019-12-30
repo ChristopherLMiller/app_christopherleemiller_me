@@ -12,7 +12,6 @@ export const ARTICLES_QUERY = gql`
       id
       slug
       title
-      published
       featured_image {
         provider_metadata
       }
@@ -21,8 +20,11 @@ export const ARTICLES_QUERY = gql`
       seo_description
       seo_title
       content
+      status
+      visibility
       user {
         username
+        id
       }
       categories {
         id
@@ -59,7 +61,8 @@ export const MODELS_QUERY = gql`
       seo_title
       seo_description
       completed
-      published
+      visibility
+      status
       kit_number
       year_released
       scale {
@@ -105,7 +108,8 @@ export const MODELS_QUERY_BRIEF = gql`
         provider_metadata
       }
       completed
-      published
+      visibility
+      status
       kit_number
       year_released
       scale {
