@@ -7,7 +7,7 @@ import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
 import { Event } from '@sentry/types';
-import { ApolloClient, NormalizedCacheObject } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
 import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
@@ -18,7 +18,7 @@ import { ProvideAuth } from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 
 interface IApolloClient {
-  apollo: ApolloClient<NormalizedCacheObject>;
+  apollo: ApolloClient<any>;
 }
 
 interface AppState {
