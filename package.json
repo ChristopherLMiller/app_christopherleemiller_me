@@ -20,7 +20,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.8",
     "@sentry/browser": "^5.10.2",
-    "apollo-boost": "^0.4.4",
+    "apollo-boost": "^0.4.7",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.16",
