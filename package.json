@@ -30,7 +30,7 @@
     "date-fns": "^2.4.1",
     "disqus-react": "^1.0.7",
     "dotenv": "^8.1.0",
-    "enzyme": "^3.10.0",
+    "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
