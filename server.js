@@ -67,7 +67,7 @@ app
       app.serveStatic(req, res, filePath);
     });
 
-    // Sitemap
+/*    // Sitemap
     server.get(`/sitemap.xml`, (res) => {
       const xml = sitemap.toXML();
       res.header(`Content-Type`, `application/xml`);
@@ -79,6 +79,7 @@ app
     server.get(`/robots.txt`, (res) => {
       res.sendFile(join(__dirname, `../static`, `robots.txt`));
     });
+*/
 
     // All others
     server.get(`*`, (req, res) => {
