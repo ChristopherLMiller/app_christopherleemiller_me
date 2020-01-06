@@ -83,7 +83,7 @@
     "@types/react-image-gallery": "^0.9.2",
     "@types/react-modal": "^3.10.0",
     "@types/react-toast-notifications": "^2.0.1",
-    "@types/styled-components": "^4.4.0",
+    "@types/styled-components": "^4.4.1",
     "@types/yup": "^0.26.27",
     "@zeit/next-typescript": "^1.1.1",
     "babel-eslint": "^10.0.3",
