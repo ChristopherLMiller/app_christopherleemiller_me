@@ -1,29 +1,31 @@
 import { useAuth } from "../../lib/hook/useAuth";
 import cookie from 'react-cookies';
 
-export interface iCanAccessPage {
+export interface iCanAccessResource {
   isSecure: boolean;
   permitted?: {
     groups: string[];
   }
 }
-export function canAccessPage({ isSecure, permitted }: iCanAccessPage) {
-  const auth = useAuth();
+export function canAccessResource({ isSecure, permitted }: iCanAccessResource) {
+  const user = cookie.load('user');
+  console.debug('Auth:canAccessResource');
+  //console.debug(user);
 
-  // see if the page is secured or not
+  // see if the page is secure or not
   if (isSecure) {
-    // it's a secure page, are we authenticated?
-    if (auth.isAuthenticated) {
-      // See if ther permitted group list includes the users role
-      if (permitted && permitted.groups.includes(auth.user.role.name)) {
-        return true;
-      } else {
-        return false;
-      }
+    // We can assume person is authenticated if the user object isn't null
+    if (user) {
+      // check the permitted groups for users role
+      return permitted?.groups.includes(getUserRoleByName());
     }
   } else {
+    // unsecure page
     return true;
   }
+
+  // implicit deny to avoid any edge cases
+  return false;
 }
 
 type hasPermissionType = {
@@ -88,31 +90,37 @@ export function isOwner(id: string) {
 }
 
 export function getUserRoleByName() {
-  const auth = useAuth();
-  return auth.isAuthenticated ? auth.user.role.name : null;
+  const user = cookie.load('user');
+  return user?.role?.name;
 }
 
 export function getUserRoleByID() {
-  const auth = useAuth();
-  return auth.isAuthenticated ? auth.user.role.id : 0;
+  const user = cookie.load('user');
+  return user?.role?.id;
 }
 
 // function to return if user is authenticated or not
 export function isAuthenticated() {
-  const auth = useAuth();
-  return auth.isAuthenticated;
+  const user = cookie.load('user');
+
+  if (user !== undefined || user !== null) {
+    return true;
+  }
+
+  // implicit return false to prevent accident auth
+  return false;
 }
 
 // function to get the email of the authenticated user
 export function getUserEmail() {
-  const auth = useAuth();
-  return auth.isAuthenticated ? auth.user.email : null;
+  const user = cookie.load('user');
+  return user?.email;
 }
 
 // function to get the name of the authenticated user
 export function getUserName() {
-  const auth = useAuth();
-  return auth.isAuthenticated ? auth.user.username : null;
+  const user = cookie.load('user');
+  return user?.username;
 }
 
 // object containing role to id mappings

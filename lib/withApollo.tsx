@@ -6,6 +6,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'
 import { HttpLink } from 'apollo-link-http'
 import fetch from 'isomorphic-unfetch'
+import cookie from 'react-cookies';
 
 let apolloClient = null as ApolloClient<NormalizedCacheObject> | null
 
@@ -131,6 +132,9 @@ function createApolloClient(initialState = {}) {
     link: new HttpLink({
       uri: GRAPHQL_ENDPOINT, // Server URL (must be absolute)
       credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
+      headers: {
+        authorization: cookie.load('jwt') ? `Bearer ${cookie.load('jwt')}` : "",
+      },
       fetch,
     }),
     cache: new InMemoryCache().restore(initialState),

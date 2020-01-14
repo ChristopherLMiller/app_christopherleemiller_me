@@ -9,6 +9,7 @@ import { withLayout } from '../components/layout/withLayout';
 import { Pagination } from '../components/Pagination';
 import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
+import { Loader } from '../components/elements/Loader';
 import { PER_PAGE } from '../config';
 
 const title = `From My Desk`;
@@ -34,17 +35,10 @@ const ArticlesPage: SFC = () => {
       limit: PER_PAGE,
       where: {
         status_contains: "PUBLISHED",
-
       },
     },
   });
 
-  if (loading)
-    return (
-      <Main>
-        <p>Loading...</p>
-      </Main>
-    );
   if (error) {
     console.error(`Fetch Error: ${error.message}`);
 
@@ -56,7 +50,8 @@ const ArticlesPage: SFC = () => {
           <hr />
           <p>
             Sorry. Something happened and we can't seem to load data right now.
-            Possibly you're offline and if not please let us know.
+            Possibly you're offline and if not please let us know.  I'm sure the
+            above text doesn't make any sense but it will help me figure out the problem.
           </p>
         </Card>
       </Main>
@@ -65,13 +60,14 @@ const ArticlesPage: SFC = () => {
 
   return (
     <Main>
+      <Loader isLoading={loading}/>
       {data !== undefined &&
         data.articles.map(article => (
           <BriefArticle article={article} key={article.id}>
             <ReactMarkdown source={article.seo_description} />
           </BriefArticle>
         ))}
-      <Pagination page={page} content_type="articles" />
+      {!loading && <Pagination page={page} content_type="articles" />}
     </Main>
   );
 };

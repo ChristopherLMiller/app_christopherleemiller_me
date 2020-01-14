@@ -10,7 +10,6 @@ import { FieldSet } from '../../../components/inputs/FieldSet';
 import { useQuery } from 'react-apollo';
 import { iData } from '../../../components/articles/Types';
 import { ARTICLES_QUERY } from '../../../utils/query';
-import { Button } from '../../../components/inputs/Button';
 
 const title = `Admin`;
 const description = `Admin Control Panel`;
@@ -69,7 +68,7 @@ const AdminArticleEditPage = () => {
                   <Label htmlFor="content">Content: </Label>
                   <Field component="textarea" name="content" rows="20" value={article.content} />
                 </FieldSet>
-                <Button>{isSubmitting}</Button>
+                <button>{isSubmitting}</button>
               </Form>
             )}
 

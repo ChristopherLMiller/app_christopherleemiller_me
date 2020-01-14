@@ -2,7 +2,7 @@ import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessPage } from '../utils/functions/Auth';
+import { canAccessResource } from '../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 const title = `Galleries`;
@@ -13,7 +13,7 @@ export const galleriesAuth = {
 };
 
 const GalleriesPage = () => {
-  if (canAccessPage(galleriesAuth)) {
+  if (canAccessResource(galleriesAuth)) {
     return (
       <Main>
         <Card>

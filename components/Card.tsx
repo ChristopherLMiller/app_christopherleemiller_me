@@ -49,16 +49,16 @@ const CardBody = styled.div`
   letter-spacing: -1px;
   text-align: center;
 
-  a {
+  p {
+    word-break: break-word;
+
+    a {
     color: var(--main-color);
 
     :hover {
       text-decoration: underline;
     }
   }
-
-  p {
-    word-break: break-word;
   }
 `;
 

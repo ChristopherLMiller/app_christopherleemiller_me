@@ -24,3 +24,10 @@ export const Button = styled(PosedButton) <{ disabled: boolean }>`
   font-size: 2rem;
   border: none;
 `;
+
+export const ButtonLink = styled.a`
+  color: var(--text-color-light);
+  background: var(--main-color);
+  padding: 2px 10px;
+  line-height: 2rem;
+`;

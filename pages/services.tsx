@@ -1,7 +1,7 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessPage } from '../utils/functions/Auth';
+import { canAccessResource } from '../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 const title = `Services`;
@@ -16,7 +16,7 @@ export const servicesAuth = {
 };
 
 const ServicesPage = () => {
-  if (canAccessPage(servicesAuth)) {
+  if (canAccessResource(servicesAuth)) {
     return (
       <Main>
         <Card>

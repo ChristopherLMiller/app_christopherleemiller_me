@@ -1,4 +1,4 @@
-import { Button } from '../inputs/Button';
+import { Button } from '../inputs/Buttons';
 import Link from 'next/link';
 import posed from 'react-pose';
 import React, { useEffect, useState } from 'react';

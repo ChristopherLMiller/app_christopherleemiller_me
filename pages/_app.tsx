@@ -23,6 +23,7 @@ interface IApolloClient {
 
 interface AppState {
   user: object | null;
+  jwt: string | null;
 }
 
 class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
@@ -40,7 +41,8 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // Setup state
     this.state = {
-      user: null
+      user: null,
+      jwt: null,
     }
   }
 
@@ -71,9 +73,11 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // get the user from localstorage if it exists
     const user = cookie.load('user');
+    const jwt = cookie.load('jwt');
     if (user) {
       this.setState({
-        user: user
+        user: user,
+        jwt: jwt,
       });
     }
   }

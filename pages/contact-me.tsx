@@ -10,7 +10,6 @@ import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
 import { Label } from '../components/inputs/Label';
 import { FieldSet } from '../components/inputs/FieldSet';
-import { Button } from '../components/inputs/Button';
 import { FormErrorMessage } from '../components/inputs/ErrorMessage';
 
 const title = `Contact Me`;
@@ -142,9 +141,9 @@ const ContactPage = () => {
                       </FormErrorMessage>
                     </StyledContactFormFullWidth>
                   </StyledContactForm>
-                  <Button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+                  <button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
                     Send It!
-                  </Button>
+                  </button>
                 </Form>
               )}
             </Formik>

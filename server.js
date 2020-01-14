@@ -1,7 +1,7 @@
 const express = require(`express`);
 const next = require(`next`);
 const { join } = require(`path`);
-const sitemap = require(`./lib/genSitemap`);
+//const sitemap = require(`./lib/genSitemap`);
 const bodyParser = require(`body-parser`);
 const cookieParser = require(`cookie-parser`);
 const uid = require(`uid-safe`);
