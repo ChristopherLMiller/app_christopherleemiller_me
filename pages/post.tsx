@@ -52,7 +52,7 @@ const PostPage: SFC = () => {
           {data !== undefined &&
             data.articles.map(article => (
               <FullArticle article={article}>
-                <ReactMarkdown source={article.content} />
+                <ReactMarkdown source={article.content} escapeHtml={false} />
               </FullArticle>
             ))}
         </Main>
