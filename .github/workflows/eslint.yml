@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: dev
+  pull_request:
+    branches: dev
+
+jobs:
+  eslint:
+     name: eslint
+     runs-on: [ubuntu-latest]
+     steps:
+       - uses: actions/checkout@v1
+       - uses: actions/setup-node@v1
+         name: install node v12
+         with:
+           node_version: 12
+       - run: yarn install
+         name: yarn install
+       - name: eslint
+         uses: icrawl/action-eslint@v1
+         with:
+           custom_glob: src
