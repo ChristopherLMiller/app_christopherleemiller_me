@@ -31,7 +31,6 @@ const Nav = () => {
       <NavItem isActivePaths={["/models", "/model"]} href="/models" title="Models" />
       <NavItem auth={galleriesAuth} isActivePaths={["/galleries", "/gallery"]} href="/galleries" title="Galleries" />
       <NavItem isActivePaths={["/contact-me"]} href="/contact-me" title="Contact Me" />
-      <NavItem auth={adminAuth} isActivePaths={["/admin"]} href="/admin" title="Admin Panel" />
       <NavItem auth={adminAuth} href="https://strapi.christopherleemiller.me/admin" title="Strapi Backend" />
     </NavStyles>
   );
