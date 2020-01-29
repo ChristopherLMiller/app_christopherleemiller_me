@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import { useQuery } from 'react-apollo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
