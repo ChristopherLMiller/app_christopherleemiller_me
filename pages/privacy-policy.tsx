@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 import { StyledContentBlock } from '../components/elements/ContentBlock';
@@ -14,12 +14,12 @@ const description = `My policies regarding your privacy and safety`;
 const PrivacyPolicyPage = () => (
   <Fragment>
     <NextSeo
-      title={`${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}Privacy Policy`}
+      title={`${SITE_TITLE}${SEPARATOR}Privacy Policy`}
       description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."
       openGraph={{
-        title: `${SITE_TITLE}${SEPARATOR}Post${SEPARATOR}Privacy Policy`,
+        title: `${SITE_TITLE}${SEPARATOR}Privacy Policy`,
         description: `This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website.`,
-        url: `${process.env.SITE_URL}/post/privacy-policy`,
+        url: `${process.env.SITE_URL}/privacy-policy`,
         type: `article`,
         article: {
           authors: [`Chris Miller`],
