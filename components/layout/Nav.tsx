@@ -5,7 +5,6 @@ import { NavItem } from './elements/NavItem';
 import { galleriesAuth } from '../../pages/galleries';
 import { servicesAuth } from '../../pages/services';
 import { projectsAuth } from '../../pages/projects';
-import { adminAuth } from '../../pages/admin/index';
 
 const PosedNav = posed.ul({
   open: {
@@ -31,7 +30,7 @@ const Nav = () => {
       <NavItem isActivePaths={["/models", "/model"]} href="/models" title="Models" />
       <NavItem auth={galleriesAuth} isActivePaths={["/galleries", "/gallery"]} href="/galleries" title="Galleries" />
       <NavItem isActivePaths={["/contact-me"]} href="/contact-me" title="Contact Me" />
-      <NavItem auth={adminAuth} href="https://strapi.christopherleemiller.me/admin" title="Strapi Backend" />
+      <NavItem href="https://strapi.christopherleemiller.me/admin" title="Strapi Backend" />
     </NavStyles>
   );
 }
