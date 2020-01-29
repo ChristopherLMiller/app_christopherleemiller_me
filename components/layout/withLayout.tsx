@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo';
 import React, { Fragment } from 'react';
-import Footer from './Footer';
+import { Footer } from './Footer';
 import Header from './Header';
 import { SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions/imageURL';

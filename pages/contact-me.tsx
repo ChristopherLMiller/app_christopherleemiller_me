@@ -166,7 +166,7 @@ const ContactPage = () => {
             <p>
               <a href="tel:+15743702148">+1 (574) 370-2148</a>
             </p>
-            <SocialLinks />
+            <SocialLinks color="#FFF" />
           </ContactColumn>
         </ContactGrid>
       </Card>

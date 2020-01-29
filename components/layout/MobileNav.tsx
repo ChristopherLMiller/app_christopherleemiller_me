@@ -411,7 +411,7 @@ const MobileNav = () => {
         </AccountWrapper>
         <NavHr />
         <Nav />
-        <SocialLinks />
+        <SocialLinks color="#FFFFFF" />
       </StyledNavigationWrapper>
     </StyledMobileNav>
   );

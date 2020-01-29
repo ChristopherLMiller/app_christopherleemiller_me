@@ -27,7 +27,7 @@ app
     const server = express();
 
     // prepare session for authentication
-    const sessionConfig = {
+    /*const sessionConfig = {
       secret: uid.sync(18),
       cookie: {
         maxAge: 86400 * 1000, // 24 hours
@@ -37,7 +37,7 @@ app
       store: new MongoStore({ mongooseConnection: db })
     };
 
-    server.use(session(sessionConfig));
+    server.use(session(sessionConfig));*/
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(cookieParser());

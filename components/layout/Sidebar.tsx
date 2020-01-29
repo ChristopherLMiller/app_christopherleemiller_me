@@ -67,7 +67,7 @@ const Sidebar = () => {
         <Logo />
         <Title />
         <Nav />
-        <SocialLinks />
+        <SocialLinks color="#FFFFFF" />
       </StyledSidebarInner>
     </StyledSidebar>
   );
