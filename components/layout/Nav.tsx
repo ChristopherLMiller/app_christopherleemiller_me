@@ -25,6 +25,7 @@ const Nav = () => {
       <NavItem title="Home" isActivePaths={["/"]} href="/" />
       <NavItem isActivePaths={["/articles", "/post"]} href="/articles" title="Articles" />
       <NavItem isActivePaths={["/about"]} href="/about" title="About Me" />
+      <NavItem isActivePaths={["/uses"]} href="/uses" title="Uses" />
       <NavItem auth={servicesAuth} isActivePaths={["/services"]} href="/services" title="Services" />
       <NavItem auth={projectsAuth} isActivePaths={["/projects"]} href="/projects" title="Projects" />
       <NavItem isActivePaths={["/models", "/model"]} href="/models" title="Models" />

@@ -27,7 +27,7 @@ app
     const server = express();
 
     // prepare session for authentication
-    const sessionConfig = {
+    /*const sessionConfig = {
       secret: uid.sync(18),
       cookie: {
         maxAge: 86400 * 1000, // 24 hours
@@ -37,7 +37,7 @@ app
       store: new MongoStore({ mongooseConnection: db })
     };
 
-    server.use(session(sessionConfig));
+    server.use(session(sessionConfig));*/
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(cookieParser());
@@ -67,19 +67,19 @@ app
       app.serveStatic(req, res, filePath);
     });
 
-/*    // Sitemap
-    server.get(`/sitemap.xml`, (res) => {
-      const xml = sitemap.toXML();
-      res.header(`Content-Type`, `application/xml`);
-      res.send(xml);
-      console.error(e);
-    });
-
-    // Robots
-    server.get(`/robots.txt`, (res) => {
-      res.sendFile(join(__dirname, `../static`, `robots.txt`));
-    });
-*/
+    /*    // Sitemap
+        server.get(`/sitemap.xml`, (res) => {
+          const xml = sitemap.toXML();
+          res.header(`Content-Type`, `application/xml`);
+          res.send(xml);
+          console.error(e);
+        });
+    
+        // Robots
+        server.get(`/robots.txt`, (res) => {
+          res.sendFile(join(__dirname, `../static`, `robots.txt`));
+        });
+    */
 
     // All others
     server.get(`*`, (req, res) => {
