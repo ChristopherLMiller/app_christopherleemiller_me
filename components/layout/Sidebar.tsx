@@ -3,7 +3,6 @@ import posed from 'react-pose';
 import { useState, useEffect } from 'react';
 import Logo from './Logo';
 import Nav from './Nav';
-import { SocialLinks } from '../SocialLinks';
 import Title from './Title';
 import { Props } from '../../styles/Themes';
 
@@ -67,7 +66,6 @@ const Sidebar = () => {
         <Logo />
         <Title />
         <Nav />
-        <SocialLinks color="#FFFFFF" />
       </StyledSidebarInner>
     </StyledSidebar>
   );

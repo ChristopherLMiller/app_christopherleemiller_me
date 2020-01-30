@@ -6,7 +6,6 @@ import Router from 'next/router';
 import styled from 'styled-components';
 import Nav from './Nav';
 import { Props } from '../../styles/Themes';
-import { SocialLinks } from '../SocialLinks';
 import { useAuth } from '../../lib/hook/useAuth';
 import { Avatar } from './elements/avatar';
 import { useToasts } from 'react-toast-notifications';
@@ -411,7 +410,6 @@ const MobileNav = () => {
         </AccountWrapper>
         <NavHr />
         <Nav />
-        <SocialLinks color="#FFFFFF" />
       </StyledNavigationWrapper>
     </StyledMobileNav>
   );
