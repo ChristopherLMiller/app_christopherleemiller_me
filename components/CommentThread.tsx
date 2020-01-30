@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import styled from 'styled-components';
 import Disqus from 'disqus-react';
 import { DISQUS_SHORTNAME } from '../config';

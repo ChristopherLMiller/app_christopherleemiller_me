@@ -1,4 +1,3 @@
-import React from 'react';
 import { withLayout } from '../components/layout/withLayout';
 import { ModelsFilters } from '../components/models/elements/Filters';
 import { ModelsFilterContextProvider } from '../lib/context/ModelFiltersContext';

@@ -1,7 +1,7 @@
 import { Button } from '../inputs/Buttons';
 import Link from 'next/link';
 import posed from 'react-pose';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import Nav from './Nav';

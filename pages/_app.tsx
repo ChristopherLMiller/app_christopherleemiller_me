@@ -1,5 +1,5 @@
 import App, { AppProps } from 'next/app';
-import React from 'react';
+import { StrictMode, ErrorInfo } from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
@@ -47,7 +47,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   }
 
   // Error Catching
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     Sentry.configureScope(scope => {
       scope.setExtras(errorInfo);
     });
@@ -120,9 +120,9 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
             />
             <ToastProvider>
               <Page>
-                <React.StrictMode>
+                <StrictMode>
                   <Component {...pageProps} />
-                </React.StrictMode>
+                </StrictMode>
               </Page>
             </ToastProvider>
           </ProvideAuth>

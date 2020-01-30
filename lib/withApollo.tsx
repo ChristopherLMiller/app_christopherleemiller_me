@@ -1,6 +1,5 @@
 import { GRAPHQL_ENDPOINT } from '../config';
-import React from 'react'
-import Head from 'next/head'
+import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache, NormalizedCacheObject } from 'apollo-cache-inmemory'

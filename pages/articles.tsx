@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import { useQuery } from 'react-apollo';
 import { useRouter } from 'next/router';
 import { BriefArticle } from '../components/articles/Brief';

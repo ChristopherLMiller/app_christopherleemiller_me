@@ -1,4 +1,3 @@
-import React from 'react';
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';

@@ -1,5 +1,5 @@
+import { Component } from 'react';
 import { NextSeo } from 'next-seo';
-import React from 'react';
 import { Footer } from './Footer';
 import Header from './Header';
 import { SITE_DEFAULT_IMAGE } from '../../config';
@@ -29,7 +29,7 @@ const withLayout = <P extends object>(
     image?: string,
   }
 ) => {
-  class HOC extends React.Component<P & withLayoutProps> {
+  class HOC extends Component<P & withLayoutProps> {
     static getInitialProps = async (ctx: any) => {
       let pageProps = {};
 

@@ -1,4 +1,4 @@
-import React, { useContext, FC } from 'react';
+import { useContext, FC } from 'react';
 import { useQuery } from 'react-apollo';
 import styled from 'styled-components';
 import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
