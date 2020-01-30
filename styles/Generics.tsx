@@ -16,7 +16,7 @@ export const Main = styled.main`
 
 
   main:after {
-    content: '\A';
+    content: '\\A';
     bottom: 0;
     left: 0;
     width: 100%;
