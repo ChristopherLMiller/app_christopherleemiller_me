@@ -18,7 +18,7 @@ import { ProvideAuth } from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 
 import '../node_modules/highlight.js/styles/atom-one-dark.css'
-import '../static/nprogress.css"'
+import '../static/nprogress.css'
 
 interface IApolloClient {
   apollo: ApolloClient<any>;
