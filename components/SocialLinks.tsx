@@ -11,10 +11,10 @@ import { SFC } from 'react';
 const SocialLinksBar = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    max-width: 50%;
+    max-width: 75%;
     margin: 0 auto;
-    font-size: 4rem;
-    grid-gap: 40px;
+    font-size: 4.5rem;
+    grid-gap: 30px;
 `;
 
 interface iSocialLinks {

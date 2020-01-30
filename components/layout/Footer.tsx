@@ -14,7 +14,6 @@ const FooterContent = styled.div`
   margin: 0 auto;
   text-align: center;
   padding: 4rem;
-  padding-top: 0;
 `;
 
 const SiteInfo = styled.div`
@@ -25,7 +24,7 @@ const SiteInfo = styled.div`
 
 const Separator = styled.span`
   content: '\\A';
-  border: 1px solid var(--text-color-light);
+  border: 1px solid var(--background-dark);
   margin: auto 10px;
 `;
 
@@ -33,6 +32,11 @@ const FooterHeading = styled.h4`
   color: var(--background-darker);
   font-size: 4rem;
   line-height: 1rem;
+  margin: 0;
+`;
+
+const FooterSubHeading = styled.p`
+  color: var(--background-darker);
 `;
 
 const Footer = () => (
@@ -41,77 +45,19 @@ const Footer = () => (
       <Grid columns={2} gap={"2rem"} background={theme.colors.grey_intermediate}>
         <GridItem>
           <FooterHeading>Follow Me</FooterHeading>
+          <FooterSubHeading>Be sure to see the latest and greatest all the time</FooterSubHeading>
           <SocialLinks color={theme.colors.grey_darkest} />
         </GridItem>
-        <div>
-          <p>SOcial Media Icons</p>
-        </div>
+        <GridItem>
+          <FooterSubHeading>Use of this site constitues acceptance of our <Link href="/privacy-policy">
+            <a>Privacy Policy</a>
+          </Link>.  The material on this site may not be reproduced, distributed, transmitted, cached or otherwise used, except with prior written permission of Christopher Lee Miller.</FooterSubHeading>
+          <FooterSubHeading>Copyright © {getYear(new Date())}<Separator />v{process.env.npm_package_version}</FooterSubHeading>
+        </GridItem>
       </Grid>
     </FooterContent>
-    <SiteInfo>
-      <Link href="/privacy-policy">
-        <a>Privacy Policy</a>
-      </Link>
-      <Separator />
-      <span>Copyright © {getYear(new Date())}</span>
-      <Separator />
-      <span>v{process.env.npm_package_version}</span>
-    </SiteInfo>
+    <SiteInfo />
   </SiteFooter>
 )
 
 export { Footer };
-
-/*
-import posed from 'react-pose';
-import {Paper} from '../Paper';
-
-const FooterPopped = posed.footer({
-  closed: {
-  transform: `rotateX(-90deg)`,
-},
-open: {
-  delay: 750,
-transform: `rotateX(0deg)`,
-},
-});
-
-const StyledFooter = styled(FooterPopped)`
-padding: 30px 10px;
-position: relative;
-overflow-y: hidden;
-min-height: 215px;
-display: flex;
-flex-direction: column;
-justify-content: flex-end;
-`;
-
-const SiteInfo = styled.div`
-font-family: var(--font-main);
-color: var(--text-color-light);
-`;
-
-const Separator = styled.span`
-content: '\\A';
-border: 1px solid var(--text-color-light);
-margin: auto 10px;
-`;
-const Footer = () => (
-<StyledFooter initialPose="closed" pose="open">
-
-  <div>
-    <SiteInfo>
-      <Link href="/privacy-policy">
-        <a>Privacy Policy</a>
-      </Link>
-      <Separator />
-      <span>Copyright © {getYear(new Date())}</span>
-      <Separator />
-      <span>v{process.env.npm_package_version}</span>
-    </SiteInfo>
-  </div>
-</StyledFooter>
-);
-
-export default Footer;
-*/

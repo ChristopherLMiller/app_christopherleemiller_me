@@ -7,42 +7,46 @@ export const Center = styled.div`
 `;
 
 export const Main = styled.main`
-  padding: 20px;
   overflow-x: hidden;
   flex-grow: 2;
   position: relative;
   overflow-y: hidden;
-  padding-bottom: 175px;
+  padding: 175px 20px;
 
-
-  main:after {
+  :before,
+  :after {
     content: '\\A';
-    bottom: 0;
     left: 0;
     width: 100%;
     min-height: 200px;
     position: absolute;
     background: var(--main-color-transparent);
-    transform: skewY(-5deg) translateY(100px);
+    transition: 0.25s;
+  }
+
+  :before {
+    top: 0;
+    transform: skewY(-5deg) translateY(-40%);
+  }
+
+  :after {
+    bottom: 0;
+    transform: skewY(-5deg) translateY(40%);
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
-    padding: 25px;
-    padding-bottom: 175px;
+    padding: 175px 25px;
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    padding: 30px;
-    padding-bottom: 175px;
+    padding: 175px 30px;
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    padding: 35px;
-    padding-bottom: 200px;
+    padding: 200px 35px;
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    padding: 40px;
-    padding-bottom: 200px;
+    padding: 200px 40px;
   }
 `;
