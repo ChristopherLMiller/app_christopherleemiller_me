@@ -103,7 +103,7 @@ export function getUserRoleByID() {
 export function isAuthenticated() {
   const user = cookie.load('user');
 
-  if (user !== undefined || user !== null) {
+  if (user !== undefined && user !== null) {
     return true;
   }
 
