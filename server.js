@@ -1,23 +1,26 @@
 const express = require(`express`);
 const next = require(`next`);
 const { join } = require(`path`);
-//const sitemap = require(`./lib/genSitemap`);
+// const sitemap = require(`./lib/genSitemap`);
 const bodyParser = require(`body-parser`);
 const cookieParser = require(`cookie-parser`);
 const uid = require(`uid-safe`);
 const session = require(`express-session`);
-const mongoose = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
+const mongoose = require(`mongoose`);
+const MongoStore = require(`connect-mongo`)(session);
 
 const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+mongoose.connect(
+  `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
@@ -34,7 +37,7 @@ app
       },
       resave: false,
       saveUninitialized: true,
-      store: new MongoStore({ mongooseConnection: db })
+      store: new MongoStore({ mongooseConnection: db }),
     };
 
     server.use(session(sessionConfig));
@@ -43,8 +46,8 @@ app
     server.use(cookieParser());
 
     // Admin redirect
-    server.get('/strapi', (req, res) => {
-      res.status(301).redirect('https://strapi.christopherleemiller.me/admin');
+    server.get(`/strapi`, (req, res) => {
+      res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
 
     // Posts
