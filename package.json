@@ -84,7 +84,7 @@
     "@types/styled-components": "^4.4.2",
     "@types/yup": "^0.26.27",
     "@zeit/next-typescript": "^1.1.1",
-    "babel-eslint": "^10.0.3",
+    "babel-eslint": "^10.1.0",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.6",
     "eslint": "^5.16.0",
