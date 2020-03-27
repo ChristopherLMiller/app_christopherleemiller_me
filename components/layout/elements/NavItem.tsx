@@ -60,8 +60,8 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes('http') ? false : true;
 
-  console.debug(`NavItem: ${title}`);
-  console.debug(auth);
+  //console.debug(`NavItem: ${title}`);
+  //console.debug(auth);
 
   if (auth && canAccessResource(auth)) {
     return (

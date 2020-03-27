@@ -26,11 +26,10 @@ interface ISelectBox {
 }
 
 const CompletedSelect: SFC<ISelectBox> = ({ items }) => {
-  const { completed, setCompletedContext } = useContext(ModelsFilterContext);
+  const { setCompletedContext } = useContext(ModelsFilterContext);
   return (
     <StyledSelect
       onChange={event => setCompletedContext(event.target.value)}
-      value={completed}
     >
       {items !== undefined &&
         items.map((item: Item) => (
