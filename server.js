@@ -56,20 +56,6 @@ app
       res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
 
-    // Posts
-    server.get(`/post/:slug`, (req, res) => {
-      const actualPage = `/post`;
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
-    // Models
-    server.get(`/model/:slug`, (req, res) => {
-      const actualPage = `/model`;
-      const queryParams = { slug: req.params.slug };
-      app.render(req, res, actualPage, queryParams);
-    });
-
     // Service worker
     server.get(`/service-worker.js`, (req, res) => {
       const filePath = join(__dirname, `.next`, `/service-worker.js`);
