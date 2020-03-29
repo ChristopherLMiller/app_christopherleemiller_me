@@ -11,7 +11,6 @@ import { Button } from '../inputs/Buttons';
 import { FormErrorMessage } from '../inputs/ErrorMessage';
 import { useAuth } from '../../lib/hook/useAuth';
 import * as Yup from 'yup';
-import { isAuthenticated, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 
@@ -171,7 +170,7 @@ const Profile = () => {
 
   const auth = useAuth();
 
-  const avatarURL = `https://unavatar.now.sh/${getUserName}`;
+  const avatarURL = `https://unavatar.now.sh/${auth.getUserName}`;
 
   const router = useRouter();
 
@@ -267,12 +266,12 @@ const Profile = () => {
       <ProfileContainer>
         <ProfilePicture src={avatarURL} onClick={() => setOpen(!isOpen)} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setTimeout(() => setOpen(false), 5 * 1000)} />
         <ProfileInfo pose={isOpen ? `open` : `closed`} initialPose="closed">
-          <ProfileName>Hi, {getUserName() || 'Guest'}</ProfileName>
-          {isAuthenticated() && <ProfileRole>{getUserRoleByName()}</ProfileRole>}
+          <ProfileName>Hi, {auth.getUserName() || 'Guest'}</ProfileName>
+          {auth.isAuthenticated && <ProfileRole>{auth.getUserRoleByName()}</ProfileRole>}
           <ProfileInfoList>
-            {isAuthenticated() && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
-            {isAuthenticated() && <ProfileInfoListItem><a onClick={() => { auth.signout(); router.push('/'); }}>Logout</a></ProfileInfoListItem>}
-            {!isAuthenticated() && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
+            {auth.isAuthenticated && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
+            {auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => { auth.signout(); router.push('/'); }}>Logout</a></ProfileInfoListItem>}
+            {!auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
           </ProfileInfoList>
         </ProfileInfo>
       </ProfileContainer>

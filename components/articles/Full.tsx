@@ -11,9 +11,10 @@ import { CommentThread } from '../CommentThread';
 import { StyledContentBlock } from '../elements/ContentBlock';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { hasPermission, isOwner, roles } from '../../utils/functions/Auth';
 import { Button } from '../inputs/Buttons';
 import { ModalBox } from '../elements/Modal';
+import { useAuth } from '../../lib/hook/useAuth';
+import { roles } from '../../config';
 
 const ArticleOptions = styled.div``;
 
@@ -25,6 +26,8 @@ const FullArticle: SFC<ArticleTypes> = ({
   commentsEnabled = true,
   header = true,
 }) => {
+  const auth = useAuth();
+
   useEffect(() => {
     function initHighlighting() {
       hljs.initHighlighting();
@@ -84,7 +87,7 @@ const FullArticle: SFC<ArticleTypes> = ({
         {header && <ArticleHead article={article} />}
         <StyledContentBlock>
           {children}
-          {(hasPermission({ groups: [roles.admin] }) || isOwner(article.user.id)) && <ArticleOptions>
+          {(auth.hasPermission({ groups: [roles.admin] }) || auth.isOwner(article.user.id)) && <ArticleOptions>
             <ArticleOptionsItem><Link href={`/admin/articles/edit/${article.id}`} as={`/admin/articles/edit/${article.id}`}><Button>Edit Article</Button></Link></ArticleOptionsItem>
             <ArticleOptionsItem><Button onClick={() => setModalOpen(true)}>Delete Article</Button></ArticleOptionsItem>
           </ArticleOptions>}

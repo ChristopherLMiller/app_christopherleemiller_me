@@ -14,7 +14,7 @@ import Page from '../components/layout/Page';
 import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
-import { ProvideAuth } from '../lib/hook/useAuth';
+import { ProvideAuth} from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 
 import '../node_modules/highlight.js/styles/atom-one-dark.css'
@@ -83,6 +83,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
         jwt: jwt,
       });
     }
+
   }
 
   componentWillUnmount() {

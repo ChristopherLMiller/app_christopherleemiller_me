@@ -1,8 +1,8 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessResource } from '../utils/functions/Auth';
 import { useRouter } from 'next/router';
+import { useAuth } from '../lib/hook/useAuth';
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -12,7 +12,9 @@ export const galleriesAuth = {
 };
 
 const GalleriesPage = () => {
-  if (canAccessResource(galleriesAuth)) {
+  const auth = useAuth();
+
+  if (auth.canAccessResource(galleriesAuth)) {
     return (
       <Main>
         <Card>
