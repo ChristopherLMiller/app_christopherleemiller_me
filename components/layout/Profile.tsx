@@ -170,7 +170,7 @@ const Profile = () => {
 
   const auth = useAuth();
 
-  const avatarURL = `https://unavatar.now.sh/${auth.getUserName}`;
+  const avatarURL = `https://unavatar.now.sh/${auth.getUserName()}`;
 
   const router = useRouter();
 
