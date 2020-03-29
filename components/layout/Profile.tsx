@@ -1,18 +1,17 @@
 import styled from 'styled-components';
 import { useState, Fragment } from 'react';
 import posed from 'react-pose';
-import { useAuth } from '../../lib/hook/useAuth';
 import { Props } from '../../styles/Themes';
 import Modal from 'react-modal';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useToasts } from 'react-toast-notifications';
 import { FieldSet } from '../inputs/FieldSet';
 import { Label } from '../inputs/Label';
-import { Button } from '../inputs/Button';
+import { Button } from '../inputs/Buttons';
 import { FormErrorMessage } from '../inputs/ErrorMessage';
+import { useAuth } from '../../lib/hook/useAuth';
 import * as Yup from 'yup';
-import md5 from 'md5';
-import { isAuthenticated, getUserEmail, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
+import { isAuthenticated, getUserName, getUserRoleByName } from '../../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 
@@ -67,8 +66,6 @@ const ProfileInfo = styled(ProfileInfoPose)`
     transform: rotateZ(45deg);
     z-index: -1;
   }
-
-
 `;
 
 const ProfileName = styled.div`
@@ -172,10 +169,9 @@ const Profile = () => {
   // Toast Notifications
   const { addToast } = useToasts();
 
-  // Auth
   const auth = useAuth();
-  const emailHash = md5(getUserEmail() || 'default');
-  const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
+
+  const avatarURL = `https://unavatar.now.sh/${getUserName}`;
 
   const router = useRouter();
 
@@ -205,7 +201,6 @@ const Profile = () => {
                     addToast(`Woohoo! You're in!`, { appearance: 'success' });
                   } else {
                     actions.setFieldError('general', response.message);
-                    //addToast(response.message, { appearance: "error" });
                     actions.setSubmitting(false);
                   }
                 })

@@ -1,6 +1,5 @@
-import React from 'react';
 import { withLayout } from '../components/layout/withLayout';
-import { ModelsFilters } from '../components/models/elements/Filters';
+//import { ModelsFilters } from '../components/models/elements/Filters';
 import { ModelsFilterContextProvider } from '../lib/context/ModelFiltersContext';
 import { ModelListings } from '../components/models/ModelListings';
 import { Main } from '../styles/Generics';
@@ -11,7 +10,6 @@ const description = `Whether it plane, car or tank, its all here!`;
 const ModelsPage = () => (
   <Main>
     <ModelsFilterContextProvider>
-      <ModelsFilters />
       <ModelListings />
     </ModelsFilterContextProvider>
   </Main>

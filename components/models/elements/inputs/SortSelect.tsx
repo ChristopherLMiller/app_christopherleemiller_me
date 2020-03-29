@@ -1,4 +1,4 @@
-import React, { SFC, useContext } from 'react';
+import { SFC, useContext } from 'react';
 import styled from 'styled-components';
 import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
 

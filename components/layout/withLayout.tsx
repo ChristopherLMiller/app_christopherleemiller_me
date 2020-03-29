@@ -1,10 +1,11 @@
+import { Component } from 'react';
 import { NextSeo } from 'next-seo';
-import React, { Fragment } from 'react';
-import Footer from './Footer';
+import { Footer } from './Footer';
 import Header from './Header';
 import { SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions/imageURL';
 import { Profile } from './Profile';
+import styled from 'styled-components';
 
 interface withLayoutProps {
   title: string;
@@ -13,6 +14,10 @@ interface withLayoutProps {
   path?: string;
   image?: string;
 }
+
+const InnerPage = styled.div`
+  position: relative;
+`;
 
 const withLayout = <P extends object>(
   WrappedComponent: any,
@@ -24,7 +29,7 @@ const withLayout = <P extends object>(
     image?: string,
   }
 ) => {
-  class HOC extends React.Component<P & withLayoutProps> {
+  class HOC extends Component<P & withLayoutProps> {
     static getInitialProps = async (ctx: any) => {
       let pageProps = {};
 
@@ -36,7 +41,7 @@ const withLayout = <P extends object>(
 
     public render() {
       return (
-        <Fragment>
+        <InnerPage>
           <Profile />
           <Header title={meta.title} description={meta.description} />
           {meta.useSEO && (
@@ -60,7 +65,7 @@ const withLayout = <P extends object>(
           )}
           <WrappedComponent {...(this.props as P)} />
           <Footer />
-        </Fragment>
+        </InnerPage>
       );
     }
   }

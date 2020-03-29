@@ -1,12 +1,11 @@
-import { Button } from '../inputs/Button';
+import { Button } from '../inputs/Buttons';
 import Link from 'next/link';
 import posed from 'react-pose';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import Nav from './Nav';
 import { Props } from '../../styles/Themes';
-import { SocialLinks } from '../SocialLinks';
 import { useAuth } from '../../lib/hook/useAuth';
 import { Avatar } from './elements/avatar';
 import { useToasts } from 'react-toast-notifications';
@@ -411,7 +410,6 @@ const MobileNav = () => {
         </AccountWrapper>
         <NavHr />
         <Nav />
-        <SocialLinks />
       </StyledNavigationWrapper>
     </StyledMobileNav>
   );

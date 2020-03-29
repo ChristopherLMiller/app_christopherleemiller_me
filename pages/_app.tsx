@@ -1,5 +1,5 @@
 import App, { AppProps } from 'next/app';
-import React from 'react';
+import { StrictMode, ErrorInfo } from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
 import { ApolloProvider } from 'react-apollo';
@@ -17,12 +17,16 @@ import { initGA, logPageView } from '../utils/analytics';
 import { ProvideAuth } from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 
+import '../node_modules/highlight.js/styles/atom-one-dark.css'
+import '../static/nprogress.css'
+
 interface IApolloClient {
   apollo: ApolloClient<any>;
 }
 
 interface AppState {
   user: object | null;
+  jwt: string | null;
 }
 
 class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
@@ -40,12 +44,13 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // Setup state
     this.state = {
-      user: null
+      user: null,
+      jwt: null,
     }
   }
 
   // Error Catching
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     Sentry.configureScope(scope => {
       scope.setExtras(errorInfo);
     });
@@ -71,9 +76,11 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // get the user from localstorage if it exists
     const user = cookie.load('user');
+    const jwt = cookie.load('jwt');
     if (user) {
       this.setState({
-        user: user
+        user: user,
+        jwt: jwt,
       });
     }
   }
@@ -116,9 +123,9 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
             />
             <ToastProvider>
               <Page>
-                <React.StrictMode>
+                <StrictMode>
                   <Component {...pageProps} />
-                </React.StrictMode>
+                </StrictMode>
               </Page>
             </ToastProvider>
           </ProvideAuth>

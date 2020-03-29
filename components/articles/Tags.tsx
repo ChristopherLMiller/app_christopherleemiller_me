@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import styled from 'styled-components';
 import { TagsType } from './Types';
 

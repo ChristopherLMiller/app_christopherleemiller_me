@@ -4,7 +4,7 @@ const ModelsFilterContext = createContext<any>(null);
 
 function ModelsFilterContextProvider({ children }: any) {
   const [page, setPage] = useState(1);
-  const [completed, setCompleted] = useState(null);
+  const [completed, setCompleted] = useState(true);
   const [scale, setScale] = useState(null);
   const [tag, setTag] = useState(null);
   const [company, setCompany] = useState(null);
@@ -15,11 +15,11 @@ function ModelsFilterContextProvider({ children }: any) {
   }
 
   function setCompletedContext(value: any) {
-    if (value === `all`) {
-      setCompleted(null);
-    } else {
+    //if (value === `all`) {
+      //setCompleted(null);
+    //} else {
       setCompleted(value);
-    }
+    //}
   }
 
   function setScaleContext(value: any) {

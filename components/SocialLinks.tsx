@@ -6,41 +6,47 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { SocialIcon } from './SocialIcon';
-import { Props } from '../styles/Themes';
+import { SFC } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const SocialLinksBar = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  margin: 0;
-  padding: 20px 0;
-  padding-bottom: 50px;
-
-  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    padding-bottom: 0px;
-  }
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 75%;
+    margin: 0 auto;
+    font-size: 4.5rem;
+    grid-gap: 30px;
 `;
-const SocialLinks = () => (
+
+interface iSocialLinks {
+  color: string;
+}
+
+const SocialLinks: SFC<iSocialLinks> = ({ color }) => (
   <SocialLinksBar>
     <SocialIcon
       url="https://www.facebook.com/christopher.lee.miller517"
-      icon={faFacebookF}
+      icon={faFacebookF as IconProp}
       alt="Facebook"
+      color={color}
     />
     <SocialIcon
       url="https://github.com/ChristopherLMiller"
-      icon={faGithubAlt}
+      icon={faGithubAlt as IconProp}
       alt="Github"
+      color={color}
     />
     <SocialIcon
       url="https://www.linkedin.com/in/christopher-l-miller"
-      icon={faLinkedinIn}
+      icon={faLinkedinIn as IconProp}
       alt="LinkedIn"
+      color={color}
     />
     <SocialIcon
       url="https://twitter.com/ChrisLMiller_me"
-      icon={faTwitter}
+      icon={faTwitter as IconProp}
       alt="Twitter"
+      color={color}
     />
   </SocialLinksBar>
 );

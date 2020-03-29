@@ -1,4 +1,4 @@
-import React, { Fragment, SFC } from 'react';
+import { Fragment, SFC } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import posed from 'react-pose';
 import Meta from './Meta';

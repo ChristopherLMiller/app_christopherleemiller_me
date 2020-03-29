@@ -1,14 +1,12 @@
 import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
-import { canAccessPage } from '../utils/functions/Auth';
 import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { FieldSet } from '../components/inputs/FieldSet';
 import { Label } from '../components/inputs/Label';
 import { FormErrorMessage } from '../components/inputs/ErrorMessage';
-import { Button } from '../components/inputs/Button';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
 import { useAuth } from '../lib/hook/useAuth';
@@ -37,7 +35,6 @@ const resetSchema = Yup.object({
 });
 const ResetPasswordPage = () => {
   const { addToast } = useToasts();
-  canAccessPage({ isSecure: false });
   const router = useRouter();
   const auth = useAuth();
 
@@ -85,7 +82,7 @@ const ResetPasswordPage = () => {
                       <ErrorMessage name="passwordConfirm" component="span" />
                     </FormErrorMessage>
                   </FieldSet>
-                  <Button type="submit" disabled={isSubmitting || !isValid} aria-disabled={isSubmitting || !isValid}>Reset Password</Button>
+                  <button type="submit" disabled={isSubmitting || !isValid} aria-disabled={isSubmitting || !isValid}>Reset Password</button>
                 </StyledForm>
               </Form>
             )}

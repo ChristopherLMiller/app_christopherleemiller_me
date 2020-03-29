@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { SFC, useEffect, useState } from 'react';
+import { SFC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Center } from '../styles/Generics';
 import { PER_PAGE, STRAPI_ENDPOINT } from '../config';

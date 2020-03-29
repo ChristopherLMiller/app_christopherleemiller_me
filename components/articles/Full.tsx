@@ -12,7 +12,7 @@ import { StyledContentBlock } from '../elements/ContentBlock';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { hasPermission, isOwner, roles } from '../../utils/functions/Auth';
-import { Button } from '../inputs/Button';
+import { Button } from '../inputs/Buttons';
 import { ModalBox } from '../elements/Modal';
 
 const ArticleOptions = styled.div``;

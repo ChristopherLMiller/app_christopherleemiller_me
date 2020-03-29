@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import { withLayout } from '../components/layout/withLayout';
 import { Main } from '../styles/Generics';
 import { useRouter } from 'next/router';
-import { canAccessPage } from '../utils/functions/Auth';
+import { canAccessResource } from '../utils/functions/Auth';
 
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
@@ -15,7 +15,7 @@ export const projectsAuth = {
 };
 
 const ProjectsPage = () => {
-  if (canAccessPage(projectsAuth)) {
+  if (canAccessResource(projectsAuth)) {
     return (
       <Main>
         <Card>

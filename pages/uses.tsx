@@ -6,20 +6,20 @@ import { SITE_TITLE, SEPARATOR } from '../config';
 import { StyledArticle } from '../styles/Articles';
 import { Main } from '../styles/Generics';
 
-const PrivacyPolicyMarkdown = require(`../data/privacy-policy.md`);
+const UsesMarkdown = require(`../data/uses.md`);
 
-const title = `Privacy Policy`;
-const description = `My policies regarding your privacy and safety`;
+const title = `Uses`;
+const description = `Tech and tools that I use`;
 
-const PrivacyPolicyPage = () => (
+const UsesPage = () => (
   <Main>
     <NextSeo
       title={`${SITE_TITLE}${SEPARATOR}Privacy Policy`}
-      description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."
+      description="Web technologies, tools, and other things related to my development experience"
       openGraph={{
         title: `${SITE_TITLE}${SEPARATOR}Privacy Policy`,
-        description: `This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website.`,
-        url: `${process.env.SITE_URL}/privacy-policy`,
+        description: `Web technologies, tools, and other things related to my development experience`,
+        url: `${process.env.SITE_URL}/uses`,
         type: `article`,
         article: {
           authors: [`Chris Miller`],
@@ -30,16 +30,16 @@ const PrivacyPolicyPage = () => (
     />
     <StyledArticle>
       <StyledContentBlock>
-        <ReactMarkdown>{PrivacyPolicyMarkdown.default}</ReactMarkdown>
+        <ReactMarkdown>{UsesMarkdown.default}</ReactMarkdown>
       </StyledContentBlock>
     </StyledArticle>
   </Main>
 );
 
 export default withLayout(
-  PrivacyPolicyPage, {
+  UsesPage, {
   title,
   description,
   useSEO: true,
-  path: `/privacy-policy`
+  path: `/uses`
 });

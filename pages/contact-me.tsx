@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useToasts } from 'react-toast-notifications';
@@ -10,7 +9,6 @@ import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
 import { Label } from '../components/inputs/Label';
 import { FieldSet } from '../components/inputs/FieldSet';
-import { Button } from '../components/inputs/Button';
 import { FormErrorMessage } from '../components/inputs/ErrorMessage';
 
 const title = `Contact Me`;
@@ -142,9 +140,9 @@ const ContactPage = () => {
                       </FormErrorMessage>
                     </StyledContactFormFullWidth>
                   </StyledContactForm>
-                  <Button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+                  <button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
                     Send It!
-                  </Button>
+                  </button>
                 </Form>
               )}
             </Formik>
@@ -167,7 +165,7 @@ const ContactPage = () => {
             <p>
               <a href="tel:+15743702148">+1 (574) 370-2148</a>
             </p>
-            <SocialLinks />
+            <SocialLinks color="#FFF" />
           </ContactColumn>
         </ContactGrid>
       </Card>

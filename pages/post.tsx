@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import { useQuery } from 'react-apollo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -52,7 +52,7 @@ const PostPage: SFC = () => {
           {data !== undefined &&
             data.articles.map(article => (
               <FullArticle article={article}>
-                <ReactMarkdown source={article.content} />
+                <ReactMarkdown source={article.content} escapeHtml={false} />
               </FullArticle>
             ))}
         </Main>

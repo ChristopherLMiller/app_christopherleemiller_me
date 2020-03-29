@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import md5 from 'md5';
 import { getUserEmail } from '../../../utils/functions/Auth';
 
 const ProfilePicture = styled.img`
@@ -8,9 +7,7 @@ const ProfilePicture = styled.img`
 `
 
 const Avatar = () => {
-  // setup the avatar hash
-  const emailHash = md5(getUserEmail() || 'default');
-  const avatarURL = `https://secure.gravatar.com/avatar/${emailHash}?d=wavatar`;
+  const avatarURL = `https://unavatar.now.sh/${getUserEmail()}`;
 
   return (
     <ProfilePicture src={avatarURL} />

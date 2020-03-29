@@ -1,4 +1,4 @@
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import Router, { withRouter, SingletonRouter } from 'next/router';
 import { useQuery } from 'react-apollo';
 import styled from 'styled-components';

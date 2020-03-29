@@ -15,4 +15,3 @@ export const SITE_DEFAULT_IMAGE_FILE = `clm_me/assets/default`;
 export const DISQUS_SHORTNAME = `christopherleemiller-me`;
 export const PER_PAGE = 20;
 export const MODELS_PER_PAGE = 100;
-

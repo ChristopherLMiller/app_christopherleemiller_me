@@ -1,10 +1,8 @@
 import NProgress from 'nprogress';
-import React, { SFC } from 'react';
+import { SFC } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
-import posed from 'react-pose';
 import { Props } from '../../styles/Themes';
-import { Paper } from '../Paper';
 
 Router.events.on(`routeChangeStart`, () => {
   NProgress.configure({ showSpinner: false });
@@ -18,18 +16,11 @@ Router.events.on(`routeChangeError`, () => {
   NProgress.done();
 });
 
-const HeaderPopped = posed.header({
-  open: {
-    y: `0%`,
-    delay: 500,
-  },
-  closed: {
-    y: `-100%`,
-  },
-});
-
-const StyledHeader = styled(HeaderPopped)`
-  position: relative;
+const StyledHeader = styled.header`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
   color: var(--text-color-light);
   padding: 30px;
   margin-top: 76px;
@@ -64,10 +55,9 @@ interface HeaderProps {
   description: string;
 }
 const Header: SFC<HeaderProps> = ({ title, description }) => (
-  <StyledHeader pose="open" initialPose="closed">
+  <StyledHeader>
     <StyledHeaderDescription>{description}</StyledHeaderDescription>
     <StyledHeaderTitle>{title}</StyledHeaderTitle>
-    <Paper translate="-90%" />
   </StyledHeader>
 );
 

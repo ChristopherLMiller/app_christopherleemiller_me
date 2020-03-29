@@ -8,7 +8,7 @@ import { MODELS_QUERY_BRIEF } from '../../utils/query';
 import { MODELS_PER_PAGE } from '../../config';
 import { ModelsFilterContext } from '../../lib/context/ModelFiltersContext';
 import { StyledModelListings } from '../../styles/Models';
-import { hasPermission, roles } from '../../utils/functions/Auth';
+//import { hasPermission, roles } from '../../utils/functions/Auth';
 
 const ModelListings = () => {
   const router = useRouter();
@@ -20,31 +20,22 @@ const ModelListings = () => {
   }
 
   // grab the filter parameters from the context
-  let { completed, scale, tag, company, sort } = useContext(
+  let { scale, tag, company, sort } = useContext(
     ModelsFilterContext
   );
 
-  let status = hasPermission({ groups: [roles.admin, roles.mod] }) ? null : 'PUBLISHED';
+  let status = 'PUBLISHED' //hasPermission({ groups: [roles.admin, roles.mod] }) ? null : 'PUBLISHED';
+
+
 
   if (tag === "all") tag = null;
   if (company === "all") company = null;
   if (scale === "all") scale = null;
-  if (completed === "all") completed = null;
 
   // load the GQL Data
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
     variables: {
       where: {
-        scale: {
-          slug_contains: scale || null,
-        },
-        manufacturer: {
-          slug_contains: company || null,
-        },
-        tags: {
-          slug_contains: tag || null,
-        },
-        completed: completed || null,
         status: status,
       },
       start: page * MODELS_PER_PAGE - MODELS_PER_PAGE,

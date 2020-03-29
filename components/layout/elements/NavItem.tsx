@@ -2,7 +2,7 @@ import { SFC } from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { canAccessPage, iCanAccessPage } from '../../../utils/functions/Auth';
+import { canAccessResource, iCanAccessResource } from '../../../utils/functions/Auth';
 import { useRouter } from 'next/router';
 
 const PosedNavItem = posed.li({
@@ -48,7 +48,7 @@ const StyledNavItem = styled(PosedNavItem)`
 `;
 
 interface iNavItem {
-  auth?: iCanAccessPage | undefined;
+  auth?: iCanAccessResource | undefined;
   isActivePaths?: string[];
   href: string;
   title: string
@@ -60,11 +60,14 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes('http') ? false : true;
 
-  if (auth) {
+  //console.debug(`NavItem: ${title}`);
+  //console.debug(auth);
+
+  if (auth && canAccessResource(auth)) {
     return (
       <StyledNavItem
-        display={canAccessPage(auth) ? 'block' : 'none'}
-        aria-hidden={!canAccessPage(auth)}
+        display="block"
+        aria-hidden={!canAccessResource(auth)}
         isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ''}>
         {isHrefLocal && <Link href={href}>
           <a>{title}</a>
@@ -72,6 +75,8 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
         {!isHrefLocal && <a href={href}>{title}</a>}
       </StyledNavItem>
     )
+  } else if (auth && !canAccessResource(auth)) {
+    return null;
   } else {
     return (
       <StyledNavItem
