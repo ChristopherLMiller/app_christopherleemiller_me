@@ -13,16 +13,19 @@ const port = parseInt(process.env.PORT, 10) || 5000;
 const dev = process.env.NODE_ENV !== `production`;
 const app = next({ dev });
 const handle = app.getRequestHandler();
+let db = null;
 
-/*mongoose.connect(
-  `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-).catch(() => console.log('unable to connect to mongo for session storage'));
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;*/
+if (process.env.NODE_ENV === "production") {
+  mongoose.connect(
+    `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  ).catch(() => console.log('unable to connect to mongo for session storage'));
+  mongoose.Promise = global.Promise;
+  db = mongoose.connection;
+}
 
 app
   .prepare()
@@ -30,17 +33,20 @@ app
     const server = express();
 
     // prepare session for authentication
-    /*const sessionConfig = {
-      secret: uid.sync(18),
-      cookie: {
-        maxAge: 86400 * 1000, // 24 hours
-      },
-      resave: false,
-      saveUninitialized: true,
-      store: new MongoStore({ mongooseConnection: db }),
-    };
+    if (process.env.NODE_ENV === "production") {
+      const sessionConfig = {
+        secret: uid.sync(18),
+        cookie: {
+          maxAge: 86400 * 1000, // 24 hours
+        },
+        resave: false,
+        saveUninitialized: true,
+        store: new MongoStore({ mongooseConnection: db }),
+      };
 
-    server.use(session(sessionConfig));*/
+      server.use(session(sessionConfig));
+    }
+
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: true }));
     server.use(cookieParser());
