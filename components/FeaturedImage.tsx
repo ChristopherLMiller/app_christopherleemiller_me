@@ -34,7 +34,7 @@ const FeaturedImage: SFC<FeaturedImageTypes> = ({
   alt,
   border = false,
 }) => {
-  if (image && image.provider_metadata && image.provider_metadata.public_id) {
+  if (image?.provider_metadata?.public_id) {
     return (
       <StyledFeaturedImage
         src={ImageURL(image.provider_metadata.public_id, width)}

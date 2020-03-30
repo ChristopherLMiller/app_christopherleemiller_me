@@ -38,7 +38,7 @@ const ResetPasswordPage = () => {
   const router = useRouter();
   const auth = useAuth();
 
-  if (router.query && router.query.code) {
+  if (router?.query?.code) {
     return (
       <Main>
         <Card
