@@ -30,15 +30,6 @@ const withLayout = <P extends object>(
   }
 ) => {
   class HOC extends Component<P & withLayoutProps> {
-    static getInitialProps = async (ctx: any) => {
-      let pageProps = {};
-
-      if (WrappedComponent.getInitialProps)
-        return await WrappedComponent.getInitialProps(ctx);
-
-      return { pageProps };
-    }
-
     public render() {
       return (
         <InnerPage>
