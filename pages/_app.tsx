@@ -2,7 +2,6 @@ import App, { AppProps } from 'next/app';
 import { StrictMode, ErrorInfo } from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
-import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
@@ -94,7 +93,6 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     const { Component, apollo} = this.props;
 
     return (
-      <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
           <ProvideAuth user={this.state.user}>
             <DefaultSeo
@@ -120,7 +118,6 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
             </ToastProvider>
           </ProvideAuth>
         </ApolloHooksProvider>
-      </ApolloProvider>
     );
   }
 }
