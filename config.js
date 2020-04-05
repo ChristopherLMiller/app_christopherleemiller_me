@@ -15,3 +15,10 @@ export const SITE_DEFAULT_IMAGE_FILE = `clm_me/assets/default`;
 export const DISQUS_SHORTNAME = `christopherleemiller-me`;
 export const PER_PAGE = 20;
 export const MODELS_PER_PAGE = 100;
+
+// object containing role to id mappings
+export const roles = {
+    admin: 'Administrator',
+    mod: 'Mod',
+    person: 'Person',
+  }

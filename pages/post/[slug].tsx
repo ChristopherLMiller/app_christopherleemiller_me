@@ -3,12 +3,12 @@ import { SFC } from 'react';
 import { useQuery } from 'react-apollo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import Card from '../components/Card';
-import { FullArticle } from '../components/articles/Full';
-import { ARTICLES_QUERY } from '../utils/query';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
-import { iData } from '../components/articles/Types';
+import Card from '../../components/Card';
+import { FullArticle } from '../../components/articles/Full';
+import { ARTICLES_QUERY } from '../../utils/query';
+import { withLayout } from '../../components/layout/withLayout';
+import { Main } from '../../styles/Generics';
+import { iData } from '../../components/articles/Types';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;

@@ -17,8 +17,6 @@ export const ARTICLES_QUERY = gql`
       }
       created_at
       updated_at
-      seo_description
-      seo_title
       content
       status
       visibility

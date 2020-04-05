@@ -10,6 +10,7 @@ import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
 import { Loader } from '../components/elements/Loader';
 import { PER_PAGE } from '../config';
+import { truncate } from '../utils/functions/truncate';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -27,7 +28,6 @@ const ArticlesPage: SFC = () => {
   }
 
   // set a default value for page if non provided
-  // const page = parseFloat(router.query.page) || 1;
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
       start: page * PER_PAGE - PER_PAGE,
@@ -60,7 +60,7 @@ const ArticlesPage: SFC = () => {
       {data !== undefined &&
         data.articles.map(article => (
           <BriefArticle article={article} key={article.id}>
-            <ReactMarkdown source={article.seo_description} />
+            <ReactMarkdown source={truncate(article.content, '.', 3)} />
           </BriefArticle>
         ))}
     </Main>

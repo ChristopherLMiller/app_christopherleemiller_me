@@ -8,7 +8,6 @@ import { MODELS_QUERY_BRIEF } from '../../utils/query';
 import { MODELS_PER_PAGE } from '../../config';
 import { ModelsFilterContext } from '../../lib/context/ModelFiltersContext';
 import { StyledModelListings } from '../../styles/Models';
-//import { hasPermission, roles } from '../../utils/functions/Auth';
 
 const ModelListings = () => {
   const router = useRouter();
@@ -24,7 +23,7 @@ const ModelListings = () => {
     ModelsFilterContext
   );
 
-  let status = 'PUBLISHED' //hasPermission({ groups: [roles.admin, roles.mod] }) ? null : 'PUBLISHED';
+  let status = 'PUBLISHED'
 
 
 

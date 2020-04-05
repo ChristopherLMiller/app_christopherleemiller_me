@@ -2,8 +2,9 @@ import { SFC } from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { canAccessResource, iCanAccessResource } from '../../../utils/functions/Auth';
 import { useRouter } from 'next/router';
+import { useAuth } from '../../../lib/hook/useAuth';
+import { iCanAccessResource } from '../../../utils/interfaces';
 
 const PosedNavItem = posed.li({
   open: {
@@ -48,26 +49,25 @@ const StyledNavItem = styled(PosedNavItem)`
 `;
 
 interface iNavItem {
-  auth?: iCanAccessResource | undefined;
+  authObject?: iCanAccessResource | undefined;
   isActivePaths?: string[];
   href: string;
   title: string
 }
 
-const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
+const NavItem: SFC<iNavItem> = ({ isActivePaths, href, title, authObject }) => {
   const router = useRouter();
+  const auth = useAuth();
 
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes('http') ? false : true;
 
-  //console.debug(`NavItem: ${title}`);
-  //console.debug(auth);
 
-  if (auth && canAccessResource(auth)) {
+  if (auth.canAccessResource(authObject)) {
     return (
       <StyledNavItem
         display="block"
-        aria-hidden={!canAccessResource(auth)}
+        aria-hidden={!auth.canAccessResource(authObject)}
         isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ''}>
         {isHrefLocal && <Link href={href}>
           <a>{title}</a>
@@ -75,7 +75,7 @@ const NavItem: SFC<iNavItem> = ({ auth, isActivePaths, href, title }) => {
         {!isHrefLocal && <a href={href}>{title}</a>}
       </StyledNavItem>
     )
-  } else if (auth && !canAccessResource(auth)) {
+  } else if (auth && !auth.canAccessResource(authObject)) {
     return null;
   } else {
     return (

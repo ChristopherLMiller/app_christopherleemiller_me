@@ -2,7 +2,6 @@ import App, { AppProps } from 'next/app';
 import { StrictMode, ErrorInfo } from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
-import { ApolloProvider } from 'react-apollo';
 import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
 import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
@@ -14,7 +13,7 @@ import Page from '../components/layout/Page';
 import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/analytics';
-import { ProvideAuth } from '../lib/hook/useAuth';
+import { ProvideAuth} from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 
 import '../node_modules/highlight.js/styles/atom-one-dark.css'
@@ -77,34 +76,25 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     // get the user from localstorage if it exists
     const user = cookie.load('user');
     const jwt = cookie.load('jwt');
+    
     if (user) {
+      console.log('setting up user for the app');
       this.setState({
         user: user,
         jwt: jwt,
       });
     }
+
   }
 
   componentWillUnmount() {
     Router.events.off(`routeChangeComplete`, logPageView);
   }
 
-  static async getInitialProps({ Component, ctx }: any) {
-    let pageProps = {} as any;
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
   render() {
-    const { Component, apollo, pageProps } = this.props;
+    const { Component, apollo} = this.props;
 
     return (
-
-      <ApolloProvider client={apollo}>
         <ApolloHooksProvider client={apollo}>
           <ProvideAuth user={this.state.user}>
             <DefaultSeo
@@ -124,13 +114,12 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
             <ToastProvider>
               <Page>
                 <StrictMode>
-                  <Component {...pageProps} />
+                  <Component />
                 </StrictMode>
               </Page>
             </ToastProvider>
           </ProvideAuth>
         </ApolloHooksProvider>
-      </ApolloProvider>
     );
   }
 }

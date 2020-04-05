@@ -57,7 +57,7 @@ export function withApollo(PageComponent: any, { ssr = true } = {}) {
       if (typeof window === 'undefined') {
         // When redirecting, the response is finished.
         // No point in continuing to render
-        if (ctx.res && ctx.res.finished) {
+        if (ctx?.res?.finished) {
           return pageProps
         }
 

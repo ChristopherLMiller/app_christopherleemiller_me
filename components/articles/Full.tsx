@@ -11,9 +11,11 @@ import { CommentThread } from '../CommentThread';
 import { StyledContentBlock } from '../elements/ContentBlock';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { hasPermission, isOwner, roles } from '../../utils/functions/Auth';
 import { Button } from '../inputs/Buttons';
 import { ModalBox } from '../elements/Modal';
+import { useAuth } from '../../lib/hook/useAuth';
+import { roles } from '../../config';
+import { truncate } from '../../utils/functions/truncate';
 
 const ArticleOptions = styled.div``;
 
@@ -25,6 +27,8 @@ const FullArticle: SFC<ArticleTypes> = ({
   commentsEnabled = true,
   header = true,
 }) => {
+  const auth = useAuth();
+
   useEffect(() => {
     function initHighlighting() {
       hljs.initHighlighting();
@@ -51,10 +55,10 @@ const FullArticle: SFC<ArticleTypes> = ({
       <NextSeo
         canonical={`${process.env.SITE_URL}/post/${article.slug}`}
         title={`Post${SEPARATOR}${article.title}`}
-        description={article.seo_description}
+        description={truncate(article.content, '.', 3)}
         openGraph={{
           title: `Post${SEPARATOR}${article.title}`,
-          description: article.seo_description,
+          description: truncate(article.content, '.', 3),
           url: `${process.env.SITE_URL}/post/${article.slug}`,
           type: `article`,
           article: {
@@ -78,13 +82,13 @@ const FullArticle: SFC<ArticleTypes> = ({
         datePublished={article.created_at}
         dateModified={article.updated_at}
         authorName={article.user.username}
-        description={article.seo_description}
+        description={truncate(article.content, '.', 3)}
       />
       <StyledArticle>
         {header && <ArticleHead article={article} />}
         <StyledContentBlock>
           {children}
-          {(hasPermission({ groups: [roles.admin] }) || isOwner(article.user.id)) && <ArticleOptions>
+          {(auth.hasPermission({ groups: [roles.admin] }) || auth.isOwner(article.user.id)) && <ArticleOptions>
             <ArticleOptionsItem><Link href={`/admin/articles/edit/${article.id}`} as={`/admin/articles/edit/${article.id}`}><Button>Edit Article</Button></Link></ArticleOptionsItem>
             <ArticleOptionsItem><Button onClick={() => setModalOpen(true)}>Delete Article</Button></ArticleOptionsItem>
           </ArticleOptions>}
