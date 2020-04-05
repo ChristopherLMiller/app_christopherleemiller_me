@@ -25,10 +25,6 @@ export interface CommentType {
   };
 }
 
-export interface CommentsType {
-  comments: Array<CommentType>;
-}
-
 export interface ArticleTypes {
   article: {
     id: string;
@@ -43,14 +39,11 @@ export interface ArticleTypes {
     title: string;
     created_at: string;
     updated_at: string;
-    seo_title: string;
-    seo_description: string;
     user: {
       id: string;
       username: string;
     };
     slug: string;
-    comments: Array<CommentType>;
     categories: Array<CategoryType>;
     tags: Array<TagType>;
   };
