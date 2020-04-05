@@ -49,24 +49,25 @@ const StyledNavItem = styled(PosedNavItem)`
 `;
 
 interface iNavItem {
-  auth?: iCanAccessResource | undefined;
+  authObject?: iCanAccessResource | undefined;
   isActivePaths?: string[];
   href: string;
   title: string
 }
 
-const NavItem: SFC<iNavItem> = ({ isActivePaths, href, title }) => {
+const NavItem: SFC<iNavItem> = ({ isActivePaths, href, title, authObject }) => {
   const router = useRouter();
   const auth = useAuth();
 
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes('http') ? false : true;
 
-  if (auth.canAccessResource(auth)) {
+
+  if (auth.canAccessResource(authObject)) {
     return (
       <StyledNavItem
         display="block"
-        aria-hidden={!auth.canAccessResource(auth)}
+        aria-hidden={!auth.canAccessResource(authObject)}
         isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ''}>
         {isHrefLocal && <Link href={href}>
           <a>{title}</a>
@@ -74,7 +75,7 @@ const NavItem: SFC<iNavItem> = ({ isActivePaths, href, title }) => {
         {!isHrefLocal && <a href={href}>{title}</a>}
       </StyledNavItem>
     )
-  } else if (auth && !auth.canAccessResource(auth)) {
+  } else if (auth && !auth.canAccessResource(authObject)) {
     return null;
   } else {
     return (

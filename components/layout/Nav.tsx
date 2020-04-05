@@ -28,10 +28,10 @@ const Nav = () => {
       <NavItem isActivePaths={["/articles", "/post"]} href="/articles" title="Articles" />
       <NavItem isActivePaths={["/about"]} href="/about" title="About Me" />
       <NavItem isActivePaths={["/uses"]} href="/uses" title="Uses" />
-      <NavItem auth={servicesAuth} isActivePaths={["/services"]} href="/services" title="Services" />
-      <NavItem auth={projectsAuth} isActivePaths={["/projects"]} href="/projects" title="Projects" />
+      <NavItem authObject={servicesAuth} isActivePaths={["/services"]} href="/services" title="Services" />
+      <NavItem authObject={projectsAuth} isActivePaths={["/projects"]} href="/projects" title="Projects" />
       <NavItem isActivePaths={["/models", "/model"]} href="/models" title="Models" />
-      <NavItem auth={galleriesAuth} isActivePaths={["/galleries", "/gallery"]} href="/galleries" title="Galleries" />
+      <NavItem authObject={galleriesAuth} isActivePaths={["/galleries", "/gallery"]} href="/galleries" title="Galleries" />
       <NavItem isActivePaths={["/contact-me"]} href="/contact-me" title="Contact Me" />
       {auth.isAuthenticated && <NavItem href="https://strapi.christopherleemiller.me/admin" title="Strapi Backend" />}
     </NavStyles>
