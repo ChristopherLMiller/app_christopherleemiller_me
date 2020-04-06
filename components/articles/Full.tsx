@@ -55,10 +55,10 @@ const FullArticle: SFC<ArticleTypes> = ({
       <NextSeo
         canonical={`${process.env.SITE_URL}/post/${article.slug}`}
         title={`Post${SEPARATOR}${article.title}`}
-        description={truncate(article.content, '.', 3)}
+        description={truncate(article.content, 3)}
         openGraph={{
           title: `Post${SEPARATOR}${article.title}`,
-          description: truncate(article.content, '.', 3),
+          description: truncate(article.content, 3),
           url: `${process.env.SITE_URL}/post/${article.slug}`,
           type: `article`,
           article: {
@@ -82,7 +82,7 @@ const FullArticle: SFC<ArticleTypes> = ({
         datePublished={article.created_at}
         dateModified={article.updated_at}
         authorName={article.user.username}
-        description={truncate(article.content, '.', 3)}
+        description={truncate(article.content, 3)}
       />
       <StyledArticle>
         {header && <ArticleHead article={article} />}

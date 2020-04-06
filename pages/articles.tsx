@@ -60,7 +60,7 @@ const ArticlesPage: SFC = () => {
       {data !== undefined &&
         data.articles.map(article => (
           <BriefArticle article={article} key={article.id}>
-            <ReactMarkdown source={truncate(article.content, '.', 3)} />
+            <ReactMarkdown source={truncate(article.content, 3)} />
           </BriefArticle>
         ))}
     </Main>
