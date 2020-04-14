@@ -35,9 +35,7 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
         <span>Scale: {model?.scale?.scale}</span>
         <span>Released: {model?.year_released}</span>
         <span>Completed: {model?.completed ? `Yes` : `No`}</span>
-        <span>
-          Build Time: <BuildTime id={model?.clockify_id} />
-        </span>
+        <BuildTime id={model?.clockify_id} />
       </InfoPanel>
     </Polaroid>
   </StyledModelListing>
