@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint . --fix",
-    "test": "NODE_ENV=test jest && codecov"
+    "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0"
   },
   "author": "",
   "license": "ISC",
@@ -72,6 +72,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
     "@types/date-fns": "^2.6.0",
     "@types/highlight.js": "^9.12.3",
+    "@types/jest": "^25.2.1",
     "@types/next": "^9.0.0",
     "@types/next-seo": "^1.10.0",
     "@types/node": "^13.9.3",
@@ -88,6 +89,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.2.6",
     "babel-plugin-styled-components": "^1.10.6",
+    "codecov": "^3.6.5",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.1",
     "eslint-config-prettier": "^6.7.0",
@@ -98,18 +100,22 @@
     "jest": "^25.1.0",
     "jest-transform-graphql": "^2.1.0",
     "prettier": "^1.19.1",
+    "ts-jest": "^25.3.1",
     "typescript": "^3.8.3"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true,
-    "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
+    "setupFilesAfterEnv": [
+      "<rootDir>/jest.setup.js"
+    ],
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
       "<rootDir>/node_modules/"
     ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
+      "^.+\\.tsx?$": "ts-jest",
       ".*": "babel-jest"
     }
   }
