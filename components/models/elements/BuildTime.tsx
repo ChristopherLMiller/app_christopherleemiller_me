@@ -31,6 +31,10 @@ function convertTime(time: String): string {
   return `N/A`;
 }
 
+interface iFetchData {
+  duration: string;
+}
+
 const BuildTime: SFC<iBuildTime> = ({ id }) => {
   // immediately return if id is null
   if (id === null) {
@@ -42,7 +46,7 @@ const BuildTime: SFC<iBuildTime> = ({ id }) => {
     'Content-Type': `application/json`,
     'X-Api-Key': process.env.CLOCKIFY_API_KEY,
   };
-  const { data, isLoading, error } = useFetch(
+  const { data, isLoading, error } = useFetch<iFetchData>(
     `https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
     {
       headers,
@@ -56,7 +60,6 @@ const BuildTime: SFC<iBuildTime> = ({ id }) => {
     return <Fragment>N/A</Fragment>;
   }
 
-  // @ts-ignore
   if (data) return <Fragment>{convertTime(data.duration)}</Fragment>;
 
   return null;
