@@ -14,7 +14,7 @@ const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => (
     </StyledContentBlock>
     <Button
       as={`/post/${article.slug}`}
-      href={`/post?slug=${article.slug}`}
+      href={`/post/[slug]`}
       text="Read More"
     />
     <ArticleFooter article={article} />

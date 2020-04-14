@@ -1,38 +1,30 @@
-import { Component } from 'react';
 import { NextSeo } from 'next-seo';
 import { Footer } from './Footer';
 import Header from './Header';
 import { SITE_DEFAULT_IMAGE } from '../../config';
 import { ImageURL } from '../../utils/functions/imageURL';
 import { Profile } from './Profile';
-import styled from 'styled-components';
-
-interface withLayoutProps {
-  title: string;
-  description: string;
-  seo: string;
-  path?: string;
-  image?: string;
-}
+import styled from 'styled-components'
+import { FunctionComponent } from 'react';
+import { Main } from '../../styles/Generics';
 
 const InnerPage = styled.div`
   position: relative;
 `;
 
-const withLayout = <P extends object>(
-  WrappedComponent: any,
-  meta: {
-    title: string,
-    description: string,
-    useSEO: boolean,
-    path?: string,
-    image?: string,
-  }
-) => {
-  class HOC extends Component<P & withLayoutProps> {
-    public render() {
-      return (
-        <InnerPage>
+interface iLayout {
+    meta: {
+        title: string;
+        description: string;
+        useSEO: boolean;
+        path?: string;
+        image?: string;
+    }
+}
+
+const Layout:FunctionComponent<iLayout> = ({meta, children}) => (
+    <InnerPage>
+        
           <Profile />
           <Header title={meta.title} description={meta.description} />
           {meta.useSEO && (
@@ -54,14 +46,12 @@ const withLayout = <P extends object>(
               }}
             />
           )}
-          <WrappedComponent {...(this.props as P)} />
+          <Main>
+          {children}
+          </Main>
           <Footer />
+          
         </InnerPage>
-      );
-    }
-  }
+);
 
-  return HOC;
-};
-
-export { withLayout };
+export { Layout };

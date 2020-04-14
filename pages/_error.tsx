@@ -1,7 +1,6 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
 import { FC } from 'react';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Error`;
 const description = `Uh-Oh! We broke something!`;
@@ -12,13 +11,13 @@ interface ErrorPageTypes {
 const ErrorPage: FC<ErrorPageTypes> = ({ props }) => {
 
   return (
-    <Main>
+    <Layout meta={{ title, description, useSEO: true, path: `/404` }}>
       <Card heading="Something isn't right.">
         <p>Something broke an we don't know how to fix this! Yikes!</p>
         <p>{props}</p>
       </Card>
-    </Main>
+    </Layout>
   );
 }
 
-export default withLayout(ErrorPage, { title, description, useSEO: true, path: `/404` });
+export default ErrorPage;
