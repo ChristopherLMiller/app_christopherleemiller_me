@@ -1,10 +1,9 @@
 import { NextSeo } from 'next-seo';
 import ReactMarkdown from 'react-markdown';
 import { StyledContentBlock } from '../components/elements/ContentBlock';
-import { withLayout } from '../components/layout/withLayout';
 import { SITE_TITLE, SEPARATOR } from '../config';
 import { StyledArticle } from '../styles/Articles';
-import { Main } from '../styles/Generics';
+import { Layout } from '../components/layout/PageLayout';
 
 const PrivacyPolicyMarkdown = require(`../data/privacy-policy.md`);
 
@@ -12,7 +11,12 @@ const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
 
 const PrivacyPolicyPage = () => (
-  <Main>
+  <Layout meta={{
+    title,
+    description,
+    useSEO: true,
+    path: `/privacy-policy`
+  }}>
     <NextSeo
       title={`${SITE_TITLE}${SEPARATOR}Privacy Policy`}
       description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."
@@ -33,13 +37,7 @@ const PrivacyPolicyPage = () => (
         <ReactMarkdown>{PrivacyPolicyMarkdown.default}</ReactMarkdown>
       </StyledContentBlock>
     </StyledArticle>
-  </Main>
+  </Layout>
 );
 
-export default withLayout(
-  PrivacyPolicyPage, {
-  title,
-  description,
-  useSEO: true,
-  path: `/privacy-policy`
-});
+export default PrivacyPolicyPage;

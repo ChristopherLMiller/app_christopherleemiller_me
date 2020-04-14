@@ -2,14 +2,13 @@ import styled from 'styled-components';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { useToasts } from 'react-toast-notifications';
-import { withLayout } from '../components/layout/withLayout';
 import Card from '../components/Card';
 import { SocialLinks } from '../components/SocialLinks';
-import { Main } from '../styles/Generics';
 import { Props } from '../styles/Themes';
 import { Label } from '../components/inputs/Label';
 import { FieldSet } from '../components/inputs/FieldSet';
 import { FormErrorMessage } from '../components/inputs/ErrorMessage';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;
@@ -79,7 +78,7 @@ const ContactPage = () => {
   const { addToast } = useToasts();
 
   return (
-    <Main>
+    <Layout meta={{ title, description, useSEO: true, path: `/contact-me` }}>
       <Card
         heading="Send me a message"
         subHeading="Got a question?  Looking for some work to be done?  I'd love to hear from you.  Send me a message and I'll reply as soon as possible."
@@ -169,7 +168,7 @@ const ContactPage = () => {
           </ContactColumn>
         </ContactGrid>
       </Card>
-    </Main >
+    </Layout>
   );
 };
-export default withLayout(ContactPage, { title, description, useSEO: true, path: `/contact-me` });
+export default ContactPage;

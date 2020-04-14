@@ -49,11 +49,14 @@ const BuildTime: SFC<iBuildTime> = ({ id }) => {
     }
   );
 
+
   if (isLoading) return <Fragment>---</Fragment>;
   if (error) {
     console.log(error.message);
     return <Fragment>N/A</Fragment>;
   }
+
+  // @ts-ignore
   if (data) return <Fragment>{convertTime(data.duration)}</Fragment>;
 
   return null;

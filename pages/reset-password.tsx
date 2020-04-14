@@ -1,6 +1,4 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
 import { useRouter } from 'next/router';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -10,6 +8,7 @@ import { FormErrorMessage } from '../components/inputs/ErrorMessage';
 import styled from 'styled-components';
 import { useToasts } from 'react-toast-notifications';
 import { useAuth } from '../lib/hook/useAuth';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Reset Password`;
 const description = `Reset your password here!`;
@@ -40,7 +39,7 @@ const ResetPasswordPage = () => {
 
   if (router?.query?.code) {
     return (
-      <Main>
+      <Layout meta={{ title, description, useSEO: true, path: `/reset-password` }}>
         <Card
           heading="Reset Password"
           subHeading="Here you can reset your password to regain access to authenticated functions on the website.  Please enter a new password below."
@@ -88,7 +87,7 @@ const ResetPasswordPage = () => {
             )}
           </Formik>
         </Card>
-      </Main>
+      </Layout>
     );
   } else {
     router.replace('/');
@@ -98,4 +97,4 @@ const ResetPasswordPage = () => {
 
 
 }
-export default withLayout(ResetPasswordPage, { title, description, useSEO: true, path: `/reset-password` });
+export default ResetPasswordPage;
