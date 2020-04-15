@@ -6,10 +6,10 @@ import { ModelTypes } from '../Types';
 import { Title } from '../../elements/Title';
 import { CommentThread } from '../../CommentThread';
 import { StyledGallery } from '../gallery';
-import { FeaturedImage } from '../../FeaturedImage';
 import { Props } from '../../../styles/Themes';
 import { ImageURL } from '../../../utils/functions/imageURL';
 import { StyledContentBlock } from '../../elements/ContentBlock';
+import { Image } from '../../elements';
 
 const StyledContentArea = styled.div`
   max-width: ${(props: Props) => props.theme.max_width};
@@ -29,8 +29,8 @@ const ModelContentArea = styled.div`
 const Body: SFC<ModelTypes> = ({ model }) => {
   const images = model.images.map(image => {
     return {
-      original: `${ImageURL(image.image.provider_metadata !== null ? image.image.provider_metadata.public_id : 'default', 1920)}`,
-      thumbnail: `${ImageURL(image.image.provider_metadata !== null ? image.image.provider_metadata.public_id : 'default', 200)}`,
+      original: `${ImageURL(image?.image?.provider_metadata?.public_id, {w: 1920})}`,
+      thumbnail: `${ImageURL(image?.image?.provider_metadata?.public_id, {w: 200})}`,
     };
   });
 
@@ -48,11 +48,7 @@ const Body: SFC<ModelTypes> = ({ model }) => {
         </StyledGallery>
       )}
       {images.length == 0 && (
-        <FeaturedImage
-          image={model.featured_image}
-          width={1500}
-          alt={model.title}
-        />
+        <Image file={model?.featured_image?.provider_metadata?.public_id} options={{w: 1500}} alt={model.title} />
       )}
 
       <ModelContentArea>

@@ -8,7 +8,7 @@ import {
 export interface iImageOptions { 
     w?: number;                 // width
     h?: number;                 // height
-    crop?: string
+    c?: string                  // crop
     aspectRatio?: string;
     gravity?: string;
     zoom?: number;
