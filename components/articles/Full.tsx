@@ -1,6 +1,6 @@
 import hljs from 'highlight.js';
 import { NextSeo, BlogJsonLd } from 'next-seo';
-import { SFC, useEffect, Fragment, useState } from 'react';
+import { FunctionComponent, useEffect, Fragment, useState } from 'react';
 import Router from 'next/router';
 import { ArticleHead } from './elements/Head';
 import { ArticleTypes } from './Types';
@@ -21,7 +21,7 @@ const ArticleOptions = styled.div``;
 
 const ArticleOptionsItem = styled.span``;
 
-const FullArticle: SFC<ArticleTypes> = ({
+const FullArticle: FunctionComponent<ArticleTypes> = ({
   article,
   children,
   commentsEnabled = true,

@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { ArticleTypes } from '../Types';
 import { Tags } from '../Tags';
@@ -10,7 +10,7 @@ const StyledArticleFooter = styled.div`
   margin: 0;
 `;
 
-const ArticleFooter: SFC<ArticleTypes> = ({ article }) => (
+const ArticleFooter: FunctionComponent<ArticleTypes> = ({ article }) => (
   <StyledArticleFooter>
     <Categories categories={article.categories} />
     <Tags tags={article.tags} />

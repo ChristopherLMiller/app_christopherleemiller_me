@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import ReactMarkdown from 'react-markdown';
 import ImageGallery from 'react-image-gallery';
 import styled from 'styled-components';
@@ -26,7 +26,7 @@ const ModelContentArea = styled.div`
   color: var(--text-color);
 `;
 
-const Body: SFC<ModelTypes> = ({ model }) => {
+const Body: FunctionComponent<ModelTypes> = ({ model }) => {
   const images = model.images.map(image => {
     return {
       original: `${ImageURL(image?.image?.provider_metadata?.public_id, {w: 1920})}`,

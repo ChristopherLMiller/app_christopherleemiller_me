@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Disqus from 'disqus-react';
 import { DISQUS_SHORTNAME } from '../config';
@@ -17,7 +17,7 @@ interface CommentType {
   slug: string;
 }
 
-const CommentThread: SFC<CommentType> = ({ item, slug }) => {
+const CommentThread: FunctionComponent<CommentType> = ({ item, slug }) => {
   const disqusConfig = {
     identifier: `${item.slug}+${item.id}`,
     title: item.title,

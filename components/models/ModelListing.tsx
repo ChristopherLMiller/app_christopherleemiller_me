@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { ModelTypes } from './Types';
 import { StyledModelListing } from '../../styles/Models';
@@ -17,7 +17,7 @@ const InfoPanel = styled.div`
     grid-column-end: 3;
   }
 `;
-const ModelListing: SFC<ModelTypes> = ({ model }) => (
+const ModelListing: FunctionComponent<ModelTypes> = ({ model }) => (
   <StyledModelListing>
     <ListingTitle
       as={`/model/${model.slug}`}

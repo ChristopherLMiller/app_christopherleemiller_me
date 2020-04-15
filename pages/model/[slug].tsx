@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { useQuery } from 'react-apollo';
 import { useRouter } from 'next/router';
 import { MODELS_QUERY } from '../../utils/query';
@@ -11,7 +11,7 @@ import { Layout } from '../../components/layout/PageLayout';
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-const ModelPage: SFC = () => {
+const ModelPage: FunctionComponent = () => {
   const router = useRouter();
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {

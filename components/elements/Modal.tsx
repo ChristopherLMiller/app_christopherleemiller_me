@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import { SFC, ReactNode, MouseEvent, KeyboardEvent } from 'react';
+import { FunctionComponent, ReactNode, MouseEvent, KeyboardEvent } from 'react';
 import styled from 'styled-components';
 
 // used for targetting the modal for screen readers
@@ -47,7 +47,7 @@ interface iModalBox {
   onRequestClose?(event: (MouseEvent | KeyboardEvent)): void;
 }
 
-const ModalBox: SFC<iModalBox> = ({ isOpen, title, children, onRequestClose }) => {
+const ModalBox: FunctionComponent<iModalBox> = ({ isOpen, title, children, onRequestClose }) => {
   return (
     <Modal
       isOpen={isOpen}

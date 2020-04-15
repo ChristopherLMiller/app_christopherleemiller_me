@@ -1,5 +1,5 @@
 import NProgress from 'nprogress';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
 import { Props } from '../../styles/Themes';
@@ -54,7 +54,7 @@ interface HeaderProps {
   title: string;
   description: string;
 }
-const Header: SFC<HeaderProps> = ({ title, description }) => (
+const Header: FunctionComponent<HeaderProps> = ({ title, description }) => (
   <StyledHeader>
     <StyledHeaderDescription>{description}</StyledHeaderDescription>
     <StyledHeaderTitle>{title}</StyledHeaderTitle>

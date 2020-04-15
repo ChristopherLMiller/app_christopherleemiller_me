@@ -1,5 +1,5 @@
 import ReactMarkdown from 'react-markdown';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { useQuery } from 'react-apollo';
 import { useRouter } from 'next/router';
 import { BriefArticle } from '../components/articles/Brief';
@@ -14,7 +14,7 @@ import { Layout } from '../components/layout/PageLayout';
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-const ArticlesPage: SFC = () => {
+const ArticlesPage: FunctionComponent = () => {
   // get the router instance
   const router = useRouter();
 

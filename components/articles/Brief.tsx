@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { ArticleTypes } from './Types';
 import { ArticleFooter } from './elements/Footer';
 import { ArticleHead } from './elements/Head';
@@ -6,7 +6,7 @@ import { StyledArticle } from '../../styles/Articles';
 import { StyledContentBlock } from '../elements/ContentBlock';
 import { Button } from '../Buttons';
 
-const BriefArticle: SFC<ArticleTypes> = ({ article, children }) => (
+const BriefArticle: FunctionComponent<ArticleTypes> = ({ article, children }) => (
   <StyledArticle>
     <ArticleHead article={article} />
     <StyledContentBlock>

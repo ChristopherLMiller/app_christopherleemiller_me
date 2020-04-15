@@ -1,4 +1,4 @@
-import { SFC, Fragment } from 'react';
+import { FunctionComponent, Fragment } from 'react';
 import styled from 'styled-components';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 import { ModelTypes } from './Types';
@@ -20,7 +20,7 @@ const StyledModelPage = styled.div`
   }
 `;
 
-const Model: SFC<ModelTypes> = ({ model }) => {
+const Model: FunctionComponent<ModelTypes> = ({ model }) => {
   const image = model.featured_image.provider_metadata
     ? model.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;

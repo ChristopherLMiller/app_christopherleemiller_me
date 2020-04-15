@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
 import Link from 'next/link';
@@ -49,7 +49,7 @@ interface iPolaroid {
   children?: object;
 }
 
-const Polaroid: SFC<iPolaroid> = ({ image, alt, caption, link, children }) => {
+const Polaroid: FunctionComponent<iPolaroid> = ({ image, alt, caption, link, children }) => {
   if (link != null) {
     return (
       <Link as={link.as} href={link.href}>

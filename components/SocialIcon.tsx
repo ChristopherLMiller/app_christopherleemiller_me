@@ -1,6 +1,6 @@
 import posed from 'react-pose';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
@@ -27,7 +27,7 @@ interface SocialIconProps {
   color?: string;
   alt: string;
 }
-const SocialIcon: SFC<SocialIconProps> = ({
+const SocialIcon: FunctionComponent<SocialIconProps> = ({
   url,
   icon,
   color = `#FFFFFF`,
