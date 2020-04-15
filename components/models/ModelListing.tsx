@@ -27,7 +27,7 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
     </ListingTitle>
     <Polaroid
       image={model.featured_image}
-      link={{ as: `/model/${model.slug}`, href: `/model?slug=${model.slug}` }}
+      link={{ as: `/model/${model.slug}`, href: `/model/[slug]` }}
     >
       <InfoPanel>
         <span>Brand: {model?.manufacturer?.company}</span>
