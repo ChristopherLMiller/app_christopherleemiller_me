@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { CategoriesType } from './Types';
 
@@ -17,7 +17,7 @@ const Splitter = styled.div`
   display: inline-block;
 `;
 
-const Categories: SFC<CategoriesType> = ({ categories }) => (
+const Categories: FunctionComponent<CategoriesType> = ({ categories }) => (
   <CategoriesWrapper>
     <span>Categories: </span>
     {categories.map((category, index) => (

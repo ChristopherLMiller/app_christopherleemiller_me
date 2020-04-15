@@ -1,8 +1,8 @@
 import { formatRelative, parseISO } from 'date-fns';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { ArticleTypes } from '../Types';
-import { FeaturedImage } from '../../FeaturedImage';
+import { Image } from '../../elements';
 
 const StyledArticleHeader = styled.div`
   font-family: var(--font-family);
@@ -26,16 +26,10 @@ const StyledPublishDate = styled.p`
   margin: 0;
 `;
 
-const ArticleHead: SFC<ArticleTypes> = ({ article }) => (
+const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
   <StyledArticleHeader>
     {article.featured_image && (
-      <FeaturedImage
-        image={article.featured_image}
-        width={1000}
-        alt={article.title}
-        border
-        max_height={300}
-      />
+      <Image file={article?.featured_image?.provider_metadata?.public_id} options={{w: 1000, h: 300}} alt={article.title} border />
     )}
     <StyledArticleHeaderInfo>
       <StyledPublishDate>

@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Sidebar } from '../../Sidebar';
@@ -13,7 +13,7 @@ const Splitter = styled.div`
   display: inline-block;
 `;
 
-const ModelSidebar: SFC<ModelTypes> = ({ model }) => (
+const ModelSidebar: FunctionComponent<ModelTypes> = ({ model }) => (
   <StyledModelSidebar>
     <Sidebar title="Information">
       <ul>

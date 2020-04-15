@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { Title } from './elements/Title';
 
@@ -44,7 +44,7 @@ const StyledSidebarContent = styled.div`
   }
 `;
 
-const Sidebar: SFC<SidebarTypes> = ({ title, children }) => (
+const Sidebar: FunctionComponent<SidebarTypes> = ({ title, children }) => (
   <StyledSidebar initialPose="invisible" pose="visible">
     {title && <Title>{title}</Title>}
     <StyledSidebarContent>{children}</StyledSidebarContent>

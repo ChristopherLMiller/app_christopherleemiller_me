@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import posed from 'react-pose';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -55,7 +55,7 @@ interface iNavItem {
   title: string
 }
 
-const NavItem: SFC<iNavItem> = ({ isActivePaths, href, title, authObject }) => {
+const NavItem: FunctionComponent<iNavItem> = ({ isActivePaths, href, title, authObject }) => {
   const router = useRouter();
   const auth = useAuth();
 

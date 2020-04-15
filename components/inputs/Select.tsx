@@ -1,9 +1,9 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import Router, { withRouter, SingletonRouter } from 'next/router';
 import { useQuery } from 'react-apollo';
 import styled from 'styled-components';
 import { DocumentNode } from 'graphql';
-import { urlBuilder } from '../../utils/url';
+import { urlBuilder } from '../../utils/functions/url';
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -35,7 +35,7 @@ interface ISelectBox {
   router: SingletonRouter;
 }
 
-const SelectBox: SFC<ISelectBox> = ({
+const SelectBox: FunctionComponent<ISelectBox> = ({
   items,
   graphqlQuery,
   slug,

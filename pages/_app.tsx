@@ -12,7 +12,7 @@ import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
 import { withApollo } from '../lib/withApollo';
 import { SEPARATOR } from '../config';
-import { initGA, logPageView } from '../utils/analytics';
+import { initGA, logPageView } from '../utils/functions/analytics';
 import { ProvideAuth} from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
 

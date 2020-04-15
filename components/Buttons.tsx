@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import Link from 'next/link';
 import posed from 'react-pose';
 
@@ -35,7 +35,7 @@ interface ButtonTypes {
   text: string;
 }
 
-const Button: SFC<ButtonTypes> = ({ href, as, text }) => (
+const Button: FunctionComponent<ButtonTypes> = ({ href, as, text }) => (
   <StyledButton>
     <Link as={as} href={href}>
       <ButtonAnchor>{text}</ButtonAnchor>

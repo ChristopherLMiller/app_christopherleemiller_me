@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import SyncLoader from 'react-spinners/SyncLoader';
 import { theme } from '../../styles/Themes';
 
@@ -12,7 +12,7 @@ interface iLoader {
   isLoading: boolean;
 }
 
-const Loader:SFC<iLoader> = ({isLoading}) => (
+const Loader:FunctionComponent<iLoader> = ({isLoading}) => (
   <StyledLoader>
     <SyncLoader size={20} margin={10} loading={isLoading} color={theme.colors.red}/>
   </StyledLoader>

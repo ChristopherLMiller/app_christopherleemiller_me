@@ -6,7 +6,7 @@ import {
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { SocialIcon } from './SocialIcon';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const SocialLinksBar = styled.div`
@@ -22,7 +22,7 @@ interface iSocialLinks {
   color: string;
 }
 
-const SocialLinks: SFC<iSocialLinks> = ({ color }) => (
+const SocialLinks: FunctionComponent<iSocialLinks> = ({ color }) => (
   <SocialLinksBar>
     <SocialIcon
       url="https://www.facebook.com/christopher.lee.miller517"

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { TagsType } from './Types';
 
@@ -18,7 +18,7 @@ const Splitter = styled.div`
   display: inline-block;
 `;
 
-const Tags: SFC<TagsType> = ({ tags }) => (
+const Tags: FunctionComponent<TagsType> = ({ tags }) => (
   <TagsWrapper>
     <span>Tags: </span>
     {tags.map((tag, index) => (

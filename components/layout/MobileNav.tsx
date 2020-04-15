@@ -203,7 +203,7 @@ Modal.setAppElement('#__next');
 const ModalStyles = {
   overlay: {
     background: '#131313bf',
-    zIndex: '1000'
+    zIndex: 1000
   },
   content: {
     top: '5%',

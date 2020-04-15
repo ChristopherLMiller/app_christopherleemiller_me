@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 
 type PaperProps = {
   translateAxis: string;
@@ -21,7 +21,7 @@ const StyledPaper = styled.div`
 interface PaperTypes {
   translate: string;
 }
-const Paper: SFC<PaperTypes> = ({ translate = `- 100 % ` }) => (
+const Paper: FunctionComponent<PaperTypes> = ({ translate = `- 100 % ` }) => (
   <StyledPaper translateAxis={translate} />
 );
 
