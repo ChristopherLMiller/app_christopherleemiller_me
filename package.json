@@ -81,7 +81,7 @@
     "@types/react-cache": "^2.0.1",
     "@types/react-cookies": "^0.1.0",
     "@types/react-image-gallery": "^0.9.2",
-    "@types/react-modal": "^3.10.0",
+    "@types/react-modal": "^3.10.5",
     "@types/react-toast-notifications": "^2.0.1",
     "@types/styled-components": "^4.4.2",
     "@types/yup": "^0.26.35",
