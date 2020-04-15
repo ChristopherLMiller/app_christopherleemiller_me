@@ -1,4 +1,4 @@
-import { Fragment, SFC } from 'react';
+import { Fragment, FunctionComponent } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import posed from 'react-pose';
 import Meta from './Meta';
@@ -64,7 +64,7 @@ interface PageProps {
   };
 }
 
-const Page: SFC<PageProps> = ({ children }) => (
+const Page: FunctionComponent<PageProps> = ({ children }) => (
   <ThemeProvider theme={theme}>
     <Fragment>
       <StyledPage>

@@ -1,8 +1,8 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
 import Link from 'next/link';
-import { FeaturedImage } from './FeaturedImage';
+import { Image } from './elements';
 
 const PolaroidHover = posed.div({
   hoverable: true,
@@ -49,12 +49,12 @@ interface iPolaroid {
   children?: object;
 }
 
-const Polaroid: SFC<iPolaroid> = ({ image, alt, caption, link, children }) => {
+const Polaroid: FunctionComponent<iPolaroid> = ({ image, alt, caption, link, children }) => {
   if (link != null) {
     return (
       <Link as={link.as} href={link.href}>
         <StyledPolaroid>
-          <FeaturedImage image={image} alt={alt} />
+          <Image file={image?.provider_metadata?.public_id} alt={alt} options={{w: 300, c: 'scale'}}/>
           {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
           <PolaroidContent>{children}</PolaroidContent>
         </StyledPolaroid>
@@ -64,7 +64,7 @@ const Polaroid: SFC<iPolaroid> = ({ image, alt, caption, link, children }) => {
 
   return (
     <StyledPolaroid>
-      <FeaturedImage image={image} alt={alt} />
+      <Image file={image?.provider_metadata?.public_id} alt={alt} />
       {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
       <PolaroidContent>{children}</PolaroidContent>
     </StyledPolaroid>

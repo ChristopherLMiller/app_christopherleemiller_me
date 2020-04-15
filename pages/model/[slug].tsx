@@ -1,18 +1,17 @@
 import Link from 'next/link';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { useQuery } from 'react-apollo';
 import { useRouter } from 'next/router';
-import { withLayout } from '../../components/layout/withLayout';
 import { MODELS_QUERY } from '../../utils/query';
 import Card from '../../components/Card';
 import { Model } from '../../components/models/Model';
-import { Main } from '../../styles/Generics';
 import { iData } from '../../components/models/Types';
+import { Layout } from '../../components/layout/PageLayout';
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-const ModelPage: SFC = () => {
+const ModelPage: FunctionComponent = () => {
   const router = useRouter();
   const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
     variables: {
@@ -23,17 +22,19 @@ const ModelPage: SFC = () => {
 
   });
 
-  if (loading)
+  if (loading) {
     return (
-      <Main>
+      <Layout meta={{ title, description, useSEO: false }}>
         <p>Loading...</p>
-      </Main>
+      </Layout>
     );
+  }
+
   if (error) {
     console.error(`Fetch Error: ${error.message}`);
 
     return (
-      <Main>
+      <Layout meta={{ title, description, useSEO: false }}>
         <Card heading="Unable to load data">
           <h2>{error.message}</h2>
           <p>
@@ -41,24 +42,24 @@ const ModelPage: SFC = () => {
             Possibly you're offline and if not please let us know.
           </p>
         </Card>
-      </Main>
+        </Layout>
     );
   }
 
   if (data !== undefined) {
     if (data.models.length >= 1) {
       return (
-        <Main>
+        <Layout meta={{ title, description, useSEO: false }}>
           {data.models.map(model => (
             <Model model={model} key={model.id} />
           ))}
-        </Main>
+          </Layout>
       );
     }
   }
 
   return (
-    <Main>
+    <Layout meta={{ title, description, useSEO: false }}>
       <Card heading="404 Model Not Found.">
         <p>
           Sorry. We seem to have lost this model somewhere in the interwebs. I
@@ -71,7 +72,7 @@ const ModelPage: SFC = () => {
           <a>View All Models</a>
         </Link>
       </Card>
-    </Main>
+      </Layout>
   );
 };
-export default withLayout(ModelPage, { title, description, useSEO: false });
+export default ModelPage;

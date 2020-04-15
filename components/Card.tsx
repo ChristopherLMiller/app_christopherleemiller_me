@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import posed from 'react-pose';
 
@@ -69,7 +69,7 @@ interface CardProps {
   padding?: boolean;
 }
 
-const Card: SFC<CardProps> = ({
+const Card: FunctionComponent<CardProps> = ({
   heading,
   subHeading,
   children,

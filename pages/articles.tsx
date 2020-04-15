@@ -1,21 +1,20 @@
 import ReactMarkdown from 'react-markdown';
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { useQuery } from 'react-apollo';
 import { useRouter } from 'next/router';
 import { BriefArticle } from '../components/articles/Brief';
 import Card from '../components/Card';
 import { ARTICLES_QUERY } from '../utils/query';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
 import { iData } from '../components/articles/Types';
 import { Loader } from '../components/elements/Loader';
 import { PER_PAGE } from '../config';
 import { truncate } from '../utils/functions/truncate';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-const ArticlesPage: SFC = () => {
+const ArticlesPage: FunctionComponent = () => {
   // get the router instance
   const router = useRouter();
 
@@ -39,7 +38,7 @@ const ArticlesPage: SFC = () => {
     console.error(`Fetch Error: ${error.message}`);
 
     return (
-      <Main>
+      <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
         <Card heading="Unable to load data">
           <hr />
           <h2>{error.message}</h2>
@@ -50,12 +49,13 @@ const ArticlesPage: SFC = () => {
             above text doesn't make any sense but it will help me figure out the problem.
           </p>
         </Card>
-      </Main>
+      </Layout>
     );
   }
 
   return (
-    <Main>
+    <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
+
       <Loader isLoading={loading} />
       {data !== undefined &&
         data.articles.map(article => (
@@ -63,8 +63,8 @@ const ArticlesPage: SFC = () => {
             <ReactMarkdown source={truncate(article.content, 3)} />
           </BriefArticle>
         ))}
-    </Main>
+    </Layout>
   );
 };
 
-export default withLayout(ArticlesPage, { title, description, useSEO: true, path: `/articles` });
+export default ArticlesPage;

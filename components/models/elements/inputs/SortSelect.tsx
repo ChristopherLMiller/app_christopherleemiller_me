@@ -1,4 +1,4 @@
-import { SFC, useContext } from 'react';
+import { FunctionComponent, useContext } from 'react';
 import styled from 'styled-components';
 import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
 
@@ -25,7 +25,7 @@ interface ISelectBox {
   items?: Items;
 }
 
-const SortSelect: SFC<ISelectBox> = ({ items }) => {
+const SortSelect: FunctionComponent<ISelectBox> = ({ items }) => {
   const { sort, setSortedByContext } = useContext(ModelsFilterContext);
   return (
     <StyledSelect

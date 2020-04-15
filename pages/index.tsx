@@ -1,12 +1,13 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Home`;
 const description = `Programmer.  Amateur Designer. Model Enthusiast.`;
 
 const IndexPage = () => (
-  <Main>
+  <Layout meta={{
+    title, description, useSEO: true, path: `/`
+  }}>
     <Card heading="Welcome">
       <p>
         Please excuse the mess while I'm remodeling. Many great things are in
@@ -22,9 +23,7 @@ const IndexPage = () => (
         reach me at one of the other places in the sidebar on the left.
       </p>
     </Card>
-  </Main>
+  </Layout>
 );
 
-export default withLayout(IndexPage, {
-  title, description, useSEO: true, path: `/`
-});
+export default IndexPage;

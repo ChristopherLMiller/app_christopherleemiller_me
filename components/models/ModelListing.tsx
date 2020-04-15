@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { ModelTypes } from './Types';
 import { StyledModelListing } from '../../styles/Models';
@@ -17,7 +17,7 @@ const InfoPanel = styled.div`
     grid-column-end: 3;
   }
 `;
-const ModelListing: SFC<ModelTypes> = ({ model }) => (
+const ModelListing: FunctionComponent<ModelTypes> = ({ model }) => (
   <StyledModelListing>
     <ListingTitle
       as={`/model/${model.slug}`}
@@ -27,7 +27,7 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
     </ListingTitle>
     <Polaroid
       image={model.featured_image}
-      link={{ as: `/model/${model.slug}`, href: `/model?slug=${model.slug}` }}
+      link={{ as: `/model/${model.slug}`, href: `/model/[slug]` }}
     >
       <InfoPanel>
         <span>Brand: {model?.manufacturer?.company}</span>
@@ -35,9 +35,7 @@ const ModelListing: SFC<ModelTypes> = ({ model }) => (
         <span>Scale: {model?.scale?.scale}</span>
         <span>Released: {model?.year_released}</span>
         <span>Completed: {model?.completed ? `Yes` : `No`}</span>
-        <span>
-          Build Time: <BuildTime id={model?.clockify_id} />
-        </span>
+        <BuildTime id={model?.clockify_id} />
       </InfoPanel>
     </Polaroid>
   </StyledModelListing>

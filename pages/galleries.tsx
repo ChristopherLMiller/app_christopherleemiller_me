@@ -1,8 +1,7 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
 import { useRouter } from 'next/router';
 import { useAuth } from '../lib/hook/useAuth';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -16,11 +15,18 @@ const GalleriesPage = () => {
 
   if (auth.canAccessResource(galleriesAuth)) {
     return (
-      <Main>
+      <Layout meta={{
+        title,
+        description,
+        useSEO: true,
+        path: `/galleries`
+      }}>
+
         <Card>
           <p>This will be a highly dynamic page containing all my galleries</p>
         </Card>
-      </Main>
+
+      </Layout>
     );
   } else {
     if (process.browser) {
@@ -30,11 +36,4 @@ const GalleriesPage = () => {
     return null
   }
 }
-export default withLayout(
-  GalleriesPage,
-  {
-    title,
-    description,
-    useSEO: true,
-    path: `/galleries`
-  });
+export default GalleriesPage;

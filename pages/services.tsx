@@ -1,8 +1,7 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
 import { useRouter } from 'next/router';
 import { useAuth } from '../lib/hook/useAuth';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `Services`;
 const description = `Services that I offer`;
@@ -20,14 +19,14 @@ const ServicesPage = () => {
 
   if (auth.canAccessResource(servicesAuth)) {
     return (
-      <Main>
+      <Layout meta={{ title, description, useSEO: true, path: `/services` }} >
         <Card>
           <p>
             Content will appear here of all the services that I offer, this include
             coding, maintenance, and even backups/updates for clients.
         </p>
         </Card>
-      </Main>
+      </Layout>
     );
   } else {
     if (process.browser) {
@@ -37,4 +36,4 @@ const ServicesPage = () => {
     return null
   }
 }
-export default withLayout(ServicesPage, { title, description, useSEO: true, path: `/services` });
+export default ServicesPage;

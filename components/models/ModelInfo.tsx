@@ -1,4 +1,4 @@
-import { SFC } from 'react';
+import { FunctionComponent } from 'react';
 import { BuildTime } from './elements/BuildTime';
 import { ModelTypes } from './Types';
 import {
@@ -7,7 +7,7 @@ import {
   StyledModelListingInfo,
 } from '../../styles/Models';
 
-const ModelInfo: SFC<ModelTypes> = ({ model }) => {
+const ModelInfo: FunctionComponent<ModelTypes> = ({ model }) => {
   const completed = model?.completed ? `Yes` : `No`;
 
   return (

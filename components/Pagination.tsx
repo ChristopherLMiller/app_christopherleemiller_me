@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SFC, useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Center } from '../styles/Generics';
 import { PER_PAGE, STRAPI_ENDPOINT } from '../config';
@@ -32,7 +32,7 @@ interface PaginationTypes {
   content_type: string;
 }
 
-const Pagination: SFC<PaginationTypes> = ({ page, content_type }) => {
+const Pagination: FunctionComponent<PaginationTypes> = ({ page, content_type }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {

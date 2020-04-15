@@ -1,12 +1,11 @@
 import Card from '../components/Card';
-import { withLayout } from '../components/layout/withLayout';
-import { Main } from '../styles/Generics';
+import { Layout } from '../components/layout/PageLayout';
 
 const title = `About Me`;
 const description = `Where I came from and what I do now`;
 
 const AboutPage = () => (
-  <Main>
+  <Layout meta={{ title, description, useSEO: true, path: `/about` }}>
     <Card heading="How I got my start">
       <p>
         Back in highschool I picked up a book on programming, took a class in
@@ -14,7 +13,7 @@ const AboutPage = () => (
         second of it, but what exactly I wanted to do I didn't know.
       </p>
     </Card>
-  </Main>
+  </Layout>
 );
 
-export default withLayout(AboutPage, { title, description, useSEO: true, path: `/about` });
+export default AboutPage;
