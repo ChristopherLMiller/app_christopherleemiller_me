@@ -1,4 +1,4 @@
-import { GRAPHQL_ENDPOINT } from '../config';
+import { GRAPHQL_ENDPOINT } from '../../config';
 import Head from 'next/head';
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ApolloClient } from 'apollo-client'
@@ -17,7 +17,7 @@ let apolloClient = null as ApolloClient<NormalizedCacheObject> | null
  * @param {Object} [config]
  * @param {Boolean} [config.ssr=true]
  */
-export function withApollo(PageComponent: any, { ssr = true } = {}) {
+export function withApollo(PageComponent: any, { ssr = false } = {}) {
   const WithApollo = ({ apolloClient, apolloState, ...pageProps }: any) => {
     const client = apolloClient || initApolloClient(apolloState)
     return (
