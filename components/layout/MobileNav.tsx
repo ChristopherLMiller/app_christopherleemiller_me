@@ -114,7 +114,7 @@ const StyledNavigationWrapper = styled(Navigation)`
   transform-origin: top;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   background: var(--text-color);
   overflow-x: hidden;
 `;
