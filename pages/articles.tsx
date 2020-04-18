@@ -55,7 +55,6 @@ const ArticlesPage: FunctionComponent = () => {
 
   return (
     <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
-
       <Loader isLoading={loading} />
       {data !== undefined &&
         data.articles.map(article => (

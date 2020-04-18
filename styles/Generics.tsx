@@ -11,14 +11,14 @@ export const Main = styled.main`
   flex-grow: 2;
   position: relative;
   overflow-y: hidden;
-  padding: 175px 20px;
+  padding: 275px 20px;
 
   :before,
   :after {
     content: '\\A';
     left: 0;
     width: 100%;
-    min-height: 200px;
+    min-height: 325px;
     position: absolute;
     background: var(--main-color-transparent);
     transition: 0.25s;
@@ -36,6 +36,10 @@ export const Main = styled.main`
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     padding: 175px 25px;
+
+    :before {
+      min-height: 200px;
+    }
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
