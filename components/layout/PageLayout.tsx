@@ -10,6 +10,10 @@ import { Main } from '../../styles/Generics';
 
 const InnerPage = styled.div`
   position: relative;
+  display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 `;
 
 interface iLayout {
