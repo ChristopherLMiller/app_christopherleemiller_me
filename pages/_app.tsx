@@ -10,7 +10,7 @@ import { ApolloClient } from 'apollo-client';
 import { ToastProvider } from 'react-toast-notifications';
 import { name, version } from '../package.json';
 import Page from '../components/layout/Page';
-import { withApollo } from '../lib/withApollo';
+import { withApollo } from '../lib/hook/withApollo';
 import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/functions/analytics';
 import { ProvideAuth} from '../lib/hook/useAuth';
