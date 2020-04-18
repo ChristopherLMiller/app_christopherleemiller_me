@@ -2,7 +2,7 @@ import App, { AppProps } from 'next/app';
 import { StrictMode, ErrorInfo } from 'react';
 import Router from 'next/router';
 import * as Sentry from '@sentry/browser';
-import { ApolloProvider as ApolloHooksProvider } from '@apollo/react-hooks';
+import { ApolloProvider } from '@apollo/react-hooks';
 import { DefaultSeo } from 'next-seo';
 import LogRocket from 'logrocket';
 import { Event } from '@sentry/types';
@@ -95,7 +95,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     const { Component, apollo} = this.props;
 
     return (
-        <ApolloHooksProvider client={apollo}>
+        <ApolloProvider client={apollo}>
           <ProvideAuth user={this.state.user}>
             <DefaultSeo
               titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
@@ -119,7 +119,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
               </Page>
             </ToastProvider>
           </ProvideAuth>
-        </ApolloHooksProvider>
+        </ApolloProvider>
     );
   }
 }
