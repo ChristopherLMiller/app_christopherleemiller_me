@@ -40,6 +40,9 @@ export const Main = styled.main`
     :before {
       min-height: 200px;
     }
+    :after {
+      min-height: 200px;
+    }
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
