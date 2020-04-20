@@ -46,7 +46,7 @@
     "nextjs-sitemap-generator": "^0.5.0",
     "node-fetch": "^2.6.0",
     "nprogress": "^0.2.0",
-    "raw-loader": "^4.0.0",
+    "raw-loader": "^4.0.1",
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-async": "^10.0.0",
