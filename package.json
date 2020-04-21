@@ -61,7 +61,7 @@
     "react-pose": "^4.0.10",
     "react-spinners": "^0.8.1",
     "react-toast-notifications": "^2.4.0",
-    "sitemap": "^5.1.0",
+    "sitemap": "^6.1.1",
     "styled-components": "^5.1.0",
     "uid-safe": "^2.1.5",
     "webpack": "^4.41.5",
