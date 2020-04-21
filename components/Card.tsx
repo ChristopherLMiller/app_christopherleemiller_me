@@ -1,17 +1,30 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import posed from 'react-pose';
+import { motion } from 'framer-motion';
 
-const CardPopTransition = posed.div({
-  enter: {
-    opacity: `1`,
-  },
+let easing = [0.175, 0.85, 0.42, 0.96];
+
+const divVariants = {
   exit: {
-    opacity: `0`,
+    y: 150,
+    opactiy: 0,
+    transition: {
+      duration: 0.5,
+      ease: easing
+    }
   },
-});
+  enter: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: easing
+    }
+  }
+};
 
-const StyledCard = styled(CardPopTransition)`
+
+const StyledCard = styled.div`
   color: black;
   font-family: var(--font-main);
   font-weight: 300;
@@ -75,7 +88,8 @@ const Card: FunctionComponent<CardProps> = ({
   children,
   padding = true,
 }) => (
-    <StyledCard initialPose="exit" pose="enter">
+  <motion.div variants={divVariants}>
+    <StyledCard>
       {(heading || subHeading) && (
         <CardHeading>
           {heading && <CardHeadingHeading>{heading}</CardHeadingHeading>}
@@ -87,6 +101,7 @@ const Card: FunctionComponent<CardProps> = ({
 
       <CardBody padding={padding}>{children}</CardBody>
     </StyledCard>
-  );
+  </motion.div>
+);
 
 export default Card;

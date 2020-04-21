@@ -1,19 +1,9 @@
-import posed from 'react-pose';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
+import { motion } from 'framer-motion';
 
-const ModelListingTitleHover = posed.h2({
-  hoverable: true,
-  init: {
-    transform: `rotate(4deg) translateY(40px) translateX(0px) scale(1.1)`,
-  },
-  hover: {
-    transform: `rotate(0deg) translateY(40px) translateX(0px) scale(1.1)`,
-  },
-});
-
-const StyledTitle = styled(ModelListingTitleHover)`
+const StyledTitle = styled(motion.h2)`
   margin: 0;
   padding: 20px;
   background: var(--main-color);
@@ -27,6 +17,21 @@ const StyledTitle = styled(ModelListingTitleHover)`
   z-index: 1;
 `;
 
+const ListingTitleVariants = {
+  enter: {
+    rotate: -4,
+    translateY: 40,
+    translateX: -5,
+    scale: 1.1
+  }
+}
+
+const ListingTitleWhileHover = {
+  rotate: 0,
+  translateY: 40,
+  translateX: 0,
+  scale: 1.1
+}
 interface IListingTitle {
   as: string;
   href: string;
@@ -39,7 +44,7 @@ const ListingTitle: FunctionComponent<IListingTitle> = ({
 }) => (
   <Link as={as} href={href}>
     <a>
-      <StyledTitle>{children}</StyledTitle>
+      <StyledTitle whileHover={ListingTitleWhileHover} variants={ListingTitleVariants}>{children}</StyledTitle>
     </a>
   </Link>
 );

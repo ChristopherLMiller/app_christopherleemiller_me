@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useState } from 'react';
-import posed from 'react-pose';
 import { modelsCompletedFilter, modelsSort } from '../../../data/json';
 import { Title } from '../../elements/Title';
 import { Props } from '../../../styles/Themes';
@@ -12,16 +11,7 @@ import { CompanySelect } from './inputs/CompanySelect';
 
 const Filter = styled.div``;
 
-const FilterContentsPosed = posed.div({
-  open: {
-
-  },
-  closed: {
-    display: `none`,
-  },
-});
-
-const FilterContents = styled(FilterContentsPosed)`
+const FilterContents = styled.div`
   background: var(--background-dark);
   display: flex;
   flex-direction: column;

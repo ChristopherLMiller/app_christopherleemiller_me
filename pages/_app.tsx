@@ -15,6 +15,7 @@ import { SEPARATOR } from '../config';
 import { initGA, logPageView } from '../utils/functions/analytics';
 import { ProvideAuth} from '../lib/hook/useAuth';
 import cookie from 'react-cookies';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import '../node_modules/highlight.js/styles/atom-one-dark.css'
 import '../static/nprogress.css'
@@ -92,7 +93,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   }
 
   render() {
-    const { Component, apollo} = this.props;
+    const { Component, apollo, pageProps, router} = this.props;
 
     return (
         <ApolloProvider client={apollo}>
@@ -112,11 +113,15 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
               }}
             />
             <ToastProvider>
-              <Page>
-                <StrictMode>
-                  <Component />
-                </StrictMode>
-              </Page>
+              <AnimatePresence exitBeforeEnter>
+                <motion.div initial="exit" animate="enter" exit="exit">
+                <Page>
+                  <StrictMode>
+                    <Component {...pageProps} key={router.route}/>
+                  </StrictMode>
+                </Page>
+                </motion.div>
+              </AnimatePresence>
             </ToastProvider>
           </ProvideAuth>
         </ApolloProvider>

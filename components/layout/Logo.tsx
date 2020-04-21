@@ -1,18 +1,7 @@
 import styled from 'styled-components';
-import posed from 'react-pose';
 import { Props } from '../../styles/Themes';
 
-const LogoFilter = posed.img({
-  hoverable: true,
-  hover: {
-    filter: `grayscale(0%)`,
-  },
-  init: {
-    filter: `grayscale(100%)`,
-  },
-});
-
-const StyledLogo = styled(LogoFilter)`
+const StyledLogo = styled.img`
   border: 10px solid var(--text-color-light);
   transition: all 0.5s;
   display: none;

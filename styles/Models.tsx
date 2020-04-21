@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import posed from 'react-pose';
 import { Props } from '../styles/Themes';
 
 const StyledModelPage = styled.div``;
@@ -21,16 +20,7 @@ const StyledModelListings = styled.div`
   }
 `;
 
-const ModelListingHover = posed.div({
-  visible: {
-    opacity: 1,
-  },
-  invisible: {
-    opacity: 0,
-  },
-});
-
-const StyledModelListing = styled(ModelListingHover)`
+const StyledModelListing = styled.div`
   display: block;
   height: fit-content;
 `;

@@ -1,20 +1,10 @@
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import posed from 'react-pose';
 import Link from 'next/link';
 import { Image } from './elements';
+import { motion } from 'framer-motion';
 
-const PolaroidHover = posed.div({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.05,
-  },
-});
-
-const StyledPolaroid = styled(PolaroidHover)`
+const StyledPolaroid = styled(motion.div)`
   padding: 15px;
   background: var(--background-white);
   cursor: pointer;
@@ -53,7 +43,7 @@ const Polaroid: FunctionComponent<iPolaroid> = ({ image, alt, caption, link, chi
   if (link != null) {
     return (
       <Link as={link.as} href={link.href}>
-        <StyledPolaroid>
+        <StyledPolaroid whileHover={{scale: 1.05}}>
           <Image file={image?.provider_metadata?.public_id} alt={alt} options={{w: 300, c: 'scale'}}/>
           {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
           <PolaroidContent>{children}</PolaroidContent>

@@ -1,19 +1,10 @@
 import styled from 'styled-components';
 import { FunctionComponent } from 'react';
 import Link from 'next/link';
-import posed from 'react-pose';
+import { motion } from 'framer-motion';
 
-const PosedButton = posed.p({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.1,
-  },
-});
 
-export const StyledButton = styled(PosedButton)`
+export const StyledButton = styled(motion.p)`
   background: var(--main-color);
   padding: 10px;
   transition: all 0.25s;
@@ -36,7 +27,7 @@ interface ButtonTypes {
 }
 
 const Button: FunctionComponent<ButtonTypes> = ({ href, as, text }) => (
-  <StyledButton>
+  <StyledButton whileHover={{scale: 1.1}}>
     <Link as={as} href={href}>
       <ButtonAnchor>{text}</ButtonAnchor>
     </Link>
