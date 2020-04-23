@@ -1,10 +1,16 @@
-import { Fragment, FunctionComponent } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
-import Meta from './Meta';
-import Sidebar from './Sidebar';
-import MobileNav from './MobileNav';
-import { theme, Props, GlobalStyles } from '../../styles/Themes';
-import { CLOUDINARY_URL, CLOUDINARY_CLOUD, CLOUDINARY_FOLDER, CLOUDINARY_VERSION } from '../../config';
+import { FunctionComponent } from "react";
+import styled, { ThemeProvider } from "styled-components";
+import Meta from "./Meta";
+import Sidebar from "./Sidebar";
+import MobileNav from "./MobileNav";
+import { theme, Props, GlobalStyles } from "../../styles/Themes";
+import {
+  CLOUDINARY_URL,
+  CLOUDINARY_CLOUD,
+  CLOUDINARY_FOLDER,
+  CLOUDINARY_VERSION,
+} from "../../config";
+import { Alerts } from "./elements/Alerts";
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -59,15 +65,16 @@ interface PageProps {
 
 const Page: FunctionComponent<PageProps> = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <Fragment>
-      <StyledPage>
-        <Meta />
-        <Sidebar />
-        <Inner>{children}</Inner>
-      </StyledPage>
-      <MobileNav />
-      <GlobalStyles />
-    </Fragment>
+    <StyledPage>
+      <Meta />
+      <Sidebar />
+      <Inner>
+        <Alerts maxRenders={5} />
+        {children}
+      </Inner>
+    </StyledPage>
+    <MobileNav />
+    <GlobalStyles />
   </ThemeProvider>
 );
 
