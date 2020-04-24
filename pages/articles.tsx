@@ -10,6 +10,7 @@ import { Loader } from "../components/elements/Loader";
 import { PER_PAGE } from "../config";
 import { truncate } from "../utils/functions/truncate";
 import { Layout } from "../components/layout/PageLayout";
+import { isDefined } from "../utils/functions/isDefined";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -17,20 +18,32 @@ const description = `Archives concerning all matters web development and beyond`
 const ArticlesPage: FunctionComponent = () => {
   // get the router instance
   const router = useRouter();
+  const { category, tag, page } = router.query;
 
-  //const { category, tag } = router.query;
+  // set some variables based on the router query
+  let pageNum = isDefined(page) ? parseFloat(page.toString()) : 1;
 
-  // get the current page or default to 1
-  let page = 1;
-  if (router.query.page != undefined) {
-    page = parseFloat(router.query.page.toString());
+  let categoryFilter = isDefined(category) ? category : null;
+  let tagFilter = isDefined(tag) ? tag : null;
+
+  let where = {} as any;
+
+  if (categoryFilter) {
+    where.categories = {} as any;
+    where.categories.slug_contains = categoryFilter;
+  }
+
+  if (tagFilter) {
+    where.tags = {} as any;
+    where.tags.slug_contains = tagFilter;
   }
 
   // set a default value for page if non provided
   const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
     variables: {
-      start: page * PER_PAGE - PER_PAGE,
+      start: pageNum * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
+      where: where,
     },
   });
 
