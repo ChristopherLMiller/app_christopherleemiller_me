@@ -1,11 +1,11 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.36.3",
+  "version": "0.36.4",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "ANALYZE=true next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint . --fix",
     "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0"
@@ -19,6 +19,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.11.2",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.8",
+    "@next/bundle-analyzer": "^9.3.5",
     "@sentry/browser": "^5.10.2",
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.8",
