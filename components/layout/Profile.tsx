@@ -1,18 +1,17 @@
-import styled from 'styled-components';
-import { useState, Fragment } from 'react';
-import posed from 'react-pose';
-import { Props } from '../../styles/Themes';
-import Modal from 'react-modal';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useToasts } from 'react-toast-notifications';
-import { FieldSet } from '../inputs/FieldSet';
-import { Label } from '../inputs/Label';
-import { Button } from '../inputs/Buttons';
-import { FormErrorMessage } from '../inputs/ErrorMessage';
-import { useAuth } from '../../lib/hook/useAuth';
-import * as Yup from 'yup';
-import { useRouter } from 'next/router';
-
+import styled from "styled-components";
+import { useState, Fragment } from "react";
+import posed from "react-pose";
+import { Props } from "../../styles/Themes";
+import Modal from "react-modal";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useToasts } from "react-toast-notifications";
+import { FieldSet } from "../inputs/FieldSet";
+import { Label } from "../inputs/Label";
+import { Button } from "../inputs/Buttons";
+import { FormErrorMessage } from "../inputs/ErrorMessage";
+import { useAuth } from "../../lib/hook/useAuth";
+import * as Yup from "yup";
+import { useRouter } from "next/router";
 
 const ProfileContainer = styled.div`
   display: none;
@@ -31,12 +30,12 @@ const ProfileContainer = styled.div`
 const ProfilePicture = styled.img`
   border-radius: 50px;
   width: 50px;
-`
+`;
 
 const ProfileInfoPose = posed.div({
   open: {
     opacity: 1,
-    height: 'auto',
+    height: "auto",
     beforeChildren: true,
     staggerChildren: 100,
     delayChildren: 500,
@@ -44,7 +43,7 @@ const ProfileInfoPose = posed.div({
   closed: {
     opacity: 0,
     height: 0,
-  }
+  },
 });
 
 const ProfileInfo = styled(ProfileInfoPose)`
@@ -55,7 +54,7 @@ const ProfileInfo = styled(ProfileInfoPose)`
   box-shadow: var(--box-shadow);
 
   &:after {
-    content: '\\A';
+    content: "\\A";
     width: 30px;
     height: 30px;
     position: absolute;
@@ -99,29 +98,29 @@ const ProfileInfoListItem = styled.li`
 `;
 
 // used for targetting the modal for screen readers
-Modal.setAppElement('#__next');
+Modal.setAppElement("#__next");
 
 // Set some default styles to the modal
 const ModalStyles = {
   overlay: {
-    background: '#131313bf',
+    background: "#131313bf",
     zIndex: 9999,
   },
   content: {
-    top: '20%',
-    left: '25%',
-    bottom: '20%',
-    right: '25%',
-    borderRadius: 'none',
-    border: 'none',
-    outline: '10px solid var(--main-color-transparent)'
-  }
-}
+    top: "20%",
+    left: "25%",
+    bottom: "20%",
+    right: "25%",
+    borderRadius: "none",
+    border: "none",
+    outline: "10px solid var(--main-color-transparent)",
+  },
+};
 
 const ModalLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-`
+`;
 
 const ModalLayoutColumn = styled.div`
   padding: 0 20px;
@@ -137,7 +136,7 @@ const ModalLayoutHeader = styled.h3`
 `;
 
 const StyledForm = styled.div`
-display: grid;
+  display: grid;
   grid-template-columns: repeat(50%, 2);
   input,
   textarea {
@@ -147,18 +146,20 @@ display: grid;
     display: block;
     font-family: var(--font-main);
     font-weight: 300;
-  }`;
+  }
+`;
 
 // form validation schema
 const LoginSchema = Yup.object().shape({
-  identifier: Yup.string()
-    .required(`username or Email`),
+  identifier: Yup.string().required(`username or Email`),
   password: Yup.string().required(`Need Your Password`),
 });
 
 const ResetSchema = Yup.object().shape({
-  email: Yup.string().email(`Need a Valid Email`).required(`What's Your Email?`),
-})
+  email: Yup.string()
+    .email(`Need a Valid Email`)
+    .required(`What's Your Email?`),
+});
 
 const Profile = () => {
   // state
@@ -189,34 +190,37 @@ const Profile = () => {
           <ModalLayoutColumn>
             <ModalLayoutHeader>Login</ModalLayoutHeader>
             <Formik
-              initialValues={{ identifier: '', password: '', general: '' }}
+              initialValues={{ identifier: "", password: "", general: "" }}
               onSubmit={(values, actions) => {
                 actions.setSubmitting(true);
 
                 // try logging in
-                auth.signin(values.identifier, values.password).then((response: any) => {
-                  if (response.status === 200) {
-                    setModalOpen(false);
-                    addToast(`Woohoo! You're in!`, { appearance: 'success' });
-                  } else {
-                    actions.setFieldError('general', response.message);
-                    actions.setSubmitting(false);
-                  }
-                })
+                auth
+                  .signin(values.identifier, values.password)
+                  .then((response: any) => {
+                    if (response.status === 200) {
+                      setModalOpen(false);
+                      addToast(`Woohoo! You're in!`, { appearance: "success" });
+                    } else {
+                      actions.setFieldError("general", response.message);
+                      actions.setSubmitting(false);
+                    }
+                  });
               }}
-              validationSchema={LoginSchema}>
+              validationSchema={LoginSchema}
+            >
               {({ isSubmitting }) => (
                 <Form>
                   <StyledForm>
                     <FieldSet>
-                      <Label htmlFor="identifier">Username:{' '}</Label>
+                      <Label htmlFor="identifier">Username: </Label>
                       <Field type="text" name="identifier" />
                       <FormErrorMessage>
                         <ErrorMessage name="identifier" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
                     <FieldSet>
-                      <Label htmlFor="password">Password:{' '}</Label>
+                      <Label htmlFor="password">Password: </Label>
                       <Field type="password" name="password" />
                       <FormErrorMessage>
                         <ErrorMessage name="password" component="div" />
@@ -225,7 +229,13 @@ const Profile = () => {
                     <FormErrorMessage>
                       <ErrorMessage name="general" component="div" />
                     </FormErrorMessage>
-                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Sign In</Button>
+                    <Button
+                      type="submit"
+                      aria-disabled={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Sign In
+                    </Button>
                   </StyledForm>
                 </Form>
               )}
@@ -234,28 +244,38 @@ const Profile = () => {
           <ModalLayoutColumn>
             <ModalLayoutHeader>Forgot Password</ModalLayoutHeader>
             <Formik
-              initialValues={{ email: '' }}
+              initialValues={{ email: "" }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
 
                 // try logging in
                 auth.requestPasswordReset(values.email).then(() => {
                   setModalOpen(false);
-                  addToast('If an account with this email exists you will receive an email shortly to reset your password.', { appearance: 'success' });
-                })
+                  addToast(
+                    "If an account with this email exists you will receive an email shortly to reset your password.",
+                    { appearance: "success" }
+                  );
+                });
               }}
-              validationSchema={ResetSchema}>
+              validationSchema={ResetSchema}
+            >
               {({ isSubmitting }) => (
                 <Form>
                   <StyledForm>
                     <FieldSet>
-                      <Label htmlFor="email">Email:{' '}</Label>
+                      <Label htmlFor="email">Email: </Label>
                       <Field type="email" name="email" />
                       <FormErrorMessage>
                         <ErrorMessage name="email" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
-                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Reset Password</Button>
+                    <Button
+                      type="submit"
+                      aria-disabled={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Reset Password
+                    </Button>
                   </StyledForm>
                 </Form>
               )}
@@ -264,20 +284,45 @@ const Profile = () => {
         </ModalLayout>
       </Modal>
       <ProfileContainer>
-        <ProfilePicture src={avatarURL} onClick={() => setOpen(!isOpen)} onMouseEnter={() => setOpen(true)} onMouseLeave={() => setTimeout(() => setOpen(false), 5 * 1000)} />
+        <ProfilePicture
+          alt="User Avatar"
+          src={avatarURL}
+          loading="lazy"
+          onClick={() => setOpen(!isOpen)}
+          onMouseEnter={() => setOpen(true)}
+          onMouseLeave={() => setTimeout(() => setOpen(false), 5 * 1000)}
+        />
         <ProfileInfo pose={isOpen ? `open` : `closed`} initialPose="closed">
-          <ProfileName>Hi, {auth.getUserName() || 'Guest'}</ProfileName>
-          {auth.isAuthenticated && <ProfileRole>{auth.getUserRoleByName()}</ProfileRole>}
+          <ProfileName>Hi, {auth.getUserName() || "Guest"}</ProfileName>
+          {auth.isAuthenticated && (
+            <ProfileRole>{auth.getUserRoleByName()}</ProfileRole>
+          )}
           <ProfileInfoList>
-            {auth.isAuthenticated && <ProfileInfoListItem>My Account</ProfileInfoListItem>}
-            {auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => { auth.signout(); router.push('/'); }}>Logout</a></ProfileInfoListItem>}
-            {!auth.isAuthenticated && <ProfileInfoListItem><a onClick={() => setModalOpen(true)}>Sign In</a></ProfileInfoListItem>}
+            {auth.isAuthenticated && (
+              <ProfileInfoListItem>My Account</ProfileInfoListItem>
+            )}
+            {auth.isAuthenticated && (
+              <ProfileInfoListItem>
+                <a
+                  onClick={() => {
+                    auth.signout();
+                    router.push("/");
+                  }}
+                >
+                  Logout
+                </a>
+              </ProfileInfoListItem>
+            )}
+            {!auth.isAuthenticated && (
+              <ProfileInfoListItem>
+                <a onClick={() => setModalOpen(true)}>Sign In</a>
+              </ProfileInfoListItem>
+            )}
           </ProfileInfoList>
         </ProfileInfo>
       </ProfileContainer>
-    </Fragment >
-  )
+    </Fragment>
+  );
+};
 
-}
-
-export { Profile }
+export { Profile };
