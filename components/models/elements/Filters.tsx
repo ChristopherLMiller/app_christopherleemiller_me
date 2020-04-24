@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import { useState } from 'react';
-import { modelsCompletedFilter, modelsSort } from '../../../data/json';
-import { Title } from '../../elements/Title';
-import { Props } from '../../../styles/Themes';
-import { SortSelect } from './inputs/SortSelect';
-import { CompletedSelect } from './inputs/CompletedSelect';
-import { TagSelect } from './inputs/TagSelect';
-import { ScaleSelect } from './inputs/ScaleSelect';
-import { CompanySelect } from './inputs/CompanySelect';
+import styled from "styled-components";
+import { useState } from "react";
+import { modelsCompletedFilter, modelsSort } from "../../../data/json";
+import { Title } from "../../elements/Title";
+import { Props } from "../../../styles/Themes";
+import { SortSelect } from "./inputs/SortSelect";
+import { CompletedSelect } from "./inputs/CompletedSelect";
+import { TagSelect } from "./inputs/TagSelect";
+import { ScaleSelect } from "./inputs/ScaleSelect";
+import { CompanySelect } from "./inputs/CompanySelect";
 
 const Filter = styled.div``;
 
@@ -93,7 +93,7 @@ const ModelsFilters = () => {
           {isOpen ? `-` : `+`}
         </ToggleButton>
       </Title>
-      <FilterContents initialPose="open" pose={isOpen}>
+      <FilterContents>
         <FilterItem>
           <FilterProperty>Sort By</FilterProperty>
           <SortSelect items={modelsSort} />
