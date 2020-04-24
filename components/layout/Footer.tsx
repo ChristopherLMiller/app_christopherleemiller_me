@@ -42,7 +42,7 @@ const FooterSubHeading = styled.p`
 const Footer = () => (
   <SiteFooter>
     <FooterContent>
-      <Grid columns={2} gap={"2rem"} background={theme.colors.grey_intermediate}>
+      <Grid columns={2} gap={"30px"} background={theme.colors.grey_intermediate}>
         <GridItem>
           <FooterHeading>Follow Me</FooterHeading>
           <FooterSubHeading>Be sure to see the latest and greatest all the time</FooterSubHeading>

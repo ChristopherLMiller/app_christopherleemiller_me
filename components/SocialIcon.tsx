@@ -1,25 +1,17 @@
-import posed from 'react-pose';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FunctionComponent } from 'react';
 import styled from 'styled-components';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { motion } from 'framer-motion';
 
-const SocialIconPosed = posed.span({
-  hoverable: true,
-  init: { scale: 1 },
-  hover: {
-    scale: 1.15,
-    transition: {
-      type: `spring`,
-      stiffness: 100,
-      damping: 0,
-    },
-  },
-});
-
-export const SocialIconStyled = styled(SocialIconPosed)`
+export const SocialIconStyled = styled(motion.span)`
 display: block;
 `;
+
+const SocialIconHover = {
+  scale: 1.15,
+  rotate: Math.round(Math.random() * 40) - 20
+}
 
 interface SocialIconProps {
   url: string;
@@ -33,13 +25,11 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
   color = `#FFFFFF`,
   alt,
 }) => (
-    <span>
-      <a title={alt} href={url} aria-label={alt}>
-        <SocialIconStyled>
-          <FontAwesomeIcon icon={icon} color={color} />
-        </SocialIconStyled>
-      </a>
-    </span>
-  );
+  <a title={alt} href={url} aria-label={alt}>
+    <SocialIconStyled whileHover={SocialIconHover} transition={{type: 'spring'}}>
+      <FontAwesomeIcon icon={icon} color={color} />
+    </SocialIconStyled>
+  </a>
+);
 
 export { SocialIcon };

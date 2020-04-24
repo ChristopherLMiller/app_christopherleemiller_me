@@ -1,5 +1,5 @@
-import gql from 'graphql-tag';
-import { MODELS_PER_PAGE, PER_PAGE } from '../config';
+import gql from "graphql-tag";
+import { MODELS_PER_PAGE, PER_PAGE } from "../config";
 
 export const ARTICLES_QUERY = gql`
   query ARTICLES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
@@ -150,6 +150,20 @@ export const ALL_MODELS_TAGS_QUERY = gql`
       id
       title
       slug
+    }
+  }
+`;
+
+export const ALERTS = gql`
+  query ALERTS {
+    alerts {
+      id
+      guid
+      title
+      description
+      valid_till
+      updated_at
+      color
     }
   }
 `;

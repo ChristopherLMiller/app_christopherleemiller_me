@@ -7,12 +7,7 @@ interface SidebarTypes {
   children: object;
 }
 
-type SidebarProps = {
-  initialPose: string;
-  pose: string;
-};
-
-const StyledSidebar = styled.div<SidebarProps>`
+const StyledSidebar = styled.div`
   margin-bottom: 50px;
 `;
 
@@ -45,7 +40,7 @@ const StyledSidebarContent = styled.div`
 `;
 
 const Sidebar: FunctionComponent<SidebarTypes> = ({ title, children }) => (
-  <StyledSidebar initialPose="invisible" pose="visible">
+  <StyledSidebar>
     {title && <Title>{title}</Title>}
     <StyledSidebarContent>{children}</StyledSidebarContent>
   </StyledSidebar>

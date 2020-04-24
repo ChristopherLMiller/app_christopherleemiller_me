@@ -12,8 +12,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 const SocialLinksBar = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    max-width: 75%;
-    margin: 0 auto;
     font-size: 4.5rem;
     grid-gap: 30px;
 `;

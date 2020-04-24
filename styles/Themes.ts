@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const theme = {
   colors: {
@@ -62,6 +62,12 @@ export const GlobalStyles = createGlobalStyle`
     --main-color-opposite: ${theme.colors.red_opposite};
     --main-color-transparent: ${theme.colors.red_transparent};
     --text-color-light: ${theme.colors.white};
+    --color-alert-red: #cd5c5c;
+    --color-alert-red-text: #8b0000;
+    --color-alert-green: #8fbc8f;
+    --color-alert-green-text: #006400;
+    --color-alert-yellow: #efde68;
+    --color-alert-yellow-text: #58571e;
     --font-main: Roboto, sans-serif;
     --font-monospace: monospace;
     --font-marker: 'Permanent Marker';
