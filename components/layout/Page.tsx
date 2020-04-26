@@ -8,7 +8,6 @@ import {
   CLOUDINARY_URL,
   CLOUDINARY_CLOUD,
   CLOUDINARY_FOLDER,
-  CLOUDINARY_VERSION,
 } from "../../config";
 import { Alerts } from "./elements/Alerts";
 
@@ -25,7 +24,7 @@ const StyledPage = styled.div`
     z-index: -1;
 
     display: block;
-    background-image: url('${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${CLOUDINARY_VERSION}/${CLOUDINARY_FOLDER}/assets/background.jpg');
+    background-image: url('${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${CLOUDINARY_FOLDER}/assets/background.jpg');
     background-size: cover;
     width: 100%;
     height: 100%;

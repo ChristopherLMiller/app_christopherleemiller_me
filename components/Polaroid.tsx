@@ -1,13 +1,18 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { Image } from './elements';
-import { motion } from 'framer-motion';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import { Image } from "./elements";
+import { motion } from "framer-motion";
 
 const StyledPolaroid = styled(motion.div)`
   padding: 15px;
   background: var(--background-white);
   cursor: pointer;
+
+  img {
+    object-fit: fill;
+    width: 100%;
+  }
 `;
 
 const PolaroidCaption = styled.p`
@@ -39,12 +44,18 @@ interface iPolaroid {
   children?: object;
 }
 
-const Polaroid: FunctionComponent<iPolaroid> = ({ image, alt, caption, link, children }) => {
+const Polaroid: FunctionComponent<iPolaroid> = ({
+  image,
+  alt,
+  caption,
+  link,
+  children,
+}) => {
   if (link != null) {
     return (
       <Link as={link.as} href={link.href}>
-        <StyledPolaroid whileHover={{scale: 1.05}}>
-          <Image file={image?.provider_metadata?.public_id} alt={alt} options={{w: 300, c: 'scale'}}/>
+        <StyledPolaroid whileHover={{ scale: 1.05 }}>
+          <Image file={image?.provider_metadata?.public_id} alt={alt} />
           {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
           <PolaroidContent>{children}</PolaroidContent>
         </StyledPolaroid>

@@ -4,11 +4,10 @@ export const GRAPHQL_ENDPOINT = `${API_ENDPOINT}/graphql`;
 export const STRAPI_ENDPOINT = `https://strapi.christopherleemiller.me`;
 export const CLOUDINARY_URL = `https://res.cloudinary.com`;
 export const CLOUDINARY_CLOUD = `christopherleemiller`;
-export const CLOUDINARY_VERSION = `v1554111995`;
 export const CLOUDINARY_FOLDER = `clm_me`;
 
 export const SITE_TITLE = `Christopher Lee Miller`;
-export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/c_scale,w_300/${CLOUDINARY_VERSION}/${CLOUDINARY_FOLDER}/assets/logo.png`;
+export const SITE_DEFAULT_IMAGE = `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/c_scale,w_300//${CLOUDINARY_FOLDER}/assets/logo.png`;
 export const SEPARATOR = ` - `;
 export const SITE_DEFAULT_IMAGE_FILE = `clm_me/assets/default`;
 
@@ -18,7 +17,7 @@ export const MODELS_PER_PAGE = 100;
 
 // object containing role to id mappings
 export const roles = {
-    admin: 'Administrator',
-    mod: 'Mod',
-    person: 'Person',
-  }
+  admin: "Administrator",
+  mod: "Mod",
+  person: "Person",
+};
