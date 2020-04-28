@@ -39,7 +39,6 @@ interface iImage {
 }
 
 const Image: FunctionComponent<iImage> = ({ file, options }) => {
-  console.debug(options);
   return (
     <CloudinaryImage
       cloudName={CLOUDINARY_CLOUD}
