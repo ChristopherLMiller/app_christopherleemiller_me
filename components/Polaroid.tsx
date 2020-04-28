@@ -8,6 +8,7 @@ const StyledPolaroid = styled(motion.div)`
   padding: 15px;
   background: var(--background-white);
   cursor: pointer;
+  height: min-content;
 
   img {
     object-fit: fill;
