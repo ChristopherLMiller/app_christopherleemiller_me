@@ -9,7 +9,7 @@ import { FieldSet } from "../inputs/FieldSet";
 import { Label } from "../inputs/Label";
 import { Button } from "../inputs/Buttons";
 import { FormErrorMessage } from "../inputs/ErrorMessage";
-import { useAuth } from "../../lib/hook/useAuth";
+import { useProvideAuth } from "../../lib/hook/useAuth";
 import * as Yup from "yup";
 import { useRouter } from "next/router";
 
@@ -169,7 +169,7 @@ const Profile = () => {
   // Toast Notifications
   const { addToast } = useToasts();
 
-  const auth = useAuth();
+  const auth = useProvideAuth();
 
   const avatarURL = `https://unavatar.now.sh/${auth.getUserName()}`;
 
@@ -195,6 +195,7 @@ const Profile = () => {
                 actions.setSubmitting(true);
 
                 // try logging in
+                //@ts-ignore
                 auth
                   .signin(values.identifier, values.password)
                   .then((response: any) => {

@@ -1,35 +1,31 @@
-import { useState, useContext, createContext } from 'react';
-import cookie from 'react-cookies';
-import { API_ENDPOINT } from '../../config';
+import { useState, useContext, createContext } from "react";
+import cookie from "react-cookies";
+import { API_ENDPOINT } from "../../config";
 
+// @ts-ignore
 export const authContext = createContext();
 
 // Provider hook that creates auth object and handles state
 export function useProvideAuth() {
   const [user, setUser] = useState(null);
-  const [jwt, setJwt] = useState(null);
+  const [jwt, setJwt] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Sign In
-  const signin = (identifier, password) => {
+  const signin = (identifier?: string, password?: string) => {
     if (!process.browser) {
       return;
     }
 
-    const data = {
-      identifier,
-      password,
-    };
-
     // send post request to strapi
     return fetch(`${API_ENDPOINT}/auth/local`, {
-      body: JSON.stringify(data),
+      body: JSON.stringify({ identifier, password }),
       method: `POST`,
       headers: {
-        'Content-Type': `Application/json`,
+        "Content-Type": `Application/json`,
       },
     })
-      .then(res => {
+      .then((res) => {
         if (res.status === 200) {
           return res.json();
         }
@@ -44,7 +40,7 @@ export function useProvideAuth() {
           message: `Unable to sign in.  Please Try Again.`,
         };
       })
-      .then(data => {
+      .then((data) => {
         if (data?.status !== 200 && data?.status != undefined) {
           setIsAuthenticated(false);
 
@@ -55,15 +51,13 @@ export function useProvideAuth() {
           };
         }
 
-        console.log('setting up user');
         // set the app state
         setUser(data.user);
         setJwt(data.jwt);
         setIsAuthenticated(true);
 
         // save this to local storage as well to retrieve later
-        cookie.save(`user`, data.user);
-        cookie.save(`jwt`, data.jwt);
+        cookie.save(`jwt`, data.jwt, { maxAge: 86400 });
 
         return {
           status: 200,
@@ -76,7 +70,7 @@ export function useProvideAuth() {
   const signout = () => {
     // clear out the app state
     setUser(null);
-    setJwt(null);
+    setJwt("");
     setIsAuthenticated(false);
 
     // also remove the item from local storage
@@ -85,27 +79,27 @@ export function useProvideAuth() {
   };
 
   // Fetch User
-  const refetchUser = jwt =>
-    fetch(`${API_ENDPOINT}/users/me`, {
+  const refetchUser = (token: string) => {
+    return fetch(`${API_ENDPOINT}/users/me`, {
       method: `GET`,
       headers: {
-        'Content-Type': `Application/json`,
-        Authorization: `Bearer ${jwt}`,
+        "Content-Type": `Application/json`,
+        Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log('refetching user data');
-        cookie.save(`user`, data.user);
-        cookie.save(`jwt`, data.jwt);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("fetched user");
+        console.log(data);
         setUser(data);
-        setJwt(jwt);
+        setJwt(token);
         setIsAuthenticated(true);
         return data;
       });
+  };
 
   // password reset
-  const requestPasswordReset = email => {
+  const requestPasswordReset = (email: string) => {
     const data = {
       email,
     };
@@ -114,10 +108,10 @@ export function useProvideAuth() {
       body: JSON.stringify(data),
       method: `POST`,
       headers: {
-        'Content-Type': `Application/json`,
+        "Content-Type": `Application/json`,
       },
     })
-      .then(res => {
+      .then((res) => {
         if (res.status === 200) {
           return res.json();
         }
@@ -132,7 +126,7 @@ export function useProvideAuth() {
           message: `Unable to process password request.  Please try again.`,
         };
       })
-      .then(data => {
+      .then((data) => {
         if (data?.status !== 200) {
           return {
             status: data.status,
@@ -147,7 +141,11 @@ export function useProvideAuth() {
   };
 
   // confirm password reset
-  const resetPassword = (password, passwordConfirm, code) => {
+  const resetPassword = (
+    password: string,
+    passwordConfirm: string,
+    code: string | string[]
+  ) => {
     const data = {
       password,
       passwordConfirmation: passwordConfirm,
@@ -158,10 +156,10 @@ export function useProvideAuth() {
       body: JSON.stringify(data),
       method: `POST`,
       headers: {
-        'Content-Type': `Application/json`,
+        "Content-Type": `Application/json`,
       },
     })
-      .then(res => {
+      .then((res) => {
         if (res.status === 200) {
           return res.json();
         }
@@ -176,7 +174,7 @@ export function useProvideAuth() {
           message: `Unable to reset password.  Please Try Again.`,
         };
       })
-      .then(data => {
+      .then((data) => {
         if (data?.status !== 200) {
           // set the response code
           return {
@@ -191,8 +189,7 @@ export function useProvideAuth() {
         setIsAuthenticated(true);
 
         // save this to local storage as well to retrieve later
-        cookie.save(`user`, data.user);
-        cookie.save(`jwt`, data.jwt);
+        cookie.save(`jwt`, data.jwt, { maxAge: 86400 });
 
         return {
           status: 200,
@@ -202,14 +199,18 @@ export function useProvideAuth() {
   };
 
   // function to determine if user is able to access resource
-  const canAccessResource = (authObject) => {
+  const canAccessResource = (authObject?: iAuthObject) => {
     // Checking resource access is as follows
     // 1) Check if the resource is secure
     if (authObject?.isSecure) {
       // 2) Verify person is logged in
       if (isAuthenticated) {
+        console.log("authenticated, checking it able to see");
         // 3) Check if their group is in the array permitted passed in
-        return authObject?.permittedGroups?.groups.includes(user?.role?.name) || false;
+        return (
+          authObject?.permittedGroups?.groups.includes(getUserRoleByName()) ||
+          false
+        );
       } else {
         // person isn't logged in
         return false;
@@ -220,43 +221,47 @@ export function useProvideAuth() {
     }
 
     // lastly implicit deny to prevent any unknowns
-  }
+  };
 
   // function to check if currently authenticated user has permission to access resource
-  const hasPermission = ({permittedGroups}) => {
+  const hasPermission = (permittedGroups: iPermittedGroups) => {
     // check if authenticated first
     if (isAuthenticated) {
-      return permittedGroups?.groups.includes(user.role.name);
+      return permittedGroups?.groups.includes(getUserRoleByName());
     }
 
     // implicit deny of course
     return false;
-  }
+  };
 
-  const isOwner = ({id}) => {
+  const isOwner = (id: string) => {
     if (isAuthenticated) {
-      return user.id === id;
+      return getUserRoleByID() === id;
     }
 
     // implicit deny
     return false;
-  }
+  };
 
   const getUserRoleByName = () => {
+    // @ts-ignore
     return user?.role?.name;
-  }
+  };
 
   const getUserRoleByID = () => {
+    // @ts-ignore
     return user?.role?.id;
-  }
+  };
 
   const getUserEmail = () => {
+    // @ts-ignore
     return user?.email || null;
-  }
+  };
 
   const getUserName = () => {
+    // @ts-ignore
     return isAuthenticated ? user?.username : null;
-  }
+  };
 
   return {
     user,
@@ -273,6 +278,7 @@ export function useProvideAuth() {
     isOwner,
     getUserEmail,
     getUserName,
+
     getUserRoleByID,
     getUserRoleByName,
   };
@@ -280,12 +286,12 @@ export function useProvideAuth() {
 
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
-export function ProvideAuth({ user, children }) {
+//@ts-ignore
+export function ProvideAuth({ jwt, children }) {
   const auth = useProvideAuth();
 
-  if (user) {
-    auth.user = user;
-    auth.isAuthenticated = true;
+  if (jwt) {
+    auth.jwt = jwt;
   }
   return <authContext.Provider value={auth}> {children} </authContext.Provider>;
 }
@@ -293,3 +299,36 @@ export function ProvideAuth({ user, children }) {
 // Hook for child components to get the auth object ...
 // ... and re-render when it changes.
 export const useAuth = () => useContext(authContext);
+
+// object containing role to id mappings
+export const roles = {
+  admin: "Administrator",
+  mod: "Mod",
+  person: "Person",
+};
+
+export interface iPermittedGroups {
+  groups: Array<string>;
+}
+
+export interface iAuthObject {
+  isSecure: boolean;
+  permittedGroups: iPermittedGroups;
+}
+
+export interface iUser {
+  blocked: boolean;
+  confirmed: boolean;
+  created_at: string;
+  email: string;
+  id: string;
+  provider: string;
+  updated_at: string;
+  username: string;
+  role: {
+    id: string;
+    description: string;
+    name: string;
+    type: string;
+  };
+}

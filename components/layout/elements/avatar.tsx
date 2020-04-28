@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useAuth } from "../../../lib/hook/useAuth";
+import { useProvideAuth } from "../../../lib/hook/useAuth";
 
 const ProfilePicture = styled.img`
   border-radius: 50px;
@@ -7,7 +7,7 @@ const ProfilePicture = styled.img`
 `;
 
 const Avatar = () => {
-  const auth = useAuth();
+  const auth = useProvideAuth();
   const avatarURL = `https://unavatar.now.sh/${auth.getUserEmail()}`;
 
   return <ProfilePicture src={avatarURL} loading="lazy" alt="Avatar Pic" />;

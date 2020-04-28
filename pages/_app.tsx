@@ -25,7 +25,6 @@ interface IApolloClient {
 }
 
 interface AppState {
-  user: object | null;
   jwt: string | null;
 }
 
@@ -44,7 +43,6 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // Setup state
     this.state = {
-      user: null,
       jwt: null,
     };
   }
@@ -74,14 +72,10 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     initGA();
     Router.events.on(`routeChangeComplete`, logPageView);
 
-    // get the user from localstorage if it exists
-    const user = cookie.load("user");
+    // get the jwt from cookies if it exists
     const jwt = cookie.load("jwt");
-
-    if (user) {
-      console.log("setting up user for the app");
+    if (jwt) {
       this.setState({
-        user: user,
         jwt: jwt,
       });
     }
@@ -96,7 +90,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     return (
       <ApolloProvider client={apollo}>
-        <ProvideAuth user={this.state.user}>
+        <ProvideAuth jwt={this.state.jwt}>
           <DefaultSeo
             titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
             facebook={{

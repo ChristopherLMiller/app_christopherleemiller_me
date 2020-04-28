@@ -1,20 +1,20 @@
-import { Button } from '../inputs/Buttons';
-import Link from 'next/link';
-import posed from 'react-pose';
-import { useEffect, useState } from 'react';
-import Router from 'next/router';
-import styled from 'styled-components';
-import Nav from './Nav';
-import { Props } from '../../styles/Themes';
-import { useAuth } from '../../lib/hook/useAuth';
-import { Avatar } from './elements/avatar';
-import { useToasts } from 'react-toast-notifications';
-import Modal from 'react-modal';
-import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { FieldSet } from '../inputs/FieldSet';
-import { Label } from '../inputs/Label';
-import { FormErrorMessage } from '../inputs/ErrorMessage';
+import { Button } from "../inputs/Buttons";
+import Link from "next/link";
+import posed from "react-pose";
+import { useEffect, useState } from "react";
+import Router from "next/router";
+import styled from "styled-components";
+import Nav from "./Nav";
+import { Props } from "../../styles/Themes";
+import { useProvideAuth } from "../../lib/hook/useAuth";
+import { Avatar } from "./elements/avatar";
+import { useToasts } from "react-toast-notifications";
+import Modal from "react-modal";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { FieldSet } from "../inputs/FieldSet";
+import { Label } from "../inputs/Label";
+import { FormErrorMessage } from "../inputs/ErrorMessage";
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -24,7 +24,6 @@ const StyledMobileNav = styled.div`
   border-bottom: 2px solid var(--background-light);
   position: fixed;
   z-index: 999;
-
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: none;
@@ -175,7 +174,7 @@ const ListItem = styled(PosedListItem)`
   line-height: 2em;
 
   :after {
-    content: '\\A';
+    content: "\\A";
     position: absolute;
     width: 100%;
     height: 100%;
@@ -197,27 +196,26 @@ const ListItem = styled(PosedListItem)`
 `;
 
 // used for targetting the modal for screen readers
-Modal.setAppElement('#__next');
+Modal.setAppElement("#__next");
 
 // Set some default styles to the modal
 const ModalStyles = {
   overlay: {
-    background: '#131313bf',
-    zIndex: 1000
+    background: "#131313bf",
+    zIndex: 1000,
   },
   content: {
-    top: '5%',
-    left: '5%',
-    bottom: '5%',
-    right: '5%',
-    borderRadius: 'none',
-    border: 'none',
-    outline: '5px solid var(--main-color-transparent)',
-  }
-}
+    top: "5%",
+    left: "5%",
+    bottom: "5%",
+    right: "5%",
+    borderRadius: "none",
+    border: "none",
+    outline: "5px solid var(--main-color-transparent)",
+  },
+};
 
-const ModalLayout = styled.div`
-`
+const ModalLayout = styled.div``;
 
 const ModalLayoutColumn = styled.div`
   padding: 0 20px;
@@ -233,7 +231,7 @@ const ModalLayoutHeader = styled.h3`
 `;
 
 const StyledForm = styled.div`
-display: grid;
+  display: grid;
   grid-template-columns: repeat(50%, 2);
   input,
   textarea {
@@ -243,24 +241,26 @@ display: grid;
     display: block;
     font-family: var(--font-main);
     font-weight: 300;
-  }`;
+  }
+`;
 
 // form validation schema
 const LoginSchema = Yup.object().shape({
-  identifier: Yup.string()
-    .required(`username or Email`),
+  identifier: Yup.string().required(`username or Email`),
   password: Yup.string().required(`Need Your Password`),
 });
 
 const ResetSchema = Yup.object().shape({
-  email: Yup.string().email(`Need a Valid Email`).required(`What's Your Email?`),
-})
+  email: Yup.string()
+    .email(`Need a Valid Email`)
+    .required(`What's Your Email?`),
+});
 
 const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
   const [menuText, setText] = useState(`Menu`);
   const [isModalOpen, setModalOpen] = useState(false);
-  const auth = useAuth();
+  const auth = useProvideAuth();
 
   // Toast Notifications
   const { addToast } = useToasts();
@@ -293,40 +293,50 @@ const MobileNav = () => {
           <ModalLayoutColumn>
             <ModalLayoutHeader>Login</ModalLayoutHeader>
             <Formik
-              initialValues={{ identifier: '', password: '' }}
+              initialValues={{ identifier: "", password: "" }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
 
                 // try logging in
-                auth.signin(values.identifier, values.password).then((response: any) => {
-                  if (response.status === 200) {
-                    setModalOpen(false);
-                    addToast(`Woohoo! You're in!`, { appearance: 'success' });
-                  } else {
-                    addToast(response.message, { appearance: "error" });
-                    setSubmitting(false);
-                  }
-                })
+                //@ts-ignore
+                auth
+                  .signin(values?.identifier, values?.password)
+                  .then((response: any) => {
+                    if (response.status === 200) {
+                      setModalOpen(false);
+                      addToast(`Woohoo! You're in!`, { appearance: "success" });
+                    } else {
+                      addToast(response.message, { appearance: "error" });
+                      setSubmitting(false);
+                    }
+                  });
               }}
-              validationSchema={LoginSchema}>
+              validationSchema={LoginSchema}
+            >
               {({ isSubmitting }) => (
                 <Form>
                   <StyledForm>
                     <FieldSet>
-                      <Label htmlFor="identifier">Username:{' '}</Label>
+                      <Label htmlFor="identifier">Username: </Label>
                       <Field type="text" name="identifier" />
                       <FormErrorMessage>
                         <ErrorMessage name="identifier" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
                     <FieldSet>
-                      <Label htmlFor="password">Password:{' '}</Label>
+                      <Label htmlFor="password">Password: </Label>
                       <Field type="password" name="password" />
                       <FormErrorMessage>
                         <ErrorMessage name="password" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
-                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Sign In</Button>
+                    <Button
+                      type="submit"
+                      aria-disabled={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Sign In
+                    </Button>
                   </StyledForm>
                 </Form>
               )}
@@ -336,34 +346,43 @@ const MobileNav = () => {
           <ModalLayoutColumn>
             <ModalLayoutHeader>Forgot Password</ModalLayoutHeader>
             <Formik
-              initialValues={{ email: '' }}
+              initialValues={{ email: "" }}
               onSubmit={(values, { setSubmitting }) => {
                 setSubmitting(true);
 
                 // try logging in
-                auth.requestPasswordReset(values.email).then((response: any) => {
-                  if (response.status === 200) {
-                    setModalOpen(false);  // close the modal
-                    setOpen(false); // close the menu
-                    addToast(response.message, { appearance: 'success' });
-                  } else {
-                    addToast(response.message, { appearance: "error" });
-                    setSubmitting(false);
-                  }
-                })
+                auth
+                  .requestPasswordReset(values.email)
+                  .then((response: any) => {
+                    if (response.status === 200) {
+                      setModalOpen(false); // close the modal
+                      setOpen(false); // close the menu
+                      addToast(response.message, { appearance: "success" });
+                    } else {
+                      addToast(response.message, { appearance: "error" });
+                      setSubmitting(false);
+                    }
+                  });
               }}
-              validationSchema={ResetSchema}>
+              validationSchema={ResetSchema}
+            >
               {({ isSubmitting }) => (
                 <Form>
                   <StyledForm>
                     <FieldSet>
-                      <Label htmlFor="email">Email:{' '}</Label>
+                      <Label htmlFor="email">Email: </Label>
                       <Field type="email" name="email" />
                       <FormErrorMessage>
                         <ErrorMessage name="email" component="div" />
                       </FormErrorMessage>
                     </FieldSet>
-                    <Button type="submit" aria-disabled={isSubmitting} disabled={isSubmitting}>Reset Password</Button>
+                    <Button
+                      type="submit"
+                      aria-disabled={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Reset Password
+                    </Button>
                   </StyledForm>
                 </Form>
               )}
@@ -397,14 +416,20 @@ const MobileNav = () => {
               <Avatar />
             </ProfileImage>
             <ProfileInfo>
-              <ProfileName>{auth.getUserName() || 'Guest'}</ProfileName>
-              <ProfileRole>{auth.getUserRoleByName() || 'Guest user'}</ProfileRole>
+              <ProfileName>{auth.getUserName() || "Guest"}</ProfileName>
+              <ProfileRole>
+                {auth.getUserRoleByName() || "Guest user"}
+              </ProfileRole>
             </ProfileInfo>
           </ProfileContainer>
           <ProfileLinks>
             {auth.isAuthenticated && <ListItem>My Account</ListItem>}
-            {auth.isAuthenticated && <ListItem onClick={() => auth.signout()}>Logout</ListItem>}
-            {!auth.isAuthenticated && <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>}
+            {auth.isAuthenticated && (
+              <ListItem onClick={() => auth.signout()}>Logout</ListItem>
+            )}
+            {!auth.isAuthenticated && (
+              <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>
+            )}
           </ProfileLinks>
         </AccountWrapper>
         <NavHr />
