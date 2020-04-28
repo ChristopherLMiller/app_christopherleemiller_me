@@ -46,7 +46,6 @@ const Image: FunctionComponent<iImage> = ({ file, options }) => {
       publicId={file}
       responsive
       dpr="auto"
-      crop="scale"
       responsiveUseBreakpoints="true"
     >
       {(options?.width || options?.height) && (
@@ -56,6 +55,13 @@ const Image: FunctionComponent<iImage> = ({ file, options }) => {
           crop={options?.crop || "scale"}
         />
       )}
+
+      <Transformation
+        quality={options?.quality || "auto"}
+        format={options?.format || "auto"}
+      />
+
+      {options?.border && <Transformation border={options?.border} />}
     </CloudinaryImage>
   );
 };
