@@ -167,3 +167,60 @@ export const ALERTS = gql`
     }
   }
 `;
+
+export const GET_ALL_GALLERIES = gql`
+  query GET_ALL_GALLERIES {
+    galleries {
+      id
+      created_at
+      updated_at
+      title
+      featured_image {
+        id
+        name
+        alternativeText
+        caption
+        width
+        height
+        formats
+        hash
+        ext
+        size
+        url
+        previewUrl
+        provider
+        provider_metadata
+      }
+      Slug
+      visibility
+      status
+      Description
+      gallery_tags {
+        id
+        name
+        slug
+      }
+      gallery_categories {
+        id
+        name
+        slug
+      }
+      Images {
+        id
+        name
+        alternativeText
+        caption
+        width
+        height
+        formats
+        hash
+        ext
+        size
+        url
+        previewUrl
+        provider
+        provider_metadata
+      }
+    }
+  }
+`;
