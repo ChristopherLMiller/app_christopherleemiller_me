@@ -1,8 +1,36 @@
 import { FunctionComponent } from "react";
-import { iImageOptions } from "../../utils/functions/imageURL";
 // @ts-ignore
-import { Image as CloudinaryImage } from "cloudinary-react";
+import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
 import { CLOUDINARY_CLOUD } from "../../config";
+
+export interface iImageOptions {
+  width?: number; // width
+  height?: number; // height
+  crop?: string; // crop
+  aspectRatio?: string;
+  gravity?: string;
+  zoom?: number;
+  xCoord?: number;
+  yCoord?: number;
+  format?: string;
+  quality?: number | string;
+  radius?: string;
+  angle?: string;
+  effect?: string;
+  opacity?: string;
+  border?: string;
+  background?: string;
+  overlay?: string;
+  underlay?: string;
+  delay?: number;
+  color?: string;
+  colorSpace?: string;
+  dpr?: string;
+  page?: string;
+  density?: string;
+  flags?: string;
+  transformation?: string;
+}
 
 interface iImage {
   file?: string;
@@ -10,16 +38,26 @@ interface iImage {
   options?: iImageOptions;
 }
 
-const Image: FunctionComponent<iImage> = ({ file, options }) => (
-  <CloudinaryImage
-    cloudName={CLOUDINARY_CLOUD}
-    publicId={file}
-    responsive
-    dpr="auto"
-    crop="scale"
-    responsiveUseBreakpoints="true"
-    width={options?.w}
-  />
-);
+const Image: FunctionComponent<iImage> = ({ file, options }) => {
+  console.debug(options);
+  return (
+    <CloudinaryImage
+      cloudName={CLOUDINARY_CLOUD}
+      publicId={file}
+      responsive
+      dpr="auto"
+      crop="scale"
+      responsiveUseBreakpoints="true"
+    >
+      {(options?.width || options?.height) && (
+        <Transformation
+          width={options?.width}
+          height={options?.height}
+          crop={options?.crop || "scale"}
+        />
+      )}
+    </CloudinaryImage>
+  );
+};
 
 export { Image };

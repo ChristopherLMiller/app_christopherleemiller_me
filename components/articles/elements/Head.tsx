@@ -31,7 +31,7 @@ const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
     {article.featured_image && (
       <Image
         file={article?.featured_image?.provider_metadata?.public_id}
-        options={{ w: 1000, h: 300 }}
+        options={{ width: 1000, height: 300, crop: "scale" }}
         alt={article.title}
       />
     )}
