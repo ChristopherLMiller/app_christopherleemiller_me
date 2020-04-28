@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Props } from "../../styles/Themes";
-import { Image } from "../elements";
+import { Props } from "../../../styles/Themes";
+import { Image } from "../../elements";
 
 const StyledLogo = styled.div`
   img {
