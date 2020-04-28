@@ -4,6 +4,7 @@ import Nav from "./Nav";
 import Title from "./elements/Title";
 import { Props } from "../../styles/Themes";
 import { motion } from "framer-motion";
+import { AccountInfo } from "./elements/AccountInfo";
 
 const sidebarVariants = {
   enter: {
@@ -47,6 +48,11 @@ const StyledSidebar = styled(motion.aside)`
   }
 `;
 
+const NavHr = styled.hr`
+  width: 100%;
+  margin: 10px 0;
+`;
+
 const StyledSidebarInner = styled.div`
   position: sticky;
   top: 40px;
@@ -55,13 +61,18 @@ const StyledSidebarInner = styled.div`
   flex-direction: column;
 `;
 
-const Sidebar = () => (
-  <StyledSidebar variants={sidebarVariants}>
-    <StyledSidebarInner>
-      <Logo />
-      <Title />
-      <Nav />
-    </StyledSidebarInner>
-  </StyledSidebar>
-);
+const Sidebar = () => {
+  return (
+    <StyledSidebar variants={sidebarVariants}>
+      <StyledSidebarInner>
+        <Logo />
+        <Title />
+        <NavHr />
+        <AccountInfo />
+        <NavHr />
+        <Nav />
+      </StyledSidebarInner>
+    </StyledSidebar>
+  );
+};
 export default Sidebar;

@@ -3,7 +3,6 @@ import { Footer } from "./Footer";
 import Header from "./Header";
 import { SITE_DEFAULT_IMAGE } from "../../config";
 import { ImageURL } from "../../utils/functions/imageURL";
-import { Profile } from "./Profile";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { Main } from "../../styles/Generics";
@@ -28,7 +27,6 @@ interface iLayout {
 
 const Layout: FunctionComponent<iLayout> = ({ meta, children }) => (
   <InnerPage>
-    <Profile />
     <Main>
       <Header title={meta.title} description={meta.description} />
       {meta.useSEO && (
