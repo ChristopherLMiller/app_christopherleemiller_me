@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-import { Props } from '../../styles/Themes';
+import styled from "styled-components";
 
 interface iGrid {
   columns: number;
@@ -9,18 +8,14 @@ interface iGrid {
 
 export const Grid = styled.div<iGrid>`
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-gap: ${props => props.gap};
-  background: ${props => props.background};
-
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
-    grid-template-columns: repeat(${props => props.columns}, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: ${(props) => props.gap};
+  background: ${(props) => props.background};
 `;
 
 interface iGridItem {
   maxWidth?: string;
 }
 export const GridItem = styled.div<iGridItem>`
-  max-width: ${props => props.maxWidth};
+  max-width: ${(props) => props.maxWidth};
 `;

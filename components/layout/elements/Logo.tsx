@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Props } from "../../styles/Themes";
-import { Image } from "../elements";
+import { Props } from "../../../styles/Themes";
+import { Image } from "../../elements";
 
 const StyledLogo = styled.div`
   img {
@@ -17,7 +17,7 @@ const StyledLogo = styled.div`
 
 const Logo = () => (
   <StyledLogo>
-    <Image file="clm_me/assets/logo" options={{ w: 300 }} />
+    <Image file="clm_me/assets/logo" options={{ width: 300 }} />
   </StyledLogo>
 );
 

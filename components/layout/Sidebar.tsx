@@ -1,26 +1,27 @@
-import styled from 'styled-components';
-import Logo from './Logo';
-import Nav from './Nav';
-import Title from './Title';
-import { Props } from '../../styles/Themes';
-import { motion } from 'framer-motion';
+import styled from "styled-components";
+import Logo from "./elements/Logo";
+import Nav from "./Nav";
+import Title from "./elements/Title";
+import { Props } from "../../styles/Themes";
+import { motion } from "framer-motion";
+import { AccountInfo } from "./elements/AccountInfo";
 
 const sidebarVariants = {
   enter: {
-    x: '0%',
+    x: "0%",
     opacity: 1,
     transition: {
       duration: 0.25,
-    }   
+    },
   },
   exit: {
-    x: '-100%',
+    x: "-100%",
     opacity: 0,
     transition: {
-      duration: 0.5
-    }
-  }
-}
+      duration: 0.5,
+    },
+  },
+};
 
 const StyledSidebar = styled(motion.aside)`
   position: relative;
@@ -33,7 +34,7 @@ const StyledSidebar = styled(motion.aside)`
     left: 0;
     width: 100%;
     height: 100%;
-    content: '\\A';
+    content: "\\A";
     z-index: -1;
   }
 
@@ -47,6 +48,11 @@ const StyledSidebar = styled(motion.aside)`
   }
 `;
 
+const NavHr = styled.hr`
+  width: 100%;
+  margin: 10px 0;
+`;
+
 const StyledSidebarInner = styled.div`
   position: sticky;
   top: 40px;
@@ -55,13 +61,18 @@ const StyledSidebarInner = styled.div`
   flex-direction: column;
 `;
 
-const Sidebar = () => (
-      <StyledSidebar variants={sidebarVariants}>
-        <StyledSidebarInner>
-          <Logo />
-          <Title />
-          <Nav />
-        </StyledSidebarInner>
-      </StyledSidebar>
+const Sidebar = () => {
+  return (
+    <StyledSidebar variants={sidebarVariants}>
+      <StyledSidebarInner>
+        <Logo />
+        <Title />
+        <NavHr />
+        <AccountInfo />
+        <NavHr />
+        <Nav />
+      </StyledSidebarInner>
+    </StyledSidebar>
   );
+};
 export default Sidebar;

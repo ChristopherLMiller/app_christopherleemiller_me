@@ -7,6 +7,10 @@ import { Image } from "../../elements";
 const StyledArticleHeader = styled.div`
   font-family: var(--font-family);
   font-weight: 100;
+
+  img {
+    width: 100%;
+  }
 `;
 
 const StyledArticleHeaderInfo = styled.div`
@@ -31,7 +35,12 @@ const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
     {article.featured_image && (
       <Image
         file={article?.featured_image?.provider_metadata?.public_id}
-        options={{ w: 1000, h: 300 }}
+        options={{
+          width: 1000,
+          height: 300,
+          crop: "scale",
+          border: "10px_solid_rgb:FFFFFF",
+        }}
         alt={article.title}
       />
     )}

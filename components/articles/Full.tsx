@@ -13,8 +13,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { Button } from "../inputs/Buttons";
 import { ModalBox } from "../elements/Modal";
-import { useAuth } from "../../lib/hook/useAuth";
-import { roles } from "../../config";
+import { useProvideAuth, roles } from "../../lib/hook/useAuth";
 import { truncate } from "../../utils/functions/truncate";
 
 const ArticleOptions = styled.div``;
@@ -27,7 +26,7 @@ const FullArticle: FunctionComponent<ArticleTypes> = ({
   commentsEnabled = true,
   header = true,
 }) => {
-  const auth = useAuth();
+  const auth = useProvideAuth();
 
   useEffect(() => {
     function initHighlighting() {

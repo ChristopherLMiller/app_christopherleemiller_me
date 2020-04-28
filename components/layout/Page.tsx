@@ -4,12 +4,7 @@ import Meta from "./Meta";
 import Sidebar from "./Sidebar";
 import MobileNav from "./MobileNav";
 import { theme, Props, GlobalStyles } from "../../styles/Themes";
-import {
-  CLOUDINARY_URL,
-  CLOUDINARY_CLOUD,
-  CLOUDINARY_FOLDER,
-} from "../../config";
-import { Alerts } from "./elements/Alerts";
+import { ImageURL } from "../../utils/functions/imageURL";
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -24,7 +19,7 @@ const StyledPage = styled.div`
     z-index: -1;
 
     display: block;
-    background-image: url('${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${CLOUDINARY_FOLDER}/assets/background.jpg');
+    background-image: url('${ImageURL("clm_me/assets/background.jpg")}');
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -67,10 +62,7 @@ const Page: FunctionComponent<PageProps> = ({ children }) => (
     <StyledPage>
       <Meta />
       <Sidebar />
-      <Inner>
-        <Alerts maxRenders={5} />
-        {children}
-      </Inner>
+      <Inner>{children}</Inner>
     </StyledPage>
     <MobileNav />
     <GlobalStyles />

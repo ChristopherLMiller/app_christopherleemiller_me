@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import { Props } from '../../styles/Themes';
+import Link from "next/link";
+import styled from "styled-components";
+import { Props } from "../../../styles/Themes";
 
 const TitleWrapper = styled.div`
   top: 0;
@@ -24,7 +24,7 @@ const StyledTitle = styled.h2`
   position: relative;
 
   :after {
-    content: '\\A';
+    content: "\\A";
     width: 0%;
     height: 5px;
     background: var(--main-color);
