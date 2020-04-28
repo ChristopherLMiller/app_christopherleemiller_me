@@ -26,6 +26,7 @@ interface IApolloClient {
 
 interface AppState {
   jwt: string | null;
+  user: object | null;
 }
 
 class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
@@ -44,6 +45,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     // Setup state
     this.state = {
       jwt: null,
+      user: null,
     };
   }
 
@@ -74,9 +76,11 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     // get the jwt from cookies if it exists
     const jwt = cookie.load("jwt");
+    const user = cookie.load("user");
     if (jwt) {
       this.setState({
         jwt: jwt,
+        user: user,
       });
     }
   }
@@ -90,7 +94,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     return (
       <ApolloProvider client={apollo}>
-        <ProvideAuth jwt={this.state.jwt}>
+        <ProvideAuth jwt={this.state.jwt} user={this.state.user}>
           <DefaultSeo
             titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
             facebook={{

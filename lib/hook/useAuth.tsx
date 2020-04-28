@@ -7,7 +7,7 @@ export const authContext = createContext();
 
 // Provider hook that creates auth object and handles state
 export function useProvideAuth() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<iUser | null>();
   const [jwt, setJwt] = useState("");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -41,7 +41,7 @@ export function useProvideAuth() {
         };
       })
       .then((data) => {
-        if (data?.status !== 200 && data?.status != undefined) {
+        /*if (data?.status !== 200 && data?.status != undefined) {
           setIsAuthenticated(false);
 
           // set the response code
@@ -49,7 +49,7 @@ export function useProvideAuth() {
             status: data.status,
             message: data.message,
           };
-        }
+        }*/
 
         // set the app state
         setUser(data.user);
@@ -58,6 +58,7 @@ export function useProvideAuth() {
 
         // save this to local storage as well to retrieve later
         cookie.save(`jwt`, data.jwt, { maxAge: 86400 });
+        cookie.save("user", data.user, { maxAge: 86400 });
 
         return {
           status: 200,
@@ -76,6 +77,8 @@ export function useProvideAuth() {
     // also remove the item from local storage
     cookie.remove(`user`);
     cookie.remove(`jwt`);
+
+    return;
   };
 
   // Fetch User
@@ -205,12 +208,11 @@ export function useProvideAuth() {
     if (authObject?.isSecure) {
       // 2) Verify person is logged in
       if (isAuthenticated) {
-        console.log("authenticated, checking it able to see");
+        const role = getUserRoleByName();
         // 3) Check if their group is in the array permitted passed in
-        return (
-          authObject?.permittedGroups?.groups.includes(getUserRoleByName()) ||
-          false
-        );
+        return role
+          ? authObject?.permittedGroups?.groups.includes(role)
+          : false;
       } else {
         // person isn't logged in
         return false;
@@ -227,7 +229,8 @@ export function useProvideAuth() {
   const hasPermission = (permittedGroups: iPermittedGroups) => {
     // check if authenticated first
     if (isAuthenticated) {
-      return permittedGroups?.groups.includes(getUserRoleByName());
+      const role = getUserRoleByName();
+      return role ? permittedGroups?.groups.includes(role) : false;
     }
 
     // implicit deny of course
@@ -244,23 +247,19 @@ export function useProvideAuth() {
   };
 
   const getUserRoleByName = () => {
-    // @ts-ignore
-    return user?.role?.name;
+    return isAuthenticated ? user?.role.name : null;
   };
 
   const getUserRoleByID = () => {
-    // @ts-ignore
     return user?.role?.id;
   };
 
   const getUserEmail = () => {
-    // @ts-ignore
-    return user?.email || null;
+    return user?.email;
   };
 
   const getUserName = () => {
-    // @ts-ignore
-    return isAuthenticated ? user?.username : null;
+    return user?.username;
   };
 
   return {
@@ -287,11 +286,12 @@ export function useProvideAuth() {
 // Provider component that wraps your app and makes auth object ...
 // ... available to any child component that calls useAuth().
 //@ts-ignore
-export function ProvideAuth({ jwt, children }) {
+export function ProvideAuth({ jwt, user, children }) {
   const auth = useProvideAuth();
 
   if (jwt) {
     auth.jwt = jwt;
+    auth.user = user;
   }
   return <authContext.Provider value={auth}> {children} </authContext.Provider>;
 }
