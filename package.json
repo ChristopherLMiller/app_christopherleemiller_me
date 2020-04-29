@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "ANALYZE=true next build",
+    "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint . --fix",
     "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0"
