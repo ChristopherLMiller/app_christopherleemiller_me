@@ -2,10 +2,6 @@ require(`dotenv`).config();
 const webpack = require(`webpack`);
 const withOffline = require(`next-offline`);
 
-const withBundleAnalyzer = require("@next/bundle-analyzer")({
-  enabled: process.env.ANALYZE === "true",
-});
-
 const nextConfig = {
   webpack: (config) => {
     config.plugins.push(new webpack.EnvironmentPlugin(process.env));
@@ -19,4 +15,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(withOffline(nextConfig));
+module.exports = withOffline(nextConfig);

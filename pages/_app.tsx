@@ -1,14 +1,10 @@
 import App, { AppProps } from "next/app";
-import { StrictMode, ErrorInfo } from "react";
+import { StrictMode } from "react";
 import Router from "next/router";
-import * as Sentry from "@sentry/browser";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { DefaultSeo } from "next-seo";
-import LogRocket from "logrocket";
-import { Event } from "@sentry/types";
 import { ApolloClient } from "apollo-client";
 import { ToastProvider } from "react-toast-notifications";
-import { name, version } from "../package.json";
 import Page from "../components/layout/Page";
 import { withApollo } from "../lib/hook/withApollo";
 import { SEPARATOR } from "../config";
@@ -17,7 +13,7 @@ import { ProvideAuth } from "../lib/hook/useAuth";
 import cookie from "react-cookies";
 import { AnimatePresence, motion } from "framer-motion";
 
-import "../node_modules/highlight.js/styles/atom-one-dark.css";
+//import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import "../static/nprogress.css";
 
 interface IApolloClient {
@@ -33,40 +29,11 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   constructor(props: AppProps & IApolloClient) {
     super(props);
 
-    // Setup sentry for error tracking
-    Sentry.init({
-      dsn: process.env.SENTRY_PUBLIC_DSN,
-      release: `${name}@${version}`,
-    });
-
-    // Setup LogRocket for error monitoring
-    LogRocket.init(process.env.LOGROCKET);
-
     // Setup state
     this.state = {
       jwt: null,
       user: null,
     };
-  }
-
-  // Error Catching
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    Sentry.configureScope((scope) => {
-      scope.setExtras(errorInfo);
-    });
-
-    Sentry.configureScope((scope) => {
-      scope.addEventProcessor((event: Event) => {
-        if (event.extra !== undefined) {
-          event.extra.sessionURL = LogRocket.sessionURL
-            ? LogRocket.sessionURL
-            : null;
-          return event;
-        }
-        return event;
-      });
-    });
-    Sentry.captureException(error);
   }
 
   componentDidMount() {

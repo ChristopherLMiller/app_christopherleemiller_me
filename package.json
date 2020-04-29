@@ -1,11 +1,11 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.36.23",
+  "version": "0.36.31",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "build": "ANALYZE=true next build",
+    "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint . --fix",
     "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0"
@@ -59,6 +59,7 @@
     "react-ga": "^2.7.0",
     "react-image-gallery": "^1.0.7",
     "react-markdown": "^4.3.1",
+    "react-masonry-css": "^1.0.14",
     "react-modal": "^3.11.2",
     "react-pose": "^4.0.10",
     "react-spinners": "^0.8.1",
