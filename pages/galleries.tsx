@@ -22,16 +22,16 @@ export const GalleriesAuth = {
 const GalleryList = styled.div`
   .masonry-grid {
     display: flex;
-    margin-left: -30px;
+    margin-left: -20px;
     width: auto;
   }
 
   .masonry-grid-column {
-    padding-left: 30px;
+    padding-left: 20px;
     background-clip: padding-box;
 
     > div {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
   }
 `;
@@ -70,6 +70,15 @@ const GalleryImageCaption = styled.span`
 const GalleriesPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_GALLERIES_BRIEF);
 
+  // setup some breakpoints for masonry
+  const masonryBreakpoints = {
+    default: 3,
+    1300: 2,
+    800: 1,
+    700: 2,
+    550: 1,
+  };
+
   return (
     <Layout
       meta={{
@@ -93,7 +102,7 @@ const GalleriesPage = () => {
       <Loader isLoading={loading} />
       <GalleryList>
         <Masonry
-          breakpointCols={3}
+          breakpointCols={masonryBreakpoints}
           className="masonry-grid"
           columnClassName="masonry-grid-column"
         >
