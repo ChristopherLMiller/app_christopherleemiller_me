@@ -271,7 +271,6 @@ export function useProvideAuth() {
     refetchUser,
     resetPassword,
     requestPasswordReset,
-    setUser,
     canAccessResource,
     hasPermission,
     isOwner,
@@ -280,6 +279,9 @@ export function useProvideAuth() {
 
     getUserRoleByID,
     getUserRoleByName,
+    setJwt,
+    setUser,
+    setIsAuthenticated,
   };
 }
 
@@ -290,8 +292,9 @@ export function ProvideAuth({ jwt, user, children }) {
   const auth = useProvideAuth();
 
   if (jwt) {
-    auth.jwt = jwt;
     auth.user = user;
+    auth.jwt = jwt;
+    auth.isAuthenticated = true;
   }
   return <authContext.Provider value={auth}> {children} </authContext.Provider>;
 }
