@@ -41,10 +41,11 @@ const StyledGalleryImage = styled.div`
   height: min-content;
   box-shadow: var(--box-shadow);
   border: 5px solid var(--main-color-transparent);
-  transition: all 0.15s;
+  transition: all 0.25s;
 
   :hover {
     transform: scale3d(1.1, 1.1, 1);
+    z-index: 1;
     > span {
       background: var(--main-color-transparent);
     }
