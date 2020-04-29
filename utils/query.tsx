@@ -171,7 +171,58 @@ export const ALERTS = gql`
 export const GET_ALL_GALLERIES = gql`
   query GET_ALL_GALLERIES {
     galleries {
-      id
+      created_at
+      updated_at
+      title
+      featured_image {
+        name
+        alternativeText
+        caption
+        width
+        height
+        formats
+        hash
+        ext
+        size
+        url
+        previewUrl
+        provider
+        provider_metadata
+      }
+      Slug
+      visibility
+      status
+      Description
+      gallery_tags {
+        name
+        slug
+      }
+      gallery_categories {
+        name
+        slug
+      }
+      Images {
+        name
+        alternativeText
+        caption
+        width
+        height
+        formats
+        hash
+        ext
+        size
+        url
+        previewUrl
+        provider
+        provider_metadata
+      }
+    }
+  }
+`;
+
+export const GET_ALL_GALLERIES_BRIEF = gql`
+  query GET_ALL_GALLERIES_BRIEF {
+    galleries {
       created_at
       updated_at
       title
@@ -196,30 +247,15 @@ export const GET_ALL_GALLERIES = gql`
       status
       Description
       gallery_tags {
-        id
         name
         slug
       }
       gallery_categories {
-        id
         name
         slug
       }
       Images {
         id
-        name
-        alternativeText
-        caption
-        width
-        height
-        formats
-        hash
-        ext
-        size
-        url
-        previewUrl
-        provider
-        provider_metadata
       }
     }
   }

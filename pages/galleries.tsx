@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { roles } from "../lib/hook/useAuth";
 import { Layout } from "../components/layout/PageLayout";
-import { GET_ALL_GALLERIES } from "../utils/query";
+import { GET_ALL_GALLERIES_BRIEF } from "../utils/query";
 import { useQuery } from "react-apollo";
 import { Loader } from "../components/elements/Loader";
 import { isDefined } from "../utils/functions/isDefined";
@@ -19,7 +19,7 @@ export const GalleriesAuth = {
 };
 
 const GalleriesPage = () => {
-  const { loading, error, data } = useQuery(GET_ALL_GALLERIES);
+  const { loading, error, data } = useQuery(GET_ALL_GALLERIES_BRIEF);
 
   return (
     <Layout
@@ -45,7 +45,7 @@ const GalleriesPage = () => {
       <Grid columns={4} gap="30px">
         {isDefined(data) &&
           data.galleries.map((gallery: any) => (
-            <Polaroid key={gallery.id} image={gallery.featured_image}>
+            <Polaroid key={gallery.Slug} image={gallery.featured_image}>
               <p>{gallery.title}</p>
             </Polaroid>
           ))}
