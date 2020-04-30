@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { FunctionComponent, Fragment } from "react";
+import styled from "styled-components";
 import Meta from "./Meta";
 import Sidebar from "./Sidebar";
 import MobileNav from "./MobileNav";
-import { theme, Props, GlobalStyles } from "../../styles/Themes";
+import { Props } from "../../styles/Themes";
 import { ImageURL } from "../../utils/functions/imageURL";
 
 const StyledPage = styled.div`
@@ -58,15 +58,14 @@ interface PageProps {
 }
 
 const Page: FunctionComponent<PageProps> = ({ children }) => (
-  <ThemeProvider theme={theme}>
+  <Fragment>
     <StyledPage>
       <Meta />
       <Sidebar />
       <Inner>{children}</Inner>
     </StyledPage>
     <MobileNav />
-    <GlobalStyles />
-  </ThemeProvider>
+  </Fragment>
 );
 
 export default Page;

@@ -15,6 +15,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 //import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import "../static/nprogress.css";
+import { ThemeProvider } from "styled-components";
+import { theme, GlobalStyles } from "../styles/Themes";
 
 interface IApolloClient {
   apollo: ApolloClient<any>;
@@ -76,17 +78,20 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
               cardType: `summary_large_image`,
             }}
           />
-          <ToastProvider>
-            <AnimatePresence exitBeforeEnter>
-              <motion.div initial="exit" animate="enter" exit="exit">
-                <Page>
-                  <StrictMode>
-                    <Component {...pageProps} key={router.route} />
-                  </StrictMode>
-                </Page>
-              </motion.div>
-            </AnimatePresence>
-          </ToastProvider>
+          <ThemeProvider theme={theme}>
+            <GlobalStyles />
+            <ToastProvider>
+              <AnimatePresence exitBeforeEnter>
+                <motion.div initial="exit" animate="enter" exit="exit">
+                  <Page>
+                    <StrictMode>
+                      <Component {...pageProps} key={router.route} />
+                    </StrictMode>
+                  </Page>
+                </motion.div>
+              </AnimatePresence>
+            </ToastProvider>
+          </ThemeProvider>
         </ProvideAuth>
       </ApolloProvider>
     );
