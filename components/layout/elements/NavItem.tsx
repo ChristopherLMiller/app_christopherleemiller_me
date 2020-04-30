@@ -1,10 +1,11 @@
 import { FunctionComponent } from "react";
-import posed from "react-pose";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useProvideAuth, iAuthObject } from "../../../lib/hook/useAuth";
 
+/*
+TODO: make this work with motion
 const PosedNavItem = posed.li({
   open: {
     opacity: 1,
@@ -15,8 +16,14 @@ const PosedNavItem = posed.li({
     x: `-100%`,
   },
 });
+*/
 
-const StyledNavItem = styled(PosedNavItem)`
+interface iStyledNavItem {
+  display: string;
+  isActive: boolean;
+}
+
+const StyledNavItem = styled.li<iStyledNavItem>`
   display: ${(props: any) => props.display || "none"};
   position: relative;
   font-family: var(--font-monospace);
@@ -72,7 +79,9 @@ const NavItem: FunctionComponent<iNavItem> = ({
       <StyledNavItem
         display="block"
         aria-hidden={!auth.canAccessResource(authObject)}
-        isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ""}
+        isActive={
+          isActivePaths ? isActivePaths.includes(router.pathname) : false
+        }
       >
         {isHrefLocal && (
           <Link href={href}>
@@ -89,7 +98,9 @@ const NavItem: FunctionComponent<iNavItem> = ({
       <StyledNavItem
         display={"block"}
         aria-hidden={false}
-        isActive={isActivePaths ? isActivePaths.includes(router.pathname) : ""}
+        isActive={
+          isActivePaths ? isActivePaths.includes(router.pathname) : false
+        }
       >
         {isHrefLocal && (
           <Link href={href}>

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-import { FunctionComponent } from 'react';
-import { motion } from 'framer-motion';
+import styled from "styled-components";
+import Link from "next/link";
+import { FunctionComponent } from "react";
+import { motion } from "framer-motion";
 
 const StyledTitle = styled(motion.h2)`
   margin: 0;
@@ -17,21 +17,21 @@ const StyledTitle = styled(motion.h2)`
   z-index: 1;
 `;
 
-const ListingTitleVariants = {
+const variants = {
   enter: {
     rotate: -4,
     translateY: 40,
     translateX: -5,
-    scale: 1.1
-  }
-}
+    scale: 1.1,
+  },
+};
 
-const ListingTitleWhileHover = {
+const hoverState = {
   rotate: 0,
   translateY: 40,
   translateX: 0,
-  scale: 1.1
-}
+  scale: 1.1,
+};
 interface IListingTitle {
   as: string;
   href: string;
@@ -44,7 +44,9 @@ const ListingTitle: FunctionComponent<IListingTitle> = ({
 }) => (
   <Link as={as} href={href}>
     <a>
-      <StyledTitle whileHover={ListingTitleWhileHover} variants={ListingTitleVariants}>{children}</StyledTitle>
+      <StyledTitle whileHover={hoverState} variants={variants}>
+        {children}
+      </StyledTitle>
     </a>
   </Link>
 );

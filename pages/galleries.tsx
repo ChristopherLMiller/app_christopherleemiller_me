@@ -8,6 +8,7 @@ import { isDefined } from "../utils/functions/isDefined";
 import styled from "styled-components";
 import { ImageURL } from "../utils/functions/imageURL";
 import Masonry from "react-masonry-css";
+import { motion } from "framer-motion";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -36,20 +37,11 @@ const GalleryList = styled.div`
   }
 `;
 
-const StyledGalleryImage = styled.div`
+const GalleryImageContainer = styled(motion.div)`
   position: relative;
-  height: min-content;
   box-shadow: var(--box-shadow);
   border: 5px solid var(--main-color-transparent);
-  transition: all 0.25s;
-
-  :hover {
-    transform: scale3d(1.1, 1.1, 1);
-    z-index: 1;
-    > span {
-      background: var(--main-color-transparent);
-    }
-  }
+  cursor: pointer;
 `;
 
 const GalleryImage = styled.img`
@@ -57,16 +49,32 @@ const GalleryImage = styled.img`
   width: 100%;
 `;
 
-const GalleryImageCaption = styled.span`
+const GalleryInfoOverlay = styled(motion.div)`
   position: absolute;
   bottom: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.4);
   width: 100%;
   padding: 10px;
   font-weight: 100;
   font-size: var(--font-size-responsive);
 `;
+
+const GalleryInfoOverlayVariants = {
+  rest: {
+    background: "rgba(0, 0, 0, 0.6)",
+  },
+  hover: {
+    height: "100%",
+    background: "var(--main-color)",
+    opacity: 0.8,
+    transition: {
+      type: "tween",
+      ease: "easeOut",
+    },
+  },
+};
+
+const GalleryImageCaption = styled.span``;
 
 const GalleriesPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_GALLERIES_BRIEF);
@@ -109,14 +117,21 @@ const GalleriesPage = () => {
         >
           {isDefined(data) &&
             data.galleries.map((gallery: any) => (
-              <StyledGalleryImage key={gallery.Slug} className="galleryImage">
+              <GalleryImageContainer
+                key={gallery.Slug}
+                initial="rest"
+                animate="rest"
+                whileHover="hover"
+              >
                 <GalleryImage
                   src={`${ImageURL(
                     gallery.featured_image.provider_metadata.public_id
                   )}.jpg`}
                 />
-                <GalleryImageCaption>{gallery.title}</GalleryImageCaption>
-              </StyledGalleryImage>
+                <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>
+                  <GalleryImageCaption>{gallery.title}</GalleryImageCaption>
+                </GalleryInfoOverlay>
+              </GalleryImageContainer>
             ))}
         </Masonry>
       </GalleryList>

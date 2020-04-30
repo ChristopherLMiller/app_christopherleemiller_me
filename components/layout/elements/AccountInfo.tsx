@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Avatar } from "./avatar";
 import { useProvideAuth } from "../../../lib/hook/useAuth";
-import posed from "react-pose";
 import { useState } from "react";
 import { Props } from "../../../styles/Themes";
 import { LoginModal } from "./LoginModal";
@@ -38,18 +37,7 @@ const ProfileLinks = styled.ul`
   padding-left: 0;
 `;
 
-const PosedListItem = posed.li({
-  open: {
-    opacity: 1,
-    x: `0%`,
-  },
-  closed: {
-    opacity: 0,
-    x: `-100%`,
-  },
-});
-
-const ListItem = styled(PosedListItem)`
+const ListItem = styled.li`
   position: relative;
   font-family: var(--font-monospace);
   font-size: 2.5rem;

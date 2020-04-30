@@ -1,14 +1,15 @@
-import styled from 'styled-components';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { useToasts } from 'react-toast-notifications';
-import Card from '../components/Card';
-import { SocialLinks } from '../components/SocialLinks';
-import { Props } from '../styles/Themes';
-import { Label } from '../components/inputs/Label';
-import { FieldSet } from '../components/inputs/FieldSet';
-import { FormErrorMessage } from '../components/inputs/ErrorMessage';
-import { Layout } from '../components/layout/PageLayout';
+import { ButtonVisual } from "../components/inputs/Buttons";
+import styled from "styled-components";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { useToasts } from "react-toast-notifications";
+import Card from "../components/Card";
+import { SocialLinks } from "../components/SocialLinks";
+import { Props } from "../styles/Themes";
+import { Label } from "../components/inputs/Label";
+import { FieldSet } from "../components/inputs/FieldSet";
+import { FormErrorMessage } from "../components/inputs/ErrorMessage";
+import { Layout } from "../components/layout/PageLayout";
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;
@@ -90,20 +91,27 @@ const ContactPage = () => {
               initialValues={{ email: ``, name: ``, message: `` }}
               onSubmit={(values) => {
                 // submit the fetch request
-                fetch('https://email.christopherleemiller.me/email/contact', {
-                  method: 'POST',
+                fetch("https://email.christopherleemiller.me/email/contact", {
+                  method: "POST",
                   headers: {
-                    'Content-Type': 'Application/JSON',
+                    "Content-Type": "Application/JSON",
                   },
                   body: JSON.stringify(values),
-                }).then(res => {
-                  if (res.ok) {
-                    addToast('Email Sent Successfully.  Thank you!', { appearance: 'info', autoDismiss: true });
-                  }
-                }).catch(error => {
-                  addToast('Unable to send the email.  Try again later.', { appearance: 'error' })
-                  console.log(error)
                 })
+                  .then((res) => {
+                    if (res.ok) {
+                      addToast("Email Sent Successfully.  Thank you!", {
+                        appearance: "info",
+                        autoDismiss: true,
+                      });
+                    }
+                  })
+                  .catch((error) => {
+                    addToast("Unable to send the email.  Try again later.", {
+                      appearance: "error",
+                    });
+                    console.log(error);
+                  });
               }}
               validationSchema={ContactSchema}
             >
@@ -111,18 +119,14 @@ const ContactPage = () => {
                 <Form>
                   <StyledContactForm>
                     <FieldSet>
-                      <Label htmlFor="name">
-                        Name:{` `}
-                      </Label>
+                      <Label htmlFor="name">Name:{` `}</Label>
                       <Field type="text" name="name" />
                       <FormErrorMessage>
                         <ErrorMessage name="name" component="span" />
                       </FormErrorMessage>
                     </FieldSet>
                     <FieldSet>
-                      <Label htmlFor="email">
-                        Email:{` `}
-                      </Label>
+                      <Label htmlFor="email">Email:{` `}</Label>
                       <Field type="email" name="email" />
                       <FormErrorMessage>
                         <ErrorMessage name="email" component="span" />
@@ -130,18 +134,20 @@ const ContactPage = () => {
                     </FieldSet>
 
                     <StyledContactFormFullWidth>
-                      <Label htmlFor="message">
-                        Message:
-                      </Label>
+                      <Label htmlFor="message">Message:</Label>
                       <Field component="textarea" name="message" rows="5" />
                       <FormErrorMessage>
                         <ErrorMessage name="message" component="span" />
                       </FormErrorMessage>
                     </StyledContactFormFullWidth>
                   </StyledContactForm>
-                  <button type="submit" disabled={isSubmitting} aria-disabled={isSubmitting}>
+                  <ButtonVisual
+                    type="submit"
+                    disabled={isSubmitting}
+                    aria-disabled={isSubmitting}
+                  >
                     Send It!
-                  </button>
+                  </ButtonVisual>
                 </Form>
               )}
             </Formik>

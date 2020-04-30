@@ -1,11 +1,11 @@
 import Link from "next/link";
-import posed from "react-pose";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import styled from "styled-components";
 import Nav from "./Nav";
 import { Props } from "../../styles/Themes";
 import { AccountInfo } from "./elements/AccountInfo";
+import { motion } from "framer-motion";
 
 const StyledMobileNav = styled.div`
   top: 0;
@@ -81,7 +81,7 @@ const StyledHamburger = styled.button`
   }
 `;
 
-const Navigation = posed.div({
+/*const Navigation = posed.div({
   closed: {
     height: `0vh`,
     opacity: 0,
@@ -92,9 +92,20 @@ const Navigation = posed.div({
     opacity: 1,
     transform: `rotateX(0deg)`,
   },
-});
+});*/
 
-const StyledNavigationWrapper = styled(Navigation)`
+const animate = {
+  height: 0,
+  rotateX: 0,
+  opacity: 0,
+};
+
+const styles = {
+  rotateX: -90,
+  opacity: 0,
+};
+
+const StyledNavigationWrapper = styled.div`
   transition: all 0.5s;
   overflow-y: auto;
   transform: rotateX(-90deg);
@@ -152,11 +163,13 @@ const MobileNav = () => {
         </Link>
         <StyledDescription>All About Me!</StyledDescription>
       </StyledMobileNavWrapper>
-      <StyledNavigationWrapper pose={isOpen ? `open` : `closed`}>
-        <AccountInfo />
-        <NavHr />
-        <Nav />
-      </StyledNavigationWrapper>
+      <motion.div animate={animate} style={styles}>
+        <StyledNavigationWrapper>
+          <AccountInfo />
+          <NavHr />
+          <Nav />
+        </StyledNavigationWrapper>
+      </motion.div>
     </StyledMobileNav>
   );
 };

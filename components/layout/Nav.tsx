@@ -1,20 +1,22 @@
 import styled from "styled-components";
-import posed from "react-pose";
 import { NavItem } from "./elements/NavItem";
 import { GalleriesAuth } from "../../pages/galleries";
 import { ServicesAuth } from "../../pages/services";
 import { ProjectsAuth } from "../../pages/projects";
 import { useProvideAuth } from "../../lib/hook/useAuth";
+import { motion } from "framer-motion";
 
+/*
+TODO: do this but with motion
 const PosedNav = posed.ul({
   open: {
     beforeChildren: true,
     staggerChildren: 100,
     delayChildren: 500,
   },
-});
+});*/
 
-const NavStyles = styled(PosedNav)`
+const NavStyles = styled(motion.ul)`
   padding-left: 0;
   position: relative;
 `;
@@ -22,7 +24,7 @@ const NavStyles = styled(PosedNav)`
 const Nav = () => {
   const auth = useProvideAuth();
   return (
-    <NavStyles pose="open">
+    <NavStyles initial="exit" animate="enter">
       <NavItem title="Home" isActivePaths={["/"]} href="/" />
       <NavItem
         isActivePaths={["/articles", "/post"]}

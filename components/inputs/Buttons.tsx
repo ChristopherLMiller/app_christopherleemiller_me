@@ -1,33 +1,73 @@
-import posed from 'react-pose';
-import styled from 'styled-components';
+import styled from "styled-components";
+import { FunctionComponent } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
-const PosedButton = posed.button({
-  hoverable: true,
-  init: {
-    scale: 1,
-  },
-  hover: {
-    scale: 1.1,
-  },
-});
-
-export const Button = styled(PosedButton) <{ disabled: boolean }>`
-  background: ${props => props.disabled ? 'var(--background-dark)' : 'var(--main-color)'};
-  padding: 10px 30px;
-  transition: all 0.25s;
+export const StyledButton = styled(motion.p)`
+  background: var(--main-color);
+  padding: 10px;
   text-align: center;
-  margin: 20px 5px;
+  margin: 20px auto;
   max-width: 200px;
-  letter-spacing: -1px;
-  cursor: ${props => props.disabled ? 'progress' : 'pointer'};
-  color: var(--text-color-light);
+  letter-spacing: 2px;
+  cursor: pointer;
   font-size: 2rem;
   border: none;
 `;
 
-export const ButtonLink = styled.a`
+const ButtonVariants = {
+  rest: {
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      type: "tween",
+      ease: "easeIn",
+    },
+  },
+  hover: {
+    scale: 1.1,
+    transition: {
+      duration: 0.15,
+      type: "tween",
+      ease: "easeOut",
+    },
+  },
+};
+
+const ButtonAnchor = styled.a`
   color: var(--text-color-light);
-  background: var(--main-color);
-  padding: 2px 10px;
-  line-height: 2rem;
 `;
+
+const ButtonVisual = styled.button`
+  background: var(--main-color);
+  padding: 10px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 200px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  color: var(--text-color-light);
+`;
+
+interface ButtonTypes {
+  href: string;
+  as: string;
+  text: string;
+}
+
+const Button: FunctionComponent<ButtonTypes> = ({ href, as, text }) => (
+  <StyledButton
+    whileHover="hover"
+    animate="rest"
+    initial="rest"
+    variants={ButtonVariants}
+  >
+    <Link as={as} href={href}>
+      <ButtonAnchor>{text}</ButtonAnchor>
+    </Link>
+  </StyledButton>
+);
+
+export { Button, ButtonVisual };
