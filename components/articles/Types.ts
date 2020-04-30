@@ -1,3 +1,5 @@
+import { UploadFile } from "../../interfaces/UploadFile";
+
 export interface CategoryType {
   id: string;
   slug: string;
@@ -28,11 +30,7 @@ export interface CommentType {
 export interface ArticleTypes {
   article: {
     id: string;
-    featured_image: {
-      provider_metadata: {
-        public_id: string;
-      };
-    };
+    featured_image: UploadFile;
     content: string;
     visibility: string;
     status: string;
@@ -53,7 +51,6 @@ export interface ArticleTypes {
 export interface ArticlesTypes {
   articles: Array<ArticleTypes>;
 }
-
 
 export interface iData {
   [key: string]: Array<ArticleTypes["article"]>;
