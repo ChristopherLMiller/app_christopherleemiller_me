@@ -38,7 +38,7 @@ interface iImage {
   options?: iImageOptions;
 }
 
-const Image: FunctionComponent<iImage> = ({ file, options }) => {
+const Image: FunctionComponent<iImage> = ({ file, options, alt }) => {
   return (
     <CloudinaryImage
       cloudName={CLOUDINARY_CLOUD}
@@ -46,6 +46,7 @@ const Image: FunctionComponent<iImage> = ({ file, options }) => {
       responsive
       dpr="auto"
       responsiveUseBreakpoints="true"
+      alt={alt ? alt : "No Alt Tag Provided"}
     >
       {(options?.width || options?.height) && (
         <Transformation
