@@ -41,7 +41,7 @@ const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
           crop: "scale",
           border: "10px_solid_rgb:FFFFFF",
         }}
-        alt={article.title}
+        alt={article?.featured_image?.alternativeText}
       />
     )}
     <StyledArticleHeaderInfo>

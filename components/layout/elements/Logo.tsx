@@ -17,7 +17,7 @@ const StyledLogo = styled.div`
 
 const Logo = () => (
   <StyledLogo>
-    <Image file="clm_me/assets/logo" options={{ width: 300 }} />
+    <Image file="clm_me/assets/logo" options={{ width: 300 }} alt="Site Logo" />
   </StyledLogo>
 );
 

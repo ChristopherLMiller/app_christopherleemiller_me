@@ -1,3 +1,5 @@
+import { UploadFile } from "../../interfaces/UploadFile";
+
 export interface TagType {
   id: string;
   slug: string;
@@ -38,13 +40,9 @@ export interface ModelTypes {
     updated_at: string;
     title: string;
     slug: string;
-    featured_image: {
-      provider_metadata: {
-        public_id: string;
-      };
-    };
+    featured_image: UploadFile;
     content: string;
-    images: Array<ImageType>;
+    images: Array<UploadFile>;
     review: string;
     seo_title: string;
     seo_description: string;
