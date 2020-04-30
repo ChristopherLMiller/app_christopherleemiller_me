@@ -6,7 +6,7 @@ import { Props } from "../../styles/Themes";
 import { motion } from "framer-motion";
 import { AccountInfo } from "./elements/AccountInfo";
 
-const sidebarVariants = {
+const variants = {
   enter: {
     x: "0%",
     opacity: 1,
@@ -63,7 +63,7 @@ const StyledSidebarInner = styled.div`
 
 const Sidebar = () => {
   return (
-    <StyledSidebar variants={sidebarVariants}>
+    <StyledSidebar variants={variants}>
       <StyledSidebarInner>
         <Logo />
         <Title />

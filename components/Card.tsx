@@ -1,28 +1,27 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { motion } from "framer-motion";
 
 let easing = [0.175, 0.85, 0.42, 0.96];
 
-const divVariants = {
+const variants = {
   exit: {
     y: 150,
     opactiy: 0,
     transition: {
       duration: 0.5,
-      ease: easing
-    }
+      ease: easing,
+    },
   },
   enter: {
     y: 0,
     opacity: 1,
     transition: {
       duration: 0.5,
-      ease: easing
-    }
-  }
+      ease: easing,
+    },
+  },
 };
-
 
 const StyledCard = styled.div`
   color: black;
@@ -66,12 +65,12 @@ const CardBody = styled.div`
     word-break: break-word;
 
     a {
-    color: var(--main-color);
+      color: var(--main-color);
 
-    :hover {
-      text-decoration: underline;
+      :hover {
+        text-decoration: underline;
+      }
     }
-  }
   }
 `;
 
@@ -88,7 +87,7 @@ const Card: FunctionComponent<CardProps> = ({
   children,
   padding = true,
 }) => (
-  <motion.div variants={divVariants}>
+  <motion.div variants={variants}>
     <StyledCard>
       {(heading || subHeading) && (
         <CardHeading>

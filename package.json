@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.36.31",
+  "version": "0.37.0",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -53,7 +53,6 @@
     "react": "^16.13.1",
     "react-apollo": "^3.1.5",
     "react-async": "^10.0.0",
-    "react-cache": "^2.0.0-alpha.1",
     "react-cookies": "^0.1.1",
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
@@ -61,7 +60,6 @@
     "react-markdown": "^4.3.1",
     "react-masonry-css": "^1.0.14",
     "react-modal": "^3.11.2",
-    "react-pose": "^4.0.10",
     "react-spinners": "^0.8.1",
     "react-toast-notifications": "^2.4.0",
     "sitemap": "^6.1.1",

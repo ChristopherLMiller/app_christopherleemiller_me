@@ -1,17 +1,21 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import { motion } from "framer-motion";
 
 export const SocialIconStyled = styled(motion.span)`
-display: block;
+  display: block;
 `;
 
-const SocialIconHover = {
+const hoverState = {
   scale: 1.15,
-  rotate: Math.round(Math.random() * 40) - 20
-}
+  rotate: Math.round(Math.random() * 40) - 20,
+};
+
+const transition = {
+  type: "spring",
+};
 
 interface SocialIconProps {
   url: string;
@@ -26,7 +30,7 @@ const SocialIcon: FunctionComponent<SocialIconProps> = ({
   alt,
 }) => (
   <a title={alt} href={url} aria-label={alt}>
-    <SocialIconStyled whileHover={SocialIconHover} transition={{type: 'spring'}}>
+    <SocialIconStyled whileHover={hoverState} transition={transition}>
       <FontAwesomeIcon icon={icon} color={color} />
     </SocialIconStyled>
   </a>

@@ -3,12 +3,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useToasts } from "react-toast-notifications";
 import { FieldSet } from "../../inputs/FieldSet";
 import { Label } from "../../inputs/Label";
-import { Button } from "../../inputs/Buttons";
 import { FormErrorMessage } from "../../inputs/ErrorMessage";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { useProvideAuth } from "../../../lib/hook/useAuth";
+import { ButtonVisual } from "../../inputs/Buttons";
 
 // used for targetting the modal for screen readers
 Modal.setAppElement("#__next");
@@ -142,13 +142,13 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
                   <FormErrorMessage>
                     <ErrorMessage name="general" component="div" />
                   </FormErrorMessage>
-                  <Button
+                  <ButtonVisual
                     type="submit"
                     aria-disabled={isSubmitting}
                     disabled={isSubmitting}
                   >
                     Sign In
-                  </Button>
+                  </ButtonVisual>
                 </StyledForm>
               </Form>
             )}
@@ -182,13 +182,13 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
                       <ErrorMessage name="email" component="div" />
                     </FormErrorMessage>
                   </FieldSet>
-                  <Button
+                  <ButtonVisual
                     type="submit"
                     aria-disabled={isSubmitting}
                     disabled={isSubmitting}
                   >
                     Reset Password
-                  </Button>
+                  </ButtonVisual>
                 </StyledForm>
               </Form>
             )}

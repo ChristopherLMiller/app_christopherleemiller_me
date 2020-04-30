@@ -30,6 +30,10 @@ const PolaroidContent = styled.div`
   margin: 15px 0;
 `;
 
+const hoverState = {
+  scale: 1.05,
+};
+
 interface iPolaroid {
   image: {
     provider_metadata: {
@@ -55,7 +59,7 @@ const Polaroid: FunctionComponent<iPolaroid> = ({
   if (link != null) {
     return (
       <Link as={link.as} href={link.href}>
-        <StyledPolaroid whileHover={{ scale: 1.05 }}>
+        <StyledPolaroid whileHover={hoverState}>
           <Image file={image?.provider_metadata?.public_id} alt={alt} />
           {caption && <PolaroidCaption>{caption}</PolaroidCaption>}
           <PolaroidContent>{children}</PolaroidContent>

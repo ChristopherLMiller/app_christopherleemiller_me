@@ -11,7 +11,6 @@ import { CommentThread } from "../CommentThread";
 import { StyledContentBlock } from "../elements/ContentBlock";
 import Link from "next/link";
 import styled from "styled-components";
-import { Button } from "../inputs/Buttons";
 import { ModalBox } from "../elements/Modal";
 import { useProvideAuth, roles } from "../../lib/hook/useAuth";
 import { truncate } from "../../utils/functions/truncate";
@@ -94,15 +93,9 @@ const FullArticle: FunctionComponent<ArticleTypes> = ({
                 <Link
                   href={`/admin/articles/edit/${article.id}`}
                   as={`/admin/articles/edit/${article.id}`}
-                >
-                  <Button>Edit Article</Button>
-                </Link>
+                ></Link>
               </ArticleOptionsItem>
-              <ArticleOptionsItem>
-                <Button onClick={() => setModalOpen(true)}>
-                  Delete Article
-                </Button>
-              </ArticleOptionsItem>
+              <ArticleOptionsItem></ArticleOptionsItem>
             </ArticleOptions>
           )}
         </StyledContentBlock>
