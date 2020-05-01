@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { ImageURL } from "../utils/functions/imageURL";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
+import { format } from "date-fns";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -62,6 +63,9 @@ const GalleryInfoOverlay = styled(motion.div)`
 const GalleryInfoOverlayVariants = {
   rest: {
     background: "rgba(0, 0, 0, 0.6)",
+    transition: {
+      type: "tween",
+    },
   },
   hover: {
     height: "100%",
@@ -74,7 +78,36 @@ const GalleryInfoOverlayVariants = {
   },
 };
 
-const GalleryImageCaption = styled.span``;
+const GalleryImageCaption = styled(motion.h5)`
+  font-family: var(--font-main);
+  font-size: var(--font-size-responsive);
+  font-weight: 200;
+  letter-spacing: 1px;
+  margin: 0;
+`;
+
+const GalleryImageCaptionVariants = {
+  rest: {},
+  hover: {
+    marginBottom: 20,
+    borderBottom: "1px solid white",
+  },
+};
+
+const GalleryImageAdditionalInfo = styled(motion.div)`
+  p {
+    margin: 0;
+  }
+`;
+
+const AdditionalInfoVariants = {
+  rest: {
+    display: "none",
+  },
+  hover: {
+    display: "initial",
+  },
+};
 
 const GalleriesPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_GALLERIES_BRIEF);
@@ -129,7 +162,38 @@ const GalleriesPage = () => {
                   )}.jpg`}
                 />
                 <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>
-                  <GalleryImageCaption>{gallery.title}</GalleryImageCaption>
+                  <GalleryImageCaption variants={GalleryImageCaptionVariants}>
+                    {gallery.title}
+                  </GalleryImageCaption>
+                  <GalleryImageAdditionalInfo variants={AdditionalInfoVariants}>
+                    <hr />
+                    <p>
+                      Authored on{" "}
+                      {format(
+                        new Date(gallery.created_at),
+                        "do 'of' MMMM yyyy"
+                      )}
+                    </p>
+                    <p>
+                      Updated Last{" "}
+                      {format(new Date(gallery.updated_at), "do 'of' MMM yyyy")}
+                    </p>
+                    <hr />
+                    <p>
+                      <strong>Tags: </strong>
+                      {gallery?.gallery_tags?.map((tag: any) => (
+                        <span>{tag.name} </span>
+                      ))}
+                    </p>
+                    <p>
+                      <strong>Categories: </strong>
+                      {gallery?.gallery_categories?.map((category: any) => (
+                        <span>{category.name} </span>
+                      ))}
+                    </p>
+                    <hr />
+                    <p>{gallery.Description}</p>
+                  </GalleryImageAdditionalInfo>
                 </GalleryInfoOverlay>
               </GalleryImageContainer>
             ))}
