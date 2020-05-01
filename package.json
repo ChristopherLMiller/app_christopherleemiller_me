@@ -86,7 +86,7 @@
     "@types/react-modal": "^3.10.5",
     "@types/react-toast-notifications": "^2.4.0",
     "@types/styled-components": "^4.4.2",
-    "@types/yup": "^0.26.36",
+    "@types/yup": "^0.28.0",
     "@zeit/next-typescript": "^1.1.1",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
