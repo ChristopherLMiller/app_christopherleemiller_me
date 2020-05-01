@@ -15,9 +15,12 @@ const ProfileContainer = styled.div`
   display: grid;
   grid-template-columns: 15% auto;
   padding-bottom: 10px;
+  grid-gap: 10px;
 `;
 
-const ProfileImage = styled.div``;
+const ProfileImage = styled.div`
+  width: 100%;
+`;
 const ProfileInfo = styled.div`
   display: grid;
 `;
@@ -79,7 +82,7 @@ const AccountInfo = () => {
         </ProfileImage>
         <ProfileInfo>
           <ProfileName>{auth.getUserName() || "Guest"}</ProfileName>
-          <ProfileRole>{auth.getUserRoleByName() || "Guest user"}</ProfileRole>
+          <ProfileRole>{auth.user?.role.name || "Guest user"}</ProfileRole>
         </ProfileInfo>
       </ProfileContainer>
       <ProfileLinks>
