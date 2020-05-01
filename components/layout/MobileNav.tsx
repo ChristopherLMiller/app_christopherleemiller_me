@@ -81,36 +81,21 @@ const StyledHamburger = styled.button`
   }
 `;
 
-/*const Navigation = posed.div({
-  closed: {
-    height: `0vh`,
-    opacity: 0,
-    transform: `rotateX(-90deg)`,
-  },
+const navVariants = {
   open: {
-    height: `calc(100vh - 75px)`,
+    height: "calc(100vh - 75px)",
     opacity: 1,
-    transform: `rotateX(0deg)`,
+    rotateX: 0,
   },
-});*/
-
-const animate = {
-  height: 0,
-  rotateX: 0,
-  opacity: 0,
+  closed: {
+    height: "0vh",
+    opacity: 0,
+    rotateX: -90,
+  },
 };
 
-const styles = {
-  rotateX: -90,
-  opacity: 0,
-};
-
-const StyledNavigationWrapper = styled.div`
-  transition: all 0.5s;
+const StyledNavigationWrapper = styled(motion.div)`
   overflow-y: auto;
-  transform: rotateX(-90deg);
-  height: 0vh;
-  opacity: 0;
   padding: 0 20px;
   transform-origin: top;
   display: flex;
@@ -163,13 +148,15 @@ const MobileNav = () => {
         </Link>
         <StyledDescription>All About Me!</StyledDescription>
       </StyledMobileNavWrapper>
-      <motion.div animate={animate} style={styles}>
-        <StyledNavigationWrapper>
-          <AccountInfo />
-          <NavHr />
-          <Nav />
-        </StyledNavigationWrapper>
-      </motion.div>
+      <StyledNavigationWrapper
+        initial="closed"
+        animate={isOpen ? "open" : "closed"}
+        variants={navVariants}
+      >
+        <AccountInfo />
+        <NavHr />
+        <Nav />
+      </StyledNavigationWrapper>
     </StyledMobileNav>
   );
 };
