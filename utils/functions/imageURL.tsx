@@ -35,15 +35,17 @@ export interface iImageOptions {
 
 export function ImageURL(file?: string, options?: iImageOptions): string {
   // check some conditions first like being null
-  if (file == null || file == "default") file = SITE_DEFAULT_IMAGE_FILE;
+  if (file == null || file === undefined || file == "default")
+    file = SITE_DEFAULT_IMAGE_FILE;
 
-  const optionsString = options
+  /*const optionsString = options
     ? Object.entries(options)
         .map((option) => `${option[0]}_${option[1]}`)
         .join(",")
-    : "";
+    : "";*/
 
-  return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${
-    options ? "/" : ""
-  }${optionsString}/${file}`;
+  console.debug(options);
+
+  return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${file}`;
+  //return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${options ? "/" : ""}${optionsString}/${file}`;
 }

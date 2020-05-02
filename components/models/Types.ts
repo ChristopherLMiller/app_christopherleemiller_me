@@ -26,11 +26,7 @@ export interface ImageType {
   title: string;
   description: string;
   slug: string;
-  image: {
-    provider_metadata: {
-      public_id: string;
-    };
-  };
+  image: UploadFile;
 }
 
 export interface ModelTypes {
@@ -42,7 +38,7 @@ export interface ModelTypes {
     slug: string;
     featured_image: UploadFile;
     content: string;
-    images: Array<UploadFile>;
+    images: Array<ImageType>;
     review: string;
     seo_title: string;
     seo_description: string;
