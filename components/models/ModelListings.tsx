@@ -1,13 +1,14 @@
-import { useQuery } from 'react-apollo';
-import { useContext } from 'react';
-import { useRouter } from 'next/router';
-import { iData } from '../../components/models/Types';
-import { ModelListing } from '../../components/models/ModelListing';
-import Card from '../../components/Card';
-import { MODELS_QUERY_BRIEF } from '../../utils/query';
-import { MODELS_PER_PAGE } from '../../config';
-import { ModelsFilterContext } from '../../lib/context/ModelFiltersContext';
-import { StyledModelListings } from '../../styles/Models';
+import { useQuery } from "react-apollo";
+import { useContext } from "react";
+import { useRouter } from "next/router";
+import { iData } from "../../components/models/Types";
+import { ModelListing } from "../../components/models/ModelListing";
+import Card from "../../components/Card";
+import { MODELS_QUERY_BRIEF } from "../../utils/query";
+import { MODELS_PER_PAGE } from "../../config";
+import { ModelsFilterContext } from "../../lib/context/ModelFiltersContext";
+import { StyledModelListings } from "../../styles/Models";
+import { Loader } from "../elements/Loader";
 
 const ModelListings = () => {
   const router = useRouter();
@@ -19,13 +20,9 @@ const ModelListings = () => {
   }
 
   // grab the filter parameters from the context
-  let { scale, tag, company, sort } = useContext(
-    ModelsFilterContext
-  );
+  let { scale, tag, company, sort } = useContext(ModelsFilterContext);
 
-  let status = 'PUBLISHED'
-
-
+  let status = "PUBLISHED";
 
   if (tag === "all") tag = null;
   if (company === "all") company = null;
@@ -43,7 +40,7 @@ const ModelListings = () => {
     },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader isLoading={loading} />;
 
   if (error) {
     console.error(`Fetch Error: ${error.message}`);
@@ -64,7 +61,7 @@ const ModelListings = () => {
   if (data !== undefined && data.models.length >= 1) {
     return (
       <StyledModelListings>
-        {data.models.map(model => (
+        {data.models.map((model) => (
           <ModelListing model={model} key={model.id} />
         ))}
       </StyledModelListings>

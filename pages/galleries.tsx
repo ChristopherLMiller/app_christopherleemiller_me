@@ -136,8 +136,10 @@ const GalleriesPage = () => {
           <h2>{error.message}</h2>
           <hr />
           <p>
-            Sorry. Something happened and we can't seem to load the data right
-            now.
+            Sorry. Something happened and we can't seem to load data right now.
+            Possibly you're offline and if not please let us know. I'm sure the
+            above text doesn't make any sense but it will help me figure out the
+            problem.
           </p>
         </Card>
       )}
