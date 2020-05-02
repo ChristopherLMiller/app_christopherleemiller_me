@@ -98,4 +98,4 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
   }
 }
 
-export default withApollo(MyApp);
+export default withApollo()(MyApp);
