@@ -57,11 +57,9 @@ const ArticlesPage: FunctionComponent = () => {
     },
   });
 
-  if (error) {
-    console.error(`Fetch Error: ${error.message}`);
-
-    return (
-      <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
+  return (
+    <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
+      {error && (
         <Card heading="Unable to load data">
           <hr />
           <h2>{error.message}</h2>
@@ -73,12 +71,7 @@ const ArticlesPage: FunctionComponent = () => {
             problem.
           </p>
         </Card>
-      </Layout>
-    );
-  }
-
-  return (
-    <Layout meta={{ title, description, useSEO: true, path: `/articles` }}>
+      )}
       <Loader isLoading={loading} />
       {data !== undefined &&
         data.articles.map((article) => (
