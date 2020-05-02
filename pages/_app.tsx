@@ -62,23 +62,24 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
     const { Component, apollo, pageProps, router } = this.props;
 
     return (
-      <ApolloProvider client={apollo}>
-        <ProvideAuth jwt={this.state.jwt} user={this.state.user}>
-          <DefaultSeo
-            titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
-            facebook={{
-              appId: process.env.FB_APP_ID,
-            }}
-            openGraph={{
-              locale: `en_IE`,
-              site_name: `ChristopherLeeMiller.me`,
-            }}
-            twitter={{
-              handle: `@ChrisLMiller_me`,
-              cardType: `summary_large_image`,
-            }}
-          />
-          <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
+        <ApolloProvider client={apollo}>
+          <ProvideAuth jwt={this.state.jwt} user={this.state.user}>
+            <DefaultSeo
+              titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
+              facebook={{
+                appId: process.env.FB_APP_ID,
+              }}
+              openGraph={{
+                locale: `en_IE`,
+                site_name: `ChristopherLeeMiller.me`,
+              }}
+              twitter={{
+                handle: `@ChrisLMiller_me`,
+                cardType: `summary_large_image`,
+              }}
+            />
+
             <GlobalStyles />
             <ToastProvider>
               <AnimatePresence exitBeforeEnter>
@@ -91,9 +92,9 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
                 </motion.div>
               </AnimatePresence>
             </ToastProvider>
-          </ThemeProvider>
-        </ProvideAuth>
-      </ApolloProvider>
+          </ProvideAuth>
+        </ApolloProvider>
+      </ThemeProvider>
     );
   }
 }
