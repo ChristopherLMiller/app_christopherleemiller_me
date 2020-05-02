@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.38.5",
+  "version": "0.38.7",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "eslint . --fix",
-    "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0"
+    "test": "NODE_ENV=test jest && codecov -t e12fe338-a516-4ab5-8c7f-078f4742a9a0",
+    "analyze": "cross-env ANALYZE=1 next build && cat .next/stats.txt"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "cloudinary-react": "^1.5.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
+    "cross-env": "^7.0.2",
     "date-fns": "^2.12.0",
     "disqus-react": "^1.0.8",
     "dotenv": "^8.2.0",
@@ -66,6 +68,7 @@
     "styled-components": "^5.1.0",
     "uid-safe": "^2.1.5",
     "webpack": "^4.41.5",
+    "webpack-bundle-size-analyzer": "^3.1.0",
     "yup": "^0.28.4"
   },
   "devDependencies": {

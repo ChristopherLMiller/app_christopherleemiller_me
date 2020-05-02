@@ -16,13 +16,15 @@ const handle = app.getRequestHandler();
 let db = null;
 
 if (process.env.NODE_ENV === "production") {
-  mongoose.connect(
-    `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  ).catch(() => console.log('unable to connect to mongo for session storage'));
+  mongoose
+    .connect(
+      `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }
+    )
+    .catch(() => console.log("unable to connect to mongo for session storage"));
   mongoose.Promise = global.Promise;
   db = mongoose.connection;
 }
@@ -57,10 +59,10 @@ app
     });
 
     // Service worker
-    server.get(`/service-worker.js`, (req, res) => {
+    /*server.get(`/service-worker.js`, (req, res) => {
       const filePath = join(__dirname, `.next`, `/service-worker.js`);
       app.serveStatic(req, res, filePath);
-    });
+    });*/
 
     /*    // Sitemap
         server.get(`/sitemap.xml`, (res) => {
@@ -81,12 +83,12 @@ app
       handle(req, res);
     });
 
-    server.listen(port, err => {
+    server.listen(port, (err) => {
       if (err) throw err;
       console.log(`> Ready on ${process.env.SITE_URL}:${port}`);
     });
   })
-  .catch(ex => {
+  .catch((ex) => {
     console.error(ex.stack);
     process.exit(1);
   });
