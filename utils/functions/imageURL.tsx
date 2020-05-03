@@ -38,14 +38,14 @@ export function ImageURL(file?: string, options?: iImageOptions): string {
   if (file == null || file === undefined || file == "default")
     file = SITE_DEFAULT_IMAGE_FILE;
 
-  /*const optionsString = options
+  const optionsString = options
     ? Object.entries(options)
         .map((option) => `${option[0]}_${option[1]}`)
         .join(",")
-    : "";*/
+    : "";
 
-  console.debug(options);
-
-  return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${file}`;
-  //return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${options ? "/" : ""}${optionsString}/${file}`;
+  //return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${file}`;
+  return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${
+    options ? "/" : ""
+  }${optionsString}/${file}`;
 }
