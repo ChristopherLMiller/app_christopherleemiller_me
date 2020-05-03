@@ -29,12 +29,8 @@ const ModelContentArea = styled.div`
 const Body: FunctionComponent<ModelTypes> = ({ model }) => {
   const images = model.images.map((image) => {
     return {
-      original: `${ImageURL(image?.image.provider_metadata?.public_id, {
-        w: 1920,
-      })}.jpg`,
-      thumbnail: `${ImageURL(image?.image.provider_metadata?.public_id, {
-        w: 200,
-      })}.jpg`,
+      original: `${ImageURL(image?.image.provider_metadata?.public_id)}.jpg`,
+      thumbnail: `${ImageURL(image?.image.provider_metadata?.public_id)}.jpg`,
     };
   });
 
