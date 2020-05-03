@@ -3,6 +3,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { ArticleTypes } from "../Types";
 import { Image } from "../../elements";
+import { countWords, timeToRead } from "../../../utils/functions";
 
 const StyledArticleHeader = styled.div`
   font-family: var(--font-family);
@@ -37,7 +38,6 @@ const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
         file={article?.featured_image?.provider_metadata?.public_id}
         options={{
           width: 1000,
-          height: 300,
           crop: "scale",
           border: "10px_solid_rgb:FFFFFF",
         }}
@@ -46,7 +46,8 @@ const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
     )}
     <StyledArticleHeaderInfo>
       <StyledPublishDate>
-        Published: {formatRelative(parseISO(article.created_at), new Date())}
+        Published: {formatRelative(parseISO(article.created_at), new Date())} |
+        Time to Read: {timeToRead(countWords(article.content))}
       </StyledPublishDate>
       <StyledHeading>{article.title}</StyledHeading>
     </StyledArticleHeaderInfo>
