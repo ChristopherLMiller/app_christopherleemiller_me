@@ -90,7 +90,6 @@ const GalleryImageCaptionVariants = {
   rest: {},
   hover: {
     marginBottom: 20,
-    borderBottom: "1px solid white",
   },
 };
 
@@ -157,6 +156,7 @@ const GalleriesPage = () => {
                 initial="rest"
                 animate="rest"
                 whileHover="hover"
+                whileTap="hover"
               >
                 <GalleryImage
                   src={`${ImageURL(

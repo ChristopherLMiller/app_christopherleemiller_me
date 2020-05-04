@@ -189,10 +189,10 @@ export const GET_ALL_GALLERIES = gql`
         provider
         provider_metadata
       }
-      Slug
+      slug
       visibility
       status
-      Description
+      description
       gallery_tags {
         name
         slug
@@ -242,10 +242,10 @@ export const GET_ALL_GALLERIES_BRIEF = gql`
         provider
         provider_metadata
       }
-      Slug
+      slug
       visibility
       status
-      Description
+      description
       gallery_tags {
         name
         slug
