@@ -1,9 +1,9 @@
-import { useContext, FC } from 'react';
-import { useQuery } from 'react-apollo';
-import styled from 'styled-components';
-import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
+import { useContext, FC } from "react";
+import { useQuery } from "react-apollo";
+import styled from "styled-components";
+import { ModelsFilterContext } from "../../../../lib/context/ModelFiltersContext";
 
-import { ALL_MANUFACTURERS_QUERY } from '../../../../utils/query';
+import { ALL_MANUFACTURERS_QUERY } from "../../../../utils/queries";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -53,12 +53,10 @@ const CompanySelect: FC<iTagSelect> = ({ field }) => {
 
   return (
     <StyledSelect
-      onChange={event => setCompanyContext(event.target.value)}
+      onChange={(event) => setCompanyContext(event.target.value)}
       value={company}
     >
-      <option key="all">
-        All
-      </option>
+      <option key="all">All</option>
       {data !== undefined &&
         data[Object.keys(data)[0]].map((item: Item) => (
           <option key={item.id} value={item.slug}>

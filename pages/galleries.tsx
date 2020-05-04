@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { roles } from "../lib/hook/useAuth";
 import { Layout } from "../components/layout/PageLayout";
-import { GET_ALL_GALLERIES_BRIEF } from "../utils/query";
+import { GET_ALL_GALLERIES_BRIEF } from "../utils/queries";
 import { useQuery } from "react-apollo";
 import { Loader } from "../components/elements/Loader";
 import { isDefined } from "../utils/functions/isDefined";

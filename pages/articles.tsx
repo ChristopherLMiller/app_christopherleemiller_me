@@ -4,7 +4,7 @@ import { useQuery } from "react-apollo";
 import { useRouter } from "next/router";
 import { BriefArticle } from "../components/articles/Brief";
 import Card from "../components/Card";
-import { ARTICLES_QUERY } from "../utils/query";
+import { ARTICLES_QUERY } from "../utils/queries";
 import { iData } from "../components/articles/Types";
 import { Loader } from "../components/elements/Loader";
 import { PER_PAGE } from "../config";

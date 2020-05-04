@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { iData } from "../../components/models/Types";
 import { ModelListing } from "../../components/models/ModelListing";
 import Card from "../../components/Card";
-import { MODELS_QUERY_BRIEF } from "../../utils/query";
+import { MODELS_QUERY_BRIEF } from "../../utils/queries";
 import { MODELS_PER_PAGE } from "../../config";
 import { ModelsFilterContext } from "../../lib/context/ModelFiltersContext";
 import { StyledModelListings } from "../../styles/Models";
