@@ -59,6 +59,7 @@ export interface ModelTypes {
     comments: Array<CommentType>;
     clockify_id: string;
     scalemates_link: string;
+    youtube_link: string;
   };
 }
 

@@ -87,6 +87,7 @@ export const MODELS_QUERY = gql`
       }
       clockify_id
       scalemates_link
+      youtube_link
     }
   }
 `;
