@@ -73,7 +73,6 @@ const ArticlesPage: FunctionComponent = () => {
         </Card>
       )}
       <Loader isLoading={loading} />
-      {console.log(data?.articles)}
       {data?.articles.map((article) => (
         <BriefArticle article={article} key={article.id}>
           <ReactMarkdown source={truncate(article.content, 3)} />
