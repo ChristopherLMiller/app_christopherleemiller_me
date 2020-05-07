@@ -5,20 +5,18 @@ import { useRouter } from "next/router";
 import Card from "../../components/Card";
 import { FullArticle } from "../../components/articles/Full";
 import { ARTICLES_QUERY } from "../../utils/queries";
-import { iData } from "../../components/articles/Types";
-import { NextPage, GetServerSideProps } from "next";
+import { GetServerSideProps } from "next";
 import { Layout } from "../../components/layout/PageLayout";
+import { iArticleData } from "../../utils/queries/articles";
+import { FunctionComponent } from "react";
+import { Loader } from "../../components/elements/Loader";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-interface iPostPage {
-  serverProps: object;
-}
-
-const PostPage: NextPage<iPostPage> = ({ serverProps }) => {
+const PostPage: FunctionComponent = () => {
   const router = useRouter();
-  const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
+  const { loading, error, data } = useQuery<iArticleData>(ARTICLES_QUERY, {
     variables: {
       where: {
         slug_contains: router.query.slug,
@@ -26,12 +24,10 @@ const PostPage: NextPage<iPostPage> = ({ serverProps }) => {
     },
   });
 
-  console.log(serverProps);
-
   if (loading)
     return (
       <Layout meta={{ title, description, useSEO: false }}>
-        <p>Loading...</p>
+        <Loader isLoading={loading} />
       </Layout>
     );
   if (error) {

@@ -1,11 +1,11 @@
-import { FunctionComponent } from 'react';
-import { BuildTime } from './elements/BuildTime';
-import { ModelTypes } from './Types';
+import { FunctionComponent } from "react";
+import { BuildTime } from "./elements/BuildTime";
+import { ModelTypes } from "../../utils/queries/models";
 import {
   StyledModelListingBlock,
   StyledModelListingColumn,
   StyledModelListingInfo,
-} from '../../styles/Models';
+} from "../../styles/Models";
 
 const ModelInfo: FunctionComponent<ModelTypes> = ({ model }) => {
   const completed = model?.completed ? `Yes` : `No`;

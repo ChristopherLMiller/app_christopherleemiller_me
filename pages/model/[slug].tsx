@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { MODELS_QUERY } from "../../utils/queries";
 import Card from "../../components/Card";
 import { Model } from "../../components/models/Model";
-import { iData } from "../../components/models/Types";
+import { iModelData } from "../../utils/queries/models";
 import { Layout } from "../../components/layout/PageLayout";
 
 const title = `Models`;
@@ -13,7 +13,7 @@ const description = `Whether it plane, car or tank, its all here!`;
 
 const ModelPage: FunctionComponent = () => {
   const router = useRouter();
-  const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
+  const { loading, error, data } = useQuery<iModelData>(MODELS_QUERY, {
     variables: {
       where: {
         slug_contains: router.query.slug,

@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
 import ImageGallery from "react-image-gallery";
 import styled from "styled-components";
-import { ModelTypes } from "../Types";
 import { Title } from "../../elements/Title";
 import { CommentThread } from "../../CommentThread";
 import { StyledGallery } from "../gallery";
@@ -10,6 +9,7 @@ import { Props } from "../../../styles/Themes";
 import { ImageURL } from "../../../utils/functions/imageURL";
 import { StyledContentBlock } from "../../elements/ContentBlock";
 import { Image } from "../../elements";
+import { ModelTypes } from "../../../utils/queries/models";
 
 const StyledContentArea = styled.div`
   max-width: ${(props: Props) => props.theme.max_width};
@@ -27,10 +27,10 @@ const ModelContentArea = styled.div`
 `;
 
 const Body: FunctionComponent<ModelTypes> = ({ model }) => {
-  const images = model.images.map((image) => {
+  const images = model?.images?.map((image) => {
     return {
-      original: `${ImageURL(image?.image.provider_metadata?.public_id)}.jpg`,
-      thumbnail: `${ImageURL(image?.image.provider_metadata?.public_id)}.jpg`,
+      original: `${ImageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
+      thumbnail: `${ImageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
     };
   });
 

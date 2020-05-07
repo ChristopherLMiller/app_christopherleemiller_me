@@ -1,7 +1,7 @@
 import Card from "../components/Card";
 import { roles } from "../lib/hook/useAuth";
 import { Layout } from "../components/layout/PageLayout";
-import { GET_ALL_GALLERIES_BRIEF } from "../utils/queries";
+import { GALLERIES_QUERY_BRIEF } from "../utils/queries";
 import { useQuery } from "react-apollo";
 import { Loader } from "../components/elements/Loader";
 import { isDefined } from "../utils/functions/isDefined";
@@ -10,6 +10,7 @@ import { ImageURL } from "../utils/functions/imageURL";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
+import { iGalleryData } from "../utils/queries/galleries";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -109,7 +110,9 @@ const AdditionalInfoVariants = {
 };
 
 const GalleriesPage = () => {
-  const { loading, error, data } = useQuery(GET_ALL_GALLERIES_BRIEF);
+  const { loading, error, data } = useQuery<iGalleryData>(
+    GALLERIES_QUERY_BRIEF
+  );
 
   // setup some breakpoints for masonry
   const masonryBreakpoints = {
@@ -150,9 +153,9 @@ const GalleriesPage = () => {
           columnClassName="masonry-grid-column"
         >
           {isDefined(data) &&
-            data.galleries.map((gallery: any) => (
+            data?.galleries.map((gallery) => (
               <GalleryImageContainer
-                key={gallery.Slug}
+                key={gallery.slug}
                 initial="rest"
                 animate="rest"
                 whileHover="hover"
@@ -194,7 +197,7 @@ const GalleriesPage = () => {
                       ))}
                     </p>
                     <hr />
-                    <p>{gallery.Description}</p>
+                    <p>{gallery.description}</p>
                   </GalleryImageAdditionalInfo>
                 </GalleryInfoOverlay>
               </GalleryImageContainer>

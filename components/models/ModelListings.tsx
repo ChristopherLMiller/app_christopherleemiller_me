@@ -1,7 +1,7 @@
 import { useQuery } from "react-apollo";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import { iData } from "../../components/models/Types";
+import { iModelData } from "../../utils/queries/models";
 import { ModelListing } from "../../components/models/ModelListing";
 import Card from "../../components/Card";
 import { MODELS_QUERY_BRIEF } from "../../utils/queries";
@@ -29,7 +29,7 @@ const ModelListings = () => {
   if (scale === "all") scale = null;
 
   // load the GQL Data
-  const { loading, error, data } = useQuery<iData>(MODELS_QUERY_BRIEF, {
+  const { loading, error, data } = useQuery<iModelData>(MODELS_QUERY_BRIEF, {
     variables: {
       where: {
         status: status,

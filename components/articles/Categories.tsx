@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { CategoriesType } from './Types';
+import Link from "next/link";
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { iCategories } from "../../utils/queries/categories";
 
 const CategoriesWrapper = styled.span`
   font-family: var(--font-monospace);
@@ -17,7 +17,7 @@ const Splitter = styled.div`
   display: inline-block;
 `;
 
-const Categories: FunctionComponent<CategoriesType> = ({ categories }) => (
+const Categories: FunctionComponent<iCategories> = ({ categories }) => (
   <CategoriesWrapper>
     <span>Categories: </span>
     {categories.map((category, index) => (

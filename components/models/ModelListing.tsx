@@ -1,10 +1,10 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { ModelTypes } from './Types';
-import { StyledModelListing } from '../../styles/Models';
-import { ListingTitle } from './elements/ListingTitle';
-import { Polaroid } from '../Polaroid';
-import { BuildTime } from './elements/BuildTime';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { ModelTypes } from "../../utils/queries/models";
+import { StyledModelListing } from "../../styles/Models";
+import { ListingTitle } from "./elements/ListingTitle";
+import { Polaroid } from "../Polaroid";
+import { BuildTime } from "./elements/BuildTime";
 
 const InfoPanel = styled.div`
   display: grid;
@@ -23,7 +23,7 @@ const ModelListing: FunctionComponent<ModelTypes> = ({ model }) => (
       as={`/model/${model.slug}`}
       href={`/model?slug=${model.slug}`}
     >
-      {model.title} {(model.status === 'DRAFT' || model.status === 'UNPUBLISHED') && `*${model.status}*`}
+      {model.title} {model.status === "DRAFT" && `*${model.status}*`}
     </ListingTitle>
     <Polaroid
       image={model.featured_image}

@@ -1,19 +1,27 @@
 import { ARTICLES_QUERY } from "./articles";
+import { CATEGORIES_QUERY } from "./categories";
+import { GALLERY_CATEGORIES_QUERY } from "./galleryCategories";
+import { GALLERY_TAGS_QUERY } from "./galleryTags";
+import { IMAGES_QUERY } from "./images";
 import { MODELS_QUERY, MODELS_QUERY_BRIEF } from "./models";
-import { ALL_SCALES_QUERY } from "./scales";
-import { ALL_MANUFACTURERS_QUERY } from "./manufacturers";
-import { ALL_ALERTS } from "./alerts";
-import { GET_ALL_GALLERIES, GET_ALL_GALLERIES_BRIEF } from "./galleries";
-import { ALL_TAGS } from "./tags";
+import { SCALES_QUERY } from "./scales";
+import { MANUFACTURERS_QUERY } from "./manufacturers";
+import { ALERTS_QUERY } from "./alerts";
+import { GALLERIES_QUERY_BRIEF, GALLERIES_QUERY } from "./galleries";
+import { TAGS_QUERY } from "./tags";
 
 export {
+  ALERTS_QUERY,
   ARTICLES_QUERY,
+  CATEGORIES_QUERY,
+  GALLERIES_QUERY,
+  GALLERIES_QUERY_BRIEF,
+  GALLERY_CATEGORIES_QUERY,
+  GALLERY_TAGS_QUERY,
+  IMAGES_QUERY,
+  MANUFACTURERS_QUERY,
   MODELS_QUERY,
   MODELS_QUERY_BRIEF,
-  ALL_ALERTS,
-  ALL_MANUFACTURERS_QUERY,
-  ALL_SCALES_QUERY,
-  GET_ALL_GALLERIES,
-  GET_ALL_GALLERIES_BRIEF,
-  ALL_TAGS,
+  SCALES_QUERY,
+  TAGS_QUERY,
 };

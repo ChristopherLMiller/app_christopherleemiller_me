@@ -1,18 +1,17 @@
 import { FunctionComponent } from "react";
-import { ArticleTypes } from "./Types";
+
 import { ArticleFooter } from "./elements/Footer";
 import { ArticleHead } from "./elements/Head";
 import { StyledArticle } from "../../styles/Articles";
 import { StyledContentBlock } from "../elements/ContentBlock";
 import { Button } from "../inputs/Buttons";
+import { iArticle } from "../../utils/queries/articles";
 
-const BriefArticle: FunctionComponent<ArticleTypes> = ({
-  article,
-  children,
-}) => (
+const BriefArticle: FunctionComponent<iArticle> = ({ article, children }) => (
   <StyledArticle>
     <ArticleHead article={article} />
     <StyledContentBlock>{children}</StyledContentBlock>
+    {console.log(article.slug)}
     <Button
       as={`/post/${article.slug}`}
       href={`/post/[slug]`}

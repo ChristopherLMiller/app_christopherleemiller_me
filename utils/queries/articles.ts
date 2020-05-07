@@ -1,5 +1,37 @@
 import gql from "graphql-tag";
 import { PER_PAGE } from "../../config";
+import { iUploadFile } from "../../interfaces/UploadFile";
+import { visiblityEnum } from "../../interfaces/visibilityEnum";
+import { statusEnum } from "../../interfaces/statusEnum";
+import { iCategory } from "./categories";
+import { iTag } from "./tags";
+
+export interface iArticleFields {
+  id: string;
+  created_at: string;
+  updated_at: string;
+  title: string;
+  content: string;
+  featured_image: iUploadFile;
+  user: any;
+  visibility: visiblityEnum;
+  status: statusEnum;
+  slug: string;
+  categories: Array<iCategory>;
+  tags: Array<iTag>;
+}
+
+export interface iArticle {
+  article: iArticleFields;
+}
+
+export interface iArticles {
+  articles: Array<iArticle>;
+}
+
+export interface iArticleData {
+  [key: string]: Array<iArticle["article"]>;
+}
 
 export const ARTICLES_QUERY = gql`
   query ARTICLES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
@@ -10,20 +42,20 @@ export const ARTICLES_QUERY = gql`
       where: $where
     ) {
       id
-      slug
+      created_at
+      updated_at
       title
+      content
       featured_image {
         provider_metadata
       }
-      created_at
-      updated_at
-      content
-      status
-      visibility
       user {
         username
         id
       }
+      visibility
+      status
+      slug
       categories {
         id
         slug

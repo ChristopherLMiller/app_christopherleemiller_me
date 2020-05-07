@@ -1,6 +1,53 @@
 import gql from "graphql-tag";
 import { MODELS_PER_PAGE } from "../../config";
 
+import { iUploadFile } from "../../interfaces/UploadFile";
+import { iTag } from "./tags";
+import { iImage } from "./images";
+import { visiblityEnum } from "../../interfaces/visibilityEnum";
+import { statusEnum } from "../../interfaces/statusEnum";
+
+export interface ModelTypes {
+  model: {
+    id: string;
+    created_at: string;
+    updated_at: string;
+    title: string;
+    slug: string;
+    featured_image: iUploadFile;
+    content: string;
+    images: Array<iImage>;
+    review: string;
+    seo_title: string;
+    seo_description: string;
+    completed: Boolean;
+    visibility: visiblityEnum;
+    status: statusEnum;
+    kit_number: string;
+    year_released: number;
+    scale: {
+      scale: string;
+      slug: string;
+    };
+    manufacturer: {
+      company: string;
+      slug: string;
+    };
+    tags: Array<iTag>;
+    clockify_id: string;
+    scalemates_link: string;
+    youtube_link: string;
+  };
+}
+
+export interface ModelsType {
+  models: Array<ModelTypes>;
+}
+
+export interface iModelData {
+  [key: string]: Array<ModelTypes["model"]>;
+}
+
 export const MODELS_QUERY = gql`
   query MODELS_QUERY(
     $start: Int = 0

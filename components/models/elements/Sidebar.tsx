@@ -2,8 +2,8 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { Sidebar } from "../../Sidebar";
-import { ModelTypes } from "../Types";
 import { BuildTime } from "./BuildTime";
+import { ModelTypes } from "../../../utils/queries/models";
 
 const StyledModelSidebar = styled.div``;
 

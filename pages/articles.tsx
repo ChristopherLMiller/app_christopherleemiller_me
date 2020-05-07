@@ -5,13 +5,13 @@ import { useRouter } from "next/router";
 import { BriefArticle } from "../components/articles/Brief";
 import Card from "../components/Card";
 import { ARTICLES_QUERY } from "../utils/queries";
-import { iData } from "../components/articles/Types";
 import { Loader } from "../components/elements/Loader";
 import { PER_PAGE } from "../config";
 import { truncate } from "../utils/functions/truncate";
 import { Layout } from "../components/layout/PageLayout";
 import { isDefined } from "../utils/functions/isDefined";
 import { useProvideAuth, roles } from "../lib/hook/useAuth";
+import { iArticleData } from "../utils/queries/articles";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -49,7 +49,7 @@ const ArticlesPage: FunctionComponent = () => {
   }
 
   // set a default value for page if non provided
-  const { loading, error, data } = useQuery<iData>(ARTICLES_QUERY, {
+  const { loading, error, data } = useQuery<iArticleData>(ARTICLES_QUERY, {
     variables: {
       start: pageNum * PER_PAGE - PER_PAGE,
       limit: PER_PAGE,
@@ -73,12 +73,12 @@ const ArticlesPage: FunctionComponent = () => {
         </Card>
       )}
       <Loader isLoading={loading} />
-      {data !== undefined &&
-        data.articles.map((article) => (
-          <BriefArticle article={article} key={article.id}>
-            <ReactMarkdown source={truncate(article.content, 3)} />
-          </BriefArticle>
-        ))}
+      {console.log(data?.articles)}
+      {data?.articles.map((article) => (
+        <BriefArticle article={article} key={article.id}>
+          <ReactMarkdown source={truncate(article.content, 3)} />
+        </BriefArticle>
+      ))}
     </Layout>
   );
 };

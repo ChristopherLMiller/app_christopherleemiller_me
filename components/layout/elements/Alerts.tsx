@@ -1,5 +1,5 @@
 import { useQuery } from "react-apollo";
-import { ALL_ALERTS } from "../../../utils/queries";
+import { ALERTS_QUERY } from "../../../utils/queries";
 import { Fragment, FunctionComponent } from "react";
 import { isAfter } from "date-fns";
 import { parseISO } from "date-fns";
@@ -19,7 +19,7 @@ interface iAlerts {
 }
 
 const Alerts: FunctionComponent<iAlerts> = ({ maxRenders = 3 }) => {
-  const { error, data } = useQuery(ALL_ALERTS);
+  const { error, data } = useQuery(ALERTS_QUERY);
 
   // there was an error, log and return
   if (error) {
