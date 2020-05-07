@@ -1,13 +1,13 @@
 import { FunctionComponent, Fragment } from "react";
 import styled from "styled-components";
 import { NextSeo, ArticleJsonLd } from "next-seo";
-import { ModelTypes } from "./Types";
 import { Props } from "../../styles/Themes";
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "../../config";
 import { ImageURL } from "../../utils/functions/imageURL";
 
 import { Body } from "./elements/Body";
 import { ModelSidebar } from "./elements/Sidebar";
+import { ModelTypes } from "../../utils/queries/models";
 
 const StyledModelPage = styled.div`
   display: flex;

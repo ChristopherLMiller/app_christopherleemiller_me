@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { ArticleTypes } from '../Types';
-import { Tags } from '../Tags';
-import { Categories } from '../Categories';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { Tags } from "../Tags";
+import { Categories } from "../Categories";
+import { iArticle } from "../../../utils/queries/articles";
 
 const StyledArticleFooter = styled.div`
   background: var(--background-dark);
@@ -10,7 +10,7 @@ const StyledArticleFooter = styled.div`
   margin: 0;
 `;
 
-const ArticleFooter: FunctionComponent<ArticleTypes> = ({ article }) => (
+const ArticleFooter: FunctionComponent<iArticle> = ({ article }) => (
   <StyledArticleFooter>
     <Categories categories={article.categories} />
     <Tags tags={article.tags} />

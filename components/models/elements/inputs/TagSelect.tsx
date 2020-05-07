@@ -1,9 +1,9 @@
-import { useContext, FC } from 'react';
-import { useQuery } from 'react-apollo';
-import styled from 'styled-components';
-import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
+import { useContext, FC } from "react";
+import { useQuery } from "react-apollo";
+import styled from "styled-components";
+import { ModelsFilterContext } from "../../../../lib/context/ModelFiltersContext";
 
-import { ALL_MODELS_TAGS_QUERY } from '../../../../utils/query';
+import { TAGS_QUERY } from "../../../../utils/queries";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -32,7 +32,7 @@ interface iTagSelect {
 const TagSelect: FC<iTagSelect> = ({ field }) => {
   const { tags, setTagContext } = useContext(ModelsFilterContext);
 
-  const { loading, data, error } = useQuery<Data>(ALL_MODELS_TAGS_QUERY);
+  const { loading, data, error } = useQuery<Data>(TAGS_QUERY);
 
   if (loading) {
     return (
@@ -53,12 +53,10 @@ const TagSelect: FC<iTagSelect> = ({ field }) => {
 
   return (
     <StyledSelect
-      onChange={event => setTagContext(event.target.value)}
+      onChange={(event) => setTagContext(event.target.value)}
       value={tags}
     >
-      <option key="all">
-        All
-      </option>
+      <option key="all">All</option>
       {data !== undefined &&
         data[Object.keys(data)[0]].map((item: Item) => (
           <option key={item.id} value={item.slug}>

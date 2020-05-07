@@ -3,7 +3,6 @@ import { NextSeo, BlogJsonLd } from "next-seo";
 import { FunctionComponent, useEffect, Fragment, useState } from "react";
 import Router from "next/router";
 import { ArticleHead } from "./elements/Head";
-import { ArticleTypes } from "./Types";
 import { ImageURL } from "../../utils/functions/imageURL";
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "../../config";
 import { StyledArticle } from "../../styles/Articles";
@@ -14,12 +13,20 @@ import styled from "styled-components";
 import { ModalBox } from "../elements/Modal";
 import { useProvideAuth, roles } from "../../lib/hook/useAuth";
 import { truncate } from "../../utils/functions/truncate";
+import { iArticle } from "../../utils/queries/articles";
 
 const ArticleOptions = styled.div``;
 
 const ArticleOptionsItem = styled.span``;
 
-const FullArticle: FunctionComponent<ArticleTypes> = ({
+interface iFullArticle {
+  commentsEnabled?: boolean;
+  header?: boolean;
+}
+
+type iArticleFull = iFullArticle & iArticle;
+
+const FullArticle: FunctionComponent<iArticleFull> = ({
   article,
   children,
   commentsEnabled = true,

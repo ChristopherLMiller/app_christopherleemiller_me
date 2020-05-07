@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { TagsType } from './Types';
+import Link from "next/link";
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { iTags } from "../../utils/queries/tags";
 
 const TagsWrapper = styled.div`
   font-family: var(--font-monospace);
@@ -18,13 +18,16 @@ const Splitter = styled.div`
   display: inline-block;
 `;
 
-const Tags: FunctionComponent<TagsType> = ({ tags }) => (
+const Tags: FunctionComponent<iTags> = ({ tags }) => (
   <TagsWrapper>
     <span>Tags: </span>
     {tags.map((tag, index) => (
       <TagsLink key={tag.id}>
         {!!index && <Splitter>|</Splitter>}
-        <Link href={`/articles?tag=${tag.slug}`} as={`/articles?tag=${tag.slug}`}>
+        <Link
+          href={`/articles?tag=${tag.slug}`}
+          as={`/articles?tag=${tag.slug}`}
+        >
           <a>{tag.title}</a>
         </Link>
       </TagsLink>

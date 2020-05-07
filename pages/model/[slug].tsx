@@ -1,25 +1,24 @@
-import Link from 'next/link';
-import { FunctionComponent } from 'react';
-import { useQuery } from 'react-apollo';
-import { useRouter } from 'next/router';
-import { MODELS_QUERY } from '../../utils/query';
-import Card from '../../components/Card';
-import { Model } from '../../components/models/Model';
-import { iData } from '../../components/models/Types';
-import { Layout } from '../../components/layout/PageLayout';
+import Link from "next/link";
+import { FunctionComponent } from "react";
+import { useQuery } from "react-apollo";
+import { useRouter } from "next/router";
+import { MODELS_QUERY } from "../../utils/queries";
+import Card from "../../components/Card";
+import { Model } from "../../components/models/Model";
+import { iModelData } from "../../utils/queries/models";
+import { Layout } from "../../components/layout/PageLayout";
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
 const ModelPage: FunctionComponent = () => {
   const router = useRouter();
-  const { loading, error, data } = useQuery<iData>(MODELS_QUERY, {
+  const { loading, error, data } = useQuery<iModelData>(MODELS_QUERY, {
     variables: {
       where: {
         slug_contains: router.query.slug,
       },
     },
-
   });
 
   if (loading) {
@@ -42,7 +41,7 @@ const ModelPage: FunctionComponent = () => {
             Possibly you're offline and if not please let us know.
           </p>
         </Card>
-        </Layout>
+      </Layout>
     );
   }
 
@@ -50,10 +49,10 @@ const ModelPage: FunctionComponent = () => {
     if (data.models.length >= 1) {
       return (
         <Layout meta={{ title, description, useSEO: false }}>
-          {data.models.map(model => (
+          {data.models.map((model) => (
             <Model model={model} key={model.id} />
           ))}
-          </Layout>
+        </Layout>
       );
     }
   }
@@ -72,7 +71,7 @@ const ModelPage: FunctionComponent = () => {
           <a>View All Models</a>
         </Link>
       </Card>
-      </Layout>
+    </Layout>
   );
 };
 export default ModelPage;

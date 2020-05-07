@@ -1,9 +1,9 @@
 import { formatRelative, parseISO } from "date-fns";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { ArticleTypes } from "../Types";
 import { Image } from "../../elements";
 import { countWords, timeToRead } from "../../../utils/functions";
+import { iArticle } from "../../../utils/queries/articles";
 
 const StyledArticleHeader = styled.div`
   font-family: var(--font-family);
@@ -31,7 +31,7 @@ const StyledPublishDate = styled.p`
   margin: 0;
 `;
 
-const ArticleHead: FunctionComponent<ArticleTypes> = ({ article }) => (
+const ArticleHead: FunctionComponent<iArticle> = ({ article }) => (
   <StyledArticleHeader>
     {article.featured_image && (
       <Image

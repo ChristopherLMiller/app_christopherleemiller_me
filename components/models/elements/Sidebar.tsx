@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import Link from 'next/link';
-import { Sidebar } from '../../Sidebar';
-import { ModelTypes } from '../Types';
-import { BuildTime } from './BuildTime';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import Link from "next/link";
+import { Sidebar } from "../../Sidebar";
+import { BuildTime } from "./BuildTime";
+import { ModelTypes } from "../../../utils/queries/models";
 
 const StyledModelSidebar = styled.div``;
 
@@ -25,10 +25,17 @@ const ModelSidebar: FunctionComponent<ModelTypes> = ({ model }) => (
         <li>
           Scalemates: <a href={model?.scalemates_link}>Link</a>
         </li>
-        <li>
-          Build Time:{` `}
-          {model?.clockify_id && <BuildTime id={model?.clockify_id} />}
-        </li>
+        {model?.clockify_id && (
+          <li>
+            Build Time:{` `}
+            {<BuildTime id={model?.clockify_id} />}
+          </li>
+        )}
+        {model?.youtube_link && (
+          <li>
+            YouTube Video: <a href={model?.youtube_link}>Link</a>
+          </li>
+        )}
       </ul>
     </Sidebar>
     <Sidebar title="Tags">

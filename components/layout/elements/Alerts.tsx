@@ -1,5 +1,5 @@
 import { useQuery } from "react-apollo";
-import { ALERTS } from "../../../utils/query";
+import { ALERTS_QUERY } from "../../../utils/queries";
 import { Fragment, FunctionComponent } from "react";
 import { isAfter } from "date-fns";
 import { parseISO } from "date-fns";
@@ -11,7 +11,7 @@ interface iStyledAlert {
 const StyledAlert = styled.div<iStyledAlert>`
   padding: 20px;
   font-size: var(--p-responsive);
-  background: var(--color-alert-${(props) => props.background});
+  background: var(--color-alert- ${(props) => props.background});
 `;
 
 interface iAlerts {
@@ -19,7 +19,7 @@ interface iAlerts {
 }
 
 const Alerts: FunctionComponent<iAlerts> = ({ maxRenders = 3 }) => {
-  const { error, data } = useQuery(ALERTS);
+  const { error, data } = useQuery(ALERTS_QUERY);
 
   // there was an error, log and return
   if (error) {
