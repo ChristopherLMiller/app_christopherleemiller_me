@@ -3,7 +3,7 @@ import { useQuery } from "react-apollo";
 import styled from "styled-components";
 import { ModelsFilterContext } from "../../../../lib/context/ModelFiltersContext";
 
-import { ALL_SCALES_QUERY } from "../../../../utils/queries";
+import { SCALES_QUERY } from "../../../../utils/queries";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -32,7 +32,7 @@ interface iTagSelect {
 const ScaleSelect: FC<iTagSelect> = ({ field }) => {
   const { scale, setScaleContext } = useContext(ModelsFilterContext);
 
-  const { loading, data, error } = useQuery<Data>(ALL_SCALES_QUERY);
+  const { loading, data, error } = useQuery<Data>(SCALES_QUERY);
 
   if (loading) {
     return (

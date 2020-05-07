@@ -3,7 +3,7 @@ import { useQuery } from "react-apollo";
 import styled from "styled-components";
 import { ModelsFilterContext } from "../../../../lib/context/ModelFiltersContext";
 
-import { ALL_MANUFACTURERS_QUERY } from "../../../../utils/queries";
+import { MANUFACTURERS_QUERY } from "../../../../utils/queries";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -32,7 +32,7 @@ interface iTagSelect {
 const CompanySelect: FC<iTagSelect> = ({ field }) => {
   const { company, setCompanyContext } = useContext(ModelsFilterContext);
 
-  const { loading, data, error } = useQuery<Data>(ALL_MANUFACTURERS_QUERY);
+  const { loading, data, error } = useQuery<Data>(MANUFACTURERS_QUERY);
 
   if (loading) {
     return (
