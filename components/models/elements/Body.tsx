@@ -18,6 +18,10 @@ const StyledContentArea = styled.div`
   @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
     order: 0;
   }
+
+  img {
+    width: 100%;
+  }
 `;
 
 const ModelContentArea = styled.div`
