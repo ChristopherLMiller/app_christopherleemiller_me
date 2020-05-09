@@ -6,6 +6,10 @@ import { motion } from "framer-motion";
 
 export const SocialIconStyled = styled(motion.span)`
   display: block;
+
+  svg {
+    max-height: 75px;
+  }
 `;
 
 const hoverState = {
