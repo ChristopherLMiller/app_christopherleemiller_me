@@ -4,7 +4,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useToasts } from "react-toast-notifications";
 import Card from "../components/Card";
-import { SocialLinks } from "../components/SocialLinks";
 import { Props } from "../styles/Themes";
 import { Label } from "../components/inputs/Label";
 import { FieldSet } from "../components/inputs/FieldSet";
@@ -67,12 +66,16 @@ const StyledContactFormFullWidth = styled.fieldset`
   grid-column-start: 1;
   grid-column-end: 3;
   border: none;
-  padding-left: 0;
+  padding: 0;
 `;
 
 const ContactFormEmailList = styled.ul`
   list-style-type: none;
   padding-left: 0;
+
+  a {
+    color: var(--main-color);
+  }
 `;
 
 const ContactPage = () => {
@@ -170,7 +173,6 @@ const ContactPage = () => {
             <p>
               <a href="tel:+15743702148">+1 (574) 370-2148</a>
             </p>
-            <SocialLinks color="#FFF" />
           </ContactColumn>
         </ContactGrid>
       </Card>
