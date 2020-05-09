@@ -1,19 +1,19 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 import {
   faFacebookF,
   faLinkedinIn,
   faGithubAlt,
   faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { SocialIcon } from './SocialIcon';
-import { FunctionComponent } from 'react';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+} from "@fortawesome/free-brands-svg-icons";
+import { SocialIcon } from "./SocialIcon";
+import { FunctionComponent } from "react";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const SocialLinksBar = styled.div`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    font-size: 4.5rem;
-    grid-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 30px;
+  align-items: center;
 `;
 
 interface iSocialLinks {
