@@ -3,7 +3,7 @@ import { NextSeo, BlogJsonLd } from "next-seo";
 import { FunctionComponent, useEffect, Fragment, useState } from "react";
 import Router from "next/router";
 import { ArticleHead } from "components/articles/elements/Head";
-import { ImageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions/imageURL";
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "config";
 import { StyledArticle } from "styles/Articles";
 import { CommentThread } from "components/CommentThread";
@@ -75,7 +75,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
           images: [
             {
               alt: article.title,
-              url: `${ImageURL(image)}.jpg`,
+              url: `${imageURL(image)}.jpg`,
             },
           ],
         }}
@@ -83,7 +83,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
       <BlogJsonLd
         url={`${process.env.SITE_URL}/post/${article.slug}`}
         title={article.title}
-        images={[`${ImageURL(image)}.jpg`]}
+        images={[`${imageURL(image)}.jpg`]}
         datePublished={article.created_at}
         dateModified={article.updated_at}
         authorName={article.user.username}

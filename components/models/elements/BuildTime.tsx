@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { useFetch } from "react-async";
-import { makeTimeFriendly } from "utils/functions/convertTime";
+import { makeTimeFriendly } from "utils/functions";
 
 interface iBuildTime {
   id: string;

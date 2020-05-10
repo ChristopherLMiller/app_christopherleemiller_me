@@ -33,7 +33,7 @@ export interface iImageOptions {
   transformation?: string;
 }
 
-export function ImageURL(file?: string, options?: iImageOptions): string {
+export function imageURL(file?: string, options?: iImageOptions): string {
   // check some conditions first like being null
   if (file == null || file === undefined || file == "default")
     file = SITE_DEFAULT_IMAGE_FILE;

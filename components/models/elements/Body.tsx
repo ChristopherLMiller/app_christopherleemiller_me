@@ -6,7 +6,7 @@ import { Title } from "components/elements/Title";
 import { CommentThread } from "components/CommentThread";
 import { StyledGallery } from "components/models/gallery";
 import { Props } from "styles/Themes";
-import { ImageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions/imageURL";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { Image } from "components/elements";
 import { ModelTypes } from "utils/queries/models";
@@ -33,8 +33,8 @@ const ModelContentArea = styled.div`
 const Body: FunctionComponent<ModelTypes> = ({ model }) => {
   const images = model?.images?.map((image) => {
     return {
-      original: `${ImageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
-      thumbnail: `${ImageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
+      original: `${imageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
+      thumbnail: `${imageURL(image?.image?.provider_metadata?.public_id)}.jpg`,
     };
   });
 

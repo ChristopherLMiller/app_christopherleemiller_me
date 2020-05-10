@@ -6,7 +6,7 @@ import { useQuery } from "react-apollo";
 import { Loader } from "components/elements/Loader";
 import { isDefined } from "utils/functions/isDefined";
 import styled from "styled-components";
-import { ImageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions/imageURL";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
@@ -162,7 +162,7 @@ const GalleriesPage = () => {
                 whileTap="hover"
               >
                 <GalleryImage
-                  src={`${ImageURL(
+                  src={`${imageURL(
                     gallery.featured_image.provider_metadata.public_id
                   )}.jpg`}
                 />

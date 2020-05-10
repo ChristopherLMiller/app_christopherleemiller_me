@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { Footer } from "components/layout/Footer";
 import Header from "components/layout/Header";
 import { SITE_DEFAULT_IMAGE } from "config";
-import { ImageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions/imageURL";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { Main } from "styles/Generics";
@@ -44,7 +44,7 @@ const Layout: FunctionComponent<iLayout> = ({ meta, children }) => (
               {
                 alt: meta.title,
                 url: meta.image
-                  ? `${ImageURL(meta.image)}.jpg`
+                  ? `${imageURL(meta.image)}.jpg`
                   : SITE_DEFAULT_IMAGE,
               },
             ],

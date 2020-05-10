@@ -4,7 +4,7 @@ import Meta from "components/layout/Meta";
 import Sidebar from "components/layout/Sidebar";
 import MobileNav from "components/layout/MobileNav";
 import { Props } from "styles/Themes";
-import { ImageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions/imageURL";
 
 const StyledPage = styled.div`
   color: var(--text-color-light);
@@ -19,7 +19,7 @@ const StyledPage = styled.div`
     z-index: -1;
 
     display: block;
-    background-image: url('${ImageURL("clm_me/assets/background.jpg")}');
+    background-image: url('${imageURL("clm_me/assets/background.jpg")}');
     background-size: cover;
     width: 100%;
     height: 100%;
