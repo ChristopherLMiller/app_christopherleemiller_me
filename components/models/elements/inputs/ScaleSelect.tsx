@@ -1,9 +1,9 @@
 import { useContext, FC } from "react";
 import { useQuery } from "react-apollo";
 import styled from "styled-components";
-import { ModelsFilterContext } from "../../../../lib/context/ModelFiltersContext";
+import { ModelsFilterContext } from "lib/context/ModelFiltersContext";
 
-import { SCALES_QUERY } from "../../../../utils/queries";
+import { SCALES_QUERY } from "utils/queries";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);

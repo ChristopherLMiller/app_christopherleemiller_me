@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Props } from './Themes';
+import styled from "styled-components";
+import { Props } from "styles/Themes";
 
 const StyledArticle = styled.article`
   background: var(--background-light);

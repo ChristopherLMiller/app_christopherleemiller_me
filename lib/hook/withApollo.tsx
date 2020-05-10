@@ -1,7 +1,7 @@
 import App from "next/app";
 import Head from "next/head";
 import { ApolloProvider } from "@apollo/react-hooks";
-import createApolloClient from "../apolloClient";
+import createApolloClient from "lib/apolloClient";
 import { NormalizedCacheObject } from "apollo-cache-inmemory";
 import { NextPageContext } from "next";
 

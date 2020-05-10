@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { colorsEnum } from "../../interfaces/colorsEnum";
+import { colorsEnum } from "interfaces/colorsEnum";
 
 export interface iAlert {
   id: string;

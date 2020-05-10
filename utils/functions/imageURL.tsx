@@ -2,7 +2,7 @@ import {
   CLOUDINARY_URL,
   CLOUDINARY_CLOUD,
   SITE_DEFAULT_IMAGE_FILE,
-} from "../../config";
+} from "config";
 
 export interface iImageOptions {
   w?: number; // width

@@ -1,11 +1,11 @@
 import gql from "graphql-tag";
-import { MODELS_PER_PAGE } from "../../config";
+import { MODELS_PER_PAGE } from "config";
 
-import { iUploadFile } from "../../interfaces/UploadFile";
+import { iUploadFile } from "interfaces/UploadFile";
 import { iTag } from "./tags";
 import { iImage } from "./images";
-import { visiblityEnum } from "../../interfaces/visibilityEnum";
-import { statusEnum } from "../../interfaces/statusEnum";
+import { visiblityEnum } from "interfaces/visibilityEnum";
+import { statusEnum } from "interfaces/statusEnum";
 
 export interface ModelTypes {
   model: {

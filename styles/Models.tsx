@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Props } from '../styles/Themes';
+import styled from "styled-components";
+import { Props } from "styles/Themes";
 
 const StyledModelPage = styled.div``;
 

@@ -1,4 +1,4 @@
-import { ImageURL } from "../utils/functions";
+import { ImageURL } from "utils/functions";
 
 test("Returns image URL string with all defaults", () => {
   expect(ImageURL()).toBe(

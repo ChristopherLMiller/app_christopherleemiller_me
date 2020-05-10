@@ -5,7 +5,7 @@ import {
   faGithubAlt,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { SocialIcon } from "./SocialIcon";
+import { SocialIcon } from "components/SocialIcon";
 import { FunctionComponent } from "react";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 

@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'react';
-import Router, { withRouter, SingletonRouter } from 'next/router';
-import { useQuery } from 'react-apollo';
-import styled from 'styled-components';
-import { DocumentNode } from 'graphql';
-import { urlBuilder } from '../../utils/functions/url';
+import { FunctionComponent } from "react";
+import Router, { withRouter, SingletonRouter } from "next/router";
+import { useQuery } from "react-apollo";
+import styled from "styled-components";
+import { DocumentNode } from "graphql";
+import { urlBuilder } from "utils/functions/url";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -45,7 +45,7 @@ const SelectBox: FunctionComponent<ISelectBox> = ({
   if (items) {
     return (
       <StyledSelect
-        onChange={event => {
+        onChange={(event) => {
           const href = `${router.pathname}?${urlBuilder(
             router.query,
             slug,
@@ -83,7 +83,7 @@ const SelectBox: FunctionComponent<ISelectBox> = ({
     return (
       <StyledSelect
         key={slug}
-        onChange={event => {
+        onChange={(event) => {
           Router.push(
             `${router.pathname}?${urlBuilder(
               router.query,

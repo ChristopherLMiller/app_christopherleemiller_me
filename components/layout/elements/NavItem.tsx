@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useProvideAuth, iAuthObject } from "../../../lib/hook/useAuth";
+import { useProvideAuth, iAuthObject } from "lib/hook/useAuth";
 
 /*
 TODO: make this work with motion

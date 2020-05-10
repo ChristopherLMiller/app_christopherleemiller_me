@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { iCategories } from "../../utils/queries/categories";
+import { iCategories } from "utils/queries/categories";
 
 const CategoriesWrapper = styled.span`
   font-family: var(--font-monospace);

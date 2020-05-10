@@ -1,8 +1,8 @@
-import NProgress from 'nprogress';
-import { FunctionComponent } from 'react';
-import Router from 'next/router';
-import styled from 'styled-components';
-import { Props } from '../../styles/Themes';
+import NProgress from "nprogress";
+import { FunctionComponent } from "react";
+import Router from "next/router";
+import styled from "styled-components";
+import { Props } from "styles/Themes";
 
 Router.events.on(`routeChangeStart`, () => {
   NProgress.configure({ showSpinner: false });

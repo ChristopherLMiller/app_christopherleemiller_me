@@ -20,7 +20,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "components/*": ["components/*"],
+      "data/*": ["data/*"],
+      "utils/*": ["utils/*"],
+      "styles/*": ["styles/*"],
+      "lib/*": ["lib/*"],
+      "interfaces/*": ["interfaces/*"],
+      "pages/*": ["pages/*"],
+      "config": ["config"]
+    }
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]

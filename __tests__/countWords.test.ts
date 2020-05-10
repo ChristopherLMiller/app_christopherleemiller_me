@@ -1,4 +1,4 @@
-import { countWords } from "../utils/functions";
+import { countWords } from "utils/functions";
 
 describe("wordCount test", () => {
   it("Returns correct count of words in simple sentence", () => {

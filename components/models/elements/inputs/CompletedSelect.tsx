@@ -1,6 +1,6 @@
-import { FunctionComponent, useContext } from 'react';
-import styled from 'styled-components';
-import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
+import { FunctionComponent, useContext } from "react";
+import styled from "styled-components";
+import { ModelsFilterContext } from "lib/context/ModelFiltersContext";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -28,9 +28,7 @@ interface ISelectBox {
 const CompletedSelect: FunctionComponent<ISelectBox> = ({ items }) => {
   const { setCompletedContext } = useContext(ModelsFilterContext);
   return (
-    <StyledSelect
-      onChange={event => setCompletedContext(event.target.value)}
-    >
+    <StyledSelect onChange={(event) => setCompletedContext(event.target.value)}>
       {items !== undefined &&
         items.map((item: Item) => (
           <option key={item.id} value={item.slug}>

@@ -1,13 +1,18 @@
-import Card from '../components/Card';
-import { Layout } from '../components/layout/PageLayout';
+import Card from "components/Card";
+import { Layout } from "components/layout/PageLayout";
 
 const title = `Home`;
 const description = `Programmer.  Amateur Designer. Model Enthusiast.`;
 
 const IndexPage = () => (
-  <Layout meta={{
-    title, description, useSEO: true, path: `/`
-  }}>
+  <Layout
+    meta={{
+      title,
+      description,
+      useSEO: true,
+      path: `/`,
+    }}
+  >
     <Card heading="Welcome">
       <p>
         Please excuse the mess while I'm remodeling. Many great things are in

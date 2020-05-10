@@ -1,11 +1,11 @@
 import { NextSeo } from "next-seo";
-import { Footer } from "./Footer";
-import Header from "./Header";
-import { SITE_DEFAULT_IMAGE } from "../../config";
-import { ImageURL } from "../../utils/functions/imageURL";
+import { Footer } from "components/layout/Footer";
+import Header from "components/layout/Header";
+import { SITE_DEFAULT_IMAGE } from "config";
+import { ImageURL } from "utils/functions/imageURL";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
-import { Main } from "../../styles/Generics";
+import { Main } from "styles/Generics";
 
 const InnerPage = styled.div`
   position: relative;

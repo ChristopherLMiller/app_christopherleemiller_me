@@ -1,14 +1,14 @@
 import { useQuery } from "react-apollo";
 import { useContext } from "react";
 import { useRouter } from "next/router";
-import { iModelData } from "../../utils/queries/models";
-import { ModelListing } from "../../components/models/ModelListing";
-import Card from "../../components/Card";
-import { MODELS_QUERY_BRIEF } from "../../utils/queries";
-import { MODELS_PER_PAGE } from "../../config";
-import { ModelsFilterContext } from "../../lib/context/ModelFiltersContext";
-import { StyledModelListings } from "../../styles/Models";
-import { Loader } from "../elements/Loader";
+import { iModelData } from "utils/queries/models";
+import { ModelListing } from "components/models/ModelListing";
+import Card from "components/Card";
+import { MODELS_QUERY_BRIEF } from "utils/queries";
+import { MODELS_PER_PAGE } from "config";
+import { ModelsFilterContext } from "lib/context/ModelFiltersContext";
+import { StyledModelListings } from "styles/Models";
+import { Loader } from "components/elements/Loader";
 
 const ModelListings = () => {
   const router = useRouter();

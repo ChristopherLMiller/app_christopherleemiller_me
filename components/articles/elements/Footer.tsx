@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { Tags } from "../Tags";
-import { Categories } from "../Categories";
-import { iArticle } from "../../../utils/queries/articles";
+import { Tags } from "components/articles/Tags";
+import { Categories } from "components/articles/Categories";
+import { iArticle } from "utils/queries/articles";
 
 const StyledArticleFooter = styled.div`
   background: var(--background-dark);

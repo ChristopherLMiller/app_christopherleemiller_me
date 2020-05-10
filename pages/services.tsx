@@ -1,7 +1,7 @@
-import Card from "../components/Card";
+import Card from "components/Card";
 import { useRouter } from "next/router";
-import { useProvideAuth, roles } from "../lib/hook/useAuth";
-import { Layout } from "../components/layout/PageLayout";
+import { useProvideAuth, roles } from "lib/hook/useAuth";
+import { Layout } from "components/layout/PageLayout";
 
 const title = `Services`;
 const description = `Services that I offer`;

@@ -2,18 +2,18 @@ import hljs from "highlight.js";
 import { NextSeo, BlogJsonLd } from "next-seo";
 import { FunctionComponent, useEffect, Fragment, useState } from "react";
 import Router from "next/router";
-import { ArticleHead } from "./elements/Head";
-import { ImageURL } from "../../utils/functions/imageURL";
-import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "../../config";
-import { StyledArticle } from "../../styles/Articles";
-import { CommentThread } from "../CommentThread";
-import { StyledContentBlock } from "../elements/ContentBlock";
+import { ArticleHead } from "components/articles/elements/Head";
+import { ImageURL } from "utils/functions/imageURL";
+import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "config";
+import { StyledArticle } from "styles/Articles";
+import { CommentThread } from "components/CommentThread";
+import { StyledContentBlock } from "components/elements/ContentBlock";
 import Link from "next/link";
 import styled from "styled-components";
-import { ModalBox } from "../elements/Modal";
-import { useProvideAuth, roles } from "../../lib/hook/useAuth";
-import { truncate } from "../../utils/functions/truncate";
-import { iArticle } from "../../utils/queries/articles";
+import { ModalBox } from "components/elements/Modal";
+import { useProvideAuth, roles } from "lib/hook/useAuth";
+import { truncate } from "utils/functions/truncate";
+import { iArticle } from "utils/queries/articles";
 
 const ArticleOptions = styled.div``;
 

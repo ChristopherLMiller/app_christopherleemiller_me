@@ -1,22 +1,24 @@
-import { NextSeo } from 'next-seo';
-import ReactMarkdown from 'react-markdown';
-import { StyledContentBlock } from '../components/elements/ContentBlock';
-import { SITE_TITLE, SEPARATOR } from '../config';
-import { StyledArticle } from '../styles/Articles';
-import { Layout } from '../components/layout/PageLayout';
+import { NextSeo } from "next-seo";
+import ReactMarkdown from "react-markdown";
+import { StyledContentBlock } from "components/elements/ContentBlock";
+import { SITE_TITLE, SEPARATOR } from "config";
+import { StyledArticle } from "styles/Articles";
+import { Layout } from "components/layout/PageLayout";
 
-const PrivacyPolicyMarkdown = require(`../data/privacy-policy.md`);
+const PrivacyPolicyMarkdown = require(`data/privacy-policy.md`);
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
 
 const PrivacyPolicyPage = () => (
-  <Layout meta={{
-    title,
-    description,
-    useSEO: true,
-    path: `/privacy-policy`
-  }}>
+  <Layout
+    meta={{
+      title,
+      description,
+      useSEO: true,
+      path: `/privacy-policy`,
+    }}
+  >
     <NextSeo
       title={`${SITE_TITLE}${SEPARATOR}Privacy Policy`}
       description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."

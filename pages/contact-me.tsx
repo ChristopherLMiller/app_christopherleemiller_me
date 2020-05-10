@@ -1,14 +1,14 @@
-import { ButtonVisual } from "../components/inputs/Buttons";
+import { ButtonVisual } from "components/inputs/Buttons";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useToasts } from "react-toast-notifications";
-import Card from "../components/Card";
-import { Props } from "../styles/Themes";
-import { Label } from "../components/inputs/Label";
-import { FieldSet } from "../components/inputs/FieldSet";
-import { FormErrorMessage } from "../components/inputs/ErrorMessage";
-import { Layout } from "../components/layout/PageLayout";
+import Card from "components/Card";
+import { Props } from "styles/Themes";
+import { Label } from "components/inputs/Label";
+import { FieldSet } from "components/inputs/FieldSet";
+import { FormErrorMessage } from "components/inputs/ErrorMessage";
+import { Layout } from "components/layout/PageLayout";
 
 const title = `Contact Me`;
 const description = `How to reach me with any comments, questions, and concerns regarding anything you see here!`;

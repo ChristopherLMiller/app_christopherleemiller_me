@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Props } from '../../styles/Themes';
+import styled from "styled-components";
+import { Props } from "styles/Themes";
 
 const StyledContentBlock = styled.div`
   padding: 40px 20px;
@@ -52,7 +52,11 @@ const StyledContentBlock = styled.div`
     color: var(--main-color);
     text-decoration: underline;
   }
-  h2,h3,h4,h5,h6 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 10px 0;
     font-weight: bolder;
     text-align: center;

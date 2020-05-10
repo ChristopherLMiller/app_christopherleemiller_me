@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 // @ts-ignore
 import { Image as CloudinaryImage, Transformation } from "cloudinary-react";
-import { CLOUDINARY_CLOUD } from "../../config";
+import { CLOUDINARY_CLOUD } from "config";
 
 export interface iImageOptions {
   width?: number; // width

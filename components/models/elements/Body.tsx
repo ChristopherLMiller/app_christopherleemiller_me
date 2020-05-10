@@ -2,14 +2,14 @@ import { FunctionComponent } from "react";
 import ReactMarkdown from "react-markdown";
 import ImageGallery from "react-image-gallery";
 import styled from "styled-components";
-import { Title } from "../../elements/Title";
-import { CommentThread } from "../../CommentThread";
-import { StyledGallery } from "../gallery";
-import { Props } from "../../../styles/Themes";
-import { ImageURL } from "../../../utils/functions/imageURL";
-import { StyledContentBlock } from "../../elements/ContentBlock";
-import { Image } from "../../elements";
-import { ModelTypes } from "../../../utils/queries/models";
+import { Title } from "components/elements/Title";
+import { CommentThread } from "components/CommentThread";
+import { StyledGallery } from "components/models/gallery";
+import { Props } from "styles/Themes";
+import { ImageURL } from "utils/functions/imageURL";
+import { StyledContentBlock } from "components/elements/ContentBlock";
+import { Image } from "components/elements";
+import { ModelTypes } from "utils/queries/models";
 
 const StyledContentArea = styled.div`
   max-width: ${(props: Props) => props.theme.max_width};

@@ -1,5 +1,5 @@
-import { timeToRead } from "./timeToRead";
-import { countWords } from "./countWords";
-import { makeTimeFriendly } from "./convertTime";
-import { ImageURL } from "./imageURL";
+import { timeToRead } from "utils/functions/timeToRead";
+import { countWords } from "utils/functions/countWords";
+import { makeTimeFriendly } from "utils/functions/convertTime";
+import { ImageURL } from "utils/functions/imageURL";
 export { timeToRead, countWords, makeTimeFriendly, ImageURL };

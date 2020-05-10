@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { Avatar } from "./avatar";
-import { useProvideAuth } from "../../../lib/hook/useAuth";
+import { Avatar } from "components/layout/elements/avatar";
+import { useProvideAuth } from "lib/hook/useAuth";
 import { useState } from "react";
-import { Props } from "../../../styles/Themes";
-import { LoginModal } from "./LoginModal";
+import { Props } from "styles/Themes";
+import { LoginModal } from "components/layout/elements/LoginModal";
 
 const AccountWrapper = styled.div`
   font-family: var(--font-monospace);

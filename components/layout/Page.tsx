@@ -1,10 +1,10 @@
 import { FunctionComponent, Fragment } from "react";
 import styled from "styled-components";
-import Meta from "./Meta";
-import Sidebar from "./Sidebar";
-import MobileNav from "./MobileNav";
-import { Props } from "../../styles/Themes";
-import { ImageURL } from "../../utils/functions/imageURL";
+import Meta from "components/layout/Meta";
+import Sidebar from "components/layout/Sidebar";
+import MobileNav from "components/layout/MobileNav";
+import { Props } from "styles/Themes";
+import { ImageURL } from "utils/functions/imageURL";
 
 const StyledPage = styled.div`
   color: var(--text-color-light);

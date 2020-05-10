@@ -1,16 +1,16 @@
-import Card from "../components/Card";
-import { roles } from "../lib/hook/useAuth";
-import { Layout } from "../components/layout/PageLayout";
-import { GALLERIES_QUERY_BRIEF } from "../utils/queries";
+import Card from "components/Card";
+import { roles } from "lib/hook/useAuth";
+import { Layout } from "components/layout/PageLayout";
+import { GALLERIES_QUERY_BRIEF } from "utils/queries";
 import { useQuery } from "react-apollo";
-import { Loader } from "../components/elements/Loader";
-import { isDefined } from "../utils/functions/isDefined";
+import { Loader } from "components/elements/Loader";
+import { isDefined } from "utils/functions/isDefined";
 import styled from "styled-components";
-import { ImageURL } from "../utils/functions/imageURL";
+import { ImageURL } from "utils/functions/imageURL";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
-import { iGalleryData } from "../utils/queries/galleries";
+import { iGalleryData } from "utils/queries/galleries";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;

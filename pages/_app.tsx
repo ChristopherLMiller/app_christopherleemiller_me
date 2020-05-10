@@ -5,18 +5,18 @@ import { ApolloProvider } from "@apollo/react-hooks";
 import { DefaultSeo } from "next-seo";
 import { ApolloClient } from "apollo-client";
 import { ToastProvider } from "react-toast-notifications";
-import Page from "../components/layout/Page";
-import { withApollo } from "../lib/hook/withApollo";
-import { SEPARATOR } from "../config";
-import { initGA, logPageView } from "../utils/functions/analytics";
-import { ProvideAuth } from "../lib/hook/useAuth";
+import Page from "components/layout/Page";
+import { withApollo } from "lib/hook/withApollo";
+import { SEPARATOR } from "config";
+import { initGA, logPageView } from "utils/functions/analytics";
+import { ProvideAuth } from "lib/hook/useAuth";
 import cookie from "react-cookies";
 import { AnimatePresence, motion } from "framer-motion";
 
 //import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import "../static/nprogress.css";
 import { ThemeProvider } from "styled-components";
-import { theme, GlobalStyles } from "../styles/Themes";
+import { theme, GlobalStyles } from "styles/Themes";
 
 interface IApolloClient {
   apollo: ApolloClient<any>;

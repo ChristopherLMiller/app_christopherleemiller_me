@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import { FunctionComponent, useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { Center } from '../styles/Generics';
-import { PER_PAGE, STRAPI_ENDPOINT } from '../config';
+import Link from "next/link";
+import { FunctionComponent, useEffect, useState } from "react";
+import styled from "styled-components";
+import { Center } from "styles/Generics";
+import { PER_PAGE, STRAPI_ENDPOINT } from "config";
 
 const PaginationStyles = styled.div`
   text-align: center;
@@ -22,7 +22,7 @@ const PaginationStyles = styled.div`
       border-right: 0;
     }
   }
-  a[aria-disabled='true'] {
+  a[aria-disabled="true"] {
     color: grey;
     pointer-events: none;
   }
@@ -32,7 +32,10 @@ interface PaginationTypes {
   content_type: string;
 }
 
-const Pagination: FunctionComponent<PaginationTypes> = ({ page, content_type }) => {
+const Pagination: FunctionComponent<PaginationTypes> = ({
+  page,
+  content_type,
+}) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -41,7 +44,7 @@ const Pagination: FunctionComponent<PaginationTypes> = ({ page, content_type }) 
         `${STRAPI_ENDPOINT}/${content_type}/count?status=PUBLISHED`,
         {
           headers: {
-            'Content-Type': `application/json`,
+            "Content-Type": `application/json`,
           },
         }
       );

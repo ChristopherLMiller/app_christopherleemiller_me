@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { NavItem } from "./elements/NavItem";
-import { GalleriesAuth } from "../../pages/galleries";
-import { ServicesAuth } from "../../pages/services";
-import { ProjectsAuth } from "../../pages/projects";
-import { useProvideAuth } from "../../lib/hook/useAuth";
+import { NavItem } from "components/layout/elements/NavItem";
+import { GalleriesAuth } from "pages/galleries";
+import { ServicesAuth } from "pages/services";
+import { ProjectsAuth } from "pages/projects";
+import { useProvideAuth } from "lib/hook/useAuth";
 import { motion } from "framer-motion";
 
 /*
