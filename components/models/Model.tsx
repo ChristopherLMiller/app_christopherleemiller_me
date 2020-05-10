@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { Props } from "styles/Themes";
 import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "config";
-import { imageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions";
 
 import { Body } from "components/models/elements/Body";
 import { ModelSidebar } from "components/models/elements/Sidebar";

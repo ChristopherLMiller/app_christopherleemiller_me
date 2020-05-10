@@ -4,7 +4,7 @@ import Meta from "components/layout/Meta";
 import Sidebar from "components/layout/Sidebar";
 import MobileNav from "components/layout/MobileNav";
 import { Props } from "styles/Themes";
-import { imageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions";
 
 const StyledPage = styled.div`
   color: var(--text-color-light);

@@ -6,7 +6,7 @@ import { Title } from "components/elements/Title";
 import { CommentThread } from "components/CommentThread";
 import { StyledGallery } from "components/models/gallery";
 import { Props } from "styles/Themes";
-import { imageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { Image } from "components/elements";
 import { ModelTypes } from "utils/queries/models";

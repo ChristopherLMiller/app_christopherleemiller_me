@@ -7,9 +7,8 @@ import Card from "components/Card";
 import { ARTICLES_QUERY } from "utils/queries";
 import { Loader } from "components/elements/Loader";
 import { PER_PAGE } from "config";
-import { truncate } from "utils/functions/truncate";
+import { truncate, isDefined } from "utils/functions";
 import { Layout } from "components/layout/PageLayout";
-import { isDefined } from "utils/functions/isDefined";
 import { useProvideAuth, roles } from "lib/hook/useAuth";
 import { iArticleData } from "utils/queries/articles";
 

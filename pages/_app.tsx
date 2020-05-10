@@ -8,7 +8,7 @@ import { ToastProvider } from "react-toast-notifications";
 import Page from "components/layout/Page";
 import { withApollo } from "lib/hook/withApollo";
 import { SEPARATOR } from "config";
-import { initGA, logPageView } from "utils/functions/analytics";
+import { initGA, logPageView } from "utils/functions";
 import { ProvideAuth } from "lib/hook/useAuth";
 import cookie from "react-cookies";
 import { AnimatePresence, motion } from "framer-motion";

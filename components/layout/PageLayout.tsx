@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { Footer } from "components/layout/Footer";
 import Header from "components/layout/Header";
 import { SITE_DEFAULT_IMAGE } from "config";
-import { imageURL } from "utils/functions/imageURL";
+import { imageURL } from "utils/functions";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
 import { Main } from "styles/Generics";
