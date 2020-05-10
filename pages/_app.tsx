@@ -13,7 +13,7 @@ import { ProvideAuth } from "lib/hook/useAuth";
 import cookie from "react-cookies";
 import { AnimatePresence, motion } from "framer-motion";
 
-//import "../node_modules/highlight.js/styles/atom-one-dark.css";
+import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import "../static/nprogress.css";
 import { ThemeProvider } from "styled-components";
 import { theme, GlobalStyles } from "styles/Themes";

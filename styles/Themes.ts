@@ -100,4 +100,8 @@ export const GlobalStyles = createGlobalStyle`
     text-decoration: none;
     color: var(--text-color-light);
   }
+
+  code {
+    font-size: var(--font-size-responsive);
+  }
 `;
