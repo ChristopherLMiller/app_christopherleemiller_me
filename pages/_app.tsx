@@ -7,7 +7,7 @@ import { ApolloClient } from "apollo-client";
 import { ToastProvider } from "react-toast-notifications";
 import Page from "components/layout/Page";
 import { withApollo } from "lib/hook/withApollo";
-import { SEPARATOR } from "config";
+import SEO from "../next-seo.config";
 import { initGA, logPageView } from "utils/functions";
 import { ProvideAuth } from "lib/hook/useAuth";
 import cookie from "react-cookies";
@@ -65,20 +65,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
       <ThemeProvider theme={theme}>
         <ApolloProvider client={apollo}>
           <ProvideAuth jwt={this.state.jwt} user={this.state.user}>
-            <DefaultSeo
-              titleTemplate={`ChristopherLeeMiller.me ${SEPARATOR} %s`}
-              facebook={{
-                appId: process.env.FB_APP_ID,
-              }}
-              openGraph={{
-                locale: `en_IE`,
-                site_name: `ChristopherLeeMiller.me`,
-              }}
-              twitter={{
-                handle: `@ChrisLMiller_me`,
-                cardType: `summary_large_image`,
-              }}
-            />
+            <DefaultSeo {...SEO} />
 
             <GlobalStyles />
             <ToastProvider>
