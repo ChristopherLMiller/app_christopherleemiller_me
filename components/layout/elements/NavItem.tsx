@@ -33,12 +33,17 @@ const StyledNavItem = styled.li<iStyledNavItem>`
   background: ${(props: any) =>
     props.isActive ? "rgba(101, 26, 26, 0.8)" : "none"};
 
+  a {
+    display: block;
+  }
+
   :after {
     content: "\\A";
     position: absolute;
     width: 100%;
     height: 100%;
     left: -100%;
+    top: 0;
     z-index: -1;
     background: rgba(101, 26, 26, 0.7);
     opacity: 0;
