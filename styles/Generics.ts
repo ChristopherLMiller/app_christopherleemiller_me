@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Props } from '../styles/Themes';
+import styled from "styled-components";
+import { Props } from "styles/Themes";
 
 export const Center = styled.div`
   margin: 0 auto;
@@ -15,7 +15,7 @@ export const Main = styled.main`
 
   :before,
   :after {
-    content: '\\A';
+    content: "\\A";
     left: 0;
     width: 100%;
     min-height: 325px;

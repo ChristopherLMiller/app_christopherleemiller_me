@@ -1,10 +1,10 @@
 import gql from "graphql-tag";
-import { iUploadFile } from "../../interfaces/UploadFile";
-import { iGalleryCategories } from "./galleryCategories";
-import { iGalleryTags } from "./galleryTags";
-import { statusEnum } from "../../interfaces/statusEnum";
-import { visiblityEnum } from "../../interfaces/visibilityEnum";
-import { PER_PAGE } from "../../config";
+import { iUploadFile } from "interfaces/UploadFile";
+import { iGalleryCategories } from "utils/queries/galleryCategories";
+import { iGalleryTags } from "utils/queries/galleryTags";
+import { statusEnum } from "interfaces/statusEnum";
+import { visiblityEnum } from "interfaces/visibilityEnum";
+import { PER_PAGE } from "config";
 
 export interface iGalleryFields {
   id: string;

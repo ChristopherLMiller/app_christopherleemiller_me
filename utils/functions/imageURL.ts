@@ -2,7 +2,7 @@ import {
   CLOUDINARY_URL,
   CLOUDINARY_CLOUD,
   SITE_DEFAULT_IMAGE_FILE,
-} from "../../config";
+} from "config";
 
 export interface iImageOptions {
   w?: number; // width
@@ -33,7 +33,7 @@ export interface iImageOptions {
   transformation?: string;
 }
 
-export function ImageURL(file?: string, options?: iImageOptions): string {
+export function imageURL(file?: string, options?: iImageOptions): string {
   // check some conditions first like being null
   if (file == null || file === undefined || file == "default")
     file = SITE_DEFAULT_IMAGE_FILE;

@@ -1,4 +1,4 @@
-import { iUsersPermissionsRole } from "./usersPermissionsRole";
+import { iUsersPermissionsRole } from "interfaces/usersPermissionsRole";
 
 export interface isUsersPermissionsPermission {
   id: string;

@@ -1,9 +1,9 @@
 import { formatRelative, parseISO } from "date-fns";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { Image } from "../../elements";
-import { countWords, timeToRead } from "../../../utils/functions";
-import { iArticle } from "../../../utils/queries/articles";
+import { Image } from "components/elements";
+import { countWords, timeToRead } from "utils/functions";
+import { iArticle } from "utils/queries/articles";
 
 const StyledArticleHeader = styled.div`
   font-family: var(--font-family);

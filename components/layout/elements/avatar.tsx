@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useProvideAuth } from "../../../lib/hook/useAuth";
+import { useProvideAuth } from "lib/hook/useAuth";
 
 const ProfilePicture = styled.img`
   border-radius: 50px;

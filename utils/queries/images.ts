@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
-import { iUploadFile } from "../../interfaces/UploadFile";
-import { PER_PAGE } from "../../config";
+import { iUploadFile } from "interfaces/UploadFile";
+import { PER_PAGE } from "config";
 
 export interface iImage {
   id: string;

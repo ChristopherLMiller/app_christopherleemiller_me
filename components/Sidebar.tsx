@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import { Title } from './elements/Title';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import { Title } from "components/elements/Title";
 
 interface SidebarTypes {
   title: string;

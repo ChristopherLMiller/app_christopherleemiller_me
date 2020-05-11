@@ -1,14 +1,14 @@
-import Card from "../components/Card";
+import Card from "components/Card";
 import { useRouter } from "next/router";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FieldSet } from "../components/inputs/FieldSet";
-import { Label } from "../components/inputs/Label";
-import { FormErrorMessage } from "../components/inputs/ErrorMessage";
+import { FieldSet } from "components/inputs/FieldSet";
+import { Label } from "components/inputs/Label";
+import { FormErrorMessage } from "components/inputs/ErrorMessage";
 import styled from "styled-components";
 import { useToasts } from "react-toast-notifications";
-import { useProvideAuth } from "../lib/hook/useAuth";
-import { Layout } from "../components/layout/PageLayout";
+import { useProvideAuth } from "lib/hook/useAuth";
+import { Layout } from "components/layout/PageLayout";
 
 const title = `Reset Password`;
 const description = `Reset your password here!`;

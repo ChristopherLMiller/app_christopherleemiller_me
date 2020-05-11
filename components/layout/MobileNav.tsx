@@ -2,9 +2,9 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Router from "next/router";
 import styled from "styled-components";
-import Nav from "./Nav";
-import { Props } from "../../styles/Themes";
-import { AccountInfo } from "./elements/AccountInfo";
+import Nav from "components/layout/Nav";
+import { Props } from "styles/Themes";
+import { AccountInfo } from "components/layout/elements/AccountInfo";
 import { motion } from "framer-motion";
 
 const StyledMobileNav = styled.div`

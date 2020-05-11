@@ -1,6 +1,6 @@
-import { FunctionComponent, useContext } from 'react';
-import styled from 'styled-components';
-import { ModelsFilterContext } from '../../../../lib/context/ModelFiltersContext';
+import { FunctionComponent, useContext } from "react";
+import styled from "styled-components";
+import { ModelsFilterContext } from "lib/context/ModelFiltersContext";
 
 const StyledSelect = styled.select`
   font-family: var(--font-main);
@@ -29,7 +29,7 @@ const SortSelect: FunctionComponent<ISelectBox> = ({ items }) => {
   const { sort, setSortedByContext } = useContext(ModelsFilterContext);
   return (
     <StyledSelect
-      onChange={event => setSortedByContext(event.target.value)}
+      onChange={(event) => setSortedByContext(event.target.value)}
       value={sort}
     >
       {items !== undefined &&

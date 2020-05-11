@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
-import { Image } from "./elements";
+import { Image } from "components/elements";
 import { motion } from "framer-motion";
 
 const StyledPolaroid = styled(motion.div)`

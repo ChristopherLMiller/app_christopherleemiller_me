@@ -1,6 +1,6 @@
 import { useState, useContext, createContext } from "react";
 import cookie from "react-cookies";
-import { API_ENDPOINT } from "../../config";
+import { API_ENDPOINT } from "config";
 
 // @ts-ignore
 export const authContext = createContext();

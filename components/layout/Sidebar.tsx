@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import Logo from "./elements/Logo";
-import Nav from "./Nav";
-import Title from "./elements/Title";
-import { Props } from "../../styles/Themes";
+import Logo from "components/layout/elements/Logo";
+import Nav from "components/layout/Nav";
+import Title from "components/layout/elements/Title";
+import { Props } from "styles/Themes";
 import { motion } from "framer-motion";
-import { AccountInfo } from "./elements/AccountInfo";
+import { AccountInfo } from "components/layout/elements/AccountInfo";
 
 const variants = {
   enter: {

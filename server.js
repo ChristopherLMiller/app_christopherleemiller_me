@@ -1,7 +1,6 @@
 const express = require(`express`);
 const next = require(`next`);
-const { join } = require(`path`);
-// const sitemap = require(`./lib/genSitemap`);
+// const sitemap = require(`lib/genSitemap`);
 const bodyParser = require(`body-parser`);
 const cookieParser = require(`cookie-parser`);
 const uid = require(`uid-safe`);
@@ -15,7 +14,7 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 let db = null;
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === `production`) {
   mongoose
     .connect(
       `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@ds137263.mlab.com:37263/api_christopherleemiller_me`,
@@ -24,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
         useUnifiedTopology: true,
       }
     )
-    .catch(() => console.log("unable to connect to mongo for session storage"));
+    .catch(() => console.log(`unable to connect to mongo for session storage`));
   mongoose.Promise = global.Promise;
   db = mongoose.connection;
 }
@@ -35,7 +34,7 @@ app
     const server = express();
 
     // prepare session for authentication
-    if (process.env.NODE_ENV === "production") {
+    if (process.env.NODE_ENV === `production`) {
       const sessionConfig = {
         secret: uid.sync(18),
         cookie: {
@@ -57,12 +56,6 @@ app
     server.get(`/strapi`, (req, res) => {
       res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
     });
-
-    // Service worker
-    /*server.get(`/service-worker.js`, (req, res) => {
-      const filePath = join(__dirname, `.next`, `/service-worker.js`);
-      app.serveStatic(req, res, filePath);
-    });*/
 
     /*    // Sitemap
         server.get(`/sitemap.xml`, (res) => {

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { iTags } from "../../utils/queries/tags";
+import { iTags } from "utils/queries/tags";
 
 const TagsWrapper = styled.div`
   font-family: var(--font-monospace);

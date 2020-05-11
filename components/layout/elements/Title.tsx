@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { Props } from "../../../styles/Themes";
+import { Props } from "styles/Themes";
 
 const TitleWrapper = styled.div`
   top: 0;

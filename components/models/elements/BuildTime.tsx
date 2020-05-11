@@ -1,6 +1,6 @@
-import { FunctionComponent } from 'react';
-import { useFetch } from 'react-async';
-import { makeTimeFriendly } from '../../../utils/functions/convertTime';
+import { FunctionComponent } from "react";
+import { useFetch } from "react-async";
+import { makeTimeFriendly } from "utils/functions";
 
 interface iBuildTime {
   id: string;
@@ -18,8 +18,8 @@ const BuildTime: FunctionComponent<iBuildTime> = ({ id }) => {
 
   const headers = {
     Accept: `application/json`,
-    'Content-Type': `application/json`,
-    'X-Api-Key': process.env.CLOCKIFY_API_KEY,
+    "Content-Type": `application/json`,
+    "X-Api-Key": process.env.CLOCKIFY_API_KEY,
   };
   const { data, isLoading, error } = useFetch<iFetchData>(
     `https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
@@ -33,7 +33,12 @@ const BuildTime: FunctionComponent<iBuildTime> = ({ id }) => {
     return null;
   }
 
-  if (data) return <span>Build Time: {isLoading ? '-----' : makeTimeFriendly(data.duration)}</span>;
+  if (data)
+    return (
+      <span>
+        Build Time: {isLoading ? "-----" : makeTimeFriendly(data.duration)}
+      </span>
+    );
 
   return null;
 };

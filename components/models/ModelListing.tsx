@@ -1,10 +1,10 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import { ModelTypes } from "../../utils/queries/models";
-import { StyledModelListing } from "../../styles/Models";
-import { ListingTitle } from "./elements/ListingTitle";
-import { Polaroid } from "../Polaroid";
-import { BuildTime } from "./elements/BuildTime";
+import { ModelTypes } from "utils/queries/models";
+import { StyledModelListing } from "styles/Models";
+import { ListingTitle } from "components/models/elements/ListingTitle";
+import { Polaroid } from "components/Polaroid";
+import { BuildTime } from "components/models/elements/BuildTime";
 
 const InfoPanel = styled.div`
   display: grid;

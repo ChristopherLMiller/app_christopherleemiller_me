@@ -1,14 +1,14 @@
 import Modal from "react-modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useToasts } from "react-toast-notifications";
-import { FieldSet } from "../../inputs/FieldSet";
-import { Label } from "../../inputs/Label";
-import { FormErrorMessage } from "../../inputs/ErrorMessage";
+import { FieldSet } from "components/inputs/FieldSet";
+import { Label } from "components/inputs/Label";
+import { FormErrorMessage } from "components/inputs/ErrorMessage";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
-import { useProvideAuth } from "../../../lib/hook/useAuth";
-import { ButtonVisual } from "../../inputs/Buttons";
+import { useProvideAuth } from "lib/hook/useAuth";
+import { ButtonVisual } from "components/inputs/Buttons";
 
 // used for targetting the modal for screen readers
 Modal.setAppElement("#__next");

@@ -2,11 +2,11 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 import { useQuery } from "react-apollo";
 import { useRouter } from "next/router";
-import { MODELS_QUERY } from "../../utils/queries";
-import Card from "../../components/Card";
-import { Model } from "../../components/models/Model";
-import { iModelData } from "../../utils/queries/models";
-import { Layout } from "../../components/layout/PageLayout";
+import { MODELS_QUERY } from "utils/queries";
+import Card from "components/Card";
+import { Model } from "components/models/Model";
+import { iModelData } from "utils/queries/models";
+import { Layout } from "components/layout/PageLayout";
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;

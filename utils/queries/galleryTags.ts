@@ -1,5 +1,5 @@
 import gql from "graphql-tag";
-import { PER_PAGE } from "../../config";
+import { PER_PAGE } from "config";
 
 export interface iGalleryTag {
   id: string;

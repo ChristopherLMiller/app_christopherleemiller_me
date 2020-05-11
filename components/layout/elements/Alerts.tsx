@@ -1,5 +1,5 @@
 import { useQuery } from "react-apollo";
-import { ALERTS_QUERY } from "../../../utils/queries";
+import { ALERTS_QUERY } from "utils/queries";
 import { Fragment, FunctionComponent } from "react";
 import { isAfter } from "date-fns";
 import { parseISO } from "date-fns";

@@ -1,4 +1,4 @@
-import { timeToRead } from "../utils/functions";
+import { timeToRead } from "utils/functions";
 
 describe("timeToRead test", () => {
   it("Returns correctly formatted string based on 200 word input", () => {

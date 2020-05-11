@@ -1,7 +1,7 @@
-import { FunctionComponent } from 'react';
-import styled from 'styled-components';
-import Disqus from 'disqus-react';
-import { DISQUS_SHORTNAME } from '../config';
+import { FunctionComponent } from "react";
+import styled from "styled-components";
+import Disqus from "disqus-react";
+import { DISQUS_SHORTNAME } from "config";
 
 const ItemComments = styled.div`
   background: var(--background-darker);
