@@ -11,7 +11,6 @@ import { StyledContentBlock } from "components/elements/ContentBlock";
 import Link from "next/link";
 import styled from "styled-components";
 import { ModalBox } from "components/elements/Modal";
-import { useProvideAuth, roles } from "lib/hook/useAuth";
 import { iArticle } from "utils/queries/articles";
 
 const ArticleOptions = styled.div``;
@@ -31,8 +30,6 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
   commentsEnabled = true,
   header = true,
 }) => {
-  const auth = useProvideAuth();
-
   useEffect(() => {
     function initHighlighting() {
       hljs.initHighlighting();
@@ -92,8 +89,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
         {header && <ArticleHead article={article} />}
         <StyledContentBlock>
           {children}
-          {(auth.hasPermission({ groups: [roles.admin] }) ||
-            auth.isOwner(article.user.id)) && (
+          {false && (
             <ArticleOptions>
               <ArticleOptionsItem>
                 <Link

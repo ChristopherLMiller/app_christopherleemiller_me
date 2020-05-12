@@ -12,8 +12,8 @@ const BriefArticle: FunctionComponent<iArticle> = ({ article, children }) => (
     <ArticleHead article={article} />
     <StyledContentBlock>{children}</StyledContentBlock>
     <Button
-      as={`/post/${article.slug}`}
-      href={`/post/[slug]`}
+      as={`/blog/post/${article.slug}`}
+      href={`/blog/post/[slug]`}
       text="Read More"
     />
     <ArticleFooter article={article} />
