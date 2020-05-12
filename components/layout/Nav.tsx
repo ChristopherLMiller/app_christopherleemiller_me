@@ -1,9 +1,5 @@
 import styled from "styled-components";
 import { NavItem } from "components/layout/elements/NavItem";
-import { GalleriesAuth } from "pages/galleries";
-import { ServicesAuth } from "pages/services";
-import { ProjectsAuth } from "pages/projects";
-import { useProvideAuth } from "lib/hook/useAuth";
 import { motion } from "framer-motion";
 
 /*
@@ -22,25 +18,22 @@ const NavStyles = styled(motion.ul)`
 `;
 
 const Nav = () => {
-  const auth = useProvideAuth();
   return (
     <NavStyles initial="exit" animate="enter">
       <NavItem title="Home" isActivePaths={["/"]} href="/" />
       <NavItem
-        isActivePaths={["/articles", "/post"]}
-        href="/articles"
-        title="Articles"
+        isActivePaths={["/blog", "/post"]}
+        href="/blog"
+        title="My Blog"
       />
       <NavItem isActivePaths={["/about"]} href="/about" title="About Me" />
       <NavItem isActivePaths={["/uses"]} href="/uses" title="Uses" />
       <NavItem
-        authObject={ServicesAuth}
         isActivePaths={["/services"]}
         href="/services"
         title="Services"
       />
       <NavItem
-        authObject={ProjectsAuth}
         isActivePaths={["/projects"]}
         href="/projects"
         title="Projects"
@@ -51,7 +44,6 @@ const Nav = () => {
         title="Models"
       />
       <NavItem
-        authObject={GalleriesAuth}
         isActivePaths={["/galleries", "/gallery"]}
         href="/galleries"
         title="Galleries"
@@ -61,12 +53,10 @@ const Nav = () => {
         href="/contact-me"
         title="Contact Me"
       />
-      {auth.isAuthenticated && (
-        <NavItem
-          href="https://strapi.christopherleemiller.me/admin"
-          title="Strapi Backend"
-        />
-      )}
+      <NavItem
+        href="https://strapi.christopherleemiller.me/admin"
+        title="Strapi Backend"
+      />
     </NavStyles>
   );
 };

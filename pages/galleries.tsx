@@ -1,5 +1,4 @@
 import Card from "components/Card";
-import { roles } from "lib/hook/useAuth";
 import { Layout } from "components/layout/PageLayout";
 import { GALLERIES_QUERY_BRIEF } from "utils/queries";
 import { useQuery } from "react-apollo";
@@ -13,13 +12,6 @@ import { iGalleryData } from "utils/queries/galleries";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
-
-export const GalleriesAuth = {
-  isSecure: false,
-  permittedGroups: {
-    groups: [roles.admin, roles.mod],
-  },
-};
 
 const GalleryList = styled.div`
   .masonry-grid {

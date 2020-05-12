@@ -9,19 +9,15 @@ import { Loader } from "components/elements/Loader";
 import { PER_PAGE } from "config";
 import { truncate, isDefined } from "utils/functions";
 import { Layout } from "components/layout/PageLayout";
-import { useProvideAuth, roles } from "lib/hook/useAuth";
 import { iArticleData } from "utils/queries/articles";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-const ArticlesPage: FunctionComponent = () => {
+const BlogPage: FunctionComponent = () => {
   // get the router instance
   const router = useRouter();
   const { category, tag, page } = router.query;
-
-  // Auth
-  const auth = useProvideAuth();
 
   // set some variables based on the router query
   let pageNum = isDefined(page) ? parseFloat(page.toString()) : 1;
@@ -33,9 +29,7 @@ const ArticlesPage: FunctionComponent = () => {
   let where = {} as any;
 
   // check user role to see if allowed
-  if (!auth.hasPermission({ groups: [roles.admin, roles.mod] })) {
-    where.status = "PUBLISHED";
-  }
+  where.status = "PUBLISHED";
 
   if (categoryFilter) {
     where.categories = {} as any;
@@ -81,4 +75,4 @@ const ArticlesPage: FunctionComponent = () => {
   );
 };
 
-export default ArticlesPage;
+export default BlogPage;

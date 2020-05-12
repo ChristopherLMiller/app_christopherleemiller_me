@@ -1,13 +1,12 @@
 import Modal from "react-modal";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { useToasts } from "react-toast-notifications";
+//import { useToasts } from "react-toast-notifications";
 import { FieldSet } from "components/inputs/FieldSet";
 import { Label } from "components/inputs/Label";
 import { FormErrorMessage } from "components/inputs/ErrorMessage";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { FunctionComponent } from "react";
-import { useProvideAuth } from "lib/hook/useAuth";
 import { ButtonVisual } from "components/inputs/Buttons";
 
 // used for targetting the modal for screen readers
@@ -83,11 +82,8 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
   isModalOpen,
   setModalOpen,
 }) => {
-  // Auth
-  const auth = useProvideAuth();
-
   // Toast Notifications
-  const { addToast } = useToasts();
+  //const { addToast } = useToasts();
   return (
     <Modal
       style={ModalStyles}
@@ -105,10 +101,10 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
             initialValues={{ identifier: "", password: "", general: "" }}
             onSubmit={(values, actions) => {
               actions.setSubmitting(true);
-
+              console.log(values);
               // try logging in
               //@ts-ignore
-              auth
+              /*auth
                 .signin(values.identifier, values.password)
                 .then((response: any) => {
                   if (response.status === 200) {
@@ -118,7 +114,7 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
                     actions.setFieldError("general", response.message);
                     actions.setSubmitting(false);
                   }
-                });
+                });*/
             }}
             validationSchema={LoginSchema}
           >
@@ -160,15 +156,16 @@ const LoginModal: FunctionComponent<iLoginModal> = ({
             initialValues={{ email: "" }}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
+              console.log(values);
 
               // try logging in
-              auth.requestPasswordReset(values.email).then(() => {
+              /*auth.requestPasswordReset(values.email).then(() => {
                 setModalOpen(false);
                 addToast(
                   "If an account with this email exists you will receive an email shortly to reset your password.",
                   { appearance: "success" }
                 );
-              });
+              });*/
             }}
             validationSchema={ResetSchema}
           >

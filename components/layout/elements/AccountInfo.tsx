@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Avatar } from "components/layout/elements/avatar";
-import { useProvideAuth } from "lib/hook/useAuth";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Props } from "styles/Themes";
 import { LoginModal } from "components/layout/elements/LoginModal";
+import userContext from "lib/context/userContext";
 
 const AccountWrapper = styled.div`
   font-family: var(--font-monospace);
@@ -70,8 +70,8 @@ const ListItem = styled.li`
 `;
 
 const AccountInfo = () => {
-  const auth = useProvideAuth();
   const [isModalOpen, setModalOpen] = useState(false);
+  const user = useContext(userContext);
 
   return (
     <AccountWrapper>
@@ -79,20 +79,15 @@ const AccountInfo = () => {
       <ProfileContainer>
         <ProfileImage>
           <Avatar />
+          {console.log(user)}
         </ProfileImage>
         <ProfileInfo>
-          <ProfileName>{auth.getUserName() || "Guest"}</ProfileName>
-          <ProfileRole>{auth.user?.role.name || "Guest user"}</ProfileRole>
+          <ProfileName>Guest</ProfileName>
+          <ProfileRole>Guest user</ProfileRole>
         </ProfileInfo>
       </ProfileContainer>
       <ProfileLinks>
-        {auth.isAuthenticated && <ListItem>My Account</ListItem>}
-        {auth.isAuthenticated && (
-          <ListItem onClick={() => auth.signout()}>Logout</ListItem>
-        )}
-        {!auth.isAuthenticated && (
-          <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>
-        )}
+        <ListItem onClick={() => setModalOpen(true)}>Sign In</ListItem>
       </ProfileLinks>
     </AccountWrapper>
   );

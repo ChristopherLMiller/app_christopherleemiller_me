@@ -2,7 +2,6 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useProvideAuth, iAuthObject } from "lib/hook/useAuth";
 
 /*
 TODO: make this work with motion
@@ -61,7 +60,6 @@ const StyledNavItem = styled.li<iStyledNavItem>`
 `;
 
 interface iNavItem {
-  authObject?: iAuthObject | undefined;
   isActivePaths?: string[];
   href: string;
   title: string;
@@ -71,51 +69,26 @@ const NavItem: FunctionComponent<iNavItem> = ({
   isActivePaths,
   href,
   title,
-  authObject,
 }) => {
   const router = useRouter();
-  const auth = useProvideAuth();
 
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes("http") ? false : true;
 
-  if (auth.canAccessResource(authObject)) {
-    return (
-      <StyledNavItem
-        display="block"
-        aria-hidden={!auth.canAccessResource(authObject)}
-        isActive={
-          isActivePaths ? isActivePaths.includes(router.pathname) : false
-        }
-      >
-        {isHrefLocal && (
-          <Link href={href}>
-            <a>{title}</a>
-          </Link>
-        )}
-        {!isHrefLocal && <a href={href}>{title}</a>}
-      </StyledNavItem>
-    );
-  } else if (auth && !auth.canAccessResource(authObject)) {
-    return null;
-  } else {
-    return (
-      <StyledNavItem
-        display={"block"}
-        aria-hidden={false}
-        isActive={
-          isActivePaths ? isActivePaths.includes(router.pathname) : false
-        }
-      >
-        {isHrefLocal && (
-          <Link href={href}>
-            <a>{title}</a>
-          </Link>
-        )}
-        {!isHrefLocal && <a href={href}>{title}</a>}
-      </StyledNavItem>
-    );
-  }
+  return (
+    <StyledNavItem
+      display={"block"}
+      aria-hidden={false}
+      isActive={isActivePaths ? isActivePaths.includes(router.pathname) : false}
+    >
+      {isHrefLocal && (
+        <Link href={href}>
+          <a>{title}</a>
+        </Link>
+      )}
+      {!isHrefLocal && <a href={href}>{title}</a>}
+    </StyledNavItem>
+  );
 };
 
 export { NavItem };

@@ -7,7 +7,6 @@ import { Label } from "components/inputs/Label";
 import { FormErrorMessage } from "components/inputs/ErrorMessage";
 import styled from "styled-components";
 import { useToasts } from "react-toast-notifications";
-import { useProvideAuth } from "lib/hook/useAuth";
 import { Layout } from "components/layout/PageLayout";
 
 const title = `Reset Password`;
@@ -36,7 +35,6 @@ const resetSchema = Yup.object({
 const ResetPasswordPage = () => {
   const { addToast } = useToasts();
   const router = useRouter();
-  const auth = useProvideAuth();
 
   if (router?.query?.code) {
     return (
@@ -51,8 +49,9 @@ const ResetPasswordPage = () => {
             initialValues={{ password: "", passwordConfirm: "" }}
             validationSchema={resetSchema}
             onSubmit={(values, { setSubmitting }) => {
+              console.log(values, setSubmitting);
               // here we submit the data over to strapi to handle the actual changing of the password for the user
-              auth
+              /*auth
                 .resetPassword(
                   values.password,
                   values.passwordConfirm,
@@ -68,7 +67,7 @@ const ResetPasswordPage = () => {
                     addToast(response.message, { appearance: "error" });
                     setSubmitting(false);
                   }
-                });
+                });*/
             }}
           >
             {({ isSubmitting, isValid }) => (
