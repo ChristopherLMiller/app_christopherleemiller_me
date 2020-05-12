@@ -4,12 +4,12 @@ import { Image } from "components/elements";
 
 const StyledLogo = styled.div`
   img {
-    border: 10px solid var(--text-color-light);
+    border: 5px solid var(--text-color-light);
     transition: all 0.5s;
     display: none;
 
-    @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-      width: 45%;
+    @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
+      width: 100%;
       display: block;
     }
   }

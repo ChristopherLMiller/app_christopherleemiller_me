@@ -18,7 +18,7 @@ const TitleWrapper = styled.div`
 
 const StyledTitle = styled.h2`
   text-align: right;
-  font-size: 2em;
+  font-size: 3.5rem;
   margin: 0;
   font-variant: petite-caps;
   position: relative;
@@ -39,17 +39,7 @@ const StyledTitle = styled.h2`
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     text-align: left;
-    margin: 10px 0;
-    font-size: 1.75em;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
-    font-size: 2.2em;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    font-size: 2.6em;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    font-size: 3em;
+    margin-bottom: 5px;
   }
 `;
 
