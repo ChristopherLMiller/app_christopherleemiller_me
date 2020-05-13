@@ -450,4 +450,8 @@ export const StyledGallery = Styled.div`
       padding: 5px 10px;
     }
   }
+
+  img {
+    width: 100%;
+  }
 `;
