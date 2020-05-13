@@ -1,15 +1,15 @@
 import Card from "components/Card";
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
 import { Layout } from "components/layout/PageLayout";
 const title = `Projects`;
 const description = `Projects I have built over the years in all the languages and tech stacks I have used.`;
 
-export const ProjectsAuth = {
+/*export const ProjectsAuth = {
   isSecure: true,
   permittedGroups: {
     groups: [roles.admin],
   },
-};
+};*/
 
 const ProjectsPage = () => {
   return (

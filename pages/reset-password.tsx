@@ -6,7 +6,7 @@ import { FieldSet } from "components/inputs/FieldSet";
 import { Label } from "components/inputs/Label";
 import { FormErrorMessage } from "components/inputs/ErrorMessage";
 import styled from "styled-components";
-import { useToasts } from "react-toast-notifications";
+//import { useToasts } from "react-toast-notifications";
 import { Layout } from "components/layout/PageLayout";
 
 const title = `Reset Password`;
@@ -33,7 +33,7 @@ const resetSchema = Yup.object({
     .required("Password confirm is required"),
 });
 const ResetPasswordPage = () => {
-  const { addToast } = useToasts();
+  //const { addToast } = useToasts();
   const router = useRouter();
 
   if (router?.query?.code) {
