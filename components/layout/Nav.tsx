@@ -15,6 +15,7 @@ const PosedNav = posed.ul({
 const NavStyles = styled(motion.ul)`
   padding-left: 0;
   position: relative;
+  margin: 0;
 `;
 
 const Nav = () => {

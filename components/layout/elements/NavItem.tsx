@@ -26,7 +26,7 @@ const StyledNavItem = styled.li<iStyledNavItem>`
   display: ${(props: any) => props.display || "none"};
   position: relative;
   font-family: var(--font-monospace);
-  font-size: 2.5rem;
+  font-size: 2rem;
   list-style-type: none;
   line-height: 2em;
   background: ${(props: any) =>
@@ -53,8 +53,10 @@ const StyledNavItem = styled.li<iStyledNavItem>`
     left: 0%;
   }
 
-  @media (min - width: ${(props: any) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: any) => props.theme.sizes.small}) {
     font-size: 2rem;
+  }
+  @media (min-height: 800px) {
     line-height: 2.5em;
   }
 `;

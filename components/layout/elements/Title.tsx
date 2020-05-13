@@ -22,6 +22,7 @@ const StyledTitle = styled.h2`
   margin: 0;
   font-variant: petite-caps;
   position: relative;
+  line-height: 4rem;
 
   :after {
     content: "\\A";

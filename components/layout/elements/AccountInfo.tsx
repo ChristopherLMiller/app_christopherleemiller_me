@@ -14,8 +14,8 @@ const AccountWrapper = styled.div`
 const ProfileContainer = styled.div`
   display: grid;
   grid-template-columns: 15% auto;
-  padding-bottom: 10px;
   grid-gap: 10px;
+  align-items: center;
 `;
 
 const ProfileImage = styled.div`

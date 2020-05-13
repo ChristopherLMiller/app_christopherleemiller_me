@@ -44,7 +44,6 @@ const StyledSidebar = styled(motion.aside)`
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     min-height: 100vh;
-    padding: 40px;
   }
 `;
 
