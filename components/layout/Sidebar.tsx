@@ -44,7 +44,6 @@ const StyledSidebar = styled(motion.aside)`
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
     min-height: 100vh;
-    padding: 40px;
   }
 `;
 
@@ -61,12 +60,26 @@ const StyledSidebarInner = styled.div`
   flex-direction: column;
 `;
 
+const SiteHeader = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+  align-items: center;
+
+  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
+    grid-template-columns: 20% 1fr;
+  }
+`;
+
 const Sidebar = () => {
   return (
     <StyledSidebar variants={variants}>
       <StyledSidebarInner>
-        <Logo />
-        <Title />
+        <SiteHeader>
+          <Logo />
+          <Title />
+        </SiteHeader>
+
         <NavHr />
         <AccountInfo />
         <NavHr />

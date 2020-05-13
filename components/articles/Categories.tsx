@@ -24,8 +24,8 @@ const Categories: FunctionComponent<iCategories> = ({ categories }) => (
       <CategoriesLink key={category.id}>
         {!!index && <Splitter>|</Splitter>}
         <Link
-          href={`/articles?category=${category.slug}`}
-          as={`/articles?category=${category.slug}`}
+          href={`/blog?category=${category.slug}`}
+          as={`/blog?category=${category.slug}`}
         >
           <a>{category.title}</a>
         </Link>

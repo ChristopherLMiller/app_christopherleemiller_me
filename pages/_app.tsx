@@ -9,7 +9,6 @@ import Page from "components/layout/Page";
 import { withApollo } from "lib/hook/withApollo";
 import SEO from "../next-seo.config";
 import { initGA, logPageView } from "utils/functions";
-import { ProvideAuth } from "lib/hook/useAuth";
 import cookie from "react-cookies";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -17,6 +16,7 @@ import "../node_modules/highlight.js/styles/atom-one-dark.css";
 import "../static/nprogress.css";
 import { ThemeProvider } from "styled-components";
 import { theme, GlobalStyles } from "styles/Themes";
+import userContext from "lib/context/userContext";
 
 interface IApolloClient {
   apollo: ApolloClient<any>;
@@ -63,11 +63,10 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
 
     return (
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <DefaultSeo {...SEO} />
         <ApolloProvider client={apollo}>
-          <ProvideAuth jwt={this.state.jwt} user={this.state.user}>
-            <DefaultSeo {...SEO} />
-
-            <GlobalStyles />
+          <userContext.Provider value={this.state.user}>
             <ToastProvider>
               <AnimatePresence exitBeforeEnter>
                 <motion.div initial="exit" animate="enter" exit="exit">
@@ -79,7 +78,7 @@ class MyApp extends App<AppProps & IApolloClient, {}, AppState> {
                 </motion.div>
               </AnimatePresence>
             </ToastProvider>
-          </ProvideAuth>
+          </userContext.Provider>
         </ApolloProvider>
       </ThemeProvider>
     );

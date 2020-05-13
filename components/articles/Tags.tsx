@@ -24,10 +24,7 @@ const Tags: FunctionComponent<iTags> = ({ tags }) => (
     {tags.map((tag, index) => (
       <TagsLink key={tag.id}>
         {!!index && <Splitter>|</Splitter>}
-        <Link
-          href={`/articles?tag=${tag.slug}`}
-          as={`/articles?tag=${tag.slug}`}
-        >
+        <Link href={`/blog?tag=${tag.slug}`} as={`/blog?tag=${tag.slug}`}>
           <a>{tag.title}</a>
         </Link>
       </TagsLink>
