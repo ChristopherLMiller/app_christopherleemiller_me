@@ -42,7 +42,7 @@
     "graphql-tag": "^2.10.3",
     "highlight.js": "^10.0.2",
     "logrocket": "^1.0.7",
-    "mongoose": "^5.9.13",
+    "mongoose": "^5.9.14",
     "next": "^9.4.0",
     "next-offline": "^5.0.2",
     "next-seo": "^4.4.0",
