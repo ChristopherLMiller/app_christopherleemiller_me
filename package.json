@@ -45,7 +45,7 @@
     "isomorphic-unfetch": "^3.0.0",
     "logrocket": "^1.0.7",
     "mongoose": "^5.9.13",
-    "next": "^9.3.6",
+    "next": "^9.4.0",
     "next-offline": "^5.0.2",
     "next-seo": "^4.4.0",
     "nextjs-sitemap-generator": "^1.0.0",
