@@ -22,7 +22,7 @@ const BuildTime: FunctionComponent<iBuildTime> = ({ id }) => {
     "X-Api-Key": process.env.CLOCKIFY_API_KEY,
   };
   const { data, isLoading, error } = useFetch<iFetchData>(
-    `https://api.clockify.me/api/workspaces/${process.env.NEXT_PUBLIC_CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
+    `https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
     {
       headers,
     }
