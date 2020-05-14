@@ -33,7 +33,9 @@ const Layout: FunctionComponent<iLayout> = ({ meta, children }) => (
         <NextSeo
           title={meta.title}
           canonical={
-            meta.path ? `${process.env.SITE_URL}${meta.path}` : undefined
+            meta.path
+              ? `${process.env.NEXT_PUBLIC_SITE_URL}${meta.path}`
+              : undefined
           }
           description={meta.description}
           openGraph={{
@@ -48,7 +50,7 @@ const Layout: FunctionComponent<iLayout> = ({ meta, children }) => (
                   : SITE_DEFAULT_IMAGE,
               },
             ],
-            url: `${process.env.SITE_URL}${meta.path}`,
+            url: `${process.env.NEXT_PUBLIC_SITE_URL}${meta.path}`,
           }}
         />
       )}

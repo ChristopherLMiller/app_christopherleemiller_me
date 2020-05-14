@@ -21,7 +21,7 @@ const CommentThread: FunctionComponent<CommentType> = ({ item, slug }) => {
   const disqusConfig = {
     identifier: `${item.slug}+${item.id}`,
     title: item.title,
-    url: `${process.env.SITE_URL}/${slug}/${item.slug}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/${slug}/${item.slug}`,
   };
   return (
     <ItemComments>

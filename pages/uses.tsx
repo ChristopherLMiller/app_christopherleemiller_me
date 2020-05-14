@@ -25,7 +25,7 @@ const UsesPage = () => (
       openGraph={{
         title: `${SITE_TITLE}${SEPARATOR}Privacy Policy`,
         description: `Web technologies, tools, and other things related to my development experience`,
-        url: `${process.env.SITE_URL}/uses`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/uses`,
         type: `article`,
         article: {
           authors: [`Chris Miller`],

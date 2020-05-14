@@ -17,7 +17,7 @@ interface CommentType {
 
 const CommentCount: FunctionComponent<CommentType> = ({ article, slug }) => {
   const disqusConfig = {
-    url: `${process.env.SITE_URL}/${slug}/${article.slug}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/${slug}/${article.slug}`,
     identifier: article.slug,
     title: article.title,
   };

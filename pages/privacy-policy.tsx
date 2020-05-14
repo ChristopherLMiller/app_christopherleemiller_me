@@ -25,7 +25,7 @@ const PrivacyPolicyPage = () => (
       openGraph={{
         title: `${SITE_TITLE}${SEPARATOR}Privacy Policy`,
         description: `This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website.`,
-        url: `${process.env.SITE_URL}/privacy-policy`,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
         type: `article`,
         article: {
           authors: [`Chris Miller`],
