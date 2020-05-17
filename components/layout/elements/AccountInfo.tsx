@@ -79,7 +79,6 @@ const AccountInfo = () => {
       <ProfileContainer>
         <ProfileImage>
           <Avatar />
-          {console.log(user)}
         </ProfileImage>
         <ProfileInfo>
           <ProfileName>Guest</ProfileName>
