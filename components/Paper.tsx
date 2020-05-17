@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { FunctionComponent } from 'react';
+import styled from "styled-components";
+import { FunctionComponent } from "react";
 
 type PaperProps = {
   translateAxis: string;
@@ -11,7 +11,8 @@ const StyledPaper = styled.div`
   left: 0px;
   height: 100%;
   width: 100%;
-  transform: skewY(-5deg) translateY(${(props: PaperProps) => props.translateAxis});
+  transform: skewY(-5deg)
+    translateY(${(props: PaperProps) => props.translateAxis});
   z-index: -1;
   background: var(--main-color-transparent);
   box-shadow: var(--box-shadow);
