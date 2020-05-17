@@ -1,21 +1,26 @@
 import ReactMarkdown from "react-markdown";
-import { useQuery } from "react-apollo";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Card from "components/Card";
+//import { useQuery } from "react-apollo";
+//import Link from "next/link";
+//import { useRouter } from "next/router";
+//import Card from "components/Card";
 import { FullArticle } from "components/articles/Full";
-import { ARTICLES_QUERY } from "utils/queries";
-import { GetServerSideProps } from "next";
+//import { ARTICLES_QUERY } from "utils/queries";
 import { Layout } from "components/layout/PageLayout";
-import { iArticleData } from "utils/queries/articles";
-import { FunctionComponent } from "react";
-import { Loader } from "components/elements/Loader";
+import { iArticle } from "utils/queries/articles";
+//import { Loader } from "components/elements/Loader";
+import { NextPage } from "next";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
 
-const PostPage: FunctionComponent = () => {
-  const router = useRouter();
+interface iPostPage {
+  blog_post: iArticle["article"];
+}
+
+const PostPage: NextPage<iPostPage> = ({ blog_post }) => {
+  console.log(blog_post);
+
+  /*const router = useRouter();
   const { loading, error, data } = useQuery<iArticleData>(ARTICLES_QUERY, {
     variables: {
       where: {
@@ -46,7 +51,7 @@ const PostPage: FunctionComponent = () => {
     );
   }
 
-  if (data !== undefined) {
+  if (blog_post !== undefined) {
     if (data.articles.length >= 1) {
       return (
         <Layout meta={{ title, description, useSEO: false }}>
@@ -76,17 +81,25 @@ const PostPage: FunctionComponent = () => {
         </Link>
       </Card>
     </Layout>
+  );*/
+
+  return (
+    <Layout meta={{ title: title, description: description, useSEO: false }}>
+      <FullArticle article={blog_post}>
+        <ReactMarkdown source={blog_post.content} escapeHtml={false} />
+      </FullArticle>
+    </Layout>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { slug } = context.query;
+PostPage.getInitialProps = async (ctx) => {
+  const { slug } = ctx.query;
 
   const response = await fetch(
     `https://strapi.christopherleemiller.me/articles?slug=${slug}`
   );
   const data = await response.json();
-  return { props: { serverProps: data } };
+  return { blog_post: data };
 };
 
 export default PostPage;
