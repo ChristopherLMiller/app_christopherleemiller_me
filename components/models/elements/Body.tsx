@@ -10,6 +10,7 @@ import { imageURL } from "utils/functions";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { Image } from "components/elements";
 import { ModelTypes } from "utils/queries/models";
+import { Tabs, Tab, TabContent } from "components/elements/Tabs";
 
 const StyledContentArea = styled.div`
   max-width: ${(props: Props) => props.theme.max_width};
@@ -62,16 +63,20 @@ const Body: FunctionComponent<ModelTypes> = ({ model }) => {
           />
         </FeaturedImage>
       )}
+      <Tabs>
+        <Tab title="Build Log">
+          <StyledContentBlock>
+            {model.content != null && <ReactMarkdown source={model.content} />}
+            {model.content == null && (
+              <ReactMarkdown source="### No Build Log Found" />
+            )}
+          </StyledContentBlock>
+        </Tab>
+        <Tab title="Reviews">
+          <p>Reviews</p>
+        </Tab>
+      </Tabs>
 
-      <ModelContentArea>
-        <Title>Build Log</Title>
-        <StyledContentBlock>
-          {model.content != null && <ReactMarkdown source={model.content} />}
-          {model.content == null && (
-            <ReactMarkdown source="### No Build Log Found" />
-          )}
-        </StyledContentBlock>
-      </ModelContentArea>
       <ModelContentArea>
         <Title>Review</Title>
         <StyledContentBlock>
