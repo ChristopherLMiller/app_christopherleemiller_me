@@ -1,4 +1,4 @@
-import ReactGA from 'react-ga';
+import ReactGA from "react-ga";
 
 export const initGA = () => {
   console.log(`GA Init`);

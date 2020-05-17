@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
 const ModelsFilterContext = createContext<any>(null);
 
@@ -16,9 +16,9 @@ function ModelsFilterContextProvider({ children }: any) {
 
   function setCompletedContext(value: any) {
     //if (value === `all`) {
-      //setCompleted(null);
+    //setCompleted(null);
     //} else {
-      setCompleted(value);
+    setCompleted(value);
     //}
   }
 
