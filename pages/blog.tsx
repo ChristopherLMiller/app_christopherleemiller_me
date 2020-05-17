@@ -20,6 +20,7 @@ const BlogPage: FunctionComponent = () => {
   const { category, tag, page } = router.query;
 
   // set some variables based on the router query
+  // @ts-ignore
   let pageNum = isDefined(page) ? parseFloat(page.toString()) : 1;
 
   let categoryFilter = isDefined(category) ? category : null;

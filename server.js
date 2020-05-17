@@ -78,7 +78,7 @@ app
 
     server.listen(port, (err) => {
       if (err) throw err;
-      console.log(`> Ready on ${process.env.SITE_URL}:${port}`);
+      console.log(`> Ready on ${process.env.NEXT_PUBLIC_SITE_URL}:${port}`);
     });
   })
   .catch((ex) => {

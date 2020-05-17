@@ -1,23 +1,18 @@
-require(`dotenv`).config();
-const webpack = require(`webpack`);
 const withOffline = require(`next-offline`);
 const path = require(`path`);
 
 const {
   WebpackBundleSizeAnalyzerPlugin,
 } = require(`webpack-bundle-size-analyzer`);
-const { ANALYZE } = process.env;
 
 const nextConfig = {
   webpack: (config) => {
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env));
-
     config.module.rules.push({
       test: /\.md$/,
       use: `raw-loader`,
     });
 
-    if (ANALYZE) {
+    if (process.env.ANALYZE) {
       config.plugins.push(new WebpackBundleSizeAnalyzerPlugin(`stats.txt`));
     }
 

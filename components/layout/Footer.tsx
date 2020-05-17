@@ -66,7 +66,7 @@ const Footer = () => (
           </FooterSubHeading>
           <FooterSubHeading>
             Copyright © {getYear(new Date())}
-            <Separator />v{process.env.npm_package_version}
+            <Separator />v{process.env.NEXT_PUBLIC_SITE_VERSION}
           </FooterSubHeading>
         </GridItem>
       </Grid>

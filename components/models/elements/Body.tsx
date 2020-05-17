@@ -26,6 +26,12 @@ const ModelContentArea = styled.div`
   color: var(--text-color);
 `;
 
+const FeaturedImage = styled.div`
+  img {
+    width: 100%;
+  }
+`;
+
 const Body: FunctionComponent<ModelTypes> = ({ model }) => {
   const images = model?.images?.map((image) => {
     return {
@@ -48,11 +54,13 @@ const Body: FunctionComponent<ModelTypes> = ({ model }) => {
         </StyledGallery>
       )}
       {images.length == 0 && (
-        <Image
-          file={model?.featured_image?.provider_metadata?.public_id}
-          options={{ width: 1500 }}
-          alt={model.title}
-        />
+        <FeaturedImage>
+          <Image
+            file={model?.featured_image?.provider_metadata?.public_id}
+            options={{ width: 1500 }}
+            alt={model.title}
+          />
+        </FeaturedImage>
       )}
 
       <ModelContentArea>

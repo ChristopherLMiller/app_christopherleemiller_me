@@ -31,7 +31,7 @@ const ModelListing: FunctionComponent<ModelTypes> = ({ model }) => (
     >
       <InfoPanel>
         <span>Brand: {model?.manufacturer?.company}</span>
-        <span>Kit Number: {model?.kit_number}</span>
+        <span>Kit #: {model?.kit_number}</span>
         <span>Scale: {model?.scale?.scale}</span>
         <span>Released: {model?.year_released}</span>
         <span>Completed: {model?.completed ? `Yes` : `No`}</span>

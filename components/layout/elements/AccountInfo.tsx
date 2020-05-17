@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Avatar } from "components/layout/elements/avatar";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { Props } from "styles/Themes";
 import { LoginModal } from "components/layout/elements/LoginModal";
-import userContext from "lib/context/userContext";
+//import userContext from "lib/context/userContext";
 
 const AccountWrapper = styled.div`
   font-family: var(--font-monospace);
@@ -71,7 +71,7 @@ const ListItem = styled.li`
 
 const AccountInfo = () => {
   const [isModalOpen, setModalOpen] = useState(false);
-  const user = useContext(userContext);
+  //const user = useContext(userContext);
 
   return (
     <AccountWrapper>
@@ -79,7 +79,6 @@ const AccountInfo = () => {
       <ProfileContainer>
         <ProfileImage>
           <Avatar />
-          {console.log(user)}
         </ProfileImage>
         <ProfileInfo>
           <ProfileName>Guest</ProfileName>
