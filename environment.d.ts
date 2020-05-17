@@ -3,7 +3,7 @@ import * as ts from "typesript";
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      CLOCKIFY_API_KEY: string;
+      NEXT_PUBLIC_CLOCKIFY_API_KEY: string;
       NEXT_PUBLIC_CLOCKIFY_WORKSPACE_ID: string;
       LOGROCKET: string;
       NEXT_PUBLIC_SITE_URL: string;

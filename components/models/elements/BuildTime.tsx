@@ -16,13 +16,16 @@ const BuildTime: FunctionComponent<iBuildTime> = ({ id }) => {
     return null;
   }
 
+  console.log(`CLOCKIFY_API_KEY: ${process.env.NEXT_PUBLIC_CLOCKIFY_API_KEY}`);
+  console.log(process.env);
+
   const headers = {
     Accept: `application/json`,
     "Content-Type": `application/json`,
-    "X-Api-Key": process.env.CLOCKIFY_API_KEY,
+    "X-Api-Key": process.env.NEXT_PUBLIC_CLOCKIFY_API_KEY,
   };
   const { data, isLoading, error } = useFetch<iFetchData>(
-    `https://api.clockify.me/api/workspaces/${process.env.CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
+    `https://api.clockify.me/api/workspaces/${process.env.NEXT_PUBLIC_CLOCKIFY_WORKSPACE_ID}/projects/${id}`,
     {
       headers,
     }
