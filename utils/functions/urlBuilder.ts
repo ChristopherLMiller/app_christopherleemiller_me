@@ -1,4 +1,4 @@
-import querystring, { ParsedUrlQuery } from 'querystring';
+import querystring, { ParsedUrlQuery } from "querystring";
 
 export function urlBuilder(
   current: ParsedUrlQuery,
