@@ -18,8 +18,6 @@ interface iPostPage {
 }
 
 const PostPage: NextPage<iPostPage> = ({ blog_post }) => {
-  console.log(blog_post);
-
   /*const router = useRouter();
   const { loading, error, data } = useQuery<iArticleData>(ARTICLES_QUERY, {
     variables: {
@@ -99,7 +97,7 @@ PostPage.getInitialProps = async (ctx) => {
     `https://strapi.christopherleemiller.me/articles?slug=${slug}`
   );
   const data = await response.json();
-  return { blog_post: data };
+  return { blog_post: data[0] };
 };
 
 export default PostPage;
