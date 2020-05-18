@@ -54,13 +54,13 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
   return (
     <Fragment>
       <NextSeo
-        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/post/${article.slug}`}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`}
         title={`Post${SEPARATOR}${article.title}`}
         description={truncate(article.content, 3)}
         openGraph={{
           title: `Post${SEPARATOR}${article.title}`,
           description: truncate(article.content, 3),
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${article.slug}`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`,
           type: `article`,
           article: {
             authors: [article.user.username],
@@ -77,7 +77,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
         }}
       />
       <BlogJsonLd
-        url={`${process.env.NEXT_PUBLIC_SITE_URL}/post/${article.slug}`}
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`}
         title={article.title}
         images={[`${imageURL(image)}.jpg`]}
         datePublished={article.created_at}
