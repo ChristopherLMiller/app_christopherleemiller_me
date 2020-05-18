@@ -46,7 +46,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
     ? article.featured_image.provider_metadata.public_id
     : SITE_DEFAULT_IMAGE_FILE;
 
-  const tags = article.tags.map((tag) => tag.title);
+  //const tags = article.tags.map((tag) => tag.title);
 
   // state for the modal box to confirm deletion
   const [isModalOpen, setModalOpen] = useState(false);
@@ -66,7 +66,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
             authors: [article.user.username],
             modifiedTime: article.updated_at,
             publishedTime: article.created_at,
-            tags: tags.length > 0 ? tags : undefined,
+            tags: undefined, //tags.length > 0 ? tags : undefined,
           },
           images: [
             {
