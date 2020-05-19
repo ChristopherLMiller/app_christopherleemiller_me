@@ -1,9 +1,10 @@
 import Card from "components/Card";
 import { FC } from "react";
 import { Layout } from "components/layout/PageLayout";
+import { LeftAlign, UnorderedList } from "styles/Generics";
 
 const title = `404`;
-const description = `Uh-Oh! We broke something!`;
+const description = `Ruh Roh.  We lost that page!`;
 
 interface ErrorPageTypes {
   props: object;
@@ -11,12 +12,23 @@ interface ErrorPageTypes {
 const ErrorPage: FC<ErrorPageTypes> = ({ props }) => {
   return (
     <Layout meta={{ title, description, useSEO: true, path: `/404` }}>
-      <Card heading="Something isn't right.">
+      <Card
+        heading="Ruh Roh.  We lost that page."
+        actionLinks={[{ href: "/", title: "Home Page" }]}
+      >
         <p>
-          Seems that this page was lost in space, or the internet, it's hard to
-          say really but its gone that much I know. If you feel this is in error
-          please reach out to me and I'll attempt to find this page again.
+          The page you have request has disappeared for whatever reaason.
+          Probably because I'm terrible and change things a lot.
         </p>
+        <LeftAlign>
+          Perhaps you are here because:
+          <UnorderedList>
+            <li>The page has been moved</li>
+            <li>The page no longer exists</li>
+            <li>You were looking for more awesome airplanes and got lost</li>
+            <li>You just really like 404 pages. Sorry to disappoint.</li>
+          </UnorderedList>
+        </LeftAlign>
         <p>{props}</p>
       </Card>
     </Layout>
