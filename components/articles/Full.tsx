@@ -1,10 +1,9 @@
 import hljs from "highlight.js";
 import { NextSeo, BlogJsonLd } from "next-seo";
 import { FunctionComponent, useEffect, Fragment, useState } from "react";
-import Router from "next/router";
 import { ArticleHead } from "components/articles/elements/Head";
 import { imageURL, truncate } from "utils/functions";
-import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "config";
+import { SEPARATOR } from "config";
 import { StyledArticle } from "styles/Articles";
 import { CommentThread } from "components/CommentThread";
 import { StyledContentBlock } from "components/elements/ContentBlock";
@@ -12,6 +11,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import { ModalBox } from "components/elements/Modal";
 import { iArticle } from "utils/queries/articles";
+import { Router } from "next/router";
 
 const ArticleOptions = styled.div``;
 
@@ -30,6 +30,9 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
   commentsEnabled = true,
   header = true,
 }) => {
+  // state for the modal box to confirm deletion
+  const [isModalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     function initHighlighting() {
       hljs.initHighlighting();
@@ -42,14 +45,34 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
     };
   });
 
-  const image = article.featured_image
-    ? article.featured_image.provider_metadata.public_id
-    : SITE_DEFAULT_IMAGE_FILE;
+  const openGraph = {
+    title: `Post${SEPARATOR}${article.title}`,
+    description: truncate(article.content, 3),
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`,
+    type: `article`,
+    article: {
+      authors: [article.user.username],
+      modifiedTime: article.updated_at,
+      publishedTime: article.created_at,
+    },
+  };
 
-  //const tags = article.tags.map((tag) => tag.title);
+  // see if there is an article, if so append it to the opengraph object
+  if (article.featured_image) {
+    openGraph.images = [
+      {
+        alt: article.title,
+        url: `${imageURL(
+          article.featured_image.provider_metadata.public_id
+        )}.jpg`,
+      },
+    ];
+  }
 
-  // state for the modal box to confirm deletion
-  const [isModalOpen, setModalOpen] = useState(false);
+  // append tags if there are any
+  if (article.tags) {
+    openGraph.article.tags = article.tags.map((tag) => tag.title);
+  }
 
   return (
     <Fragment>
@@ -57,29 +80,16 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`}
         title={`Post${SEPARATOR}${article.title}`}
         description={truncate(article.content, 3)}
-        openGraph={{
-          title: `Post${SEPARATOR}${article.title}`,
-          description: truncate(article.content, 3),
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`,
-          type: `article`,
-          article: {
-            authors: [article.user.username],
-            modifiedTime: article.updated_at,
-            publishedTime: article.created_at,
-            tags: undefined, //tags.length > 0 ? tags : undefined,
-          },
-          images: [
-            {
-              alt: article.title,
-              url: `${imageURL(image)}.jpg`,
-            },
-          ],
-        }}
+        openGraph={openGraph}
       />
       <BlogJsonLd
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/blog/post/${article.slug}`}
         title={article.title}
-        images={[`${imageURL(image)}.jpg`]}
+        images={[
+          `${imageURL(
+            article?.featured_image?.provider_metadata?.public_id
+          )}.jpg`,
+        ]}
         datePublished={article.created_at}
         dateModified={article.updated_at}
         authorName={article.user.username}
