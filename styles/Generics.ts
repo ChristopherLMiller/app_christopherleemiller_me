@@ -6,6 +6,16 @@ export const Center = styled.div`
   text-align: center;
 `;
 
+export const LeftAlign = styled.div`
+  text-align: left;
+`;
+
+export const UnorderedList = styled.ul`
+  padding-left: 0;
+  list-style-position: inside;
+  margin-top: 0;
+`;
+
 export const Main = styled.main`
   overflow-x: hidden;
   flex-grow: 2;
