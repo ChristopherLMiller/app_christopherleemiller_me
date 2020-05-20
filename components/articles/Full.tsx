@@ -55,19 +55,18 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
       modifiedTime: article.updated_at,
       publishedTime: article.created_at,
     },
-  };
-
-  // see if there is an article, if so append it to the opengraph object
-  if (article.featured_image) {
-    openGraph.images = [
+    images: [
       {
         alt: article.title,
         url: `${imageURL(
-          article.featured_image.provider_metadata.public_id
-        )}.jpg`,
+          article?.featured_image?.provider_metadata?.public_id,
+          { c: "scale", w: 1200 },
+          1250,
+          "png"
+        )}`,
       },
-    ];
-  }
+    ],
+  };
 
   // append tags if there are any
   if (article.tags) {
