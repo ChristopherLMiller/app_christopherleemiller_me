@@ -51,7 +51,6 @@ export function imageURL(
         .join(",")
     : "";
 
-  //return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${file}`;
   return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${
     options ? "/" : ""
   }${optionsString}/v${version || 1}/${file}${ext ? `.${ext}` : ""}`;
