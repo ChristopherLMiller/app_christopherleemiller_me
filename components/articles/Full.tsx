@@ -61,8 +61,8 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
         url: `${imageURL(
           article?.featured_image?.provider_metadata?.public_id,
           { c: "scale", w: 1200 },
-          1250,
-          "png"
+          1,
+          "jpg"
         )}`,
       },
     ],
