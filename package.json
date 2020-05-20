@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.39.32",
+  "version": "0.39.33",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
