@@ -33,10 +33,17 @@ export interface iImageOptions {
   transformation?: string;
 }
 
-export function imageURL(file?: string, options?: iImageOptions): string {
+export function imageURL(
+  file?: string,
+  options?: iImageOptions,
+  version?: number,
+  ext?: string
+): string {
   // check some conditions first like being null
   if (file == null || file === undefined || file == "default")
     file = SITE_DEFAULT_IMAGE_FILE;
+
+  // check version field, if its empty then use default of 1
 
   const optionsString = options
     ? Object.entries(options)
@@ -47,5 +54,5 @@ export function imageURL(file?: string, options?: iImageOptions): string {
   //return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload/${file}`;
   return `${CLOUDINARY_URL}/${CLOUDINARY_CLOUD}/image/upload${
     options ? "/" : ""
-  }${optionsString}/${file}`;
+  }${optionsString}/v${version || 1}/${file}${ext ? `.${ext}` : ""}`;
 }
