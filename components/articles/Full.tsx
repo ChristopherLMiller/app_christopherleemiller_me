@@ -70,6 +70,7 @@ const FullArticle: FunctionComponent<iArticleFull> = ({
 
   // append tags if there are any
   if (article.tags) {
+    // @ts-ignore
     openGraph.article.tags = article.tags.map((tag) => tag.title);
   }
 
