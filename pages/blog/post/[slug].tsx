@@ -1,13 +1,7 @@
 import ReactMarkdown from "react-markdown";
-//import { useQuery } from "react-apollo";
-import Link from "next/link";
-//import { useRouter } from "next/router";
-import Card from "components/Card";
 import { FullArticle } from "components/articles/Full";
-//import { ARTICLES_QUERY } from "utils/queries";
 import { Layout } from "components/layout/PageLayout";
 import { iArticle } from "utils/queries/articles";
-//import { Loader } from "components/elements/Loader";
 import { NextPage } from "next";
 
 const title = `From My Desk`;
