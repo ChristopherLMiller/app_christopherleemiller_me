@@ -1,18 +1,37 @@
-import Card from "components/Card";
 import { Layout } from "components/layout/PageLayout";
+import { NextSeo } from "next-seo";
+import { SEPARATOR, SITE_TITLE } from "config";
+import ReactMarkdown from "react-markdown";
+import { StyledContentBlock } from "components/elements/ContentBlock";
+import { StyledArticle } from "styles/Articles";
+
+const AboutMarkdown = require("data/about.md");
 
 const title = `About Me`;
 const description = `Where I came from and what I do now`;
 
 const AboutPage = () => (
   <Layout meta={{ title, description, useSEO: true, path: `/about` }}>
-    <Card heading="How I got my start">
-      <p>
-        Back in highschool I picked up a book on programming, took a class in
-        QBasic (yikes!) and decided this is what I wanted to do. I enjoyed every
-        second of it, but what exactly I wanted to do I didn't know.
-      </p>
-    </Card>
+    <NextSeo
+      title={`${SITE_TITLE}${SEPARATOR}${title}`}
+      description={description}
+      openGraph={{
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
+        description,
+        url: `${process.env.NEXT_PUBLIC_SITE_URL}/about`,
+        type: "article",
+        article: {
+          authors: ["Chris Miller"],
+          modifiedTime: "2020-05-20",
+          publishedTime: "2020-05-20",
+        },
+      }}
+    />
+    <StyledArticle>
+      <StyledContentBlock>
+        <ReactMarkdown>{AboutMarkdown.default}</ReactMarkdown>
+      </StyledContentBlock>
+    </StyledArticle>
   </Layout>
 );
 

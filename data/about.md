@@ -1,0 +1,30 @@
+### Who Am I...
+
+![https://christopherleemiller.me](https://res.cloudinary.com/christopherleemiller/image/upload/v1589974829/clm_me/assets/IMG_5794.jpg)
+My name is Chris Miller. I'm a freelance developer from Goshen, Indiana USA. I'm 31 years old and I've been programming and developing for about 15 years now, professionally more like 5.
+
+I mainly deal with front-end technologies these days such as HTML, CSS, and Javascript. But I have experience with many other languages, just a bit rusty at them now.
+
+### More On Me...
+
+**My story isn't much different** than most people who get into software development. Computers weren't really a household staple when I was growing up but we had one family one that we had to share, with dial-up none-the-less and I became curious how the software was made.
+
+**I took a programming course in high school**, knowing nothing about it in QBasic. I didn't learn much and didn't undertand a thing, but I kept pursuing it into VB.net, and eventually C/C++, making projects and experimenting with them as I went.
+
+**I remember taking an independent study class** continuing my C++ exploration while the teacher taught a graphic arts class, where they **dabbled in HTML, not HTML5**, good 'ole IE10 or so era and remember really liking it and how visual it was. I remember then learning **PHP** and databases to further my education of it, building sites and a visual brand of sorts as I went.
+
+**A brief hiatus and a military career** caused me to lose the time and effor to develop anything, I was bored of it to say the least. When I was looking to get out of the military **I landed a job with a company working remotely** based in Seattle building [WordPress](https://wordpress.com) sites for companies in the greater Washington area. Business eventually downturned and I was let go...
+
+**Then I discovered React** and knew where my calling was. I became so engrossed and curious that I kept going, learning more, and building this iteration of my site in the process. I used many "company" names over the years playing, finally settling on a true identify, my own.
+
+**Now, I'm just a freelancer waiting** for the perfect job opportunity to come up. I code when I can in the free time to keep me fresh, but I'm always looking for a career change again into the front-end development world.
+
+### Getting A Litle Personal...
+
+**I live in a quaint little village** in northern Indiana, a place that is quiet, relaxing, peaceful one might say. I have a beautiful woman in my life Kyrie thats been by my side for two years now and counting. Our adventures in life take us many places.
+
+**I've got a few hobbies.** I love featuring them on here if you haven't discovered them already, [Model Building](https://christopherleemiller.me/models) is a major part of it, something relaxing about sitting down and constructing something, but also learning the history of it as well, and photography.
+
+**I am by no means a professional photographer** but I certainly try and enjoy it when I can. Nature is more my calling when it comes to that but I'm not a stranger to snapping pics of family when given the chance.
+
+![Photography Example](https://res.cloudinary.com/christopherleemiller/image/upload/v1589975872/clm_me/uploads/IMG_0192_Large.jpg)

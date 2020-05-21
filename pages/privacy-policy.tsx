@@ -20,10 +20,10 @@ const PrivacyPolicyPage = () => (
     }}
   >
     <NextSeo
-      title={`${SITE_TITLE}${SEPARATOR}Privacy Policy`}
+      title={`${SITE_TITLE}${SEPARATOR}${title}`}
       description="This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website."
       openGraph={{
-        title: `${SITE_TITLE}${SEPARATOR}Privacy Policy`,
+        title: `${SITE_TITLE}${SEPARATOR}${title}`,
         description: `This privacy notice discloses the privacy practices for ChristopherLeeMiller.me. This privacy notice applies solely to information collected by this website.`,
         url: `${process.env.NEXT_PUBLIC_SITE_URL}/privacy-policy`,
         type: `article`,
