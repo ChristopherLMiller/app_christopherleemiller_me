@@ -21,10 +21,6 @@ const StyledModelPage = styled.div`
 `;
 
 const Model: FunctionComponent<ModelTypes> = ({ model }) => {
-  const image = model.featured_image.provider_metadata
-    ? model.featured_image.provider_metadata.public_id
-    : SITE_DEFAULT_IMAGE_FILE;
-
   const tags = model.tags.map((tag) => tag.slug);
 
   return (
@@ -44,8 +40,13 @@ const Model: FunctionComponent<ModelTypes> = ({ model }) => {
           },
           images: [
             {
-              alt: model.title,
-              url: `${imageURL(image)}.jpg`,
+              alt: model?.featured_image?.caption || model.title,
+              url: `${imageURL(
+                model?.featured_image?.provider_metadata?.public_id,
+                { c: "scale", w: 1200 },
+                1,
+                "jpg"
+              )}`,
             },
           ],
         }}
