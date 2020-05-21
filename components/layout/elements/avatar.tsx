@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import md5 from "md5";
 
 const ProfilePicture = styled.img`
   border-radius: 50px;
@@ -6,7 +7,7 @@ const ProfilePicture = styled.img`
 `;
 
 const Avatar = () => {
-  const avatarURL = `https://unavatar.now.sh/guest`;
+  const avatarURL = `https://www.gravatar.com/avatar/${md5("guest")}`;
 
   return <ProfilePicture src={avatarURL} loading="lazy" alt="Avatar Pic" />;
 };
