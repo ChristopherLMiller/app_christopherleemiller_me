@@ -1,77 +1,37 @@
-import Link from "next/link";
-import { FunctionComponent } from "react";
-import { useQuery } from "react-apollo";
-import { useRouter } from "next/router";
-import { MODELS_QUERY } from "utils/queries";
-import Card from "components/Card";
-import { Model } from "components/models/Model";
-import { iModelData } from "utils/queries/models";
+import { ModelTypes } from "utils/queries/models";
 import { Layout } from "components/layout/PageLayout";
+import { NextPage } from "next";
+import { Model } from "components/models/Model";
 
 const title = `Models`;
 const description = `Whether it plane, car or tank, its all here!`;
 
-const ModelPage: FunctionComponent = () => {
-  const router = useRouter();
-  const { loading, error, data } = useQuery<iModelData>(MODELS_QUERY, {
-    variables: {
-      where: {
-        slug_contains: router.query.slug,
-      },
-    },
-  });
+interface iModelPage {
+  model: ModelTypes["model"];
+}
 
-  if (loading) {
-    return (
-      <Layout meta={{ title, description, useSEO: false }}>
-        <p>Loading...</p>
-      </Layout>
-    );
-  }
-
-  if (error) {
-    console.error(`Fetch Error: ${error.message}`);
-
-    return (
-      <Layout meta={{ title, description, useSEO: false }}>
-        <Card heading="Unable to load data">
-          <h2>{error.message}</h2>
-          <p>
-            Sorry. Something happened and we can't seem to load data right now.
-            Possibly you're offline and if not please let us know.
-          </p>
-        </Card>
-      </Layout>
-    );
-  }
-
-  if (data !== undefined) {
-    if (data.models.length >= 1) {
-      return (
-        <Layout meta={{ title, description, useSEO: false }}>
-          {data.models.map((model) => (
-            <Model model={model} key={model.id} />
-          ))}
-        </Layout>
-      );
-    }
-  }
-
+const ModelPage: NextPage<iModelPage> = ({ model }) => {
   return (
     <Layout meta={{ title, description, useSEO: false }}>
-      <Card heading="404 Model Not Found.">
-        <p>
-          Sorry. We seem to have lost this model somewhere in the interwebs. I
-          don't know what happened to it! Some gremlin somewhere must have
-          snatched it on me, that or I just never built this model to begin
-          with. Hmmmmm.
-        </p>
-        <hr />
-        <Link href="/models">
-          <a>View All Models</a>
-        </Link>
-      </Card>
+      <Model model={model} />
     </Layout>
   );
 };
+
+ModelPage.getInitialProps = async (ctx) => {
+  const { slug } = ctx.query;
+  const response = await fetch(
+    `https://strapi.christopherleemiller.me/models?slug=${slug}`
+  );
+  const data = await response.json();
+
+  if (data.length < 1 || data == undefined) {
+    ctx?.res?.writeHead(301, { Location: "/404" });
+    ctx?.res?.end();
+    return { model: {} };
+  } else {
+    return { model: data[0] };
+  }
+};
+
 export default ModelPage;
