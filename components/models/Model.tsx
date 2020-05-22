@@ -2,7 +2,7 @@ import { FunctionComponent, Fragment } from "react";
 import styled from "styled-components";
 import { NextSeo, ArticleJsonLd } from "next-seo";
 import { Props } from "styles/Themes";
-import { SITE_DEFAULT_IMAGE_FILE, SEPARATOR } from "config";
+import { SEPARATOR } from "config";
 import { imageURL } from "utils/functions";
 
 import { Body } from "components/models/elements/Body";
@@ -54,12 +54,24 @@ const Model: FunctionComponent<ModelTypes> = ({ model }) => {
       <ArticleJsonLd
         url={`${process.env.NEXT_PUBLIC_SITE_URL}/model/${model.slug}`}
         title={model.title}
-        images={[`${imageURL(image)}.jpg`]}
+        images={[
+          `${imageURL(
+            model?.featured_image?.provider_metadata?.public_id,
+            { c: "scale", w: 1200 },
+            1,
+            "jpg"
+          )}`,
+        ]}
         datePublished={model.created_at}
         dateModified={model.updated_at}
         authorName="Chris Miller"
         description={model.seo_description}
-        publisherLogo={`${imageURL(image)}.jpg`}
+        publisherLogo={`${imageURL(
+          model?.featured_image?.provider_metadata?.public_id,
+          { c: "scale", w: 1200 },
+          1,
+          "jpg"
+        )}`}
         publisherName="Chris Miller"
       />
       <StyledModelPage>
