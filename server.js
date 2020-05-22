@@ -64,12 +64,7 @@ app
           res.send(xml);
           console.error(e);
         });
-
-        // Robots
-        server.get(`/robots.txt`, (res) => {
-          res.sendFile(join(__dirname, `../static`, `robots.txt`));
-        });
-    */
+        */
 
     // All others
     server.get(`*`, (req, res) => {
