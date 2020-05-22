@@ -19,7 +19,7 @@ const StyledPage = styled.div`
     z-index: -1;
 
     display: block;
-    background-image: url('${imageURL("clm_me/assets/background.jpg")}');
+    background-image: url('${imageURL("clm_me/assets/background")}');
     background-size: cover;
     width: 100%;
     height: 100%;

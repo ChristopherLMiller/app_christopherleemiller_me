@@ -8,12 +8,6 @@ const Meta = () => (
 
     <link rel="manifest" href="/manifest.json" />
     <link rel="shortcut icon" href="/logo.png" />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://fonts.googleapis.com/css?family=Oswald|Permanent+Marker|Roboto:100,200,300,400&display=swap"
-    />
     <link rel="stylesheet" type="text/css" href="/nprogress.css" />
   </Head>
 );
