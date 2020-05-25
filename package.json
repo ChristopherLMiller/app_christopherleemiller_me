@@ -23,7 +23,7 @@
     "@next/bundle-analyzer": "^9.3.5",
     "@sentry/browser": "^5.15.5",
     "apollo-cache-inmemory": "^1.6.5",
-    "apollo-client": "^2.6.9",
+    "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
     "body-parser": "^1.19.0",
     "cloudinary-react": "^1.5.0",
