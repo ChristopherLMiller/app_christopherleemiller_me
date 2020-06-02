@@ -59,16 +59,26 @@ const StyledContentBlock = styled.div`
   h6 {
     margin: 10px 0;
     font-weight: bolder;
-    text-align: center;
     color: var(--background-intermediate);
-    border-bottom: 2px solid var(--main-color-transparent);
-    border-top: 2px solid var(--main-color-transparent);
     margin-top: 4rem;
     transform: skewX(10deg);
+    position: relative;
   }
   h2 {
     font-size: 3.5rem;
     line-height: 6rem;
+
+    :after {
+      content: "\\A";
+      width: 300px;
+      height: 5px;
+      background: var(--main-color);
+      position: absolute;
+      left: 0;
+      bottom: 5px;
+      z-index: -1;
+      transform: skewX(-25deg);
+    }
   }
   h3 {
     font-size: 3rem;
