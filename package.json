@@ -22,12 +22,8 @@
     "@fortawesome/react-fontawesome": "^0.1.9",
     "@mdx-js/loader": "^1.6.4",
     "@next/bundle-analyzer": "^9.3.5",
-<<<<<<< HEAD
     "@next/mdx": "^9.4.2",
-    "@sentry/browser": "^5.10.2",
-=======
     "@sentry/browser": "^5.15.5",
->>>>>>> 1544d1552f5282545d4acfe41770aa93cceb122a
     "apollo-cache-inmemory": "^1.6.5",
     "apollo-client": "^2.6.10",
     "apollo-link-http": "^1.5.17",
