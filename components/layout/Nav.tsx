@@ -39,13 +39,9 @@ const Nav = () => {
         href="/projects"
         title="Projects"
       />
+      <NavItem isActivePaths={["/models"]} href="/models" title="Models" />
       <NavItem
-        isActivePaths={["/models", "/model"]}
-        href="/models"
-        title="Models"
-      />
-      <NavItem
-        isActivePaths={["/galleries", "/gallery"]}
+        isActivePaths={["/galleries"]}
         href="/galleries"
         title="Galleries"
       />
