@@ -20,14 +20,14 @@ const InfoPanel = styled.div`
 const ModelListing: FunctionComponent<ModelTypes> = ({ model }) => (
   <StyledModelListing>
     <ListingTitle
-      as={`/model/${model.slug}`}
-      href={`/model?slug=${model.slug}`}
+      as={`/models/model/${model.slug}`}
+      href={`/models/model?slug=${model.slug}`}
     >
       {model.title} {model.status === "DRAFT" && `*${model.status}*`}
     </ListingTitle>
     <Polaroid
       image={model.featured_image}
-      link={{ as: `/model/${model.slug}`, href: `/model/[slug]` }}
+      link={{ as: `/models/model/${model.slug}`, href: `/models/model/[slug]` }}
     >
       <InfoPanel>
         <span>Brand: {model?.manufacturer?.company}</span>
