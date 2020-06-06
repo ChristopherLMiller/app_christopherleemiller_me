@@ -187,8 +187,6 @@ const GalleriesPage = () => {
                         <span>{category.name} </span>
                       ))}
                     </p>
-                    <hr />
-                    <p>{gallery.description}</p>
                   </GalleryImageAdditionalInfo>
                 </GalleryInfoOverlay>
               </GalleryImageContainer>
