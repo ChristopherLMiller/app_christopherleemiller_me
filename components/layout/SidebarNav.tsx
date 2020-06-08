@@ -4,7 +4,6 @@ import Nav from "components/layout/Nav";
 import Title from "components/layout/elements/Title";
 import { Props } from "styles/Themes";
 import { motion } from "framer-motion";
-import { AccountInfo } from "components/layout/elements/AccountInfo";
 
 const variants = {
   enter: {
@@ -71,7 +70,7 @@ const SiteHeader = styled.div`
   }
 `;
 
-const Sidebar = () => {
+const SidebarNav = () => {
   return (
     <StyledSidebar variants={variants}>
       <StyledSidebarInner>
@@ -81,11 +80,10 @@ const Sidebar = () => {
         </SiteHeader>
 
         <NavHr />
-        <AccountInfo />
         <NavHr />
         <Nav />
       </StyledSidebarInner>
     </StyledSidebar>
   );
 };
-export default Sidebar;
+export default SidebarNav;

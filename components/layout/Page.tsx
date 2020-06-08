@@ -1,7 +1,7 @@
 import { FunctionComponent, Fragment } from "react";
 import styled from "styled-components";
 import Meta from "components/layout/Meta";
-import Sidebar from "components/layout/Sidebar";
+import SidebarNav from "components/layout/SidebarNav";
 import MobileNav from "components/layout/MobileNav";
 import { Props } from "styles/Themes";
 import { imageURL } from "utils/functions";
@@ -61,7 +61,7 @@ const Page: FunctionComponent<PageProps> = ({ children }) => (
   <Fragment>
     <StyledPage>
       <Meta />
-      <Sidebar />
+      <SidebarNav />
       <Inner>{children}</Inner>
     </StyledPage>
     <MobileNav />
