@@ -80,7 +80,6 @@ const SidebarNav = () => {
         </SiteHeader>
 
         <NavHr />
-        <NavHr />
         <Nav />
       </StyledSidebarInner>
     </StyledSidebar>

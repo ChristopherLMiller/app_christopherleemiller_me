@@ -4,7 +4,6 @@ import Router from "next/router";
 import styled from "styled-components";
 import Nav from "components/layout/Nav";
 import { Props } from "styles/Themes";
-import { AccountInfo } from "components/layout/elements/AccountInfo";
 import { motion } from "framer-motion";
 
 const StyledMobileNav = styled.div`
@@ -153,8 +152,6 @@ const MobileNav = () => {
         animate={isOpen ? "open" : "closed"}
         variants={navVariants}
       >
-        <AccountInfo />
-        <NavHr />
         <Nav />
       </StyledNavigationWrapper>
     </StyledMobileNav>
