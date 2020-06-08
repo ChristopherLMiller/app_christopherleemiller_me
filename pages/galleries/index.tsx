@@ -9,6 +9,7 @@ import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 import { format } from "date-fns";
 import { iGalleryData } from "utils/queries/galleries";
+import Link from "next/link";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -145,51 +146,61 @@ const GalleriesPage = () => {
         >
           {isDefined(data) &&
             data?.galleries.map((gallery) => (
-              <GalleryImageContainer
-                key={gallery.slug}
-                initial="rest"
-                animate="rest"
-                whileHover="hover"
-                whileTap="hover"
+              <Link
+                as={`/galleries/gallery/${gallery.slug}`}
+                href={"/galleries/gallery/[slug]"}
               >
-                <GalleryImage
-                  src={`${imageURL(
-                    gallery.featured_image.provider_metadata.public_id
-                  )}.jpg`}
-                />
-                <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>
-                  <GalleryImageCaption variants={GalleryImageCaptionVariants}>
-                    {gallery.title}
-                  </GalleryImageCaption>
-                  <GalleryImageAdditionalInfo variants={AdditionalInfoVariants}>
-                    <hr />
-                    <p>
-                      Authored on{" "}
-                      {format(
-                        new Date(gallery.created_at),
-                        "do 'of' MMMM yyyy"
-                      )}
-                    </p>
-                    <p>
-                      Updated Last{" "}
-                      {format(new Date(gallery.updated_at), "do 'of' MMM yyyy")}
-                    </p>
-                    <hr />
-                    <p>
-                      <strong>Tags: </strong>
-                      {gallery?.gallery_tags?.map((tag: any) => (
-                        <span>{tag.name} </span>
-                      ))}
-                    </p>
-                    <p>
-                      <strong>Categories: </strong>
-                      {gallery?.gallery_categories?.map((category: any) => (
-                        <span>{category.name} </span>
-                      ))}
-                    </p>
-                  </GalleryImageAdditionalInfo>
-                </GalleryInfoOverlay>
-              </GalleryImageContainer>
+                <GalleryImageContainer
+                  key={gallery.slug}
+                  initial="rest"
+                  animate="rest"
+                  whileHover="hover"
+                  whileTap="hover"
+                >
+                  <GalleryImage
+                    src={`${imageURL(
+                      gallery.featured_image.provider_metadata.public_id
+                    )}.jpg`}
+                  />
+                  <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>
+                    <GalleryImageCaption variants={GalleryImageCaptionVariants}>
+                      {gallery.title}
+                    </GalleryImageCaption>
+                    <GalleryImageAdditionalInfo
+                      variants={AdditionalInfoVariants}
+                    >
+                      <hr />
+                      <p>
+                        Authored on{" "}
+                        {format(
+                          new Date(gallery.created_at),
+                          "do 'of' MMMM yyyy"
+                        )}
+                      </p>
+                      <p>
+                        Updated Last{" "}
+                        {format(
+                          new Date(gallery.updated_at),
+                          "do 'of' MMM yyyy"
+                        )}
+                      </p>
+                      <hr />
+                      <p>
+                        <strong>Tags: </strong>
+                        {gallery?.gallery_tags?.map((tag: any) => (
+                          <span>{tag.name} </span>
+                        ))}
+                      </p>
+                      <p>
+                        <strong>Categories: </strong>
+                        {gallery?.gallery_categories?.map((category: any) => (
+                          <span>{category.name} </span>
+                        ))}
+                      </p>
+                    </GalleryImageAdditionalInfo>
+                  </GalleryInfoOverlay>
+                </GalleryImageContainer>
+              </Link>
             ))}
         </Masonry>
       </GalleryList>

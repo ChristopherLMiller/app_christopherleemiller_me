@@ -18,7 +18,7 @@ export interface iGalleryFields {
   description: string;
   gallery_categories: Array<iGalleryCategories>;
   gallery_tags: Array<iGalleryTags>;
-  images: Array<iUploadFile>;
+  Images: Array<iUploadFile>;
 }
 
 export interface iGallery {
