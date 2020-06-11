@@ -33,39 +33,41 @@ export interface iArticleData {
   [key: string]: Array<iArticle["article"]>;
 }
 
-export const ARTICLES_QUERY = gql`
-  query ARTICLES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
-    articles(
-      limit: $limit
-      start: $start
-      sort: "created_at:DESC"
-      where: $where
-    ) {
+export const ARTICLE_QUERY_STRING = `query ARTICLES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
+  articles(
+    limit: $limit
+    start: $start
+    sort: "created_at:DESC"
+    where: $where
+  ) {
+    id
+    created_at
+    updated_at
+    title
+    content
+    featured_image {
+      provider_metadata
+    }
+    user {
+      username
       id
-      created_at
-      updated_at
-      title
-      content
-      featured_image {
-        provider_metadata
-      }
-      user {
-        username
-        id
-      }
-      visibility
-      status
+    }
+    visibility
+    status
+    slug
+    categories {
+      id
       slug
-      categories {
-        id
-        slug
-        title
-      }
-      tags {
-        id
-        slug
-        title
-      }
+      title
+    }
+    tags {
+      id
+      slug
+      title
     }
   }
+}`;
+
+export const ARTICLES_QUERY = gql`
+  ${ARTICLE_QUERY_STRING}
 `;
