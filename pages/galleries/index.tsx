@@ -7,7 +7,6 @@ import { isDefined, imageURL } from "utils/functions";
 import styled from "styled-components";
 import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
-import { format } from "date-fns";
 import { iGalleryData } from "utils/queries/galleries";
 import Link from "next/link";
 
@@ -22,11 +21,11 @@ const GalleryList = styled.div`
   }
 
   .masonry-grid-column {
-    padding-left: 20px;
+    padding-left: 30px;
     background-clip: padding-box;
 
     > div {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
   }
 `;
@@ -61,7 +60,6 @@ const GalleryInfoOverlayVariants = {
     },
   },
   hover: {
-    height: "100%",
     background: "var(--main-color)",
     opacity: 0.8,
     transition: {
@@ -82,22 +80,7 @@ const GalleryImageCaption = styled(motion.h5)`
 const GalleryImageCaptionVariants = {
   rest: {},
   hover: {
-    marginBottom: 20,
-  },
-};
-
-const GalleryImageAdditionalInfo = styled(motion.div)`
-  p {
-    margin: 0;
-  }
-`;
-
-const AdditionalInfoVariants = {
-  rest: {
-    display: "none",
-  },
-  hover: {
-    display: "initial",
+    marginBottom: 10,
   },
 };
 
@@ -166,38 +149,6 @@ const GalleriesPage = () => {
                     <GalleryImageCaption variants={GalleryImageCaptionVariants}>
                       {gallery.title}
                     </GalleryImageCaption>
-                    <GalleryImageAdditionalInfo
-                      variants={AdditionalInfoVariants}
-                    >
-                      <hr />
-                      <p>
-                        Authored on{" "}
-                        {format(
-                          new Date(gallery.created_at),
-                          "do 'of' MMMM yyyy"
-                        )}
-                      </p>
-                      <p>
-                        Updated Last{" "}
-                        {format(
-                          new Date(gallery.updated_at),
-                          "do 'of' MMM yyyy"
-                        )}
-                      </p>
-                      <hr />
-                      <p>
-                        <strong>Tags: </strong>
-                        {gallery?.gallery_tags?.map((tag: any) => (
-                          <span>{tag.name} </span>
-                        ))}
-                      </p>
-                      <p>
-                        <strong>Categories: </strong>
-                        {gallery?.gallery_categories?.map((category: any) => (
-                          <span>{category.name} </span>
-                        ))}
-                      </p>
-                    </GalleryImageAdditionalInfo>
                   </GalleryInfoOverlay>
                 </GalleryImageContainer>
               </Link>

@@ -128,6 +128,7 @@ PostPage.getInitialProps = async (ctx) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: "Bearer JWT",
     },
     body: JSON.stringify({
       query: ARTICLE_QUERY_STRING,

@@ -2,6 +2,7 @@ import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Props } from "styles/Themes";
 
 /*
 TODO: make this work with motion
@@ -23,17 +24,19 @@ interface iStyledNavItem {
 }
 
 const StyledNavItem = styled.li<iStyledNavItem>`
-  display: ${(props: any) => props.display || "none"};
+  display: flex;
   position: relative;
   font-family: var(--font-monospace);
   font-size: 2rem;
   list-style-type: none;
   line-height: 2em;
-  background: ${(props: any) =>
+  padding: 5px;
+  background: ${(props) =>
     props.isActive ? "rgba(101, 26, 26, 0.8)" : "none"};
 
   a {
     display: block;
+    min-width: 200px;
   }
 
   :after {
@@ -53,7 +56,7 @@ const StyledNavItem = styled.li<iStyledNavItem>`
     left: 0%;
   }
 
-  @media (min-width: ${(props: any) => props.theme.sizes.small}) {
+  @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     font-size: 2rem;
   }
   @media (min-height: 800px) {
@@ -65,12 +68,15 @@ interface iNavItem {
   isActivePaths?: string[];
   href: string;
   title: string;
+  isExpanded?: boolean;
 }
 
 const NavItem: FunctionComponent<iNavItem> = ({
   isActivePaths,
   href,
   title,
+  isExpanded,
+  children,
 }) => {
   const router = useRouter();
 
@@ -83,12 +89,13 @@ const NavItem: FunctionComponent<iNavItem> = ({
       aria-hidden={false}
       isActive={isActivePaths ? isActivePaths.includes(router.pathname) : false}
     >
-      {isHrefLocal && (
+      {children}
+      {isExpanded && isHrefLocal && (
         <Link href={href}>
           <a>{title}</a>
         </Link>
       )}
-      {!isHrefLocal && <a href={href}>{title}</a>}
+      {isExpanded && !isHrefLocal && <a href={href}>{title}</a>}
     </StyledNavItem>
   );
 };

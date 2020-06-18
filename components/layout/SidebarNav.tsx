@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import Logo from "components/layout/elements/Logo";
 import Nav from "components/layout/Nav";
-import Title from "components/layout/elements/Title";
 import { Props } from "styles/Themes";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const variants = {
   enter: {
@@ -38,7 +37,6 @@ const StyledSidebar = styled(motion.aside)`
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
-    padding: 20px;
     display: initial;
   }
   @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
@@ -59,28 +57,21 @@ const StyledSidebarInner = styled.div`
   flex-direction: column;
 `;
 
-const SiteHeader = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-gap: 10px;
-  align-items: center;
-
-  @media screen and (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    grid-template-columns: 20% 1fr;
-  }
-`;
-
 const SidebarNav = () => {
+  const [isExpanded, setExpanded] = useState(false);
   return (
-    <StyledSidebar variants={variants}>
+    <StyledSidebar
+      variants={variants}
+      isExpanded={isExpanded}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseExit={() => setExpanded(false)}
+      onHoverStart={() => setExpanded(true)}
+      onHoverEnd={() => setExpanded(false)}
+    >
       <StyledSidebarInner>
-        <SiteHeader>
-          <Logo />
-          <Title />
-        </SiteHeader>
-
+        <img src="" />
         <NavHr />
-        <Nav />
+        <Nav isExpanded={isExpanded} />
       </StyledSidebarInner>
     </StyledSidebar>
   );
