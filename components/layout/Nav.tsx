@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { NavItem } from "components/layout/elements/NavItem";
 import { motion } from "framer-motion";
-import { FunctionComponent } from "react";
 import IosHomeOutline from "react-ionicons/lib/IosHomeOutline";
 import IosMailOutline from "react-ionicons/lib/IosMailOutline";
 import IosQuoteOutline from "react-ionicons/lib/IosQuoteOutline";
@@ -11,7 +10,7 @@ import IosGitBranch from "react-ionicons/lib/IosGitBranch";
 import IosPhotosOutline from "react-ionicons/lib/IosPhotosOutline";
 import IosCodeWorking from "react-ionicons/lib/IosCodeWorking";
 import IosCogOutline from "react-ionicons/lib/IosCogOutline";
-import IosConstructOutline from "react-ionicons/lib/IosConstructOutline";
+
 /*
 TODO: do this but with motion
 const PosedNav = posed.ul({
@@ -28,74 +27,31 @@ const NavStyles = styled(motion.ul)`
   margin: 0;
 `;
 
-interface iNav {
-  isExpanded: boolean;
-}
-
-const Nav: FunctionComponent<iNav> = ({ isExpanded }) => {
+const Nav = () => {
   return (
     <NavStyles initial="exit" animate="enter">
-      <NavItem
-        title="Home"
-        isActivePaths={["/"]}
-        href="/"
-        isExpanded={isExpanded}
-      >
+      <NavItem title="Home" isActivePaths={["/"]} href="/">
         <IosHomeOutline color="#FFF" fontSize="50px" />
       </NavItem>
-      <NavItem
-        isActivePaths={["/blog", "/post"]}
-        href="/blog"
-        title="My Blog"
-        isExpanded={isExpanded}
-      >
+      <NavItem isActivePaths={["/blog", "/post"]} href="/blog" title="My Blog">
         <IosQuoteOutline color="#FFF" fontSize="50px" />
       </NavItem>
-      <NavItem
-        isActivePaths={["/about"]}
-        href="/about"
-        isExpanded={isExpanded}
-        title="About Me"
-      >
+      <NavItem isActivePaths={["/about"]} href="/about" title="About Me">
         <IosPersonOutline color="#FFF" fontSize="50px" />
       </NavItem>
-      <NavItem
-        isActivePaths={["/uses"]}
-        href="/uses"
-        title="Uses"
-        isExpanded={isExpanded}
-      >
+      <NavItem isActivePaths={["/uses"]} href="/uses" title="Uses">
         <IosGitBranch color="#FFF" fontSize="50px" />
       </NavItem>
-      <NavItem
-        isActivePaths={["/services"]}
-        href="/services"
-        title="Services"
-        isExpanded={isExpanded}
-      >
-        <IosConstructOutline color="#FFF" fontSize="50px" />
-      </NavItem>
-      <NavItem
-        isActivePaths={["/projects"]}
-        href="/projects"
-        title="Projects"
-        isExpanded={isExpanded}
-      >
+      <NavItem isActivePaths={["/projects"]} href="/projects" title="Projects">
         <IosCodeWorking color="#FFF" fontSize="50px" />
       </NavItem>
-      <NavItem
-        isActivePaths={["/models"]}
-        href="/models"
-        title="Models"
-        isExpanded={isExpanded}
-      >
+      <NavItem isActivePaths={["/models"]} href="/models" title="Models">
         <IosPaperPlaneOutline color="#FFF" fontSize="50px" />
       </NavItem>
       <NavItem
         isActivePaths={["/galleries"]}
         href="/galleries"
         title="Galleries"
-        isExpanded={isExpanded}
       >
         <IosPhotosOutline color="#FFF" fontSize="50px" />
       </NavItem>
@@ -103,14 +59,12 @@ const Nav: FunctionComponent<iNav> = ({ isExpanded }) => {
         isActivePaths={["/contact-me"]}
         href="/contact-me"
         title="Contact Me"
-        isExpanded={isExpanded}
       >
         <IosMailOutline color="#FFF" fontSize="50px" />
       </NavItem>
       <NavItem
         href="https://strapi.christopherleemiller.me/admin"
         title="Strapi Backend"
-        isExpanded={isExpanded}
       >
         <IosCogOutline color="#FFF" fontSize="50px" />
       </NavItem>
