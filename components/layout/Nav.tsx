@@ -1,14 +1,23 @@
 import styled from "styled-components";
 import { NavItem } from "components/layout/elements/NavItem";
 import { motion } from "framer-motion";
+//@ts-ignore
 import IosHomeOutline from "react-ionicons/lib/IosHomeOutline";
+//@ts-ignore
 import IosMailOutline from "react-ionicons/lib/IosMailOutline";
+//@ts-ignore
 import IosQuoteOutline from "react-ionicons/lib/IosQuoteOutline";
+//@ts-ignore
 import IosPaperPlaneOutline from "react-ionicons/lib/IosPaperPlaneOutline";
+//@ts-ignore
 import IosPersonOutline from "react-ionicons/lib/IosPersonOutline";
+//@ts-ignore
 import IosGitBranch from "react-ionicons/lib/IosGitBranch";
+//@ts-ignore
 import IosPhotosOutline from "react-ionicons/lib/IosPhotosOutline";
+//@ts-ignore
 import IosCodeWorking from "react-ionicons/lib/IosCodeWorking";
+//@ts-ignore
 import IosCogOutline from "react-ionicons/lib/IosCogOutline";
 
 /*

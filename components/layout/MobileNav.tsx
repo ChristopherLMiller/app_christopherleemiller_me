@@ -104,11 +104,6 @@ const StyledNavigationWrapper = styled(motion.div)`
   overflow-x: hidden;
 `;
 
-const NavHr = styled.hr`
-  width: 100%;
-  margin: 10px 0;
-`;
-
 const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
   const [menuText, setText] = useState(`Menu`);
