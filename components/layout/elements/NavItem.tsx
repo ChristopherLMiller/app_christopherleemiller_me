@@ -31,14 +31,10 @@ const StyledNavItem = styled(motion.li)<iStyledNavItem>`
   font-size: 2rem;
   list-style-type: none;
   line-height: 2em;
+  z-index: 10;
   padding: 5px;
   background: ${(props) =>
     props.isActive ? "rgba(101, 26, 26, 0.8)" : "none"};
-
-  a {
-    display: block;
-    min-width: 200px;
-  }
 
   :after {
     content: "\\A";
@@ -47,7 +43,6 @@ const StyledNavItem = styled(motion.li)<iStyledNavItem>`
     height: 100%;
     left: -100%;
     top: 0;
-    z-index: -1;
     background: rgba(101, 26, 26, 0.7);
     opacity: 0;
     transition: all 0.25s;
@@ -63,6 +58,14 @@ const StyledNavItem = styled(motion.li)<iStyledNavItem>`
   @media (min-height: 800px) {
     line-height: 2.5em;
   }
+`;
+
+const LinkTag = styled.a`
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  z-index: 8;
+  cursor: pointer;
 `;
 
 interface iNavItemLink {
@@ -81,6 +84,7 @@ const NavItemLink = styled.div<iNavItemLink>`
   align-items: center;
   padding: 0 10px;
   box-shadow: var(--box-shadow);
+  min-width: 200px;
 `;
 
 interface iNavItem {
@@ -109,7 +113,12 @@ const NavItem: FunctionComponent<iNavItem> = ({
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
     >
-      {children}
+      {isHrefLocal && (
+        <Link href={href}>
+          <LinkTag>{children}</LinkTag>
+        </Link>
+      )}
+      {!isHrefLocal && <LinkTag href={href}>{children}</LinkTag>}
       <NavItemLink isHovered={isHovered}>
         {isHrefLocal && (
           <Link href={href}>
