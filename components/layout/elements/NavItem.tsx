@@ -1,8 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useState } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Props } from "styles/Themes";
+import { motion } from "framer-motion";
 
 /*
 TODO: make this work with motion
@@ -23,7 +24,7 @@ interface iStyledNavItem {
   isActive: boolean;
 }
 
-const StyledNavItem = styled.li<iStyledNavItem>`
+const StyledNavItem = styled(motion.li)<iStyledNavItem>`
   display: flex;
   position: relative;
   font-family: var(--font-monospace);
@@ -64,21 +65,38 @@ const StyledNavItem = styled.li<iStyledNavItem>`
   }
 `;
 
+interface iNavItemLink {
+  isHovered: Boolean;
+}
+
+const NavItemLink = styled.div<iNavItemLink>`
+  position: absolute;
+  left: ${(props) => (props.isHovered ? "100%" : "-500%")};
+  opacity: ${(props) => (props.isHovered ? "1" : "0")};
+  top: 0;
+  background: var(--main-color);
+  height: 100%;
+  transition: all 0.25s;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  box-shadow: var(--box-shadow);
+`;
+
 interface iNavItem {
   isActivePaths?: string[];
   href: string;
   title: string;
-  isExpanded?: boolean;
 }
 
 const NavItem: FunctionComponent<iNavItem> = ({
   isActivePaths,
   href,
   title,
-  isExpanded,
   children,
 }) => {
   const router = useRouter();
+  const [isHovered, setHovered] = useState(false);
 
   // check if the href is full or not, this matters for linking
   const isHrefLocal = href.includes("http") ? false : true;
@@ -88,14 +106,18 @@ const NavItem: FunctionComponent<iNavItem> = ({
       display={"block"}
       aria-hidden={false}
       isActive={isActivePaths ? isActivePaths.includes(router.pathname) : false}
+      onHoverStart={() => setHovered(true)}
+      onHoverEnd={() => setHovered(false)}
     >
       {children}
-      {isExpanded && isHrefLocal && (
-        <Link href={href}>
-          <a>{title}</a>
-        </Link>
-      )}
-      {isExpanded && !isHrefLocal && <a href={href}>{title}</a>}
+      <NavItemLink isHovered={isHovered}>
+        {isHrefLocal && (
+          <Link href={href}>
+            <a>{title}</a>
+          </Link>
+        )}
+        {!isHrefLocal && <a href={href}>{title}</a>}
+      </NavItemLink>
     </StyledNavItem>
   );
 };

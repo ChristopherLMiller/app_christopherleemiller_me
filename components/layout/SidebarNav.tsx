@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Nav from "components/layout/Nav";
 import { Props } from "styles/Themes";
 import { motion } from "framer-motion";
-import { useState } from "react";
 
 const variants = {
   enter: {
@@ -58,20 +57,12 @@ const StyledSidebarInner = styled.div`
 `;
 
 const SidebarNav = () => {
-  const [isExpanded, setExpanded] = useState(false);
   return (
-    <StyledSidebar
-      variants={variants}
-      isExpanded={isExpanded}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseExit={() => setExpanded(false)}
-      onHoverStart={() => setExpanded(true)}
-      onHoverEnd={() => setExpanded(false)}
-    >
+    <StyledSidebar variants={variants}>
       <StyledSidebarInner>
-        <img src="" />
+        <img src="logo_144.png" width="60px" />
         <NavHr />
-        <Nav isExpanded={isExpanded} />
+        <Nav />
       </StyledSidebarInner>
     </StyledSidebar>
   );
