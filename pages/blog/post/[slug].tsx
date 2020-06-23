@@ -1,6 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import { Layout } from "components/layout/PageLayout";
-import { iArticle } from "utils/queries/articles";
+import { iArticle, ARTICLE_QUERY_STRING } from "utils/queries/articles";
 import { NextPage } from "next";
 import { NextSeo, BlogJsonLd } from "next-seo";
 import { ArticleHead } from "components/articles/elements/Head";
@@ -14,7 +14,7 @@ import hljs from "highlight.js";
 import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { imageURL, truncate, isDefined } from "utils/functions";
-import { SEPARATOR } from "config";
+import { SEPARATOR, GRAPHQL_ENDPOINT } from "config";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -124,17 +124,25 @@ const PostPage: NextPage<iPostPage> = ({ blog_post }) => {
 PostPage.getInitialProps = async (ctx) => {
   const { slug } = ctx.query;
 
-  const response = await fetch(
-    `https://strapi.christopherleemiller.me/articles?slug=${slug}`
-  );
+  const response = await fetch(GRAPHQL_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer JWT",
+    },
+    body: JSON.stringify({
+      query: ARTICLE_QUERY_STRING,
+      variables: { where: { slug: slug } },
+    }),
+  });
   const data = await response.json();
 
-  if (data.length < 1 || data == undefined) {
+  if (data.data.articles.length < 1 || data == undefined) {
     ctx?.res?.writeHead(301, { Location: "/404" });
     ctx?.res?.end();
     return { blog_post: {} };
   } else {
-    return { blog_post: data[0] };
+    return { blog_post: data.data.articles[0] };
   }
 };
 

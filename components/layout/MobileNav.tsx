@@ -4,7 +4,6 @@ import Router from "next/router";
 import styled from "styled-components";
 import Nav from "components/layout/Nav";
 import { Props } from "styles/Themes";
-import { AccountInfo } from "components/layout/elements/AccountInfo";
 import { motion } from "framer-motion";
 
 const StyledMobileNav = styled.div`
@@ -105,11 +104,6 @@ const StyledNavigationWrapper = styled(motion.div)`
   overflow-x: hidden;
 `;
 
-const NavHr = styled.hr`
-  width: 100%;
-  margin: 10px 0;
-`;
-
 const MobileNav = () => {
   const [isOpen, setOpen] = useState(false);
   const [menuText, setText] = useState(`Menu`);
@@ -153,8 +147,6 @@ const MobileNav = () => {
         animate={isOpen ? "open" : "closed"}
         variants={navVariants}
       >
-        <AccountInfo />
-        <NavHr />
         <Nav />
       </StyledNavigationWrapper>
     </StyledMobileNav>

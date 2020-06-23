@@ -1,4 +1,7 @@
 const withOffline = require(`next-offline`);
+const withMDX = require(`@next/mdx`)({
+  extension: /\.mdx?$/,
+});
 const path = require(`path`);
 
 const {
@@ -53,6 +56,7 @@ const nextConfig = {
       ];
     },
   },
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
 
-module.exports = withOffline(nextConfig);
+module.exports = withOffline(withMDX(nextConfig));

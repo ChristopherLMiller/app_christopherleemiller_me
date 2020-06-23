@@ -1,7 +1,7 @@
 import { FunctionComponent, Fragment } from "react";
 import styled from "styled-components";
 import Meta from "components/layout/Meta";
-import Sidebar from "components/layout/Sidebar";
+import SidebarNav from "components/layout/SidebarNav";
 import MobileNav from "components/layout/MobileNav";
 import { Props } from "styles/Themes";
 import { imageURL } from "utils/functions";
@@ -27,20 +27,9 @@ const StyledPage = styled.div`
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: auto 1fr;
   }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_small}) {
-    grid-template-columns: 350px 1fr;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    grid-template-columns: 350px 1fr;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    grid-template-columns: 400px 1fr;
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    grid-template-columns: 450px 1fr;
-  }
+
 `;
 
 const Inner = styled.div`
@@ -61,7 +50,7 @@ const Page: FunctionComponent<PageProps> = ({ children }) => (
   <Fragment>
     <StyledPage>
       <Meta />
-      <Sidebar />
+      <SidebarNav />
       <Inner>{children}</Inner>
     </StyledPage>
     <MobileNav />

@@ -29,7 +29,7 @@ const StyledForm = styled.div`
 const resetSchema = Yup.object({
   password: Yup.string().required("Password is required"),
   passwordConfirm: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .oneOf([Yup.ref("password"), undefined], "Passwords must match")
     .required("Password confirm is required"),
 });
 const ResetPasswordPage = () => {
