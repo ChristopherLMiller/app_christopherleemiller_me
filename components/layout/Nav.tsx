@@ -72,7 +72,7 @@ const Nav = () => {
         <IosMailOutline color="#FFF" fontSize="50px" />
       </NavItem>
       <NavItem
-        href="https://strapi.christopherleemiller.me/admin"
+        href="https://strapi.christopherleemiller.me/dashboard"
         title="Strapi Backend"
       >
         <IosCogOutline color="#FFF" fontSize="50px" />
