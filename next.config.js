@@ -55,6 +55,7 @@ const nextConfig = {
         },
       ];
     },
+    reactMode: "concurrent",
   },
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
 };
