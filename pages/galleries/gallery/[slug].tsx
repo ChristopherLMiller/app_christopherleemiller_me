@@ -51,7 +51,7 @@ const GalleryPage: NextPage<iGalleryPage> = ({ gallery }) => {
 
   // define SEO properties
   const openGraph = {
-    title: `Post${SEPARATOR}${gallery.title}`,
+    title: `Gallery${SEPARATOR}${gallery.title}`,
     description: truncate(gallery.description, 3),
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/galleries/gallery/${gallery.slug}`,
     type: `article`,
@@ -77,7 +77,7 @@ const GalleryPage: NextPage<iGalleryPage> = ({ gallery }) => {
     <Layout meta={{ title, description, useSEO: false }}>
       <NextSeo
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/galleries/gallery/${gallery.slug}`}
-        title={`Post${SEPARATOR}${gallery.title}`}
+        title={`Gallery${SEPARATOR}${gallery.title}`}
         description={truncate(gallery.description, 3)}
         openGraph={openGraph}
       />

@@ -48,7 +48,7 @@ export interface iModelData {
   [key: string]: Array<ModelTypes["model"]>;
 }
 
-export const MODELS_QUERY = gql`
+export const MODELS_QUERY_STRING = `
   query MODELS_QUERY(
     $start: Int = 0
     $limit: Int = ${MODELS_PER_PAGE}
@@ -101,6 +101,11 @@ export const MODELS_QUERY = gql`
     }
   }
 `;
+
+export const MODELS_QUERY = gql`
+  ${MODELS_QUERY_STRING}
+`;
+
 export const MODELS_QUERY_BRIEF = gql`
   query MODELS_QUERY_BRIEF(
     $start: Int = 0
