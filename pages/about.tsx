@@ -1,11 +1,11 @@
 import { Layout } from "components/layout/PageLayout";
 import { NextSeo } from "next-seo";
 import { SEPARATOR, SITE_TITLE } from "config";
-import ReactMarkdown from "react-markdown";
+//import ReactMarkdown from "react-markdown";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { StyledArticle } from "styles/Articles";
 
-const AboutMarkdown = require("data/about.md");
+const AboutMarkdown = require("data/pages/about.mdx").default;
 
 const title = `About Me`;
 const description = `Where I came from and what I do now`;
@@ -29,7 +29,7 @@ const AboutPage = () => (
     />
     <StyledArticle>
       <StyledContentBlock>
-        <ReactMarkdown>{AboutMarkdown.default}</ReactMarkdown>
+        <AboutMarkdown />
       </StyledContentBlock>
     </StyledArticle>
   </Layout>

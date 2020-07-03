@@ -1,11 +1,10 @@
 import { NextSeo } from "next-seo";
-import ReactMarkdown from "react-markdown";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { SITE_TITLE, SEPARATOR } from "config";
 import { StyledArticle } from "styles/Articles";
 import { Layout } from "components/layout/PageLayout";
 
-const PrivacyPolicyMarkdown = require(`data/privacy-policy.md`);
+const PrivacyPolicyMarkdown = require(`data/pages/privacy-policy.mdx`).default;
 
 const title = `Privacy Policy`;
 const description = `My policies regarding your privacy and safety`;
@@ -36,7 +35,7 @@ const PrivacyPolicyPage = () => (
     />
     <StyledArticle>
       <StyledContentBlock>
-        <ReactMarkdown>{PrivacyPolicyMarkdown.default}</ReactMarkdown>
+        <PrivacyPolicyMarkdown />
       </StyledContentBlock>
     </StyledArticle>
   </Layout>

@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { imageURL, truncate, isDefined } from "utils/functions";
 import { SEPARATOR, GRAPHQL_ENDPOINT } from "config";
+import { parseCookies } from "nookies";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -123,21 +124,29 @@ const PostPage: NextPage<iPostPage> = ({ blog_post }) => {
 
 PostPage.getInitialProps = async (ctx) => {
   const { slug } = ctx.query;
+  const cookies = parseCookies(ctx);
 
-  const response = await fetch(GRAPHQL_ENDPOINT, {
+  const options = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer JWT",
     },
     body: JSON.stringify({
       query: ARTICLE_QUERY_STRING,
       variables: { where: { slug: slug } },
     }),
-  });
+  };
+
+  // inject the bearer token if its present
+  if (cookies?.token) {
+    // @ts-ignore
+    options.headers["Authorization"] = `Bearer ${cookies.token}`;
+  }
+
+  const response = await fetch(GRAPHQL_ENDPOINT, options);
   const data = await response.json();
 
-  if (data.data.articles.length < 1 || data == undefined) {
+  if (data?.data?.articles?.length < 1) {
     ctx?.res?.writeHead(301, { Location: "/404" });
     ctx?.res?.end();
     return { blog_post: {} };
