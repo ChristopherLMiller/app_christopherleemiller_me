@@ -27,11 +27,11 @@ const Model: FunctionComponent<ModelTypes> = ({ model }) => {
     <Fragment>
       <NextSeo
         title={`Model${SEPARATOR}${model.seo_title}`}
-        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/model/${model.slug}`}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/models/model/${model.slug}`}
         openGraph={{
           title: `Model${SEPARATOR}${model.seo_title}`,
           description: model.seo_description,
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/model/${model.slug}`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/models/model/${model.slug}`,
           type: `article`,
           article: {
             modifiedTime: model.updated_at,
@@ -52,7 +52,7 @@ const Model: FunctionComponent<ModelTypes> = ({ model }) => {
         }}
       />
       <ArticleJsonLd
-        url={`${process.env.NEXT_PUBLIC_SITE_URL}/model/${model.slug}`}
+        url={`${process.env.NEXT_PUBLIC_SITE_URL}/models/model/${model.slug}`}
         title={model.title}
         images={[
           `${imageURL(
