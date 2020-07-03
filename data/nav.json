@@ -1,0 +1,57 @@
+{
+  "items": [
+    {
+      "title": "home",
+      "activePaths": ["/"],
+      "href": "/",
+      "icon": "<IosHomeOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "My Blog",
+      "activePaths": ["/blog", "/post"],
+      "href": "/blog",
+      "icon": "<IosQuoteOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "About Me",
+      "activePaths": ["/about"],
+      "href": "/about",
+      "icon": "<IosPersonOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Uses",
+      "activePaths": ["/uses"],
+      "href": "/uses",
+      "icon": "<IosGitBranch color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Projects",
+      "activePaths": ["/projects"],
+      "href": "/projects",
+      "icon": "<IosCodeWorking color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Models",
+      "activePaths": ["/models"],
+      "href": "/models",
+      "icon": "<IosPaperPlaneOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Galleries",
+      "activePaths": ["/galleries"],
+      "href": "/galleries",
+      "icon": "<IosPhotosOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Contact Me",
+      "activePaths": ["/contact-me"],
+      "href": "/contact-me",
+      "icon": "<IosMailOutline color=\"#FFF\" fontSize=\"50px\" />"
+    },
+    {
+      "title": "Backend",
+      "href": "https://strapi.christopherleemiller.me/dashboard",
+      "icon": "<IosCogOutline color=\"#FFF\" fontSize=\"50px\" />"
+    }
+  ]
+}
