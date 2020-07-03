@@ -32,7 +32,7 @@ export interface iGalleries {
 export interface iGalleryData {
   [key: string]: Array<iGallery["gallery"]>;
 }
-export const GALLERIES_QUERY = gql`
+export const GALLERIES_QUERY_STRING = `
   query GALLERIES_QUERY($start: Int = 0, $limit: Int = ${PER_PAGE}, $where: JSON) {
     galleries(
       limit: $limit
@@ -87,6 +87,10 @@ export const GALLERIES_QUERY = gql`
       }
     }
   }
+`;
+
+export const GALLERIES_QUERY = gql`
+  ${GALLERIES_QUERY_STRING}
 `;
 
 export const GALLERIES_QUERY_BRIEF = gql`
