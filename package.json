@@ -1,6 +1,6 @@
 {
   "name": "christopherleemiller_me-website",
-  "version": "0.39.46",
+  "version": "0.39.48",
   "description": "Front End Site",
   "main": "index.js",
   "scripts": {
@@ -59,7 +59,6 @@
     "react-dom": "experimental",
     "react-ga": "^2.7.0",
     "react-image-gallery": "^1.0.7",
-    "react-ionicons": "^3.1.4",
     "react-markdown": "^4.3.1",
     "react-masonry-css": "^1.0.14",
     "react-modal": "^3.11.2",

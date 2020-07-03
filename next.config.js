@@ -10,11 +10,6 @@ const {
 
 const nextConfig = {
   webpack: (config) => {
-    config.module.rules.push({
-      test: /\.md$/,
-      use: `raw-loader`,
-    });
-
     if (process.env.ANALYZE) {
       config.plugins.push(new WebpackBundleSizeAnalyzerPlugin(`stats.txt`));
     }
