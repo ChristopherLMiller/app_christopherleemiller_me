@@ -60,7 +60,7 @@ const SidebarNav = () => {
   return (
     <StyledSidebar variants={variants}>
       <StyledSidebarInner>
-        <img src="logo_144.png" width="60px" />
+        <img src="/logo_144.png" width="60px" />
         <NavHr />
         <Nav />
       </StyledSidebarInner>
