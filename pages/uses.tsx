@@ -1,11 +1,10 @@
 import { NextSeo } from "next-seo";
-import ReactMarkdown from "react-markdown";
 import { StyledContentBlock } from "components/elements/ContentBlock";
 import { SITE_TITLE, SEPARATOR } from "config";
 import { StyledArticle } from "styles/Articles";
 import { Layout } from "components/layout/PageLayout";
 
-const UsesMarkdown = require(`data/uses.md`);
+const UsesMarkdown = require(`data/pages/uses.mdx`).default;
 
 const title = `Uses`;
 const description = `Tech and tools that I use`;
@@ -36,7 +35,7 @@ const UsesPage = () => (
     />
     <StyledArticle>
       <StyledContentBlock>
-        <ReactMarkdown>{UsesMarkdown.default}</ReactMarkdown>
+        <UsesMarkdown />
       </StyledContentBlock>
     </StyledArticle>
   </Layout>
