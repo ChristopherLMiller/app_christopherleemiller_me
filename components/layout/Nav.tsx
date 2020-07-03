@@ -43,7 +43,9 @@ const Nav = () => {
             isActivePaths={item.activePaths}
             href={item.href}
             key={item.href}
-          ></NavItem>
+          >
+            {item.title}
+          </NavItem>
         ))}
     </NavStyles>
   );
