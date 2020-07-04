@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Nav from "components/layout/Nav";
 import { Props } from "styles/Themes";
-import { motion } from "framer-motion";
 
 const StyledSidebar = styled.aside`
   position: relative;
