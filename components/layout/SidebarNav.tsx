@@ -1,28 +1,11 @@
 import styled from "styled-components";
 import Nav from "components/layout/Nav";
 import { Props } from "styles/Themes";
-import { motion } from "framer-motion";
 
-const variants = {
-  enter: {
-    x: "0%",
-    opacity: 1,
-    transition: {
-      duration: 0.25,
-    },
-  },
-  exit: {
-    x: "-100%",
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-
-const StyledSidebar = styled(motion.aside)`
+const StyledSidebar = styled.aside`
   position: relative;
   display: none;
+  z-index: 10;
 
   &:before {
     background: rgba(0, 0, 0, 0.7);
@@ -58,7 +41,7 @@ const StyledSidebarInner = styled.div`
 
 const SidebarNav = () => {
   return (
-    <StyledSidebar variants={variants}>
+    <StyledSidebar>
       <StyledSidebarInner>
         <img src="/logo_144.png" width="60px" />
         <NavHr />
