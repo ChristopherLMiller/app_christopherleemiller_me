@@ -65,7 +65,7 @@
     "react-modal": "^3.11.2",
     "react-spinners": "^0.8.3",
     "react-toast-notifications": "^2.4.0",
-    "sitemap": "^6.1.4",
+    "sitemap": "^6.2.0",
     "styled-components": "^5.1.0",
     "uid-safe": "^2.1.5",
     "webpack": "^4.43.0",
