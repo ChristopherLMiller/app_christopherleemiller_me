@@ -9,6 +9,7 @@ import Masonry from "react-masonry-css";
 import { motion } from "framer-motion";
 import { iGalleryData } from "utils/queries/galleries";
 import Link from "next/link";
+import { ArrayList } from "utils/functions/ArrayList";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -84,6 +85,15 @@ const GalleryImageCaptionVariants = {
   },
 };
 
+const TagList = styled.div`
+  display: flex;
+  font-size: 0.75em;
+
+  .caption {
+    padding-right: 5px;
+  }
+`;
+
 const GalleriesPage = () => {
   const { loading, error, data } = useQuery<iGalleryData>(
     GALLERIES_QUERY_BRIEF
@@ -149,6 +159,21 @@ const GalleriesPage = () => {
                   <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>
                     <GalleryImageCaption variants={GalleryImageCaptionVariants}>
                       {gallery.title}
+                      <hr />
+                      <TagList>
+                        <span className="caption">Categories:</span>
+                        <ArrayList
+                          array={gallery.gallery_categories}
+                          asLinks={true}
+                        />
+                      </TagList>
+                      <TagList>
+                        <span className="caption">Tags:</span>
+                        <ArrayList
+                          array={gallery.gallery_tags}
+                          asLinks={true}
+                        />
+                      </TagList>
                     </GalleryImageCaption>
                   </GalleryInfoOverlay>
                 </GalleryImageContainer>
