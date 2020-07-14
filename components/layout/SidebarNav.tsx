@@ -33,6 +33,7 @@ const NavHr = styled.hr`
 
 const StyledSidebarInner = styled.div`
   position: sticky;
+  top: 10px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
