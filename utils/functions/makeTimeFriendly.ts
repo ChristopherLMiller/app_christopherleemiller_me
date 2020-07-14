@@ -18,7 +18,7 @@ export const makeTimeFriendly = (time: string | undefined) => {
     const hours = splitString[2];
     const minutes = splitString[3];
 
-    return `${hours || 0} Hours ${minutes} Minutes`;
+    return `${hours || 0} Hrs ${minutes} Mins`;
   }
 
   return `N/A`;
