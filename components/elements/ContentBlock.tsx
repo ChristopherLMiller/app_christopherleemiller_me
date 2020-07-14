@@ -82,15 +82,15 @@ const StyledContentBlock = styled.div`
   h2 {
     font-size: 3.5rem;
     line-height: 6rem;
-
-    :after {
-      width: 250px;
+  }
+  h2:after {
+    width: 250px;
   }
   h3 {
     font-size: 3rem;
     line-height: 5rem;
 
-    :after {
+    &:after {
       width: 200px;
     }
   }
@@ -98,7 +98,7 @@ const StyledContentBlock = styled.div`
     font-size: 2.5rem;
     line-height: 4rem;
 
-    :after {
+    &:after {
       width: 175px;
     }
   }
@@ -106,7 +106,7 @@ const StyledContentBlock = styled.div`
     font-size: 2rem;
     line-height: 3rem;
 
-    :after {
+    &:after {
       width: 150px;
     }
   }
@@ -114,7 +114,7 @@ const StyledContentBlock = styled.div`
     font-size: 1.5rem;
     line-height: 2rem;
 
-    :after {
+    &:after {
       width: 100px;
     }
   }
