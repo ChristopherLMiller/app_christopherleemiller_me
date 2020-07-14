@@ -142,7 +142,8 @@ const GalleriesPage = () => {
                 >
                   <GalleryImage
                     src={`${imageURL(
-                      gallery.featured_image.provider_metadata.public_id
+                      gallery.featured_image.provider_metadata.public_id,
+                      { w: 500 }
                     )}.jpg`}
                   />
                   <GalleryInfoOverlay variants={GalleryInfoOverlayVariants}>

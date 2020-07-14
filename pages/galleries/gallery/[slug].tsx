@@ -4,9 +4,9 @@ import { iGallery, GALLERIES_QUERY_STRING } from "utils/queries/galleries";
 import Masonry from "react-masonry-css";
 import styled from "styled-components";
 import { imageURL, truncate } from "utils/functions";
-import { GRAPHQL_ENDPOINT, SEPARATOR } from "config";
-import { parseCookies } from "nookies";
+import { SEPARATOR } from "config";
 import { NextSeo, BlogJsonLd } from "next-seo";
+import { queryData } from "utils/functions/queryData";
 
 const title = `Galleries`;
 const description = `A visual of all the things me!`;
@@ -14,16 +14,16 @@ const description = `A visual of all the things me!`;
 const GalleryList = styled.div`
   .masonry-grid {
     display: flex;
-    margin-left: -20px;
+    margin-left: -40px;
     width: auto;
   }
 
   .masonry-grid-column {
-    padding-left: 20px;
+    padding-left: 40px;
     background-clip: padding-box;
 
     > img {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
   }
 `;
@@ -101,7 +101,9 @@ const GalleryPage: NextPage<iGalleryPage> = ({ gallery }) => {
           columnClassName="masonry-grid-column"
         >
           {gallery?.Images?.map((image) => (
-            <GalleryImage src={imageURL(image.provider_metadata?.public_id)} />
+            <GalleryImage
+              src={imageURL(image.provider_metadata?.public_id, { w: 800 })}
+            />
           ))}
         </Masonry>
       </GalleryList>
@@ -111,34 +113,14 @@ const GalleryPage: NextPage<iGalleryPage> = ({ gallery }) => {
 
 GalleryPage.getInitialProps = async (ctx) => {
   const { slug } = ctx.query;
-  const cookies = parseCookies(ctx);
+  const data = await queryData(ctx, GALLERIES_QUERY_STRING, { slug: slug });
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: GALLERIES_QUERY_STRING,
-      variables: { where: { slug: slug } },
-    }),
-  };
-
-  // inject the bearer token if its present
-  if (cookies?.token) {
-    // @ts-ignore
-    options.headers["Authorization"] = `Bearer ${cookies.token}`;
-  }
-
-  const response = await fetch(GRAPHQL_ENDPOINT, options);
-  const data = await response.json();
-
-  if (data?.data?.galleries?.length < 1) {
+  if (data?.galleries?.length < 1) {
     ctx?.res?.writeHead(301, { Location: "/404" });
     ctx?.res?.end();
     return { gallery: {} };
   } else {
-    return { gallery: data.data.galleries[0] };
+    return { gallery: data.galleries[0] };
   }
 };
 

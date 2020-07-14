@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Props } from "styles/Themes";
 
 const StyledModelPage = styled.div``;
 
@@ -8,16 +7,7 @@ const StyledModelListings = styled.div`
   transition: all 0.25s;
   display: grid;
   grid-gap: 50px;
-
-  @media (min-width: ${(props: Props) => props.theme.sizes.med}) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.med_large}) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (min-width: ${(props: Props) => props.theme.sizes.super_large}) {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
 `;
 
 const StyledModelListing = styled.div`

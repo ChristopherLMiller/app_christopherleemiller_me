@@ -14,8 +14,8 @@ import hljs from "highlight.js";
 import { useEffect, useState } from "react";
 import { Router } from "next/router";
 import { imageURL, truncate, isDefined } from "utils/functions";
-import { SEPARATOR, GRAPHQL_ENDPOINT } from "config";
-import { parseCookies } from "nookies";
+import { SEPARATOR } from "config";
+import { queryData } from "utils/functions/queryData";
 
 const title = `From My Desk`;
 const description = `Archives concerning all matters web development and beyond`;
@@ -124,34 +124,14 @@ const PostPage: NextPage<iPostPage> = ({ blog_post }) => {
 
 PostPage.getInitialProps = async (ctx) => {
   const { slug } = ctx.query;
-  const cookies = parseCookies(ctx);
+  const data = await queryData(ctx, ARTICLE_QUERY_STRING, { slug: slug });
 
-  const options = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: ARTICLE_QUERY_STRING,
-      variables: { where: { slug: slug } },
-    }),
-  };
-
-  // inject the bearer token if its present
-  if (cookies?.token) {
-    // @ts-ignore
-    options.headers["Authorization"] = `Bearer ${cookies.token}`;
-  }
-
-  const response = await fetch(GRAPHQL_ENDPOINT, options);
-  const data = await response.json();
-
-  if (data?.data?.articles?.length < 1) {
+  if (data?.articles?.length < 1) {
     ctx?.res?.writeHead(301, { Location: "/404" });
     ctx?.res?.end();
     return { blog_post: {} };
   } else {
-    return { blog_post: data.data.articles[0] };
+    return { blog_post: data.articles[0] };
   }
 };
 
