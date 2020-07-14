@@ -14,16 +14,16 @@ const description = `A visual of all the things me!`;
 const GalleryList = styled.div`
   .masonry-grid {
     display: flex;
-    margin-left: -20px;
+    margin-left: -40px;
     width: auto;
   }
 
   .masonry-grid-column {
-    padding-left: 20px;
+    padding-left: 40px;
     background-clip: padding-box;
 
     > img {
-      margin-bottom: 20px;
+      margin-bottom: 40px;
     }
   }
 `;
@@ -101,7 +101,9 @@ const GalleryPage: NextPage<iGalleryPage> = ({ gallery }) => {
           columnClassName="masonry-grid-column"
         >
           {gallery?.Images?.map((image) => (
-            <GalleryImage src={imageURL(image.provider_metadata?.public_id)} />
+            <GalleryImage
+              src={imageURL(image.provider_metadata?.public_id, { w: 800 })}
+            />
           ))}
         </Masonry>
       </GalleryList>
