@@ -63,38 +63,60 @@ const StyledContentBlock = styled.div`
     margin-top: 4rem;
     transform: skewX(10deg);
     position: relative;
+    border-left: 3px solid var(--main-color);
   }
+  h2:after,
+  h3:after,
+  h4:after,
+  h5:after,
+  h6:after {
+    content: "\\A";
+    position: absolute;
+    height: 5px;
+    background: var(--main-color);
+    bottom: 5px;
+    left: -10px;
+    transform: skewX(10deg);
+  }
+
   h2 {
     font-size: 3.5rem;
     line-height: 6rem;
 
     :after {
-      content: "\\A";
-      width: 300px;
-      height: 5px;
-      background: var(--main-color);
-      position: absolute;
-      left: 0;
-      bottom: 5px;
-      z-index: -1;
-      transform: skewX(-25deg);
-    }
+      width: 250px;
   }
   h3 {
     font-size: 3rem;
     line-height: 5rem;
+
+    :after {
+      width: 200px;
+    }
   }
   h4 {
     font-size: 2.5rem;
     line-height: 4rem;
+
+    :after {
+      width: 175px;
+    }
   }
   h5 {
     font-size: 2rem;
     line-height: 3rem;
+
+    :after {
+      width: 150px;
+    }
   }
   h6 {
     font-size: 1.5rem;
     line-height: 2rem;
+
+    :after {
+      width: 100px;
+    }
   }
   strong {
     font-weight: bold;
@@ -117,6 +139,10 @@ const StyledContentBlock = styled.div`
     padding-left: 10px;
     background: rgba(255, 255, 255, 0.65);
     border-left: 10px solid var(--background-dark);
+  }
+
+  img {
+    border: 3px solid var(--main-color);
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.small}) {
