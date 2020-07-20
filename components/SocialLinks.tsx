@@ -4,6 +4,8 @@ import {
   faLinkedinIn,
   faGithubAlt,
   faTwitter,
+  faInstagram,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { SocialIcon } from "components/SocialIcon";
 import { FunctionComponent } from "react";
@@ -11,7 +13,7 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const SocialLinksBar = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
   grid-gap: 30px;
   align-items: center;
 `;
@@ -44,6 +46,18 @@ const SocialLinks: FunctionComponent<iSocialLinks> = ({ color }) => (
       url="https://twitter.com/ChrisLMiller_me"
       icon={faTwitter as IconProp}
       alt="Twitter"
+      color={color}
+    />
+    <SocialIcon
+      url="https://instagram.com/moose51789"
+      icon={faInstagram as IconProp}
+      alt="Instagram"
+      color={color}
+    />
+    <SocialIcon
+      url="https://youtube.com/channel/UCn0P6xSTSYMML80hwj7FDZg"
+      icon={faYoutube as IconProp}
+      alt="YouTube"
       color={color}
     />
   </SocialLinksBar>
