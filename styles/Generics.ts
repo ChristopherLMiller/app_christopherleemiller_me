@@ -64,6 +64,6 @@ export const Main = styled.main`
   }
 
   @media (min-width: ${(props: Props) => props.theme.sizes.large}) {
-    padding: 200px 40px;
+    padding: 250px 40px;
   }
 `;
