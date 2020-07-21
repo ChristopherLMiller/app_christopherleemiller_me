@@ -54,7 +54,9 @@ app
 
     // Admin redirect
     server.get(`/strapi`, (req, res) => {
-      res.status(301).redirect(`https://strapi.christopherleemiller.me/admin`);
+      res
+        .status(301)
+        .redirect(`https://strapi.christopherleemiller.me/dashboard`);
     });
 
     /*    // Sitemap
@@ -67,9 +69,10 @@ app
         */
 
     // All others
-    server.get(`*`, (req, res) => {
+    /*server.get(`*`, (req, res) => {
       handle(req, res);
-    });
+    });*/
+    server.use((req, res) => app.getRequestHandler()(req, res));
 
     server.listen(port, (err) => {
       if (err) throw err;

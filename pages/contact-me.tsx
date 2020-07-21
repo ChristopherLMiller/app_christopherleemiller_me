@@ -94,10 +94,10 @@ const ContactPage = () => {
               initialValues={{ email: ``, name: ``, message: `` }}
               onSubmit={(values) => {
                 // submit the fetch request
-                fetch("https://email.christopherleemiller.me/email/contact", {
+                fetch("/api/contact", {
                   method: "POST",
                   headers: {
-                    "Content-Type": "Application/JSON",
+                    "Content-Type": "application/json",
                   },
                   body: JSON.stringify(values),
                 })
@@ -171,7 +171,7 @@ const ContactPage = () => {
             </ContactFormEmailList>
             <h4>Phone</h4>
             <p>
-              <a href="tel:+15743702148">+1 (574) 370-2148</a>
+              <a href="tel:+15743291494">+1 (574) 329-1494</a>
             </p>
           </ContactColumn>
         </ContactGrid>
