@@ -40,7 +40,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "formik": "^2.1.5",
-    "framer-motion": "^1.11.0",
+    "framer-motion": "^3.3.0",
     "graphql": "^14.6.0",
     "graphql-tag": "^2.10.3",
     "highlight.js": "^10.0.3",
